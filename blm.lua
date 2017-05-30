@@ -21,6 +21,7 @@ function get_sets()
 	-- idle : Default
 	sets.idle.default = {
         ammo="Impatiens",
+	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
@@ -123,7 +124,9 @@ function get_sets()
 
 	-- Dark magic
 	sets.utility.darkMagic = {
+	    neck="Erra Pendant",
         waist="Fucho-no-Obi",
+	    left_ring="Evanescence Ring",
 		right_ring="Archon Ring",
 	} -- end sets.Utility.darkMagic
 
