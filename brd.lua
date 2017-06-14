@@ -25,13 +25,14 @@ function get_sets()
 	weaponSetNames = {
 		[0] = 'Song Knife/Shield',
 		[1] = 'DD Knife/Shield',
-		[2] = 'Song Knife/DD Knife',
-		[3] = 'DD Knife/DD Knife',
+		[2] = 'Song Knife/Song Knife',
+		[3] = 'Song Knife/DD Knife',
+		[4] = 'DD Knife/DD Knife',
 	}
 
 	-- Weapon : Song Knife/Shield
 	sets.weapons[0] = {
-	    main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
+        main={ name="Kali", augments={'DMG:+15','CHR+15','Mag. Acc.+15',}},
 	    sub="Genmei Shield",
 	}
 
@@ -41,14 +42,20 @@ function get_sets()
 	    sub="Genmei Shield",
 	}
 
-	-- Weapon : Song Knife/DD Knife
+	-- Weapon : Song Knife/Song Knife
 	sets.weapons[2] = {
-	    main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
+        main={ name="Kali", augments={'DMG:+15','CHR+15','Mag. Acc.+15',}},
+        sub={ name="Kali", augments={'DMG:+15','CHR+15','Mag. Acc.+15',}},
+	}
+
+	-- Weapon : Song Knife/DD Knife
+	sets.weapons[3] = {
+        main={ name="Kali", augments={'DMG:+15','CHR+15','Mag. Acc.+15',}},
 	    sub={ name="Taming Sari", augments={'STR+8','DEX+9','DMG:+13',}},
 	}
 
 	-- Weapon : DD Knife/DD Knife
-	sets.weapons[3] = {
+	sets.weapons[4] = {
 	    main={ name="Taming Sari", augments={'STR+10','DEX+10','DMG:+15','"Treasure Hunter"+1',}},
 	    sub={ name="Taming Sari", augments={'STR+8','DEX+9','DMG:+13',}},
 	}
@@ -229,8 +236,7 @@ function get_sets()
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
         waist="Rumination Sash",
-	    left_ear="Aoidos' Earring",
-	    right_ear="Gwati Earring",
+	    left_ear="Darkside Earring",
 	    left_ring="Kishar Ring",
 	    right_ring="Vertigo Ring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
@@ -245,7 +251,7 @@ function get_sets()
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
         waist="Rumination Sash",
-	    left_ear="Aoidos' Earring",
+	    left_ear="Darkside Earring",
 	    right_ear="String Earring",
 	    left_ring="Kishar Ring",
 	    right_ring="Vertigo Ring",
@@ -256,13 +262,13 @@ function get_sets()
 	sets.midcast.enfeebleSong = {
 	    head="Brioso Roundlet +2",
 	    body="Fili Hongreline +1",
-        hands="Brioso Cuffs +2",
+        hands="Inyan. Dastanas +1",
         legs="Inyanga Shalwar +2",
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
 	    waist="Porous Rope",
-	    left_ear="Lifestorm Earring",
-	    right_ear="Psystorm Earring",
+	    left_ear="Darkside Earring",
+	    right_ear="Gwati Earring",
         left_ring="Metamorph Ring",
 	    right_ring="Metamor. Ring +1",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
@@ -304,6 +310,7 @@ function get_sets()
 	-- Madrigal Song set
 	sets.utility.madrigal = {
 	    head="Fili Calot +1",
+        right_ear="Kuwunga Earring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
 	} -- end sets.utility.madrigal
 
@@ -316,6 +323,11 @@ function get_sets()
 	sets.utility.mazurka = {
         feet="Fili Cothurnes +1",
 	} -- end sets.utility.mazurka
+
+	-- Minne Song set
+	sets.utility.minne = {
+	    right_ear="Darkside Earring",
+	} -- end sets.utility.minne
 
 	-- Minuet Song set
 	sets.utility.minuet = {
@@ -394,6 +406,14 @@ function get_sets()
 		["Chocobo Mazurka"] = true,
 	}
 
+	MinneSongs = {
+		["Knight's Minne"] = true,
+		["Knight's Minne II"] = true,
+		["Knight's Minne III"] = true,
+		["Knight's Minne IV"] = true,
+		["Knight's Minne V"] = true,
+	}
+
 	MinuetSongs = {
 		["Valor Minuet"] = true,
 		["Valor Minuet II"] = true,
@@ -454,11 +474,6 @@ function get_sets()
 		["Pining Nocturne"] = true,
 	}
 
-	SpeedSongs = {
-		["Raptor Mazurka"] = true,
-		["Chocobo Mazurka"] = true,
-	}
-
 end -- end get_sets()
 
 
@@ -514,6 +529,8 @@ function midcast(spell)
     		equip(sets.utility.madrigal)
     	elseif MarchSongs[spell.english] then
     		equip(sets.utility.march)
+    	elseif MinneSongs[spell.english] then
+    		equip(sets.utility.minne)
     	elseif MinuetSongs[spell.english] then
     		equip(sets.utility.minuet)
     	elseif PaeonSongs[spell.english] then
