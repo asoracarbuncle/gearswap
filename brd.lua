@@ -94,8 +94,8 @@ function get_sets()
 	-- Idle : Default
 	sets.idle.default = {
 	    head="Inyanga Tiara +1",
-	    body="Inyanga Jubbah +1",
-	    hands="Inyan. Dastanas +1",
+	    body="Inyanga Jubbah +2",
+	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
 	    feet="Inyan. Crackows +1",
         neck="Twilight Torque",
@@ -143,7 +143,7 @@ function get_sets()
 	-- Precast : fastCast Song
 	sets.precast.fastCast.song = {
 	    head="Fili Calot +1",
-	    body="Inyanga Jubbah +1",
+	    body="Inyanga Jubbah +2",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
 	    feet={ name="Bihu Slippers +1", augments={'Enhances "Nightingale" effect',}},
@@ -229,9 +229,9 @@ function get_sets()
 
 	-- Midcast : Buff Song for Gjallarhorn
 	sets.midcast.buffSong["Gjallarhorn"] = {
-	    head="Brioso Roundlet +2",
+	    head="Brioso Roundlet +3",
 	    body="Fili Hongreline +1",
-	    hands="Inyan. Dastanas +1",
+	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
@@ -244,9 +244,9 @@ function get_sets()
 
 	-- Midcast : Buff Song for harp
 	sets.midcast.buffSong["Daurdabla"] = {
-	    head="Brioso Roundlet +2",
+	    head="Brioso Roundlet +3",
 	    body="Fili Hongreline +1",
-	    hands="Inyan. Dastanas +1",
+	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
@@ -260,15 +260,15 @@ function get_sets()
 
 	-- Midcast : Enfeeble Song set
 	sets.midcast.enfeebleSong = {
-	    head="Brioso Roundlet +2",
+	    head="Brioso Roundlet +3",
 	    body="Fili Hongreline +1",
-        hands="Inyan. Dastanas +1",
+        hands="Inyan. Dastanas +2",
         legs="Inyanga Shalwar +2",
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
-	    waist="Porous Rope",
+	    waist="Luminary Sash",
 	    left_ear="Darkside Earring",
-	    right_ear="Gwati Earring",
+	    right_ear="Regal Earring",
         left_ring="Metamorph Ring",
 	    right_ring="Metamor. Ring +1",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
@@ -276,7 +276,7 @@ function get_sets()
 
 	-- Midcast : Magic
 	sets.midcast.magic = {
-	    head="Brioso Roundlet +2",
+	    head="Brioso Roundlet +3",
         body="Brioso Justau. +2",
         hands="Brioso Cuffs +2",
         legs="Brioso Cannions +2",
@@ -336,7 +336,7 @@ function get_sets()
 
 	-- Paeon Song set
 	sets.utility.paeon = {
-	    head="Brioso Roundlet +2",
+	    head="Brioso Roundlet +3",
 	} -- end sets.utility.paeon
 
 	-- Prelude Song set
