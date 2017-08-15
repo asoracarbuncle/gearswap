@@ -70,17 +70,19 @@ function get_sets()
 
 	-- Precast : Fastcast
 	sets.precast.fastcast = {
-	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+        main={ name="Malevolence", augments={'INT+7','"Mag.Atk.Bns."+5','"Fast Cast"+3',}},
 	    head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
-	    body="Vrikodara Jupon",
+        body="Zendik Robe",
+	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
 	    legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-	    feet="Tutyr Sabots",
+        feet={ name="Amalric Nails", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
 	    neck="Voltsurge Torque",
 	    waist="Witful Belt",
 	    left_ear="Loquac. Earring",
-        right_ear="Etiolation Earring",
+	    right_ear="Etiolation Earring",
 	    left_ring="Prolix Ring",
-	    back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +19','Pet: Damage taken -2%',}},
+	    right_ring="Kishar Ring",
+	    back="Perimede Cape",
 	} -- end sets.precast.fastcast
 
 
@@ -93,10 +95,10 @@ function get_sets()
 	-- Magic : Default
 	sets.magic.default = {
 	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
-	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
-        body={ name="Amalric Doublet", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
-        hands={ name="Amalric Gages", augments={'INT+10','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
-	    legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
+        head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
+	    body="Jhakri Robe +2",
+	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
         feet={ name="Merlinic Crackows", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Occult Acumen"+10','Mag. Acc.+7','"Mag.Atk.Bns."+14',}},
 	    neck="Mizu. Kubikazari",
 	    waist="Refoccilation Stone",
@@ -127,8 +129,11 @@ function get_sets()
 
 	-- Dark magic
 	sets.utility.darkMagic = {
+	    neck="Erra Pendant",
         waist="Fucho-no-Obi",
+	    left_ring="Evanescence Ring",
 		right_ring="Archon Ring",
+	    back="Perimede Cape",
 	} -- end sets.Utility.darkMagic
 
 	-- Capacity points
@@ -136,6 +141,13 @@ function get_sets()
 	sets.utility.capacityPoints = {
 	    back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.Utility.capacityPoints
+
+	-- Spell Arrays
+	DarkSpells = {
+		["Aspir"] = true,
+		["Aspir II"] = true,
+		["Aspir III"] = true,
+	}
 	
 
 end -- end get_sets()
@@ -159,20 +171,14 @@ function midcast(spell)
 	-- Check if the action is a specified weapon skill
 	if spell.action_type == 'Magic' then
 
-    	-- Equip base magic set
-		equip(sets.magic.default)
-
-		-- Crank up the Geomancy skill
-		if spell.skill == 'Geomancy' or spell.skill == 'Handbell' then
+		-- Check if the spell is dark magic
+		if DarkSpells[spell.english] then
+			equip(set_combine(sets.magic.default, sets.utility.darkMagic))
+		elseif spell.skill == 'Geomancy' or spell.skill == 'Handbell' then
 			equip(sets.utility.geoSkill)
-		end -- end if
-
-		-- Crank up the dark elemental magic
-		if spell.english == 'Aspir'
-			or spell.english == 'Aspir II'
-			or spell.english == 'Aspir III' then
-			equip(sets.utility.darkMagic)
-		end -- end if
+		else
+			equip(sets.magic.default)
+		end
 
     end -- end if
 
