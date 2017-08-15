@@ -48,7 +48,7 @@ function get_sets()
 	-- Idle : Default
 	sets.idle.default = {
 	    ammo="Mantoptera Eye",
-	    head="Rawhide Mask",
+	    head={ name="Rawhide Mask", augments={'HP+50','Accuracy+15','Evasion+20',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
@@ -59,7 +59,7 @@ function get_sets()
 	    right_ear="Static Earring",
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
-	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.idle.default
 
 
@@ -70,20 +70,30 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : Default
+	--
+	-- Accuracy = 213
+	-- Crit. Rate = 10%
+	-- Haste = 27%
+	-- Quadruple Attack = 5%
+	-- Triple Attack = 38%
+	-- Double Attack = 12%
+	-- Dual Wield = 5%
+	-- Store TP = 21%
+	--
 	sets.melee.default = {
-		ammo="Ginsen",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+	    ammo="Ginsen",
+	    head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-	    neck="Clotharius Torque",
+	    feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
+	    neck="Ainia Collar",
 	    waist="Windbuffet Belt +1",
-	    left_ear="Telos Earring",
-	    right_ear="Brutal Earring",
-		left_ring="Epona's Ring",
-	    right_ring="Rajas Ring",
-	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+	    left_ear="Suppanomimi",
+	    right_ear="Telos Earring",
+	    left_ring="Ilabrat Ring",
+	    right_ring="Petrov Ring",
+	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.melee.default
 
 
@@ -95,7 +105,7 @@ function get_sets()
 
 	-- Precast : Fastcast
 	sets.precast.fastcast = {
-        ammo="Impatiens",
+        ammo="Sapience Orb",
         head={ name="Carmine Mask", augments={'Accuracy+15','Mag. Acc.+10','"Fast Cast"+3',}},
         body={ name="Luhlaza Jubbah +1", augments={'Enhances "Enchainment" effect',}},
 	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
@@ -156,7 +166,7 @@ function get_sets()
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
 		left_ring="Epona's Ring",
 	    right_ring="Begrudging Ring",
-	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.midcast.ws.default
 
 	-- Midcast : Weaponskill : Chant du Cygne
@@ -173,7 +183,24 @@ function get_sets()
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
 		left_ring="Epona's Ring",
 	    right_ring="Begrudging Ring",
-	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+	} -- end sets.midcast.ws['Chant du Cygne']
+
+	-- Midcast : Weaponskill : Chant du Cygne Backup
+	sets.midcast.ws['Chant du Cygne Backup'] = {
+        ammo="Honed Tathlum",
+	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+        body="Abnoba Kaftan",
+	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
+	    neck="Fotia Gorget",
+	    waist="Fotia Belt",
+	    left_ear="Brutal Earring",
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+		left_ring="Epona's Ring",
+	    right_ring="Begrudging Ring",
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.midcast.ws['Chant du Cygne']
 
 	-- Midcast : Weaponskill : Requiescat
@@ -190,7 +217,7 @@ function get_sets()
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
 		left_ring="Epona's Ring",
 	    right_ring="Begrudging Ring",
-	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.midcast.ws['Requiescat']
 
 	-- Midcast : Weaponskill : Savage Blade
