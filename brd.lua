@@ -25,9 +25,7 @@ function get_sets()
 	weaponSetNames = {
 		[0] = 'Song Knife/Shield',
 		[1] = 'DD Knife/Shield',
-		[2] = 'Song Knife/Song Knife',
-		[3] = 'Song Knife/DD Knife',
-		[4] = 'DD Knife/DD Knife',
+		[2] = 'DD Knife/DD Knife',
 	}
 
 	-- Weapon : Song Knife/Shield
@@ -42,20 +40,8 @@ function get_sets()
 	    sub="Genmei Shield",
 	}
 
-	-- Weapon : Song Knife/Song Knife
-	sets.weapons[2] = {
-        main={ name="Kali", augments={'DMG:+15','CHR+15','Mag. Acc.+15',}},
-        sub={ name="Kali", augments={'DMG:+15','CHR+15','Mag. Acc.+15',}},
-	}
-
-	-- Weapon : Song Knife/DD Knife
-	sets.weapons[3] = {
-        main={ name="Kali", augments={'DMG:+15','CHR+15','Mag. Acc.+15',}},
-	    sub={ name="Taming Sari", augments={'STR+8','DEX+9','DMG:+13',}},
-	}
-
 	-- Weapon : DD Knife/DD Knife
-	sets.weapons[4] = {
+	sets.weapons[2] = {
 	    main={ name="Taming Sari", augments={'STR+10','DEX+10','DMG:+15','"Treasure Hunter"+1',}},
 	    sub={ name="Taming Sari", augments={'STR+8','DEX+9','DMG:+13',}},
 	}
