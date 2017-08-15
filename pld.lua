@@ -25,17 +25,17 @@ function get_sets()
 	    ammo="Angha Gem",
 	    head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    body={ name="Souveran Cuirass", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
-	    hands={ name="Souv. Handschuhs", augments={'HP+50','Shield skill +10','Phys. dmg. taken -3',}},
-	    legs={ name="Souveran Diechlings", augments={'STR+10','VIT+10','Accuracy+15',}},
-	    feet={ name="Souveran Schuhs", augments={'HP+50','Attack+20','Magic dmg. taken -3',}},
+	    hands={ name="Souv. Handschuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+	    legs={ name="Souveran Diechlings", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+	    feet={ name="Souveran Schuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    neck="Twilight Torque",
 	    waist="Nierenschutz",
-	    left_ear="Thureous Earring",
+	    left_ear="Odnowa Earring +1",
 	    right_ear="Etiolation Earring",
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
-	    back={ name="Weard Mantle", augments={'VIT+5','Enmity+2','Phalanx +3',}},
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
+	    -- back="Reiki Cloak",
+	    back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.dt.default
 
 
@@ -47,7 +47,7 @@ function get_sets()
 
 	-- Precast : Fastcast
 	sets.precast.fastcast = {
-        ammo="Impatiens",
+        ammo="Sapience Orb",
         head={ name="Carmine Mask", augments={'Accuracy+15','Mag. Acc.+10','"Fast Cast"+3',}},
         body={ name="Jumalik Mail", augments={'HP+50','Attack+15','Enmity+9','"Refresh"+2',}},
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
@@ -113,8 +113,8 @@ function get_sets()
 	    left_ear="Steelflash Earring",
 	    right_ear="Bladeborn Earring",
 	    right_ring="Patricius Ring",
-	    -- back="Grounded Mantle",
-	    back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
+	    back="Grounded Mantle",
+	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.utility.accuracy
 
 	-- Capacity points
@@ -131,7 +131,7 @@ end -- end get_sets()
 ----------------------------------------------------------------------
 function precast(spell)
     if spell.action_type == 'Magic' then
-		equip(sets.precast.fastcast)
+		-- equip(sets.precast.fastcast)
 	end
 end -- end precast()
 
