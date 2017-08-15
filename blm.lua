@@ -20,6 +20,8 @@ function get_sets()
 
 	-- idle : Default
 	sets.idle.default = {
+	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+	    sub="Niobid Strap",
         ammo="Impatiens",
 	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
@@ -45,6 +47,8 @@ function get_sets()
 
 	-- Melee : Default
 	sets.melee.default = {
+	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+	    sub="Niobid Strap",
         ammo="Impatiens",
 	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
@@ -70,17 +74,17 @@ function get_sets()
 
 	-- Precast : FastCast
 	sets.precast.fastCast = {
-        ammo="Impatiens",
-	    head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
-	    body="Vrikodara Jupon",
-	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
-	    legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+        ammo="Sapience Orb",
+        head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+        body="Zendik Robe",
+        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
+        legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="Amalric Nails", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
-	    neck="Voltsurge Torque",
-	    waist="Witful Belt",
-	    left_ear="Loquac. Earring",
+        neck="Voltsurge Torque",
+        waist="Witful Belt",
+        left_ear="Loquac. Earring",
         right_ear="Etiolation Earring",
-	    left_ring="Prolix Ring",
+        left_ring="Prolix Ring",
         right_ring="Kishar Ring",
         back={ name="Taranus's Cape", augments={'"Fast Cast"+10',}},
 	} -- end sets.precast.fastCast
@@ -94,6 +98,8 @@ function get_sets()
 
 	-- Magic : Default
 	sets.magic.default = {
+	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+	    sub="Niobid Strap",
         ammo="Witchstone",
         head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
@@ -128,6 +134,7 @@ function get_sets()
         waist="Fucho-no-Obi",
 	    left_ring="Evanescence Ring",
 		right_ring="Archon Ring",
+	    back="Perimede Cape",
 	} -- end sets.Utility.darkMagic
 
 	-- Capacity points
@@ -226,7 +233,6 @@ function get_sets()
 		["Aspir II"] = true,
 		["Aspir III"] = true,
 	}
-
 
 
 end -- end get_sets()
