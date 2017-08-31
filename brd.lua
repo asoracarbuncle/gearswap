@@ -221,7 +221,7 @@ function get_sets()
 	    legs="Inyanga Shalwar +2",
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
-        waist="Rumination Sash",
+        waist="Kobo Obi",
 	    left_ear="Darkside Earring",
 	    left_ring="Kishar Ring",
 	    right_ring="Vertigo Ring",
@@ -236,7 +236,7 @@ function get_sets()
 	    legs="Inyanga Shalwar +2",
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
-        waist="Rumination Sash",
+        waist="Kobo Obi",
 	    left_ear="Darkside Earring",
 	    right_ear="String Earring",
 	    left_ring="Kishar Ring",
@@ -252,7 +252,7 @@ function get_sets()
         legs="Inyanga Shalwar +2",
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
-	    waist="Luminary Sash",
+        waist="Kobo Obi",
 	    left_ear="Darkside Earring",
 	    right_ear="Regal Earring",
         left_ring="Metamorph Ring",
@@ -296,7 +296,6 @@ function get_sets()
 	-- Madrigal Song set
 	sets.utility.madrigal = {
 	    head="Fili Calot +1",
-        right_ear="Kuwunga Earring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
 	} -- end sets.utility.madrigal
 
