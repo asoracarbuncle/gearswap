@@ -70,16 +70,6 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : Default
-	--
-	-- Accuracy = 213
-	-- Crit. Rate = 10%
-	-- Haste = 27%
-	-- Quadruple Attack = 5%
-	-- Triple Attack = 38%
-	-- Double Attack = 12%
-	-- Dual Wield = 5%
-	-- Store TP = 21%
-	--
 	sets.melee.default = {
 	    ammo="Ginsen",
 	    head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
@@ -90,8 +80,8 @@ function get_sets()
 	    neck="Ainia Collar",
 	    waist="Windbuffet Belt +1",
 	    left_ear="Suppanomimi",
-	    right_ear="Telos Earring",
-	    left_ring="Ilabrat Ring",
+	    right_ear="Cessance Earring",
+	    left_ring="Epona's Ring",
 	    right_ring="Petrov Ring",
 	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.melee.default
@@ -129,18 +119,18 @@ function get_sets()
 
 	-- Magic : Default
 	sets.magic.default = {
-	    ammo="Hydrocera",
-	    head="Jhakri Coronal +1",
+	    ammo="Pemphredo Tathlum",
+	    head="Jhakri Coronal +2",
 	    body="Jhakri Robe +2",
-	    hands="Jhakri Cuffs +1",
-	    legs="Jhakri Slops +1",
-	    feet="Jhakri Pigaches +1",
-	    neck="Eddy Necklace",
+	    hands="Jhakri Cuffs +2",
+	    legs="Jhakri Slops +2",
+	    feet="Jhakri Pigaches +2",
+	    neck="Sanctity Necklace",
 	    waist="Eschan Stone",
 	    left_ear="Friomisi Earring",
 	    right_ear="Hecate's Earring",
-	    left_ring="Vertigo Ring",
-	    right_ring="Metamor. Ring +1",
+	    left_ring="Acumen Ring",
+	    right_ring="Vertigo Ring",
 	    back={ name="Cornflower Cape", augments={'MP+17','DEX+1','Accuracy+1','Blue Magic skill +10',}},
 	} -- end sets.magic.default
 
@@ -172,7 +162,7 @@ function get_sets()
 	-- Midcast : Weaponskill : Chant du Cygne
 	sets.midcast.ws['Chant du Cygne'] = {
         ammo="Honed Tathlum",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+	    head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
         body="Abnoba Kaftan",
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
@@ -186,56 +176,56 @@ function get_sets()
         back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.midcast.ws['Chant du Cygne']
 
-	-- Midcast : Weaponskill : Chant du Cygne Backup
-	sets.midcast.ws['Chant du Cygne Backup'] = {
-        ammo="Honed Tathlum",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-        body="Abnoba Kaftan",
-	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-	    neck="Fotia Gorget",
-	    waist="Fotia Belt",
-	    left_ear="Brutal Earring",
+	-- Midcast : Weaponskill : Expiacion
+	sets.midcast.ws['Expiacion'] = {
+        ammo="Mantoptera Eye",
+	    head={ name="Lilitu Headpiece", augments={'STR+10','DEX+10','Attack+15','Weapon skill damage +3%',}},
+	    body="Assim. Jubbah +2",
+	    hands="Jhakri Cuffs +2",
+	    legs="Jhakri Slops +2",
+	    feet="Jhakri Pigaches +2",
+	    neck="Caro Necklace",
+	    waist="Grunfeld Rope",
+	    left_ear="Ishvara Earring",
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-		left_ring="Epona's Ring",
-	    right_ring="Begrudging Ring",
-        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
-	} -- end sets.midcast.ws['Chant du Cygne']
+	    left_ring="Shukuyu Ring",
+	    right_ring="Rufescent Ring",
+	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+	} -- end sets.midcast.ws['Expiacion']
 
 	-- Midcast : Weaponskill : Requiescat
 	sets.midcast.ws['Requiescat'] = {
-        ammo="Honed Tathlum",
-	    head="Assim. Keffiyeh +2",
+	    ammo="Hydrocera",
+	    head="Jhakri Coronal +2",
 	    body="Jhakri Robe +2",
-	    hands="Jhakri Cuffs +1",
-	    legs="Psycloth Lappas",
-	    feet="Jhakri Pigaches +1",
+	    hands="Jhakri Cuffs +2",
+	    legs="Jhakri Slops +2",
+	    feet="Jhakri Pigaches +2",
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Brutal Earring",
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-		left_ring="Epona's Ring",
-	    right_ring="Begrudging Ring",
-        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+	    left_ring="Epona's Ring",
+	    right_ring="Rufescent Ring",
+	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.midcast.ws['Requiescat']
 
 	-- Midcast : Weaponskill : Savage Blade
 	sets.midcast.ws['Savage Blade'] = {
-        ammo="Ginsen",
-        head="Jhakri Coronal +1",
-        body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +1",
-        legs="Jhakri Slops +1",
-        feet="Jhakri Pigaches +1",
-        neck="Subtlety Spec.",
-        waist="Grunfeld Rope",
-        left_ear="Ishvara Earring",
-        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-        left_ring="Metamor. Ring +1",
-        right_ring="Rajas Ring",
-        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
-	} -- end sets.midcast.ws['Requiescat']
+        ammo="Mantoptera Eye",
+	    head={ name="Lilitu Headpiece", augments={'STR+10','DEX+10','Attack+15','Weapon skill damage +3%',}},
+	    body="Assim. Jubbah +2",
+	    hands="Jhakri Cuffs +2",
+	    legs="Jhakri Slops +2",
+	    feet="Jhakri Pigaches +2",
+	    neck="Caro Necklace",
+	    waist="Grunfeld Rope",
+	    left_ear="Ishvara Earring",
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    left_ring="Shukuyu Ring",
+	    right_ring="Rufescent Ring",
+	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+	} -- end sets.midcast.ws['Savage Blade']
 
 
 	----------------------------------------------------------------------
