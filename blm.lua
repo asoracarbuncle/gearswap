@@ -20,10 +20,8 @@ function get_sets()
 
 	-- idle : Default
 	sets.idle.default = {
-	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-	    sub="Niobid Strap",
-        ammo="Impatiens",
-	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
+	    ammo="Hydrocera",
+	    head="Befouled Crown",
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
@@ -35,7 +33,6 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.idle.default
 
 
@@ -47,9 +44,7 @@ function get_sets()
 
 	-- Melee : Default
 	sets.melee.default = {
-	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-	    sub="Niobid Strap",
-        ammo="Impatiens",
+	    ammo="Hydrocera",
 	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
@@ -62,7 +57,6 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.melee.default
 
 
@@ -98,9 +92,7 @@ function get_sets()
 
 	-- Magic : Default
 	sets.magic.default = {
-	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-	    sub="Niobid Strap",
-        ammo="Witchstone",
+	    ammo="Pemphredo Tathlum",
         head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
@@ -113,7 +105,6 @@ function get_sets()
         left_ring="Mujin Band",
         right_ring="Locus Ring",
 	    back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.magic.default
 
 
@@ -123,11 +114,6 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.utility = {}
 
-	-- Elemental magic
-	sets.utility.elementalFastCast = {
-        body="Mallquis Saio +1",
-	} -- end sets.Utility.elementalFastCast
-
 	-- Dark magic
 	sets.utility.darkMagic = {
 	    neck="Erra Pendant",
@@ -136,12 +122,6 @@ function get_sets()
 		right_ring="Archon Ring",
 	    back="Perimede Cape",
 	} -- end sets.Utility.darkMagic
-
-	-- Capacity points
-	capacityPoints = false;
-	sets.utility.capacityPoints = {
-	    back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
-	} -- end sets.Utility.capacityPoints
 
 
 	----------------------------------------------------------------------
@@ -244,14 +224,7 @@ end -- end get_sets()
 function precast(spell)
 
     if spell.action_type == 'Magic' then
-
-		-- Check if the spell is elemental magic
-		if ElementalSpells[spell.english] then
-			equip(set_combine(sets.precast.fastCast, sets.utility.elementalFastCast))
-		else
-			equip(sets.precast.fastCast)
-		end
-
+		equip(sets.precast.fastCast)
 	end
 
 end -- end precast()
