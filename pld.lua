@@ -5,7 +5,6 @@ function get_sets()
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle dt set')
 	send_command('bind f10 gs c toggle accuracy set')
-	send_command('bind f11 gs c toggle capacity set')
 
 
 	----------------------------------------------------------------------
@@ -28,14 +27,14 @@ function get_sets()
 	    hands={ name="Souv. Handschuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    legs={ name="Souveran Diechlings", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    feet={ name="Souveran Schuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
-	    neck="Twilight Torque",
+        neck="Loricate Torque",
 	    waist="Nierenschutz",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Etiolation Earring",
+        left_ear="Odnowa Earring",
+        right_ear="Odnowa Earring +1",
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
-	    -- back="Reiki Cloak",
-	    back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
+	    back="Reiki Cloak",
+	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.dt.default
 
 
@@ -98,6 +97,21 @@ function get_sets()
         back={ name="Rudianos's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.midcast.ws.default
 
+	-- Midcast : enmity
+	sets.midcast.enmity = {
+	    ammo="Sapience Orb",
+	    head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+	    body={ name="Souveran Cuirass", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+	    hands={ name="Souv. Handschuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+	    legs={ name="Souveran Diechlings", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+	    feet={ name="Souveran Schuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+        waist="Creed Baudrier",
+	    left_ear="Friomisi Earring",
+	    left_ring="Supershear Ring",
+	    right_ring="Begrudging Ring",
+	    back="Reiki Cloak",
+	} -- end sets.utility.enmity
+
 
 	----------------------------------------------------------------------
 	-- Utility sets
@@ -113,15 +127,22 @@ function get_sets()
 	    left_ear="Steelflash Earring",
 	    right_ear="Bladeborn Earring",
 	    right_ring="Patricius Ring",
-	    back="Grounded Mantle",
 	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.utility.accuracy
 
-	-- Capacity points
-	capacityPoints = false;
-	sets.utility.capacityPoints = {
-	    back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
-	} -- end sets.Utility.capacityPoints
+
+	----------------------------------------------------------------------
+	-- Spell arrays
+	----------------------------------------------------------------------
+	EnmityActions = {
+		["Divine Emblem"] = true,
+		["Flash"] = true,
+		["Invincible"] = true,
+		["Provoke"] = true,
+		["Sentinel"] = true,
+		["Warcry"] = true,
+	}
+
 
 end -- end get_sets()
 
@@ -131,7 +152,6 @@ end -- end get_sets()
 ----------------------------------------------------------------------
 function precast(spell)
     if spell.action_type == 'Magic' then
-		-- equip(sets.precast.fastcast)
 	end
 end -- end precast()
 
@@ -142,12 +162,13 @@ end -- end precast()
 function midcast(spell)
 
 	-- Check if the action is a specified weapon skill
-	if sets.midcast[spell.name] then
+	if EnmityActions[spell.english] then
+		equip(sets.midcast.enmity)
+	elseif sets.midcast[spell.name] then
 		equip(sets.midcast.ws[spell.name])
     elseif spell.type == 'WeaponSkill' then
 		equip(sets.midcast.ws.default)
 	elseif spell.action_type == 'Magic' then
-    	-- Equip base magic set
 		equip(sets.magic.default)
 	end -- end if
 end -- end midcast()
@@ -162,10 +183,6 @@ function aftercast(spell)
 	if accuracy == true then
 		equip(sets.utility.accuracy)
 	end
-	-- Check if capacity points is enabled
-	if capacityPoints == true then
-		equip(sets.utility.capacityPoints)
-	end
 end -- end aftercast()
 
 
@@ -174,10 +191,6 @@ end -- end aftercast()
 ----------------------------------------------------------------------
 function status_change(new,old)
 	equip(sets.dt.default)
-	-- Check if capacity points is enabled
-	if capacityPoints == true then
-		equip(sets.utility.capacityPoints)
-	end
 end -- end status_change()
 
 
