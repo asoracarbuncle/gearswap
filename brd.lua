@@ -4,47 +4,13 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f10 gs c toggle weapon set')
-	send_command('bind f11 gs c toggle instrument set')
+	send_command('bind f10 gs c toggle instrument set')
 
 
 	----------------------------------------------------------------------
 	-- Unload key bindings upon file unload
 	----------------------------------------------------------------------
 	require "remove_bindings"
-
-
-	----------------------------------------------------------------------
-	-- Weapon sets
-	----------------------------------------------------------------------
-	-- Initializes an array to begin storing set data
-	sets.weapons = {}
-	weaponSetIndex = 0
-
-	-- Weapon: Index Names
-	weaponSetNames = {
-		[0] = 'Song Knife/Shield',
-		[1] = 'DD Knife/Shield',
-		[2] = 'DD Knife/DD Knife',
-	}
-
-	-- Weapon : Song Knife/Shield
-	sets.weapons[0] = {
-        main={ name="Kali", augments={'DMG:+15','CHR+15','Mag. Acc.+15',}},
-	    sub="Genmei Shield",
-	}
-
-	-- Weapon : DD Knife/Shield
-	sets.weapons[1] = {
-	    main={ name="Taming Sari", augments={'STR+10','DEX+10','DMG:+15','"Treasure Hunter"+1',}},
-	    sub="Genmei Shield",
-	}
-
-	-- Weapon : DD Knife/DD Knife
-	sets.weapons[2] = {
-	    main={ name="Taming Sari", augments={'STR+10','DEX+10','DMG:+15','"Treasure Hunter"+1',}},
-	    sub={ name="Taming Sari", augments={'STR+8','DEX+9','DMG:+13',}},
-	}
 
 
 	----------------------------------------------------------------------
@@ -79,12 +45,12 @@ function get_sets()
 
 	-- Idle : Default
 	sets.idle.default = {
-	    head="Inyanga Tiara +1",
+	    head="Inyanga Tiara +2",
 	    body="Inyanga Jubbah +2",
 	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
 	    feet="Inyan. Crackows +1",
-        neck="Twilight Torque",
+        neck="Loricate Torque",
 	    waist="Channeler's Stone",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
@@ -103,18 +69,18 @@ function get_sets()
 
 	-- Melee : Default
 	sets.melee.default = {
-	    head="Aya. Zucchetto +1",
-	    body="Ayanmo Corazza +1",
-	    hands="Aya. Manopolas +1",
-	    legs="Aya. Cosciales +1",
-	    feet="Aya. Gambieras +1",
-	    neck="Asperity Necklace",
+        head="Aya. Zucchetto +1",
+        body="Ayanmo Corazza +1",
+        hands="Aya. Manopolas +1",
+        legs="Aya. Cosciales +1",
+        feet="Aya. Gambieras +1",
+        neck="Asperity Necklace",
         waist="Grunfeld Rope",
-	    left_ear="Telos Earring",
-	    right_ear="Suppanomimi",
-	    left_ring="Rajas Ring",
-	    right_ring="Petrov Ring",
-	    back="Atheling Mantle",
+        left_ear="Telos Earring",
+        right_ear="Brutal Earring",
+        left_ring="Rajas Ring",
+        right_ring="Petrov Ring",
+        back="Atheling Mantle",
 	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.melee.default
 
@@ -222,13 +188,11 @@ function get_sets()
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
         waist="Kobo Obi",
-	    left_ear="Darkside Earring",
-	    left_ring="Kishar Ring",
-	    right_ring="Vertigo Ring",
-	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
+	    right_ear="Darkside Earring",
+        back={ name="Rhapsode's Cape", augments={'HP+25','Mag. Acc.+4','Enmity-8',}},
 	} -- end sets.midcast.buffSong["Gjallarhorn"]
 
-	-- Midcast : Buff Song for harp
+	-- Midcast : Buff Song for Daurdabla
 	sets.midcast.buffSong["Daurdabla"] = {
 	    head="Brioso Roundlet +3",
 	    body="Fili Hongreline +1",
@@ -237,10 +201,8 @@ function get_sets()
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
         waist="Kobo Obi",
-	    left_ear="Darkside Earring",
-	    right_ear="String Earring",
-	    left_ring="Kishar Ring",
-	    right_ring="Vertigo Ring",
+	    left_ear="String Earring",
+	    right_ear="Darkside Earring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
 	} -- end sets.midcast.buffSong["Daurdabla"]
 
@@ -253,8 +215,8 @@ function get_sets()
 	    feet="Brioso Slippers +3",
 	    neck="Moonbow Whistle",
         waist="Kobo Obi",
-	    left_ear="Darkside Earring",
-	    right_ear="Regal Earring",
+	    left_ear="Regal Earring",
+	    right_ear="Darkside Earring",
         left_ring="Metamorph Ring",
 	    right_ring="Metamor. Ring +1",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
@@ -311,7 +273,6 @@ function get_sets()
 
 	-- Minne Song set
 	sets.utility.minne = {
-	    right_ear="Darkside Earring",
 	} -- end sets.utility.minne
 
 	-- Minuet Song set
@@ -349,14 +310,10 @@ function get_sets()
 
 	-- Nightingale
 	sets.jobAbilities.nightingale = {
-	    feet={ name="Bihu Slippers +1", augments={'Enhances "Nightingale" effect',}},
 	} -- end sets.jobAbilities.nightingale
 
 	-- Troubadour
 	sets.jobAbilities.troubadour = {
-	    body="Fili Hongreline +1",
-        legs="Inyanga Shalwar +2",
-        feet="Brioso Slippers +3",
 	} -- end sets.jobAbilities.troubadour
 
 
@@ -589,24 +546,7 @@ function self_command(command)
 	if command == 'toggle idle set' then
 		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
-		-- Equip the set
-		weaponSetIndex = 0
-		instrumentSetIndex = 0
-		equip(set_combine(sets.idle.default, sets.weapons[weaponSetIndex], sets.instruments[instrumentSetIndex]))
-	end -- end if
-
-	-- Toggle the weapon sets
-	if command == 'toggle weapon set' then
-		-- Increment the weapon index
-		weaponSetIndex = weaponSetIndex + 1
-		-- Check if the weaopn index is out of range
-		if weaponSetIndex > table.getn(sets.weapons) then
-			weaponSetIndex = 0
-		end
-		-- Equip the appropriate set
-		equip(sets.weapons[weaponSetIndex])
-		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Weapon: '..weaponSetNames[weaponSetIndex]..' Set Equipped ----->')
+		equip(set_combine(sets.idle.default, sets.instruments[instrumentSetIndex]))
 	end -- end if
 
 	-- Toggle the instrument sets
