@@ -26,7 +26,7 @@ function get_sets()
 	    hands="Mummu Wrists +1",
 	    legs="Mummu Kecks +1",
 	    feet="Mummu Gamash. +1",
-        neck="Twilight Torque",
+        neck="Loricate Torque",
         waist="Chaac Belt",
         left_ear="Etiolation Earring",
         right_ear="Static Earring",
