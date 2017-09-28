@@ -4,7 +4,6 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f11 gs c toggle capacity set')
 
 
 	----------------------------------------------------------------------
@@ -21,14 +20,12 @@ function get_sets()
 
 	-- idle : Default
 	sets.idle.default = {
-	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
-        range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 	    head="Azimuth Hood +1",
         body="Jhakri Robe +2",
         hands="Geo. Mitaines +1",
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
         feet="Mallquis Clogs +1",
-	    neck="Twilight Torque",
+        neck="Loricate Torque",
         waist="Fucho-no-Obi",
 	    left_ear="Handler's Earring",
 	    right_ear="Handler's Earring +1",
@@ -46,10 +43,9 @@ function get_sets()
 
 	-- Melee : Default
 	sets.melee.default = {
-	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
 	    head="Azimuth Hood +1",
         body="Jhakri Robe +2",
-	    hands="Jhakri Cuffs +1",
+	    hands="Jhakri Cuffs +2",
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
         feet="Mallquis Clogs +1",
 	    neck="Asperity Necklace",
@@ -70,19 +66,18 @@ function get_sets()
 
 	-- Precast : Fastcast
 	sets.precast.fastcast = {
-        main={ name="Malevolence", augments={'INT+7','"Mag.Atk.Bns."+5','"Fast Cast"+3',}},
-	    head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+        head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
         body="Zendik Robe",
-	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
-	    legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
+        legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="Amalric Nails", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
-	    neck="Voltsurge Torque",
-	    waist="Witful Belt",
-	    left_ear="Loquac. Earring",
-	    right_ear="Etiolation Earring",
-	    left_ring="Prolix Ring",
-	    right_ring="Kishar Ring",
-	    back="Perimede Cape",
+        neck="Voltsurge Torque",
+        waist="Witful Belt",
+        left_ear="Loquac. Earring",
+        right_ear="Etiolation Earring",
+        left_ring="Prolix Ring",
+        right_ring="Kishar Ring",
+        back="Swith Cape",
 	} -- end sets.precast.fastcast
 
 
@@ -94,7 +89,6 @@ function get_sets()
 
 	-- Magic : Default
 	sets.magic.default = {
-	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
         head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
@@ -118,7 +112,6 @@ function get_sets()
 
 	-- Geomancer magic skill
 	sets.utility.geoSkill = {
-	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
 	    head="Azimuth Hood +1",
 	    body={ name="Bagua Tunic +1", augments={'Enhances "Bolster" effect',}},
 	    hands="Geo. Mitaines +1",
@@ -135,12 +128,6 @@ function get_sets()
 		right_ring="Archon Ring",
 	    back="Perimede Cape",
 	} -- end sets.Utility.darkMagic
-
-	-- Capacity points
-	capacityPoints = false;
-	sets.utility.capacityPoints = {
-	    back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
-	} -- end sets.Utility.capacityPoints
 
 	-- Spell Arrays
 	DarkSpells = {
@@ -191,17 +178,9 @@ end -- end midcast()
 function aftercast(spell)
 	if player.status =='Engaged' then
 		equip(sets.melee.default)
-		-- Check if capacity points is enabled
-		if capacityPoints == true then
-			equip(sets.utility.capacityPoints)
-		end
 	else
 		equip(sets.melee.default)
 		equip(sets.idle.default)
-		-- Check if capacity points is enabled
-		if capacityPoints == true then
-			equip(sets.utility.capacityPoints)
-		end
 	end
 end -- end aftercast()
 
@@ -212,16 +191,8 @@ end -- end aftercast()
 function status_change(new,old)
 	if new == 'Idle' then
 		equip(sets.idle.default)
-		-- Check if capacity points is enabled
-		if capacityPoints == true then
-			equip(sets.utility.capacityPoints)
-		end
 	elseif new == 'Engaged' then
 		equip(sets.melee.default)
-		-- Check if capacity points is enabled
-		if capacityPoints == true then
-			equip(sets.utility.capacityPoints)
-		end
 	end
 end -- end status_change()
 
@@ -245,31 +216,6 @@ function self_command(command)
 		send_command('@input /echo <----- Melee: Default Set Equipped ----->')
 		-- Equip the set
 		equip(sets.melee.default)
-	end -- end if
-
-	-- Toggle on or off the capacity points utility set
-	if command == 'toggle capacity set' then
-
-		-- Start by equipping the current melee set
-		-- equip(sets.melee.default)
-
-		-- Check the status of treasure hunter
-		if capacityPoints == false then
-			-- Alert the user which set is currently being equipped
-			send_command('@input /echo <----- Capacity Points Enabled ----->')
-			-- Toggle the treasure hunter variable
-			capacityPoints = true;
-			-- Equip the treasure hunter set
-			equip(sets.utility.capacityPoints)
-		elseif capacityPoints == true then
-			-- Alert the user which set is currently being equipped
-			send_command('@input /echo <----- Capacity Points Disabled ----->')
-			-- Toggle the treasure hunter variable
-			capacityPoints = false;
-			-- Equip the melee set
-			equip(sets.melee.default)
-		end
-
 	end -- end if
 
 end -- end self_command()
