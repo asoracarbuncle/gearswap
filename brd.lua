@@ -57,7 +57,6 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.idle.default
 
 
@@ -81,7 +80,6 @@ function get_sets()
         left_ring="Rajas Ring",
         right_ring="Petrov Ring",
         back="Atheling Mantle",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.melee.default
 
 
@@ -110,7 +108,7 @@ function get_sets()
 
 	-- Precast : fastCast Magic
 	sets.precast.fastCast.magic = {
-	    body="Vrikodara Jupon",
+	    body="Inyanga Jubbah +2",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
 	    neck="Voltsurge Torque",
@@ -250,6 +248,11 @@ function get_sets()
 	    legs="Fili Rhingrave +1",
 	} -- end sets.utility.ballad
 
+	-- Honor March Song set
+	sets.utility.honorMarch = {
+	    range="Marsyas",
+	} -- end sets.utility.honorMarch
+
 	-- Lullaby Song set
 	sets.utility.lullaby = {
         hands="Brioso Cuffs +2",
@@ -324,6 +327,10 @@ function get_sets()
 		["Mage's Ballad"] = true,
 		["Mage's Ballad II"] = true,
 		["Mage's Ballad III"] = true,
+	}
+
+	HonorMarchSong = {
+		["Honor March"] = true,
 	}
 
 	LullabySongs = {
@@ -425,6 +432,10 @@ end -- end get_sets()
 function precast(spell)
     if spell.type == 'BardSong' then
 		equip(sets.precast.fastCast.song)
+		-- Check if Honor March is being cast and equip Marsyas
+		if HonorMarchSong[spell.english] then
+			equip(sets.utility.honorMarch)
+		end
     elseif spell.action_type == 'Magic' then
 		equip(sets.precast.fastCast.magic)
 	end
@@ -516,8 +527,12 @@ function aftercast(spell)
 		equip(set_combine(sets.melee.default, sets.idle.default))
 	end
 
-	-- Check if a mazurka was just used and switch to
-	-- movement speed+++ gear
+	-- Switch back to the appropriate instrument after casting Honor March
+	if HonorMarchSong[spell.english] then
+		equip(sets.instruments[instrumentSetIndex])
+	end
+
+	-- Check if a mazurka was just used and switch to movement speed+++ gear
 	if MazurkaSongs[spell.english] then
 		equip(sets.utility.mazurka)
 	end -- end if
