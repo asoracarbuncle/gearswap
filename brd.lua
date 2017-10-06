@@ -177,19 +177,6 @@ function get_sets()
 	    back="Atheling Mantle",
 	} -- end sets.midcast.ws['Evisceration']
 
-	-- Midcast : Buff Song for Gjallarhorn
-	sets.midcast.buffSong["Gjallarhorn"] = {
-	    head="Brioso Roundlet +3",
-	    body="Fili Hongreline +1",
-	    hands="Inyan. Dastanas +2",
-	    legs="Inyanga Shalwar +2",
-	    feet="Brioso Slippers +3",
-	    neck="Moonbow Whistle",
-        waist="Kobo Obi",
-	    right_ear="Darkside Earring",
-        back={ name="Rhapsode's Cape", augments={'HP+25','Mag. Acc.+4','Enmity-8',}},
-	} -- end sets.midcast.buffSong["Gjallarhorn"]
-
 	-- Midcast : Buff Song for Daurdabla
 	sets.midcast.buffSong["Daurdabla"] = {
 	    head="Brioso Roundlet +3",
@@ -203,6 +190,23 @@ function get_sets()
 	    right_ear="Darkside Earring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
 	} -- end sets.midcast.buffSong["Daurdabla"]
+
+	-- Midcast : Buff Song for Gjallarhorn
+	sets.midcast.buffSong["Gjallarhorn"] = {
+	    head="Brioso Roundlet +3",
+	    body="Fili Hongreline +1",
+	    hands="Inyan. Dastanas +2",
+	    legs="Inyanga Shalwar +2",
+	    feet="Brioso Slippers +3",
+	    neck="Moonbow Whistle",
+        waist="Kobo Obi",
+	    right_ear="Darkside Earring",
+        back={ name="Rhapsode's Cape", augments={'HP+25','Mag. Acc.+4','Enmity-8',}},
+	} -- end sets.midcast.buffSong["Gjallarhorn"]
+
+	-- Midcast : Buff Song for Gjallarhorn
+	sets.midcast.buffSong["Marsyas"] = sets.midcast.buffSong["Gjallarhorn"]
+	-- end sets.midcast.buffSong["Marsyas"]
 
 	-- Midcast : Enfeeble Song set
 	sets.midcast.enfeebleSong = {
@@ -348,6 +352,7 @@ function get_sets()
 	MarchSongs = {
 		["Advancing March"] = true,
 		["Victory March"] = true,
+		["Honor March"] = true,
 	}
 
 	MazurkaSongs = {
