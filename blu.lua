@@ -53,7 +53,7 @@ function get_sets()
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
 	    feet="Tutyr Sabots",
-        neck="Twilight Torque",
+        neck="Loricate Torque",
         waist="Fucho-no-Obi",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
@@ -126,12 +126,12 @@ function get_sets()
 	    legs="Jhakri Slops +2",
 	    feet="Jhakri Pigaches +2",
 	    neck="Sanctity Necklace",
-	    waist="Eschan Stone",
+        waist="Yamabuki-no-Obi",
 	    left_ear="Friomisi Earring",
-	    right_ear="Hecate's Earring",
-	    left_ring="Acumen Ring",
-	    right_ring="Vertigo Ring",
-	    back={ name="Cornflower Cape", augments={'MP+17','DEX+1','Accuracy+1','Blue Magic skill +10',}},
+        right_ear="Regal Earring",
+        left_ring="Shiva Ring",
+        right_ring="Shiva Ring",
+        back={ name="Rosmerta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.magic.default
 
 
@@ -161,7 +161,7 @@ function get_sets()
 
 	-- Midcast : Weaponskill : Chant du Cygne
 	sets.midcast.ws['Chant du Cygne'] = {
-        ammo="Honed Tathlum",
+        ammo="Jukukik Feather",
 	    head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
         body="Abnoba Kaftan",
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
@@ -268,7 +268,7 @@ function get_sets()
 	    hands="Rawhide Gloves",
         legs="Hashishin Tayt +1",
         feet={ name="Luhlaza Charuqs +1", augments={'Enhances "Diffusion" effect',}},
-	    neck="Mavi Scarf",
+	    neck="Incanter's Torque",
         back={ name="Cornflower Cape", augments={'MP+17','DEX+1','Accuracy+1','Blue Magic skill +10',}},
 	} -- end sets.Utility.blueMagicSkill
 
