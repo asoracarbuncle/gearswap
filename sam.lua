@@ -14,7 +14,10 @@ function get_sets()
 
 	-- Idle : Default
 	sets.idle = {
-        ammo="Ginsen",
+	    main={ name="Umaru", augments={'"Dbl.Atk."+2','STR+19','Accuracy+11','DMG:+6',}},
+	    sub="Utu Grip",
+	    range={ name="Cibitshavore", augments={'STR+12','Rng.Acc.+10','"Store TP"+7',}},
+	    ammo="Eminent Arrow",
         head="Flam. Zucchetto +1",
         body="Flamma Korazin +1",
         hands="Flam. Manopolas +1",
@@ -38,13 +41,12 @@ function get_sets()
 
 	-- Melee : default
 	sets.melee = {
-        ammo="Ginsen",
         head="Flam. Zucchetto +1",
 	    body="Kasuga Domaru +1",
         hands="Flam. Manopolas +1",
         legs="Wakido Haidate +1",
         feet="Flam. Gambieras +1",
-        neck="Asperity Necklace",
+	    neck="Moonbeam Nodowa",
         waist="Ioskeha Belt",
         left_ear="Brutal Earring",
         right_ear="Cessance Earring",
@@ -81,19 +83,18 @@ function get_sets()
 
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
-        ammo="Ginsen",
         head="Flam. Zucchetto +1",
-        body="Flamma Korazin +1",
+        body="Hiza. Haramaki +1",
         hands="Flam. Manopolas +1",
-        legs="Flamma Dirs +1",
-        feet="Flam. Gambieras +1",
-        neck="Asperity Necklace",
-        waist="Grunfeld Rope",
-        left_ear="Brutal Earring",
-        right_ear="Cessance Earring",
-        left_ring="Petrov Ring",
-        right_ring="Ilabrat Ring",
-        back={ name="Takaha Mantle", augments={'STR+5','"Zanshin"+2','"Store TP"+2',}},
+        legs="Hiza. Hizayoroi +2",
+	    feet={ name="Valorous Greaves", augments={'Attack+30','Weapon skill damage +4%','STR+6','Accuracy+10',}},
+	    neck="Fotia Gorget",
+	    waist="Fotia Belt",
+        left_ear="Ishvara Earring",
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+        left_ring="Rufescent Ring",
+        right_ring="Regal Ring",
+        back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+9','Weapon skill damage +10%',}},
 	} -- end sets.midcast.ws.default
 
 	-- Midcast : Weapon Skill : Tachi: Fudo
