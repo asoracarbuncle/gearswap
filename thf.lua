@@ -8,12 +8,6 @@ function get_sets()
 
 
 	----------------------------------------------------------------------
-	-- Unload key bindings upon file unload
-	----------------------------------------------------------------------
-	require "remove_bindings"
-
-
-	----------------------------------------------------------------------
 	-- Idle set
 	----------------------------------------------------------------------
 	-- Initializes an array to begin storing set data
@@ -21,6 +15,7 @@ function get_sets()
 
 	-- Idle : Default
 	sets.idle.default = {
+	    ammo="Mantoptera Eye",
 	    head="Mummu Bonnet +1",
 	    body="Mummu Jacket +1",
 	    hands="Mummu Wrists +1",
@@ -33,7 +28,6 @@ function get_sets()
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
         back={ name="Canny Cape", augments={'DEX+4','AGI+2','"Dual Wield"+1','Crit. hit damage +2%',}},
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.idle.default
 
 
@@ -45,20 +39,19 @@ function get_sets()
 
 	-- Melee : default
 	sets.melee.default = {
-		ammo="Ginsen",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        ammo="Ginsen",
+        head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+        body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-	    neck="Clotharius Torque",
-	    waist="Windbuffet Belt +1",
-	    left_ear="Telos Earring",
-	    right_ear="Suppanomimi",
-	    left_ring="Epona's Ring",
-	    right_ring="Rajas Ring",
-	    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
+        neck="Asperity Necklace",
+        waist="Windbuffet Belt +1",
+        left_ear="Suppanomimi",
+        right_ear="Brutal Earring",
+        left_ring="Epona's Ring",
+        right_ring="Petrov Ring",
+        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.melee.default
 
 
