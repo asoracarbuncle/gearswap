@@ -48,7 +48,7 @@ function get_sets()
         feet="Flam. Gambieras +1",
 	    neck="Moonbeam Nodowa",
         waist="Ioskeha Belt",
-        left_ear="Brutal Earring",
+	    left_ear="Telos Earring",
         right_ear="Cessance Earring",
         left_ring="Petrov Ring",
         right_ring="Rajas Ring",
