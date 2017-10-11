@@ -8,12 +8,6 @@ function get_sets()
 
 
 	----------------------------------------------------------------------
-	-- Unload key bindings upon file unload
-	----------------------------------------------------------------------
-	require "remove_bindings"
-
-
-	----------------------------------------------------------------------
 	-- Instrument sets
 	----------------------------------------------------------------------
 	-- Initializes an array to begin storing set data
@@ -75,8 +69,8 @@ function get_sets()
         feet="Aya. Gambieras +1",
         neck="Asperity Necklace",
         waist="Grunfeld Rope",
-        left_ear="Telos Earring",
-        right_ear="Brutal Earring",
+        left_ear="Brutal Earring",
+	    right_ear="Cessance Earring",
         left_ring="Rajas Ring",
         right_ring="Petrov Ring",
         back="Atheling Mantle",
