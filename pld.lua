@@ -8,19 +8,13 @@ function get_sets()
 
 
 	----------------------------------------------------------------------
-	-- Unload key bindings upon file unload
-	----------------------------------------------------------------------
-	require "remove_bindings"
-
-
-	----------------------------------------------------------------------
 	-- DamageTaken set
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.dt = {}
 
-	-- DamageTaken : Default
-	sets.dt.default = {
+	-- DamageTaken
+	sets.dt = {
 	    ammo="Angha Gem",
 	    head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    body={ name="Souveran Cuirass", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
@@ -34,8 +28,7 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
 	    back="Reiki Cloak",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
-	} -- end sets.dt.default
+	} -- end sets.dt
 
 
 	----------------------------------------------------------------------
@@ -66,11 +59,11 @@ function get_sets()
 	sets.magic = {}
 
 	-- Magic : Default
-	sets.magic.default = {
+	sets.magic = {
         head={ name="Carmine Mask", augments={'Accuracy+15','Mag. Acc.+10','"Fast Cast"+3',}},
         body={ name="Jumalik Mail", augments={'HP+50','Attack+15','Enmity+9','"Refresh"+2',}},
 	    left_ring="Kunaji Ring",
-	} -- end sets.magic.default
+	} -- end sets.magic
 
 
 	----------------------------------------------------------------------
@@ -127,7 +120,6 @@ function get_sets()
 	    left_ear="Steelflash Earring",
 	    right_ear="Bladeborn Earring",
 	    right_ring="Patricius Ring",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.utility.accuracy
 
 
@@ -169,7 +161,7 @@ function midcast(spell)
     elseif spell.type == 'WeaponSkill' then
 		equip(sets.midcast.ws.default)
 	elseif spell.action_type == 'Magic' then
-		equip(sets.magic.default)
+		equip(sets.magic)
 	end -- end if
 end -- end midcast()
 
@@ -178,7 +170,7 @@ end -- end midcast()
 -- Callback for after casting has fired
 ----------------------------------------------------------------------
 function aftercast(spell)
-	equip(sets.dt.default)
+	equip(sets.dt)
 		-- Check if accuracy is enabled
 	if accuracy == true then
 		equip(sets.utility.accuracy)
@@ -190,7 +182,7 @@ end -- end aftercast()
 -- Callback for whenever engagment status changes
 ----------------------------------------------------------------------
 function status_change(new,old)
-	equip(sets.dt.default)
+	equip(sets.dt)
 end -- end status_change()
 
 
@@ -204,14 +196,14 @@ function self_command(command)
 		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- DT: Default Set Equipped ----->')
 		-- Equip the set
-		equip(sets.dt.default)
+		equip(sets.dt)
 	end -- end if
 
 	-- Toggle the accuracy set
 	if command == 'toggle accuracy set' then
 
 		-- Start by equipping the current melee set
-		equip(sets.dt.default)
+		equip(sets.dt)
 
 		-- Check the status of treasure hunter
 		if accuracy == false then
@@ -227,7 +219,7 @@ function self_command(command)
 			-- Toggle the accuracy variable
 			accuracy = false;
 			-- Equip the dt set
-			equip(sets.dt.default)
+			equip(sets.dt)
 		end -- end if
 
 	end -- end if
