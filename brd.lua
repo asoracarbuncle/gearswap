@@ -89,7 +89,7 @@ function get_sets()
 	    head="Fili Calot +1",
 	    body="Inyanga Jubbah +2",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
+	    legs="Aya. Cosciales +1",
 	    feet={ name="Bihu Slippers +1", augments={'Enhances "Nightingale" effect',}},
 	    neck="Voltsurge Torque",
 	    waist="Witful Belt",
@@ -98,21 +98,23 @@ function get_sets()
 	    left_ring="Prolix Ring",
         right_ring="Kishar Ring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
-	} -- end sets.precast.fastCast
+	} -- end sets.precast.fastCast.song
 
 	-- Precast : fastCast Magic
 	sets.precast.fastCast.magic = {
-	    body="Inyanga Jubbah +2",
+        head="Nahtirah Hat",
+        body="Inyanga Jubbah +2",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
-	    neck="Voltsurge Torque",
-	    waist="Witful Belt",
-	    left_ear="Loquac. Earring",
-	    right_ear="Etiolation Earring",
-	    left_ring="Prolix Ring",
+        legs="Aya. Cosciales +1",
+        feet="Inyan. Crackows +1",
+        neck="Voltsurge Torque",
+        waist="Witful Belt",
+        left_ear="Loquac. Earring",
+        right_ear="Etiolation Earring",
+        left_ring="Prolix Ring",
         right_ring="Kishar Ring",
-	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
-	} -- end sets.precast.fastCast
+        back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
+	} -- end sets.precast.fastCast.magic
 
 
 	----------------------------------------------------------------------
