@@ -17,12 +17,11 @@ function get_sets()
 	    main={ name="Umaru", augments={'"Dbl.Atk."+2','STR+19','Accuracy+11','DMG:+6',}},
 	    sub="Utu Grip",
 	    range={ name="Cibitshavore", augments={'STR+12','Rng.Acc.+10','"Store TP"+7',}},
-	    ammo="Eminent Arrow",
-        head="Flam. Zucchetto +1",
-        body="Flamma Korazin +1",
+        head="Flam. Zucchetto +2",
+        body="Hiza. Haramaki +1",
         hands="Flam. Manopolas +1",
         legs="Flamma Dirs +1",
-        feet="Flam. Gambieras +1",
+        feet="Flam. Gambieras +2",
         neck="Loricate Torque",
         waist="Grunfeld Rope",
         left_ear="Odnowa Earring",
@@ -41,18 +40,19 @@ function get_sets()
 
 	-- Melee : default
 	sets.melee = {
-        head="Flam. Zucchetto +1",
-	    body="Kasuga Domaru +1",
-        hands="Flam. Manopolas +1",
+        head="Flam. Zucchetto +2",
+        body="Kasuga Domaru +1",
+        hands="Wakido Kote +2",
         legs="Wakido Haidate +1",
-        feet="Flam. Gambieras +1",
-	    neck="Moonbeam Nodowa",
+        feet="Flam. Gambieras +2",
+        neck="Moonbeam Nodowa",
         waist="Ioskeha Belt",
-	    left_ear="Telos Earring",
+        left_ear="Telos Earring",
         right_ear="Cessance Earring",
-        left_ring="Petrov Ring",
-        right_ring="Rajas Ring",
-        back={ name="Takaha Mantle", augments={'STR+5','"Zanshin"+2','"Store TP"+2',}},
+        left_ring="Flamma Ring",
+        right_ring="Regal Ring",
+	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
+        -- back={ name="Takaha Mantle", augments={'STR+5','"Zanshin"+2','"Store TP"+2',}},
 	} -- end sets.melee
 
 
@@ -64,7 +64,6 @@ function get_sets()
 
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
-        ammo="Sapience Orb",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         neck="Voltsurge Torque",
         left_ear="Etiolation Earring",
@@ -83,18 +82,18 @@ function get_sets()
 
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
-        head="Flam. Zucchetto +1",
-        body="Hiza. Haramaki +1",
-        hands="Flam. Manopolas +1",
+		head="Flam. Zucchetto +2",
+        body="Flamma Korazin +1",
+        hands="Wakido Kote +2",
         legs="Hiza. Hizayoroi +2",
-	    feet={ name="Valorous Greaves", augments={'Attack+30','Weapon skill damage +4%','STR+6','Accuracy+10',}},
-	    neck="Fotia Gorget",
-	    waist="Fotia Belt",
+        feet="Flam. Gambieras +2",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
         left_ear="Ishvara Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-        left_ring="Rufescent Ring",
+        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+        left_ring="Flamma Ring",
         right_ring="Regal Ring",
-        back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+9','Weapon skill damage +10%',}},
+        back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
 	} -- end sets.midcast.ws.default
 
 	-- Midcast : Weapon Skill : Tachi: Fudo
