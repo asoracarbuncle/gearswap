@@ -14,8 +14,6 @@ function get_sets()
 
 	-- Idle : Default
 	sets.idle = {
-	    main={ name="Umaru", augments={'"Dbl.Atk."+2','STR+19','Accuracy+11','DMG:+6',}},
-	    sub="Utu Grip",
 	    range={ name="Cibitshavore", augments={'STR+12','Rng.Acc.+10','"Store TP"+7',}},
         head="Flam. Zucchetto +2",
         body="Hiza. Haramaki +1",
@@ -51,7 +49,7 @@ function get_sets()
         right_ear="Cessance Earring",
         left_ring="Flamma Ring",
         right_ring="Regal Ring",
-	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
+	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
         -- back={ name="Takaha Mantle", augments={'STR+5','"Zanshin"+2','"Store TP"+2',}},
 	} -- end sets.melee
 
@@ -83,7 +81,7 @@ function get_sets()
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
 		head="Flam. Zucchetto +2",
-        body="Flamma Korazin +1",
+	    body="Hiza. Haramaki +1",
         hands="Wakido Kote +2",
         legs="Hiza. Hizayoroi +2",
         feet="Flam. Gambieras +2",
