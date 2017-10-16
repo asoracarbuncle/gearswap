@@ -38,7 +38,9 @@ function get_sets()
 	sets.idle = {}
 
 	-- Idle : Default
-	sets.idle.default = {
+	sets.idle = {
+	    main="Carnwenhan",
+	    sub="Genmei Shield",
 	    head="Inyanga Tiara +2",
 	    body="Inyanga Jubbah +2",
 	    hands="Inyan. Dastanas +2",
@@ -51,7 +53,7 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	} -- end sets.idle.default
+	} -- end sets.idle
 
 
 	----------------------------------------------------------------------
@@ -61,7 +63,9 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : Default
-	sets.melee.default = {
+	sets.melee = {
+	    main="Carnwenhan",
+	    sub="Genmei Shield",
         head="Aya. Zucchetto +1",
         body="Ayanmo Corazza +1",
         hands="Aya. Manopolas +1",
@@ -74,7 +78,7 @@ function get_sets()
         left_ring="Rajas Ring",
         right_ring="Petrov Ring",
         back="Atheling Mantle",
-	} -- end sets.melee.default
+	} -- end sets.melee
 
 
 	----------------------------------------------------------------------
@@ -236,6 +240,22 @@ function get_sets()
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
 	} -- end sets.midcast.magic
 
+	-- Midcast : Cure Potency
+	sets.midcast.curePotency = {
+        head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
+        body="Chironic Doublet",
+        hands="Inyan. Dastanas +2",
+        legs="Gyve Trousers",
+        feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
+        neck="Incanter's Torque",
+        waist="Luminary Sash",
+        left_ear="Lifestorm Earring",
+        right_ear="Static Earring",
+        left_ring="Vertigo Ring",
+        right_ring="Lebeche Ring",
+        back={ name="Intarabus's Cape", augments={'MND+20','"Cure" potency +10%',}},
+	} -- end sets.midcast.curePotency
+
 
 	----------------------------------------------------------------------
 	-- Utility Sets (not bound to a key)
@@ -246,6 +266,12 @@ function get_sets()
 	-- Ballad Song set
 	sets.utility.ballad = {
 	    legs="Fili Rhingrave +1",
+	} -- end sets.utility.ballad
+
+	-- Cure Casting Time set
+	sets.utility.cureCastingTime = {
+        main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
+        legs="Doyen Pants",
 	} -- end sets.utility.ballad
 
 	-- Honor March Song set
@@ -318,6 +344,19 @@ function get_sets()
 	-- Troubadour
 	sets.jobAbilities.troubadour = {
 	} -- end sets.jobAbilities.troubadour
+
+
+	----------------------------------------------------------------------
+	-- Spell arrays
+	----------------------------------------------------------------------
+	CureSpells = {
+		["Cure"] = true,
+		["Cure II"] = true,
+		["Cure III"] = true,
+		["Cure IV"] = true,
+		["Curaga"] = true,
+		["Curaga II"] = true,
+	}
 
 
 	----------------------------------------------------------------------
@@ -439,6 +478,10 @@ function precast(spell)
 		end
     elseif spell.action_type == 'Magic' then
 		equip(sets.precast.fastCast.magic)
+    	-- Check if this is a cure spell
+    	if CureSpells[spell.english] then
+			equip(sets.utility.cureCastingTime)
+    	end
 	end
 end -- end precast()
 
@@ -512,7 +555,12 @@ function midcast(spell)
 		end -- end if
 
     elseif spell.action_type == 'Magic' then
-		equip(sets.midcast.magic)
+    	-- Check if the spell if a cure
+    	if CureSpells[spell.english] then
+			equip(sets.midcast.curePotency)
+    	else
+			equip(sets.midcast.magic)
+		end
 	end
 end -- end midcast()
 
@@ -523,9 +571,9 @@ end -- end midcast()
 function aftercast(spell)
 
 	if player.status =='Engaged' then
-		equip(sets.melee.default)
+		equip(sets.melee)
 	else
-		equip(set_combine(sets.melee.default, sets.idle.default))
+		equip(set_combine(sets.melee, sets.idle))
 	end
 
 	-- Switch back to the appropriate instrument after casting Honor March
@@ -546,9 +594,9 @@ end -- end aftercast()
 ----------------------------------------------------------------------
 function status_change(new,old)
 	if new == 'Idle' then
-		equip(sets.idle.default)
+		equip(sets.idle)
 	elseif new == 'Engaged' then
-		equip(sets.melee.default)
+		equip(sets.melee)
 	end
 end -- end status_change()
 
@@ -562,7 +610,7 @@ function self_command(command)
 	if command == 'toggle idle set' then
 		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
-		equip(set_combine(sets.idle.default, sets.instruments[instrumentSetIndex]))
+		equip(set_combine(sets.idle, sets.instruments[instrumentSetIndex]))
 	end -- end if
 
 	-- Toggle the instrument sets
