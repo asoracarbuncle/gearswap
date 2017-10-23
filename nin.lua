@@ -38,6 +38,19 @@ function get_sets()
 
 	-- Melee : default
 	sets.melee = {
+	    ammo="Ginsen",
+	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
+	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+	    feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
+	    neck="Asperity Necklace",
+	    waist="Grunfeld Rope",
+	    left_ear="Suppanomimi",
+	    right_ear="Brutal Earring",
+	    left_ring="Epona's Ring",
+	    right_ring="Rajas Ring",
+	    back="Atheling Mantle",
 	} -- end sets.melee
 
 
@@ -66,6 +79,10 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
 	sets.midcast.ws = {}
+
+	-- Midcast : Magic
+	sets.midcast.magic = {
+	} -- end sets.midcast.magic
 
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
@@ -149,6 +166,9 @@ function midcast(spell)
     	-- Check if the spell is utsusemi
     	elseif UtsusemiSpells[spell.name] then
 			equip(sets.midcast.utsusemi)
+    	-- Equip the catch all magic set
+    	else
+			equip(sets.midcast.magic)
 		end
 	-- Check if the action is a job ability
 	elseif spell.type == 'JobAbility' then
