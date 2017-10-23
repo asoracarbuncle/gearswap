@@ -111,6 +111,10 @@ function get_sets()
 	sets.utility.migawari = {
 	} -- end sets.utility.migawari
 
+	-- Utsusemi set
+	sets.utility.utsusemi = {
+	} -- end sets.utility.utsusemi
+
 	-- Yonin set
 	sets.utility.yonin = {
 	} -- end sets.utility.yonin
@@ -165,7 +169,7 @@ function midcast(spell)
 			equip(sets.utility.migawari)
     	-- Check if the spell is utsusemi
     	elseif UtsusemiSpells[spell.name] then
-			equip(sets.midcast.utsusemi)
+			equip(sets.utility.utsusemi)
     	-- Equip the catch all magic set
     	else
 			equip(sets.midcast.magic)
@@ -176,8 +180,6 @@ function midcast(spell)
 			equip(sets.utility.futae)
 		elseif spell.name == 'Innin' then
 			equip(sets.utility.innin)
-		elseif spell.name == 'Migawari' then
-			equip(sets.utility.migawari)
 		elseif spell.name == 'Yonin' then
 			equip(sets.utility.yonin)
 		end
