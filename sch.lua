@@ -13,7 +13,9 @@ function get_sets()
 	sets.idle = {}
 
 	-- idle : Default
-	sets.idle.default = {
+	sets.idle = {
+        main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        sub="Niobid Strap",
         ammo="Hydrocera",
         head="Befouled Crown",
 	    body="Jhakri Robe +2",
@@ -27,8 +29,7 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
-	} -- end sets.idle.default
+	} -- end sets.idle
 
 
 	----------------------------------------------------------------------
@@ -38,13 +39,15 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : Default
-	sets.melee.default = {
+	sets.melee = {
+        main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        sub="Niobid Strap",
         ammo="Hydrocera",
 	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Occult Acumen"+10','Mag. Acc.+7','"Mag.Atk.Bns."+14',}},
+        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
         neck="Loricate Torque",
         waist="Chaac Belt",
 	    left_ear="Etiolation Earring",
@@ -52,8 +55,7 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
-	} -- end sets.melee.default
+	} -- end sets.melee
 
 
 	----------------------------------------------------------------------
@@ -69,14 +71,14 @@ function get_sets()
         body="Zendik Robe",
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
         legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet={ name="Amalric Nails", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+        feet={ name="Merlinic Crackows", augments={'"Fast Cast"+5','CHR+7','Mag. Acc.+13',}},
         neck="Voltsurge Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
         right_ear="Etiolation Earring",
         left_ring="Prolix Ring",
         right_ring="Kishar Ring",
-        back="Solemnity Cape",
+        back={ name="Lugh's Cape", augments={'"Fast Cast"+10',}},
 	} -- end sets.precast.fastCast
 
 
@@ -84,16 +86,16 @@ function get_sets()
 	-- Magic set
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
-	sets.magic = {}
+	sets.midcast = {}
 
 	-- Magic : Default
-	sets.magic.default = {
+	sets.midcast.magic = {
 	    ammo="Pemphredo Tathlum",
         head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Occult Acumen"+10','Mag. Acc.+7','"Mag.Atk.Bns."+14',}},
+        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
         neck="Mizu. Kubikazari",
 	    waist="Refoccilation Stone",
         left_ear="Friomisi Earring",
@@ -101,8 +103,25 @@ function get_sets()
         left_ring="Mujin Band",
         right_ring="Locus Ring",
         back="Solemnity Cape",
-	    -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
-	} -- end sets.magic.default
+	} -- end sets.midcast.magic
+
+	-- Midcast : Cure Potency
+	sets.midcast.curePotency = {
+        main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
+        ammo="Hydrocera",
+        head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
+        body="Chironic Doublet",
+        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        legs="Gyve Trousers",
+        feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
+        neck="Incanter's Torque",
+        waist="Luminary Sash",
+        left_ear="Lifestorm Earring",
+        right_ear="Static Earring",
+        left_ring="Vertigo Ring",
+        right_ring="Lebeche Ring",
+        back="Solemnity Cape",
+	} -- end sets.midcast.curePotency
 
 
 	----------------------------------------------------------------------
@@ -113,12 +132,14 @@ function get_sets()
 
 	-- Dark magic
 	sets.utility.darkMagic = {
+	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
+        body="Shango Robe",
 	    neck="Erra Pendant",
         waist="Fucho-no-Obi",
 	    left_ring="Evanescence Ring",
 		right_ring="Archon Ring",
 	    back="Perimede Cape",
-	} -- end sets.Utility.darkMagic
+	} -- end sets.utility.darkMagic
 
 
 	----------------------------------------------------------------------
@@ -195,7 +216,6 @@ function get_sets()
 		["Voidstorm II"] = true,
 		["Aurorastorm"] = true,
 		["Aurorastorm II"] = true,
-
 		["Phalanx"] = true,
 		["Refresh"] = true,
 		["Boost-STR"] = true,
@@ -305,11 +325,14 @@ function midcast(spell)
 	-- Check if the action is a specified weapon skill
 	if spell.action_type == 'Magic' then
 
-		-- Check if the spell is dark magic
-		if DarkSpells[spell.english] then
-			equip(set_combine(sets.magic.default, sets.utility.darkMagic))
+    	-- Check if the spell is a cure
+    	if CureSpells[spell.english] then
+			equip(sets.midcast.curePotency)
+    	-- Check if the spell is a dark magic
+		elseif DarkSpells[spell.english] then
+			equip(set_combine(sets.midcast.magic, sets.utility.darkMagic))
 		else
-			equip(sets.magic.default)
+			equip(sets.midcast.magic)
 		end
 
     end -- end if
@@ -322,9 +345,9 @@ end -- end midcast()
 ----------------------------------------------------------------------
 function aftercast(spell)
 	if player.status =='Engaged' then
-		equip(sets.melee.default)
+		equip(sets.melee)
 	else
-		equip(set_combine(sets.melee.default, sets.idle.default))
+		equip(sets.idle)
 	end
 end -- end aftercast()
 
@@ -334,9 +357,9 @@ end -- end aftercast()
 ----------------------------------------------------------------------
 function status_change(new,old)
 	if new == 'Idle' then
-		equip(sets.idle.default)
+		equip(sets.idle)
 	elseif new == 'Engaged' then
-		equip(sets.melee.default)
+		equip(sets.melee)
 	end
 end -- end status_change()
 
@@ -351,7 +374,7 @@ function self_command(command)
 		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
 		-- Equip the set
-		equip(sets.idle.default)
+		equip(sets.idle)
 	end -- end if
 
 end -- end self_command()
