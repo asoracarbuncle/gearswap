@@ -14,19 +14,19 @@ function get_sets()
 
 	-- Idle : Default
 	sets.idle = {
-	    ammo="Ginsen",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-	    feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-	    neck="Asperity Necklace",
-	    waist="Grunfeld Rope",
-	    left_ear="Suppanomimi",
-	    right_ear="Brutal Earring",
-	    left_ring="Epona's Ring",
-	    right_ring="Rajas Ring",
-	    back="Atheling Mantle",
+        ammo="Ginsen",
+        head="Mummu Bonnet +1",
+        body="Hiza. Haramaki +2",
+        hands="Mummu Wrists +1",
+        legs="Mummu Kecks +1",
+        feet="Mummu Gamash. +1",
+        neck="Loricate Torque",
+        waist="Grunfeld Rope",
+        left_ear="Odnowa Earring",
+        right_ear="Odnowa Earring +1",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
+        back="Reiki Cloak",
 	} -- end sets.idle
 
 
@@ -62,12 +62,13 @@ function get_sets()
 
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
+	    ammo="Sapience Orb",
 	    head={ name="Herculean Helm", augments={'Accuracy+23 Attack+23','Crit. hit damage +2%','Accuracy+12','Attack+10',}},
 	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs="Gyve Trousers",
-	    neck="Voltsurge Torque",
-	    left_ear="Etiolation Earring",
-	    right_ear="Loquac. Earring",
+	    neck="Magoraga Beads",
+	    left_ear="Loquac. Earring",
+	    right_ear="Etiolation Earring",
 	    left_ring="Kishar Ring",
 	    right_ring="Prolix Ring",
 	} -- end sets.precast.fastCast
@@ -86,10 +87,36 @@ function get_sets()
 
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
+	    ammo="Ginsen",
+	    head="Mummu Bonnet +1",
+	    body="Mummu Jacket +1",
+	    hands="Mummu Wrists +1",
+	    legs="Mummu Kecks +1",
+	    feet="Mummu Gamash. +1",
+	    neck="Fotia Gorget",
+	    waist="Fotia Belt",
+	    left_ear="Ishvara Earring",
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    left_ring="Regal Ring",
+	    right_ring="Begrudging Ring",
+	    back="Atheling Mantle",
 	} -- end sets.midcast.ws.default
 
 	-- Midcast : Weapon Skill : Blade: Hi
 	sets.midcast.ws["Blade: Hi"] = {
+	    ammo="Ginsen",
+	    head="Mummu Bonnet +1",
+	    body="Mummu Jacket +1",
+	    hands="Mummu Wrists +1",
+	    legs="Mummu Kecks +1",
+	    feet="Mummu Gamash. +1",
+	    neck="Fotia Gorget",
+	    waist="Fotia Belt",
+	    left_ear="Ishvara Earring",
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    left_ring="Regal Ring",
+	    right_ring="Begrudging Ring",
+	    back="Atheling Mantle",
 	} -- end sets.midcast.ws["Blade: Hi"]
 
 
@@ -113,6 +140,7 @@ function get_sets()
 
 	-- Utsusemi set
 	sets.utility.utsusemi = {
+        feet="Iga Kyahan +2",
 	} -- end sets.utility.utsusemi
 
 	-- Yonin set
