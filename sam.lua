@@ -16,7 +16,7 @@ function get_sets()
 	sets.idle = {
         head="Wakido Kabuto +2",
         body="Hiza. Haramaki +2",
-        hands="Flam. Manopolas +1",
+	    hands="Regal Cpt. Gloves",
         legs="Flamma Dirs +1",
         feet="Flam. Gambieras +2",
         neck="Loricate Torque",
@@ -38,7 +38,7 @@ function get_sets()
 	-- Melee : default
 	sets.melee = {
         head="Flam. Zucchetto +2",
-        body="Kasuga Domaru +1",
+        body="Wakido Domaru +2",
         hands="Wakido Kote +2",
         legs="Wakido Haidate +2",
         feet="Flam. Gambieras +2",
@@ -48,7 +48,7 @@ function get_sets()
         right_ear="Cessance Earring",
         left_ring="Flamma Ring",
         right_ring="Regal Ring",
-	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+        back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.melee
 
 
@@ -80,7 +80,7 @@ function get_sets()
 	sets.midcast.ws.default = {
 		head="Flam. Zucchetto +2",
 	    body="Hiza. Haramaki +2",
-        hands="Wakido Kote +2",
+	    hands="Regal Cpt. Gloves",
         legs="Hiza. Hizayoroi +2",
         feet="Flam. Gambieras +2",
         neck="Fotia Gorget",
