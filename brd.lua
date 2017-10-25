@@ -110,7 +110,7 @@ function get_sets()
         body="Inyanga Jubbah +2",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs="Aya. Cosciales +1",
-        feet="Inyan. Crackows +1",
+        feet="Navon Crackows",
         neck="Voltsurge Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
