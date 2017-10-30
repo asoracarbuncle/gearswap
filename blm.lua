@@ -110,6 +110,8 @@ function get_sets()
 
 	-- Dark magic
 	sets.utility.darkMagic = {
+	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
+        body="Shango Robe",
 	    neck="Erra Pendant",
         waist="Fucho-no-Obi",
 	    left_ring="Evanescence Ring",
