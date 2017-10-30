@@ -45,7 +45,7 @@ function get_sets()
 	    body="Inyanga Jubbah +2",
 	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
-	    feet="Inyan. Crackows +1",
+	    feet="Inyan. Crackows +2",
         neck="Loricate Torque",
 	    waist="Channeler's Stone",
 	    left_ear="Etiolation Earring",
