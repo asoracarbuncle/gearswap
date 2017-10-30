@@ -4,7 +4,6 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f10 gs c cycle DT sets')
 
 
 	----------------------------------------------------------------------
@@ -14,8 +13,10 @@ function get_sets()
 	sets.idle = {}
 
 	-- Default idle set
-	idleSetEnabled = false
 	sets.idle = {
+	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+	    sub="Culminus",
+	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 	    head="Azimuth Hood +1",
         body="Jhakri Robe +2",
         hands="Geo. Mitaines +1",
@@ -38,8 +39,10 @@ function get_sets()
 	sets.melee = {}
 
 	-- Default melee set
-	meleeSetEnabled = false
 	sets.melee = {
+	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+	    sub="Culminus",
+	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
         head="Jhakri Coronal +2",
         body="Jhakri Robe +2",
         hands="Jhakri Cuffs +2",
@@ -86,6 +89,7 @@ function get_sets()
 
 	-- Magic : Default
 	sets.midcast.magic = {
+	    main={ name="Nibiru Cudgel", augments={'MP+50','INT+10','"Mag.Atk.Bns."+15',}},
         head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
@@ -100,6 +104,23 @@ function get_sets()
         back="Izdubar Mantle",
 	} -- end sets.magic.default
 
+	-- Midcast : Cure Potency
+	sets.midcast.curePotency = {
+        main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
+        ammo="Hydrocera",
+        head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
+        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        legs="Gyve Trousers",
+        feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
+        neck="Incanter's Torque",
+        waist="Luminary Sash",
+        left_ear="Lifestorm Earring",
+        right_ear="Static Earring",
+        left_ring="Vertigo Ring",
+        right_ring="Lebeche Ring",
+        back="Solemnity Cape",
+	} -- end sets.midcast.curePotency
+
 
 	----------------------------------------------------------------------
 	-- Utility Sets (not bound to a key)
@@ -109,6 +130,8 @@ function get_sets()
 
 	-- Dark magic
 	sets.utility.darkMagic = {
+	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
+        body="Shango Robe",
 	    neck="Erra Pendant",
         waist="Fucho-no-Obi",
 	    left_ring="Evanescence Ring",
@@ -122,34 +145,28 @@ function get_sets()
 	    body={ name="Bagua Tunic +1", augments={'Enhances "Bolster" effect',}},
 	    hands="Geo. Mitaines +1",
 	    feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
-        neck="Reti Pendant",
+        neck="Incanter's Torque",
+	    waist="Kobo Obi",
 	    back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +19','Pet: Damage taken -2%',}},
 	} -- end sets.utility.geoSkill
-
-	-- PDT
-	sets.utility.pdt = {
-	} -- end sets.utility.pdt
-
-	-- MDT
-	sets.utility.mdt = {
-	} -- end sets.utility.mdt
 
 
 	----------------------------------------------------------------------
 	-- Spell arrays
 	----------------------------------------------------------------------
+	CureSpells = {
+		["Cure"] = true,
+		["Cure II"] = true,
+		["Cure III"] = true,
+		["Cure IV"] = true,
+	}
+
 	DarkSpells = {
 		["Aspir"] = true,
 		["Aspir II"] = true,
 		["Aspir III"] = true,
 		["Drain"] = true,
 	}
-	
-	-- Setup some variables used to handle DT logic
-	dtSetEnabled = false;
-	dtSetIndex = -1;
-	dtSetCount = 2;
-
 
 end -- end get_sets()
 
@@ -161,7 +178,6 @@ function file_unload()
 
 	-- Upon unloading this lua file, remove commonly used key binds
     send_command('unbind f9')
-    send_command('unbind f10')
 
 end    
 
@@ -187,6 +203,9 @@ function midcast(spell)
 		-- Check if the spell is a geo spell
 		if spell.skill == 'Geomancy' or spell.skill == 'Handbell' then
 			equip(sets.utility.geoSkill)
+		-- Check if the spell is a cure
+    	elseif CureSpells[spell.english] then
+			equip(sets.midcast.curePotency)
 		-- Check if the spell is dark magic
 		elseif DarkSpells[spell.english] then
 			equip(set_combine(sets.midcast.magic, sets.utility.darkMagic))
@@ -207,21 +226,9 @@ function aftercast(spell)
 	-- Check if the player is still engaged after the cast
 	if player.status =='Engaged' then
 		equip(sets.melee)
-		idleSetEnabled = false
-		meleeSetEnabled = true
 	-- Check if the player is not still engaged after the cast
 	else
 		equip(sets.idle)
-		idleSetEnabled = true
-		meleeSetEnabled = false
-	end
-	-- Check if DT is on
-	if dtSetEnabled == true then
-		if dtSetIndex == 0 then
-			equip(sets.utility.mdt)
-		else
-			equip(sets.utility.pdt)
-		end
 	end
 end -- end aftercast()
 
@@ -233,21 +240,9 @@ function status_change(newStatus, oldStatus)
 	-- Check if player status has switched to engaged
 	if newStatus == 'Engaged' then
 		equip(sets.melee)
-		idleSetEnabled = false
-		meleeSetEnabled = true
 	-- Check if player status has switched to idle
 	else
 		equip(sets.idle)
-		idleSetEnabled = true
-		meleeSetEnabled = false
-	end
-	-- Check if DT is on
-	if dtSetEnabled == true then
-		if dtSetIndex == 0 then
-			equip(sets.utility.mdt)
-		else
-			equip(sets.utility.pdt)
-		end
 	end
 end -- end status_change()
 
@@ -263,49 +258,6 @@ function self_command(command)
 		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
 		-- Equip the set
 		equip(sets.idle)
-		idleSetEnabled = true
-		meleeSetEnabled = false
-	end -- end if
-
-	-- Cycle through DT sets
-	if command == 'cycle DT sets' then
-		-- First, increment the DT index
-		dtSetIndex = dtSetIndex + 1
-		-- Now check the index bounds
-		if dtSetIndex < dtSetCount then
-			-- Enable the dt set toggle
-			dtSetEnabled = true;
-			-- Equip the appropriate set
-			if dtSetIndex == 0 then
-				send_command('@input /echo <----- MDT Set Engaged ----->')
-				-- First equip the apropriate main set
-				if idleSetEnabled == true then
-					equip(sets.idle)
-				else
-					equip(sets.melee)
-				end
-				equip(sets.utility.mdt)
-			else
-				send_command('@input /echo <----- PDT Set Engaged ----->')
-				-- First equip the apropriate main set
-				if idleSetEnabled == true then
-					equip(sets.idle)
-				else
-					equip(sets.melee)
-				end
-				equip(sets.utility.pdt)
-			end
-		else
-			send_command('@input /echo <----- DT Sets Off ----->')
-			-- Equip the apropriate main set
-			if idleSetEnabled == true then
-				equip(sets.idle)
-			else
-				equip(sets.melee)
-			end
-			dtSetEnabled = false
-			dtSetIndex = -1
-		end
 	end -- end if
 
 end -- end self_command()
