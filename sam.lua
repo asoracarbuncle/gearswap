@@ -36,19 +36,22 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : default
+	-- Store TP: 69%
+	-- Triple Attack: 5%
+	-- Double Attack: 33%
 	sets.melee = {
-        head="Flam. Zucchetto +2",
-        body="Wakido Domaru +2",
-        hands="Wakido Kote +2",
-        legs="Wakido Haidate +2",
-        feet="Flam. Gambieras +2",
-        neck="Moonbeam Nodowa",
-        waist="Ioskeha Belt",
-        left_ear="Telos Earring",
-        right_ear="Cessance Earring",
-        left_ring="Flamma Ring",
-        right_ring="Regal Ring",
-        back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+	    head="Flam. Zucchetto +2",
+	    body="Wakido Domaru +2",
+	    hands="Wakido Kote +2",
+	    legs="Wakido Haidate +2",
+	    feet="Flam. Gambieras +2",
+	    neck="Moonbeam Nodowa",
+	    waist="Ioskeha Belt",
+	    left_ear="Cessance Earring",
+	    right_ear="Brutal Earring",
+	    left_ring="Flamma Ring",
+	    right_ring="Petrov Ring",
+        back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
 	} -- end sets.melee
 
 
@@ -61,6 +64,7 @@ function get_sets()
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+        legs="Limbo Trousers",
         neck="Voltsurge Torque",
         left_ear="Etiolation Earring",
         right_ear="Loquac. Earring",
@@ -90,6 +94,7 @@ function get_sets()
         left_ring="Flamma Ring",
         right_ring="Regal Ring",
         back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+        -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.midcast.ws.default
 
 	-- Midcast : Weapon Skill : Tachi: Fudo
