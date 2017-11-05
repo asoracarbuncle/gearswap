@@ -4,14 +4,7 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f10 gs c toggle melee set')
-	send_command('bind f11 gs c toggle weapon set')
-
-
-	----------------------------------------------------------------------
-	-- Unload key bindings upon file unload
-	----------------------------------------------------------------------
-	require "remove_bindings"
+	send_command('bind f10 gs c toggle weapon set')
 
 
 	----------------------------------------------------------------------
@@ -51,7 +44,7 @@ function get_sets()
 	    head={ name="Rawhide Mask", augments={'HP+50','Accuracy+15','Evasion+20',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
+        legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
 	    feet="Tutyr Sabots",
         neck="Loricate Torque",
         waist="Fucho-no-Obi",
@@ -390,14 +383,6 @@ function self_command(command)
 		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
 		-- Equip the set
 		equip(sets.idle.default)
-	end -- end if
-
-	-- Equip the melee set
-	if command == 'toggle melee set' then
-		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Melee: Default Set Equipped ----->')
-		-- Equip the set
-		equip(sets.melee.default)
 	end -- end if
 
 	-- Toggle the weapon sets
