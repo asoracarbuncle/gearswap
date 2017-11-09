@@ -21,7 +21,7 @@ function get_sets()
 	    hands="Mummu Wrists +1",
 	    legs="Mummu Kecks +1",
 	    feet="Mummu Gamash. +1",
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
         waist="Chaac Belt",
         left_ear="Etiolation Earring",
         right_ear="Static Earring",
@@ -82,11 +82,11 @@ function get_sets()
 	-- Midcast : Weapon Skill : Rudra's Storm
 	sets.midcast.ws["Rudra's Storm"] = {
 	    ammo="Mantoptera Eye",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
+	    head="Mummu Bonnet +1",
+	    body="Mummu Jacket +1",
+	    hands="Mummu Wrists +1",
+	    legs="Mummu Kecks +1",
+	    feet="Mummu Gamash. +1",
 	    neck="Clotharius Torque",
 	    waist="Grunfeld Rope",
 	    left_ear="Telos Earring",
@@ -153,10 +153,14 @@ end -- end get_sets()
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Equip any specific named sets
-    if spell.type == 'WeaponSkill' then
-        equip(sets.midcast.ws.default)
-	end -- end if
+	-- Check if the action is a specified weapon skill
+	if sets.midcast.ws[spell.name] then
+		-- Equip the appropriate ws specific set
+		equip(sets.midcast.ws[spell.name])
+    elseif spell.type == 'WeaponSkill' then
+    	-- Equip default ws set
+		equip(sets.midcast.ws.default)
+	end
 
 end -- end midcast()
 
