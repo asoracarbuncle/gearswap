@@ -14,13 +14,15 @@ function get_sets()
 
 	-- idle : Default
 	sets.idle.default = {
+	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+	    sub="Niobid Strap",
 	    ammo="Hydrocera",
 	    head="Befouled Crown",
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
 	    feet="Tutyr Sabots",
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
@@ -38,13 +40,15 @@ function get_sets()
 
 	-- Melee : Default
 	sets.melee.default = {
+	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+	    sub="Niobid Strap",
 	    ammo="Hydrocera",
 	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
         feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
         waist="Chaac Belt",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
@@ -208,6 +212,7 @@ function get_sets()
 		["Aspir"] = true,
 		["Aspir II"] = true,
 		["Aspir III"] = true,
+		["Drain"] = true,
 	}
 
 
