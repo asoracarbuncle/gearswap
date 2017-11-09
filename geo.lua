@@ -22,7 +22,7 @@ function get_sets()
         hands="Geo. Mitaines +1",
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
         feet="Mallquis Clogs +1",
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
 	    left_ear="Handler's Earring",
 	    right_ear="Handler's Earring +1",
