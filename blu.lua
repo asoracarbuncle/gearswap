@@ -46,7 +46,7 @@ function get_sets()
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
         legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
 	    feet="Tutyr Sabots",
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
