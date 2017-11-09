@@ -19,7 +19,7 @@ function get_sets()
 	    hands="Regal Cpt. Gloves",
         legs="Flamma Dirs +1",
         feet="Flam. Gambieras +2",
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
         waist="Ioskeha Belt",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
@@ -36,7 +36,7 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : default
-	-- Store TP: 69%
+	-- Store TP: 69
 	-- Triple Attack: 5%
 	-- Double Attack: 33%
 	sets.melee = {
