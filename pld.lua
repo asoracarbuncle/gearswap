@@ -17,11 +17,11 @@ function get_sets()
 	sets.dt = {
 	    ammo="Angha Gem",
 	    head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
-	    body={ name="Souveran Cuirass", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+        body="Rev. Surcoat +3",
 	    hands={ name="Souv. Handschuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    legs={ name="Souveran Diechlings", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    feet={ name="Souveran Schuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
 	    waist="Nierenschutz",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
@@ -29,41 +29,6 @@ function get_sets()
 	    right_ring="Vocane Ring",
 	    back="Reiki Cloak",
 	} -- end sets.dt
-
-
-	----------------------------------------------------------------------
-	-- Precast sets
-	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.precast = {}
-
-	-- Precast : Fastcast
-	sets.precast.fastcast = {
-        ammo="Sapience Orb",
-        head={ name="Carmine Mask", augments={'Accuracy+15','Mag. Acc.+10','"Fast Cast"+3',}},
-        body={ name="Jumalik Mail", augments={'HP+50','Attack+15','Enmity+9','"Refresh"+2',}},
-        hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-	    feet="Carmine Greaves",
-	    neck="Voltsurge Torque",
-	    left_ear="Loquac. Earring",
-	    right_ear="Etiolation Earring",
-	    left_ring="Prolix Ring",
-	    right_ring="Kishar Ring",
-	} -- end sets.precast.fastcast
-
-
-	----------------------------------------------------------------------
-	-- Magic set
-	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.magic = {}
-
-	-- Magic : Default
-	sets.magic = {
-        head={ name="Carmine Mask", augments={'Accuracy+15','Mag. Acc.+10','"Fast Cast"+3',}},
-        body={ name="Jumalik Mail", augments={'HP+50','Attack+15','Enmity+9','"Refresh"+2',}},
-	    left_ring="Kunaji Ring",
-	} -- end sets.magic
 
 
 	----------------------------------------------------------------------
@@ -76,11 +41,11 @@ function get_sets()
 	-- Midcast : Weaponskill : Default
 	sets.midcast.ws.default = {
 	    ammo="Ginsen",
-	    head="Flam. Zucchetto +1",
+	    head="Flam. Zucchetto +2",
 	    body="Flamma Korazin +1",
 	    hands="Flam. Manopolas +1",
         legs="Flamma Dirs +1",
-	    feet="Flam. Gambieras +1",
+	    feet="Flam. Gambieras +2",
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Brutal Earring",
@@ -94,7 +59,7 @@ function get_sets()
 	sets.midcast.enmity = {
 	    ammo="Sapience Orb",
 	    head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
-	    body={ name="Souveran Cuirass", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+        body="Rev. Surcoat +3",
 	    hands={ name="Souv. Handschuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    legs={ name="Souveran Diechlings", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    feet={ name="Souveran Schuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
@@ -104,23 +69,6 @@ function get_sets()
 	    right_ring="Begrudging Ring",
 	    back="Reiki Cloak",
 	} -- end sets.utility.enmity
-
-
-	----------------------------------------------------------------------
-	-- Utility sets
-	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.utility = {}
-
-	-- Utility : Accuracy
-	accuracy = false;
-	sets.utility.accuracy = {
-	    neck="Subtlety Spec.",
-	    waist="Grunfeld Rope",
-	    left_ear="Steelflash Earring",
-	    right_ear="Bladeborn Earring",
-	    right_ring="Patricius Ring",
-	} -- end sets.utility.accuracy
 
 
 	----------------------------------------------------------------------
@@ -143,8 +91,6 @@ end -- end get_sets()
 -- Callback for when casting begins
 ----------------------------------------------------------------------
 function precast(spell)
-    if spell.action_type == 'Magic' then
-	end
 end -- end precast()
 
 
@@ -171,10 +117,6 @@ end -- end midcast()
 ----------------------------------------------------------------------
 function aftercast(spell)
 	equip(sets.dt)
-		-- Check if accuracy is enabled
-	if accuracy == true then
-		equip(sets.utility.accuracy)
-	end
 end -- end aftercast()
 
 
@@ -197,31 +139,6 @@ function self_command(command)
 		send_command('@input /echo <----- DT: Default Set Equipped ----->')
 		-- Equip the set
 		equip(sets.dt)
-	end -- end if
-
-	-- Toggle the accuracy set
-	if command == 'toggle accuracy set' then
-
-		-- Start by equipping the current melee set
-		equip(sets.dt)
-
-		-- Check the status of treasure hunter
-		if accuracy == false then
-			-- Alert the user which set is currently being equipped
-			send_command('@input /echo <----- Accuracy Enabled ----->')
-			-- Toggle the accuracy variable
-			accuracy = true;
-			-- Equip the accuracy set
-			equip(sets.utility.accuracy)
-		elseif accuracy == true then
-			-- Alert the user which set is currently being equipped
-			send_command('@input /echo <----- Accuracy Disabled ----->')
-			-- Toggle the accuracy variable
-			accuracy = false;
-			-- Equip the dt set
-			equip(sets.dt)
-		end -- end if
-
 	end -- end if
 
 end -- end self_command()
