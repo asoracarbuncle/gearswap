@@ -20,7 +20,7 @@ function get_sets()
         hands="Mummu Wrists +1",
         legs="Mummu Kecks +1",
         feet="Mummu Gamash. +1",
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
         waist="Grunfeld Rope",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
