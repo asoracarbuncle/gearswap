@@ -40,13 +40,13 @@ function get_sets()
 	-- Idle : Default
 	sets.idle = {
 	    main="Carnwenhan",
-	    sub="Genmei Shield",
+	    sub="Ammurapi Shield",
 	    head="Inyanga Tiara +2",
 	    body="Inyanga Jubbah +2",
 	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
 	    feet="Inyan. Crackows +2",
-        neck="Loricate Torque",
+        neck="Loricate Torque +1",
 	    waist="Channeler's Stone",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
@@ -65,7 +65,7 @@ function get_sets()
 	-- Melee : Default
 	sets.melee = {
 	    main="Carnwenhan",
-	    sub="Genmei Shield",
+	    sub="Ammurapi Shield",
         head="Aya. Zucchetto +1",
         body="Ayanmo Corazza +1",
         hands="Aya. Manopolas +1",
