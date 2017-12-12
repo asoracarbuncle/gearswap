@@ -15,7 +15,7 @@ function get_sets()
 	-- idle : Default
 	sets.idle = {
         main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="Niobid Strap",
+        sub="Enki Strap",
         ammo="Hydrocera",
         head="Befouled Crown",
 	    body="Jhakri Robe +2",
@@ -41,7 +41,7 @@ function get_sets()
 	-- Melee : Default
 	sets.melee = {
         main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="Niobid Strap",
+        sub="Enki Strap",
         ammo="Hydrocera",
 	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
@@ -95,19 +95,20 @@ function get_sets()
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
+	    feet="Jhakri Pigaches +2",
         neck="Mizu. Kubikazari",
 	    waist="Refoccilation Stone",
         left_ear="Friomisi Earring",
         right_ear="Hecate's Earring",
         left_ring="Mujin Band",
         right_ring="Locus Ring",
-        back="Solemnity Cape",
+	    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic
 
 	-- Midcast : Cure Potency
 	sets.midcast.curePotency = {
         main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
+        sub="Enki Strap",
         ammo="Hydrocera",
         head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         body="Chironic Doublet",
@@ -133,7 +134,10 @@ function get_sets()
 	-- Dark magic
 	sets.utility.darkMagic = {
 	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
+	    sub="Ammurapi Shield",
         body="Shango Robe",
+        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
 	    neck="Erra Pendant",
         waist="Fucho-no-Obi",
 	    left_ring="Evanescence Ring",
