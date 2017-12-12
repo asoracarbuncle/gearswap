@@ -50,7 +50,7 @@ function get_sets()
         left_ear="Suppanomimi",
         right_ear="Brutal Earring",
         left_ring="Epona's Ring",
-        right_ring="Petrov Ring",
+	    right_ring="Hetairoi Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.melee.default
 
