@@ -17,7 +17,7 @@ function get_sets()
         head="Wakido Kabuto +2",
         body="Hiza. Haramaki +2",
 	    hands="Regal Cpt. Gloves",
-        legs="Flamma Dirs +1",
+        legs="Flamma Dirs +2",
         feet="Flam. Gambieras +2",
         neck="Loricate Torque +1",
         waist="Ioskeha Belt",
@@ -41,7 +41,7 @@ function get_sets()
 	-- Double Attack: 33%
 	sets.melee = {
 	    head="Flam. Zucchetto +2",
-	    body="Wakido Domaru +2",
+	    body="Wakido Domaru +3",
 	    hands="Wakido Kote +2",
 	    legs="Wakido Haidate +2",
 	    feet="Flam. Gambieras +2",
@@ -64,7 +64,7 @@ function get_sets()
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs="Limbo Trousers",
+        legs="Arjuna Breeches",
         neck="Voltsurge Torque",
         left_ear="Etiolation Earring",
         right_ear="Loquac. Earring",
@@ -94,7 +94,6 @@ function get_sets()
         left_ring="Flamma Ring",
         right_ring="Regal Ring",
         back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
-        -- back={ name="Mecisto. Mantle", augments={'Cap. Point+43%','Mag. Acc.+3','DEF+1',}},
 	} -- end sets.midcast.ws.default
 
 	-- Midcast : Weapon Skill : Tachi: Fudo
@@ -119,7 +118,7 @@ function get_sets()
 	sets.utility.meditate = {
         head="Wakido Kabuto +2",
         hands={ name="Sakonji Kote +1", augments={'Enhances "Blade Bash" effect',}},
-	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+        back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
 	} -- end sets.utility.meditate
 
 	-- Warding Circle set
