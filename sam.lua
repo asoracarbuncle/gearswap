@@ -14,12 +14,13 @@ function get_sets()
 
 	-- Idle : Default
 	sets.idle = {
+	    ammo="Ginsen",
         head="Wakido Kabuto +2",
         body="Hiza. Haramaki +2",
 	    hands="Regal Cpt. Gloves",
         legs="Flamma Dirs +2",
         feet="Flam. Gambieras +2",
-        neck="Loricate Torque +1",
+        neck="Lissome Necklace",
         waist="Ioskeha Belt",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
@@ -36,22 +37,23 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : default
-	-- Store TP: 69
+	-- Store TP: 79
 	-- Triple Attack: 5%
-	-- Double Attack: 33%
+	-- Double Attack: 31%
 	sets.melee = {
+	    ammo="Ginsen",
 	    head="Flam. Zucchetto +2",
 	    body="Wakido Domaru +3",
 	    hands="Wakido Kote +2",
-	    legs="Wakido Haidate +2",
+	    legs="Wakido Haidate +3",
 	    feet="Flam. Gambieras +2",
 	    neck="Moonbeam Nodowa",
 	    waist="Ioskeha Belt",
 	    left_ear="Cessance Earring",
 	    right_ear="Brutal Earring",
 	    left_ring="Flamma Ring",
-	    right_ring="Petrov Ring",
-        back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
+	    right_ring="Regal Ring",
+	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
 	} -- end sets.melee
 
 
@@ -63,6 +65,7 @@ function get_sets()
 
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
+        ammo="Sapience Orb",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs="Arjuna Breeches",
         neck="Voltsurge Torque",
@@ -81,7 +84,10 @@ function get_sets()
 	sets.midcast.ws = {}
 
 	-- Midcast : Weapon Skill : Default
+	-- Strength: 253
+	-- Weapon Skill Damage: 25%
 	sets.midcast.ws.default = {
+        ammo="Knobkierrie",
 		head="Flam. Zucchetto +2",
 	    body="Hiza. Haramaki +2",
 	    hands="Regal Cpt. Gloves",
@@ -99,6 +105,10 @@ function get_sets()
 	-- Midcast : Weapon Skill : Tachi: Fudo
 	sets.midcast.ws["Tachi: Fudo"] = sets.midcast.ws.default
 	-- end sets.midcast.ws["Tachi: Fudo"]
+
+	-- Midcast : Weapon Skill : Tachi: Shoha
+	sets.midcast.ws["Tachi: Shoha"] = sets.midcast.ws.default
+	-- end sets.midcast.ws["Tachi: Shoha"]
 
 
 	----------------------------------------------------------------------
@@ -133,11 +143,9 @@ end -- end get_sets()
 -- Callback for when casting begins
 ----------------------------------------------------------------------
 function precast(spell)
-
     if spell.action_type == 'Magic' then
 		equip(sets.precast.fastCast)
 	end
-
 end -- end precast()
 
 
