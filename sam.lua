@@ -15,7 +15,7 @@ function get_sets()
 	-- Idle : Default
 	sets.idle = {
 	    ammo="Ginsen",
-        head="Wakido Kabuto +2",
+        head="Wakido Kabuto +3",
         body="Hiza. Haramaki +2",
 	    hands="Regal Cpt. Gloves",
         legs="Flamma Dirs +2",
@@ -44,7 +44,7 @@ function get_sets()
 	    ammo="Ginsen",
 	    head="Flam. Zucchetto +2",
 	    body="Wakido Domaru +3",
-	    hands="Wakido Kote +2",
+	    hands="Wakido Kote +3",
 	    legs="Wakido Haidate +3",
 	    feet="Flam. Gambieras +2",
 	    neck="Moonbeam Nodowa",
@@ -89,7 +89,7 @@ function get_sets()
 	sets.midcast.ws.default = {
         ammo="Knobkierrie",
 		head="Flam. Zucchetto +2",
-	    body="Hiza. Haramaki +2",
+	    body="Wakido Domaru +3",
 	    hands="Regal Cpt. Gloves",
         legs="Hiza. Hizayoroi +2",
         feet="Flam. Gambieras +2",
@@ -119,21 +119,21 @@ function get_sets()
 
 	-- Hasso set
 	sets.utility.hasso = {
-        hands="Wakido Kote +2",
+        hands="Wakido Kote +3",
 	    legs="Kasuga Haidate +1",
         feet="Wakido Sune. +2",
 	} -- end sets.utility.hasso
 
 	-- Meditate set
 	sets.utility.meditate = {
-        head="Wakido Kabuto +2",
+        head="Wakido Kabuto +3",
         hands={ name="Sakonji Kote +1", augments={'Enhances "Blade Bash" effect',}},
         back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
 	} -- end sets.utility.meditate
 
 	-- Warding Circle set
 	sets.utility.wardingCircle = {
-        head="Wakido Kabuto +2",
+        head="Wakido Kabuto +3",
 	} -- end sets.utility.wardingCircle
 
 end -- end get_sets()
