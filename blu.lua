@@ -154,12 +154,12 @@ function get_sets()
 
 	-- Midcast : Weaponskill : Chant du Cygne
 	sets.midcast.ws['Chant du Cygne'] = {
-        ammo="Jukukik Feather",
+        ammo="Falcon Eye",
 	    head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
         body="Abnoba Kaftan",
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
+        feet="Thereoid Greaves",
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Brutal Earring",
@@ -267,6 +267,7 @@ function get_sets()
 
 	-- Dark magic
 	sets.utility.darkMagic = {
+	    head="Pixie Hairpin +1",
         waist="Fucho-no-Obi",
 		right_ring="Archon Ring",
 	} -- end sets.Utility.darkMagic
