@@ -10,20 +10,21 @@ function get_sets()
 	-- Idle set
 	----------------------------------------------------------------------
 	-- idle : Default
+	-- Refresh: 8 per tick
 	sets.idle = {
 	    main="Bolelabunga",
 	    sub="Sors Shield",
 	    ammo="Hedgehog Bomb",
-	    head="Hike Khat +1",
-	    body="Theo. Briault +1",
-	    hands="Aya. Manopolas +1",
+        head="Befouled Crown",
+        body="Theo. Briault +3",
+	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}},
 	    legs="Assid. Pants +1",
-	    feet="Aya. Gambieras +1",
-        neck="Aife's Medal",
+        feet="Tutyr Sabots",
+        neck="Incanter's Torque",
 	    waist="Porous Rope",
 	    left_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}},
 	    right_ear="Nourish. Earring +1",
-	    left_ring="Mephitas's Ring",
+	    left_ring="Renaye Ring",
 	    right_ring="Mephitas's Ring +1",
         back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
 	} -- end sets.idle
@@ -45,10 +46,10 @@ function get_sets()
 	    hands="Aya. Manopolas +1",
 	    legs="Aya. Cosciales +1",
 	    feet="Aya. Gambieras +1",
-        neck="Aife's Medal",
+        neck="Incanter's Torque",
 	    waist="Porous Rope",
-	    left_ear="Spellbr. Earring",
-	    right_ear="Astral Earring",
+	    left_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}},
+	    right_ear="Nourish. Earring +1",
 	    left_ring="Mephitas's Ring",
 	    right_ring="Mephitas's Ring +1",
         back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
@@ -60,25 +61,35 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.precast = {}
+	sets.precast.fastCast = {}
 
-	-- Precast : Fastcast
-	-- Fast Cast: 56%
-	sets.precast.fastcast = {
+	-- Precast : fast cast
+	-- Fast Cast: -70%
+	sets.precast.fastCast.default = {
         main="Winged Wand",
 	    sub="Chanter's Shield",
         ammo="Incantor Stone",
-	    head="Haruspex Hat",
+	    head="Nahtirah Hat",
 	    body="Inyanga Jubbah +2",
-	    hands={ name="Chironic Gloves", augments={'"Fast Cast"+5',}},
+        hands={ name="Chironic Gloves", augments={'"Mag.Atk.Bns."+12','"Fast Cast"+7',}},
 	    legs="Aya. Cosciales +1",
         feet="Regal Pumps +1",
         neck="Orison Locket",
+        waist="Witful Belt",
+        left_ear="Loquac. Earring",
+	    right_ear="Etiolation Earring",
 	    back={ name="Alaunus's Cape", augments={'"Fast Cast"+10',}},
-	} -- end sets.precast.fastcast
+	} -- end sets.precast.fastCast
+
+	-- Precast : healing magic casting time
+	-- Healing Magic Casting Time: -75%
+	sets.precast.fastCast.healing = {
+        legs="Ebers Pant. +1",
+	} -- end sets.precast.fastCast.healing
 
 
 	----------------------------------------------------------------------
-	-- Magic set
+	-- Magic sets
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
@@ -86,35 +97,115 @@ function get_sets()
 
 	-- Magic : Default
 	sets.midcast.magic.default = {
+	} -- end sets.midcast.magic.default
+
+	-- Magic : Healing
+	sets.midcast.magic.healing = {
 	    main={ name="Queller Rod", augments={'MP+80','"Cure" potency +15%','Enmity-5',}},
 	    sub="Sors Shield",
 	    ammo="Hydrocera",
 	    head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
-	    body={ name="Vanya Robe", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
+        body="Theo. Briault +3",
 	    hands={ name="Vanya Cuffs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
-	    legs={ name="Vanya Slops", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
+        legs="Ebers Pant. +1",
 	    feet={ name="Vanya Clogs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
-        neck="Aife's Medal",
+        neck="Incanter's Torque",
 	    waist="Porous Rope",
 	    left_ear="Nourish. Earring",
 	    right_ear="Nourish. Earring +1",
 	    left_ring="Mephitas's Ring",
 	    right_ring="Mephitas's Ring +1",
         back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
-	} -- end sets.magic.default
-
-	-- Magic : Healing
-	sets.midcast.magic.healing = sets.midcast.magic.default
-	-- end sets.magic.healing
+	} -- end sets.midcast.magic.healing
 
 	-- Magic : Enhancing
-	sets.midcast.magic.enhancing = sets.midcast.magic.default
-	-- end sets.magic.enhancing
+	sets.midcast.magic.enhancing = {
+        head="Befouled Crown",
+	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}},
+	    legs={ name="Piety Pantaloons", augments={'Enhances "Shellra V" effect',}},
+        feet="Theo. Duckbills +1",
+        neck="Incanter's Torque",
+	} -- end sets.midcast.magic.enhancing
 
 	-- Magic : Enfeebling
-	sets.midcast.magic.enfeebling = sets.midcast.magic.default
-	-- end sets.magic.enfeebling
-	
+	sets.midcast.magic.enfeebling = {
+        neck="Incanter's Torque",
+	} -- end sets..midcast.magic.enfeebling
+
+
+	----------------------------------------------------------------------
+	-- Job Ability sets
+	----------------------------------------------------------------------
+	-- Initialize an array to begin storing set data
+	sets.jobAbility = {}
+
+	-- Job Ability: Afflatus Solace
+	sets.jobAbility.afflatusSolace = {
+        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
+	} -- end sets.jobAbility.afflatusSolace
+
+	-- Job Ability: Devotion
+	sets.jobAbility.devotion = {
+	    head={ name="Piety Cap", augments={'Enhances "Devotion" effect',}},
+	} -- end sets.jobAbility.devotion
+
+	-- Job Ability: Martyr
+	sets.jobAbility.martyr = {
+	    hands={ name="Piety Mitts", augments={'Enhances "Martyr" effect',}},
+	} -- end sets.jobAbility.martyr
+
+
+	----------------------------------------------------------------------
+	-- Utility Sets
+	----------------------------------------------------------------------
+	-- Initialize an array to begin storing set data
+	sets.utility = {}
+
+	-- Utility: Cureskin
+	sets.utility.cureSkin = {
+	    body="Ebers Bliaud +1",
+	} -- end sets.utility.cureSkin
+
+	-- Utility: Cursna
+	sets.utility.cursna = {
+        body="Ebers Bliaud +1",
+        hands={ name="Fanatic Gloves", augments={'MP+25','Healing magic skill +5','"Conserve MP"+1','"Fast Cast"+2',}},
+        legs={ name="Piety Pantaloons", augments={'Enhances "Shellra V" effect',}},
+        feet={ name="Vanya Clogs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
+        neck="Incanter's Torque",
+        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
+	} -- end sets.utility.cursna
+
+	-- Utility: Divine caress
+	sets.utility.divineCaress = {
+        hands="Ebers Mitts +1",
+	} -- end sets.utility.divineCaress
+
+	-- Utility: Elemental resistence
+	sets.utility.elementalResistence = {
+	    legs={ name="Piety Pantaloons", augments={'Enhances "Shellra V" effect',}},
+	} -- end sets.utility.elementalResistence
+
+	-- Utility: Protectra V
+	sets.utility.protectraV = {
+        feet={ name="Piety Duckbills", augments={'Enhances "Protectra V" effect',}},
+	} -- end sets.utility.protectra5
+
+	-- Utility: Regen
+	sets.utility.regen = {
+        hands="Ebers Mitts +1",
+	} -- end sets.utility.regen
+
+	-- Utility: Shellra V
+	sets.utility.shellraV = {
+	    legs={ name="Piety Pantaloons", augments={'Enhances "Shellra V" effect',}},
+	} -- end sets.utility.shellra5
+
+	-- Utility: Status Removal
+	sets.utility.statusRemoval = {
+	    head="Ebers Cap +1",
+	} -- end sets.utility.statusRemoval
+
 
 end -- end get_sets()
 
@@ -122,36 +213,48 @@ end -- end get_sets()
 ----------------------------------------------------------------------
 -- Spell arrays
 ----------------------------------------------------------------------
-MagicHealing = {
-	["Arise"] = true,
-	["Blindna"] = true,
-	["Curaga"] = true,
-	["Curaga II"] = true,
-	["Curaga III"] = true,
-	["Curaga IV"] = true,
-	["Curaga V"] = true,
+MagicCureSkin = {
 	["Cure"] = true,
 	["Cure II"] = true,
 	["Cure III"] = true,
 	["Cure IV"] = true,
 	["Cure V"] = true,
 	["Cure VI"] = true,
+}
+
+MagicCursna = {
 	["Cursna"] = true,
-	["Esuna"] = true,
-	["Full Cure"] = true,
-	["Paralyna"] = true,
-	["Poisona"] = true,
-	["Raise"] = true,
-	["Raise II"] = true,
-	["Raise III"] = true,
-	["Reraise"] = true,
-	["Reraise II"] = true,
-	["Reraise III"] = true,
-	["Reraise IV"] = true,
-	["Sacrifice"] = true,
-	["Silena"] = true,
-	["Stona"] = true,
-	["Viruna"] = true,
+}
+
+MagicElementalResistence = {
+	["Baraera"] = true,
+	["Baraero"] = true,
+	["Baramnesia"] = true,
+	["Baramnesra"] = true,
+	["Barblind"] = true,
+	["Barblindra"] = true,
+	["Barblizzara"] = true,
+	["Barblizzard"] = true,
+	["Barfira"] = true,
+	["Barfire"] = true,
+	["Barparalyze"] = true,
+	["Barparalyzra"] = true,
+	["Barpetra"] = true,
+	["Barpetrify"] = true,
+	["Barpoison"] = true,
+	["Barpoisonra"] = true,
+	["Barsilence"] = true,
+	["Barsilencera"] = true,
+	["Barsleep"] = true,
+	["Barsleepra"] = true,
+	["Barstone"] = true,
+	["Barstonra"] = true,
+	["Barthunder"] = true,
+	["Barthundra"] = true,
+	["Barvira"] = true,
+	["Barvirus"] = true,
+	["Barwater"] = true,
+	["Barwatera"] = true,
 }
 
 MagicEnfeebling = {
@@ -329,13 +432,74 @@ MagicEnhancing = {
 	["Windstorm II"] = true,
 }
 
+MagicHealing = {
+	["Arise"] = true,
+	["Blindna"] = true,
+	["Curaga"] = true,
+	["Curaga II"] = true,
+	["Curaga III"] = true,
+	["Curaga IV"] = true,
+	["Curaga V"] = true,
+	["Cure"] = true,
+	["Cure II"] = true,
+	["Cure III"] = true,
+	["Cure IV"] = true,
+	["Cure V"] = true,
+	["Cure VI"] = true,
+	["Cursna"] = true,
+	["Esuna"] = true,
+	["Full Cure"] = true,
+	["Paralyna"] = true,
+	["Poisona"] = true,
+	["Raise"] = true,
+	["Raise II"] = true,
+	["Raise III"] = true,
+	["Reraise"] = true,
+	["Reraise II"] = true,
+	["Reraise III"] = true,
+	["Reraise IV"] = true,
+	["Sacrifice"] = true,
+	["Silena"] = true,
+	["Stona"] = true,
+	["Viruna"] = true,
+}
+
+MagicProtectraV = {
+	["Protectra V"] = true,
+}
+
+MagicRegen = {
+	["Regen"] = true,
+	["Regen II"] = true,
+	["Regen III"] = true,
+	["Regen IV"] = true,
+	["Regen V"] = true,
+}
+
+MagicShellraV = {
+	["Shellra V"] = true,
+}
+
+MagicStatusRemoval = {
+	["Blindna"] = true,
+	["Cursna"] = true,
+	["Paralyna"] = true,
+	["Poisona"] = true,
+	["Silena"] = true,
+	["Stona"] = true,
+	["Viruna"] = true,
+}
+
 
 ----------------------------------------------------------------------
 -- Callback for when casting begins
 ----------------------------------------------------------------------
 function precast(spell)
     if spell.action_type == 'Magic' then
-		equip(sets.precast.fastcast)
+		equip(sets.precast.fastCast.default)
+		if MagicHealing[spell.english] then
+			equip(sets.precast.fastCast.healing)
+		end
 	end
 end -- end precast()
 
@@ -345,18 +509,58 @@ end -- end precast()
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Check if the action is a specified weapon skill
+	-- Check if the action is magic
 	if spell.action_type == 'Magic' then
 
-		-- Check if this is healing magic
-		if MagicEnfeebling[spell.name] then
+		-- 1.) Apply magic type gear
+		if MagicEnfeebling[spell.english] then
 			equip(sets.midcast.magic.enfeebling)
-		elseif MagicEnhancing[spell.name] then
+		elseif MagicEnhancing[spell.english] then
 			equip(sets.midcast.magic.enhancing)
-		elseif MagicHealing[spell.name] then
+		elseif MagicHealing[spell.english] then
 			equip(sets.midcast.magic.healing)
 		else
 			equip(sets.midcast.magic.default)
+		end
+
+		-- 2.) Apply specific spell group gear
+		if MagicElementalResistence[spell.english] then
+			equip(sets.utility.elementalResistence)
+		elseif MagicProtectraV[spell.english] then
+			equip(sets.utility.protectraV)
+		elseif MagicRegen[spell.english] then
+			equip(sets.utility.regen)
+		elseif MagicShellraV[spell.english] then
+			equip(sets.utility.protectraV)
+		elseif MagicStatusRemoval[spell.english] then
+			equip(sets.utility.statusRemoval)
+			if MagicCursna[spell.english] then
+				equip(sets.utility.cursna)
+			end
+		end
+
+		-- 3.) Apply active buff dependent gear
+		if MagicCureSkin[spell.english] then
+			if buffactive['Afflatus Solace'] then
+				equip(sets.utility.cureSkin)
+			end
+		elseif MagicStatusRemoval[spell.english] then
+			if buffactive['Divine Caress'] then
+				equip(sets.utility.divineCaress)
+			end
+		end
+
+
+	-- Check if the action is a job ability
+	elseif spell.type == 'JobAbility' then
+
+		-- Equip specific job ability gear
+		if spell.english == 'Afflatus Solace' then
+			equip(sets.jobAbility.afflatusSolace)
+		elseif spell.english == 'Devotion' then
+			equip(sets.jobAbility.devotion)
+		elseif spell.english == 'Martyr' then
+			equip(sets.jobAbility.martyr)
 		end
 
     end -- end if
