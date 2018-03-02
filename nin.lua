@@ -14,7 +14,7 @@ function get_sets()
 
 	-- Idle : Default
 	sets.idle = {
-        ammo="Ginsen",
+	    ammo="Mantoptera Eye",
         head="Mummu Bonnet +1",
         body="Hiza. Haramaki +2",
         hands="Mummu Wrists +1",
@@ -40,17 +40,17 @@ function get_sets()
 	sets.melee = {
 	    ammo="Ginsen",
 	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
+	    body="Mummu Jacket +1",
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
 	    feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-	    neck="Asperity Necklace",
-	    waist="Grunfeld Rope",
-	    left_ear="Suppanomimi",
-	    right_ear="Brutal Earring",
+        neck="Moonbeam Nodowa",
+	    waist="Windbuffet Belt +1",
+	    left_ear="Cessance Earring",
+	    right_ear="Telos Earring",
 	    left_ring="Epona's Ring",
-	    right_ring="Rajas Ring",
-	    back="Atheling Mantle",
+	    right_ring="Hetairoi Ring",
+	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.melee
 
 
@@ -63,10 +63,10 @@ function get_sets()
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
 	    ammo="Sapience Orb",
-	    head={ name="Herculean Helm", augments={'Accuracy+23 Attack+23','Crit. hit damage +2%','Accuracy+12','Attack+10',}},
+        head={ name="Herculean Helm", augments={'Pet: Attack+28 Pet: Rng.Atk.+28','INT+8','"Treasure Hunter"+1','Mag. Acc.+19 "Mag.Atk.Bns."+19',}},
 	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs="Gyve Trousers",
-	    neck="Magoraga Beads",
+        neck="Voltsurge Torque",
 	    left_ear="Loquac. Earring",
 	    right_ear="Etiolation Earring",
 	    left_ring="Kishar Ring",
@@ -87,7 +87,7 @@ function get_sets()
 
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
-	    ammo="Ginsen",
+        ammo="Falcon Eye",
 	    head="Mummu Bonnet +1",
 	    body="Mummu Jacket +1",
 	    hands="Mummu Wrists +1",
@@ -99,12 +99,12 @@ function get_sets()
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
 	    left_ring="Regal Ring",
 	    right_ring="Begrudging Ring",
-	    back="Atheling Mantle",
+	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.midcast.ws.default
 
 	-- Midcast : Weapon Skill : Blade: Hi
 	sets.midcast.ws["Blade: Hi"] = {
-	    ammo="Ginsen",
+        ammo="Falcon Eye",
 	    head="Mummu Bonnet +1",
 	    body="Mummu Jacket +1",
 	    hands="Mummu Wrists +1",
@@ -116,7 +116,7 @@ function get_sets()
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
 	    left_ring="Regal Ring",
 	    right_ring="Begrudging Ring",
-	    back="Atheling Mantle",
+	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.midcast.ws["Blade: Hi"]
 
 
@@ -138,9 +138,15 @@ function get_sets()
 	sets.utility.migawari = {
 	} -- end sets.utility.migawari
 
+	-- Mikage set
+	sets.utility.mikage = {
+	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+	} -- end sets.utility.mikage
+
 	-- Utsusemi set
 	sets.utility.utsusemi = {
         feet="Iga Kyahan +2",
+	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.utility.utsusemi
 
 	-- Yonin set
@@ -208,6 +214,8 @@ function midcast(spell)
 			equip(sets.utility.futae)
 		elseif spell.name == 'Innin' then
 			equip(sets.utility.innin)
+		elseif spell.name == 'Mikage' then
+			equip(sets.utility.mikage)
 		elseif spell.name == 'Yonin' then
 			equip(sets.utility.yonin)
 		end
