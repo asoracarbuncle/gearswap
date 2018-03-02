@@ -20,7 +20,7 @@ function get_sets()
 	    hands="Regal Cpt. Gloves",
         legs="Flamma Dirs +2",
         feet="Flam. Gambieras +2",
-        neck="Lissome Necklace",
+        neck="Loricate Torque +1",
         waist="Ioskeha Belt",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
@@ -156,22 +156,26 @@ function midcast(spell)
 
 	-- Check if the action is a weapon skill
     if spell.type == 'WeaponSkill' then
+    	
 		-- Check if the action is a specified weapon skill
-		if sets.midcast.ws[spell.name] then
+		if sets.midcast.ws[spell.english] then
 			-- Equip the appropriate specific ws set
-			equip(sets.midcast.ws[spell.name])
+			equip(sets.midcast.ws[spell.english])
 	    else
 	    	-- Equip default ws set
 			equip(sets.midcast.ws.default)
 		end
+
 	elseif spell.type == 'JobAbility' then
-		if spell.name == 'Hasso' then
+
+		if spell.english == 'Hasso' then
 			equip(sets.utility.hasso)
-		elseif spell.name == 'Meditate' then
+		elseif spell.english == 'Meditate' then
 			equip(sets.utility.meditate)
-		elseif spell.name == 'Warding Circle' then
+		elseif spell.english == 'Warding Circle' then
 			equip(sets.utility.wardingCircle)
 		end
+
 	end
 
 end -- end midcast()
