@@ -4,6 +4,7 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
+	send_command('bind f10 gs c toggle melee set')
 
 
 	----------------------------------------------------------------------
@@ -89,9 +90,9 @@ function get_sets()
 	sets.midcast.ws.default = {
         ammo="Knobkierrie",
 		head="Flam. Zucchetto +2",
-	    body="Wakido Domaru +3",
+	    body={ name="Sakonji Domaru +3", augments={'Enhances "Overwhelm" effect',}},
 	    hands="Regal Cpt. Gloves",
-        legs="Hiza. Hizayoroi +2",
+	    legs="Wakido Haidate +3",
         feet="Flam. Gambieras +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
@@ -127,7 +128,7 @@ function get_sets()
 	-- Meditate set
 	sets.utility.meditate = {
         head="Wakido Kabuto +3",
-        hands={ name="Sakonji Kote +1", augments={'Enhances "Blade Bash" effect',}},
+        hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
         back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
 	} -- end sets.utility.meditate
 
@@ -216,12 +217,20 @@ end -- end status_change()
 ----------------------------------------------------------------------
 function self_command(command)
 
-	-- Equip the idle set
+	-- Equip idle set
 	if command == 'toggle idle set' then
 		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- Idle Set Equipped ----->')
 		-- Equip the set
 		equip(sets.idle)
+	end -- end if
+
+	-- Equip melee set
+	if command == 'toggle melee set' then
+		-- Alert the user which set is currently being equipped
+		send_command('@input /echo <----- Melee Set Equipped ----->')
+		-- Equip the set
+		equip(sets.melee)
 	end -- end if
 
 end -- end self_command()
