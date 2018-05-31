@@ -22,7 +22,7 @@ function get_sets()
 
 	-- Weapon : Melee
 	sets.weapons[0] = {
-	    main="Tanmogayi +1",
+	    main="Sequence",
 	    sub={ name="Colada", augments={'Crit.hit rate+3','DEX+13','Accuracy+18','Attack+12','DMG:+12',}},
 	}
 
@@ -73,7 +73,7 @@ function get_sets()
 	    neck="Ainia Collar",
 	    waist="Windbuffet Belt +1",
 	    left_ear="Suppanomimi",
-	    right_ear="Cessance Earring",
+	    right_ear="Telos Earring",
 	    left_ring="Epona's Ring",
 	    right_ring="Petrov Ring",
 	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
@@ -219,6 +219,18 @@ function get_sets()
 	    right_ring="Rufescent Ring",
 	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.midcast.ws['Savage Blade']
+
+	-- Midcast : Weaponskill : Red Lotus Blade
+	sets.midcast.ws['Red Lotus Blade'] = sets.magic.default
+	-- end sets.midcast.ws['Savage Blade']
+
+	-- Midcast : Weaponskill : Seraph Blade
+	sets.midcast.ws['Seraph Blade'] = sets.magic.default
+	-- end sets.midcast.ws['Seraph Blade']
+
+	-- Midcast : Weaponskill : Sanguine Blade
+	sets.midcast.ws['Sanguine Blade'] = sets.magic.default
+	-- end sets.midcast.ws['Sanguine Blade']
 
 
 	----------------------------------------------------------------------
