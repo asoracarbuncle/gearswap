@@ -48,7 +48,7 @@ function get_sets()
 	    hands="Wakido Kote +3",
 	    legs="Wakido Haidate +3",
 	    feet="Flam. Gambieras +2",
-	    neck="Moonbeam Nodowa",
+	    neck="Moonlight Nodowa",
 	    waist="Ioskeha Belt",
 	    left_ear="Cessance Earring",
 	    right_ear="Brutal Earring",
