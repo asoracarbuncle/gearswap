@@ -18,9 +18,9 @@ function get_sets()
 	    ammo="Ginsen",
         head="Wakido Kabuto +3",
         body="Hiza. Haramaki +2",
-	    hands="Regal Cpt. Gloves",
-        legs="Flamma Dirs +2",
-        feet="Flam. Gambieras +2",
+	    hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
+	    legs="Wakido Haidate +3",
+	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
         neck="Loricate Torque +1",
         waist="Ioskeha Belt",
         left_ear="Odnowa Earring",
@@ -54,7 +54,7 @@ function get_sets()
 	    right_ear="Brutal Earring",
 	    left_ring="Flamma Ring",
 	    right_ring="Regal Ring",
-	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
+	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}},
 	} -- end sets.melee
 
 
@@ -89,16 +89,16 @@ function get_sets()
 	-- Weapon Skill Damage: 25%
 	sets.midcast.ws.default = {
         ammo="Knobkierrie",
-		head="Flam. Zucchetto +2",
+        head="Wakido Kabuto +3",
 	    body={ name="Sakonji Domaru +3", augments={'Enhances "Overwhelm" effect',}},
-	    hands="Regal Cpt. Gloves",
+        hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
 	    legs="Wakido Haidate +3",
-        feet="Flam. Gambieras +2",
+	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Ishvara Earring",
-        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-        left_ring="Flamma Ring",
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
+	    left_ring="Shukuyu Ring",
         right_ring="Regal Ring",
         back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
 	} -- end sets.midcast.ws.default
