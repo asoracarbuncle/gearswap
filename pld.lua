@@ -44,12 +44,12 @@ function get_sets()
 	    head="Flam. Zucchetto +2",
 	    body="Flamma Korazin +1",
 	    hands="Flam. Manopolas +1",
-        legs="Flamma Dirs +1",
+        legs="Flamma Dirs +2",
 	    feet="Flam. Gambieras +2",
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Brutal Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 	    left_ring="Ramuh Ring",
 	    right_ring="Begrudging Ring",
         back={ name="Rudianos's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
@@ -58,7 +58,7 @@ function get_sets()
 	-- Midcast : enmity
 	sets.midcast.enmity = {
 	    ammo="Sapience Orb",
-	    head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+	    head="Loess Barbuta",
         body="Rev. Surcoat +3",
 	    hands={ name="Souv. Handschuhs", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
 	    legs={ name="Souveran Diechlings", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
