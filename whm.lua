@@ -57,13 +57,27 @@ function get_sets()
 
 
 	----------------------------------------------------------------------
+	-- Resting sets
+	----------------------------------------------------------------------
+	-- Initialize an array to begin storing set data
+	sets.resting = {}
+
+	-- Default resting set
+	sets.resting = {
+	    main="Boonwell Staff",
+	    sub=empty,
+	    ammo="Clarus Stone",
+	} -- end sets.resting
+
+
+	----------------------------------------------------------------------
 	-- Precast sets
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.precast = {}
 	sets.precast.fastCast = {}
 
-	-- Precast : fast cast
+	-- Precast : Fast cast
 	-- Fast Cast: -70%
 	sets.precast.fastCast.default = {
         main="Winged Wand",
@@ -81,7 +95,7 @@ function get_sets()
 	    back={ name="Alaunus's Cape", augments={'"Fast Cast"+10',}},
 	} -- end sets.precast.fastCast
 
-	-- Precast : healing magic casting time
+	-- Precast : Healing magic casting time
 	-- Healing Magic Casting Time: -75%
 	sets.precast.fastCast.healing = {
         legs="Ebers Pant. +1",
@@ -589,6 +603,8 @@ function status_change(new,old)
 		equip(sets.idle)
 	elseif new == 'Engaged' then
 		equip(sets.melee)
+	elseif new == "Resting" then
+		equip(sets.resting)
 	end
 end -- end status_change()
 
