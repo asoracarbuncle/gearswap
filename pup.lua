@@ -230,7 +230,7 @@ function self_command(command)
 	-- Equip idle set
 	if command == 'equip melee set' then
 		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Idle Melee Equipped ----->')
+		send_command('@input /echo <----- Melee Set Equipped ----->')
 		-- Equip the set
 		equip(sets.melee)
 	end -- end if
