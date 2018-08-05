@@ -45,7 +45,7 @@ function get_sets()
 	    body="Inyanga Jubbah +2",
 	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
-	    feet="Inyan. Crackows +2",
+	    feet="Fili Cothurnes +1",
         neck="Loricate Torque +1",
 	    waist="Channeler's Stone",
 	    left_ear="Etiolation Earring",
@@ -67,7 +67,7 @@ function get_sets()
 	    main="Carnwenhan",
 	    sub="Ammurapi Shield",
         head="Aya. Zucchetto +1",
-        body="Ayanmo Corazza +1",
+        body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +1",
         legs="Aya. Cosciales +1",
         feet="Aya. Gambieras +1",
@@ -132,7 +132,7 @@ function get_sets()
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
 	    head="Aya. Zucchetto +1",
-	    body="Ayanmo Corazza +1",
+	    body="Ayanmo Corazza +2",
 	    hands="Aya. Manopolas +1",
 	    legs="Aya. Cosciales +1",
 	    feet="Aya. Gambieras +1",
@@ -148,7 +148,7 @@ function get_sets()
 	-- Midcast : Weapon Skill : Rudra's Storm
 	sets.midcast.ws["Rudra's Storm"] = {
 	    head="Aya. Zucchetto +1",
-	    body="Ayanmo Corazza +1",
+	    body="Ayanmo Corazza +2",
 	    hands="Aya. Manopolas +1",
 	    legs="Aya. Cosciales +1",
 	    feet="Aya. Gambieras +1",
@@ -164,7 +164,7 @@ function get_sets()
 	-- Midcast : Weapon Skill : Evisceration
 	sets.midcast.ws['Evisceration'] = {
 	    head="Aya. Zucchetto +1",
-	    body="Ayanmo Corazza +1",
+	    body="Ayanmo Corazza +2",
 	    hands="Aya. Manopolas +1",
 	    legs="Aya. Cosciales +1",
 	    feet="Aya. Gambieras +1",
@@ -295,11 +295,6 @@ function get_sets()
         hands="Fili Manchettes +1",
 	} -- end sets.utility.march
 
-	-- Mazurka Song set
-	sets.utility.mazurka = {
-        feet="Fili Cothurnes +1",
-	} -- end sets.utility.mazurka
-
 	-- Minne Song set
 	sets.utility.minne = {
 	} -- end sets.utility.minne
@@ -335,7 +330,6 @@ function get_sets()
 	sets.jobAbilities.soulVoice = {
 	    legs={ name="Bihu Cannions +1", augments={'Enhances "Soul Voice" effect',}},
 	} -- end sets.jobAbilities.soulVoice
-
 
 	-- Nightingale
 	sets.jobAbilities.nightingale = {
@@ -538,29 +532,25 @@ function midcast(spell)
     		equip(sets.utility.scherzo)
     	end
 
-    	-- Priority 3: Job Ability specific+++
-    	--
-    	-- Now check if we have any particular job ability buffs active
-    	-- and equip appropriately
-		if buffactive['Soul Voice'] then
-			equip(sets.jobAbilities.soulVoice)
-		end -- end if
-
-		if buffactive['Nightingale'] then
-			equip(sets.jobAbilities.nightingale)
-		end -- end if
-
-		if buffactive['Troubadour'] then
-			equip(sets.jobAbilities.troubadour)
-		end -- end if
-
     elseif spell.action_type == 'Magic' then
+
     	-- Check if the spell if a cure
     	if CureSpells[spell.english] then
 			equip(sets.midcast.curePotency)
     	else
 			equip(sets.midcast.magic)
 		end
+
+	elseif spell.type == 'JobAbility' then
+
+		if spell.english == 'Soul Voice' then
+			equip(sets.jobAbilities.soulVoice)
+		elseif spell.english == 'Nightingale' then
+			equip(sets.jobAbilities.nightingale)
+		elseif spell.english == 'Troubadour' then
+			equip(sets.jobAbilities.troubadour)
+		end -- end if
+
 	end
 end -- end midcast()
 
@@ -580,11 +570,6 @@ function aftercast(spell)
 	if HonorMarchSong[spell.english] then
 		equip(sets.instruments[instrumentSetIndex])
 	end
-
-	-- Check if a mazurka was just used and switch to movement speed+++ gear
-	if MazurkaSongs[spell.english] then
-		equip(sets.utility.mazurka)
-	end -- end if
 
 end -- end aftercast()
 
