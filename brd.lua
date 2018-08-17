@@ -77,7 +77,7 @@ function get_sets()
 	    right_ear="Cessance Earring",
         left_ring="Rajas Ring",
         right_ring="Petrov Ring",
-        back="Atheling Mantle",
+	    back={ name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
 	} -- end sets.melee
 
 
