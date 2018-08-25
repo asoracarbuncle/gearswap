@@ -15,13 +15,13 @@ function get_sets()
 	-- Default idle set
 	sets.idle = {
 	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
-	    sub="Culminus",
+	    sub="Ammurapi Shield",
 	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 	    head="Azimuth Hood +1",
         body="Jhakri Robe +2",
         hands="Geo. Mitaines +1",
 	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
-        feet="Mallquis Clogs +1",
+        feet="Mallquis Clogs +2",
         neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
 	    left_ear="Handler's Earring",
@@ -41,7 +41,7 @@ function get_sets()
 	-- Default melee set
 	sets.melee = {
 	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
-	    sub="Culminus",
+	    sub="Ammurapi Shield",
 	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
         head="Jhakri Coronal +2",
         body="Jhakri Robe +2",
@@ -77,8 +77,8 @@ function get_sets()
         right_ear="Etiolation Earring",
         left_ring="Prolix Ring",
         right_ring="Kishar Ring",
-        back="Swith Cape",
-	} -- end sets.precast.fastcast
+        back={ name="Nantosuelta's Cape", augments={'"Fast Cast"+10',}},
+	} -- end sets.precast.fastCast
 
 
 	----------------------------------------------------------------------
@@ -101,7 +101,7 @@ function get_sets()
         right_ear="Hecate's Earring",
         left_ring="Mujin Band",
         right_ring="Locus Ring",
-        back="Izdubar Mantle",
+        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.magic.default
 
 	-- Midcast : Cure Potency
@@ -187,7 +187,7 @@ end
 ----------------------------------------------------------------------
 function precast(spell)
     if spell.action_type == 'Magic' then
-		equip(sets.precast.fastcast)
+		equip(sets.precast.fastCast)
 	end
 end -- end precast()
 
