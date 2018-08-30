@@ -4,6 +4,7 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
+	send_command('bind f10 gs c toggle death set')
 
 
 	----------------------------------------------------------------------
@@ -13,7 +14,7 @@ function get_sets()
 	sets.idle = {}
 
 	-- idle : Default
-	sets.idle.default = {
+	sets.idle = {
 	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
 	    sub="Niobid Strap",
 	    ammo="Hydrocera",
@@ -29,7 +30,7 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	} -- end sets.idle.default
+	} -- end sets.idle
 
 
 	----------------------------------------------------------------------
@@ -39,7 +40,7 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : Default
-	sets.melee.default = {
+	sets.melee = {
 	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
 	    sub="Niobid Strap",
 	    ammo="Hydrocera",
@@ -55,7 +56,7 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	} -- end sets.melee.default
+	} -- end sets.melee
 
 
 	----------------------------------------------------------------------
@@ -83,19 +84,19 @@ function get_sets()
 
 
 	----------------------------------------------------------------------
-	-- Magic set
+	-- Midcast sets
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
-	sets.magic = {}
+	sets.midcast = {}
 
-	-- Magic : Default
-	sets.magic.default = {
+	-- Midcast : Magic
+	sets.midcast.magic = {
 	    ammo="Pemphredo Tathlum",
         head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
+	    feet="Jhakri Pigaches +2",
         neck="Mizu. Kubikazari",
 	    waist="Refoccilation Stone",
         left_ear="Friomisi Earring",
@@ -103,7 +104,25 @@ function get_sets()
         left_ring="Mujin Band",
         right_ring="Locus Ring",
 	    back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.magic.default
+	} -- end sets.midcast.magic
+
+	-- Midcast : Death
+	deathMode = false
+	sets.midcast.death = {
+	    ammo="Hydrocera",
+	    head="Pixie Hairpin +1",
+	    body={ name="Amalric Doublet", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	    hands={ name="Amalric Gages", augments={'INT+10','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	    legs={ name="Amalric Slops", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	    feet={ name="Amalric Nails", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	    neck="Eddy Necklace",
+	    waist="Refoccilation Stone",
+	    left_ear="Loquac. Earring",
+	    right_ear="Etiolation Earring",
+	    left_ring="Mephitas's Ring",
+	    right_ring="Mephitas's Ring +1",
+	    back="Izdubar Mantle",
+	} -- end sets.midcast.magic
 
 
 	----------------------------------------------------------------------
@@ -215,7 +234,6 @@ function get_sets()
 		["Drain"] = true,
 	}
 
-
 end -- end get_sets()
 
 
@@ -241,9 +259,9 @@ function midcast(spell)
 
 		-- Check if the spell is dark magic
 		if DarkSpells[spell.english] then
-			equip(set_combine(sets.magic.default, sets.utility.darkMagic))
+			equip(set_combine(sets.midcast.magic, sets.utility.darkMagic))
 		else
-			equip(sets.magic.default)
+			equip(sets.midcast.magic)
 		end
 
     end -- end if
@@ -256,9 +274,9 @@ end -- end midcast()
 ----------------------------------------------------------------------
 function aftercast(spell)
 	if player.status =='Engaged' then
-		equip(sets.melee.default)
+		equip(sets.melee)
 	else
-		equip(set_combine(sets.melee.default, sets.idle.default))
+		equip(set_combine(sets.melee, sets.idle))
 	end
 end -- end aftercast()
 
@@ -268,9 +286,9 @@ end -- end aftercast()
 ----------------------------------------------------------------------
 function status_change(new,old)
 	if new == 'Idle' then
-		equip(sets.idle.default)
+		equip(sets.idle)
 	elseif new == 'Engaged' then
-		equip(sets.melee.default)
+		equip(sets.melee)
 	end
 end -- end status_change()
 
@@ -285,7 +303,29 @@ function self_command(command)
 		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
 		-- Equip the set
-		equip(sets.idle.default)
+		equip(sets.idle)
+	end -- end if
+
+	-- Equip the idle set
+	if command == 'toggle death set' then
+		-- Check status of deathMode
+		if deathMode == false then
+			-- Toggle deathMode on
+			deathMode = true
+			-- Equip death set
+			equip(sets.midcast.death)
+			-- Lock all slots
+			send_command('gs disable all')
+			-- Alert the user which set is currently being equipped
+			send_command('@input /echo <----- Death Mode On ----->')
+		else
+			-- Toggle deathMode off
+			deathMode = false
+			-- Lock all slots
+			send_command('gs enable all')
+			-- Alert the user which set is currently being equipped
+			send_command('@input /echo <----- Death Mode Off ----->')
+		end
 	end -- end if
 
 end -- end self_command()
