@@ -71,7 +71,7 @@ function get_sets()
         body="Zendik Robe",
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
         legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet={ name="Merlinic Crackows", augments={'"Fast Cast"+5','CHR+7','Mag. Acc.+13',}},
+        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
         neck="Voltsurge Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
@@ -87,9 +87,10 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
+	sets.midcast.magic = {}
 
-	-- Magic : Default
-	sets.midcast.magic = {
+	-- Midcast: Elemental Magic
+	sets.midcast.magic.elemental = {
 	    ammo="Pemphredo Tathlum",
         head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
@@ -103,10 +104,25 @@ function get_sets()
         left_ring="Mujin Band",
         right_ring="Locus Ring",
 	    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.midcast.magic
+	} -- end sets.midcast.magic.elemental
 
-	-- Midcast : Cure Potency
-	sets.midcast.curePotency = {
+	-- Midcast: Enfeebling Magic
+	sets.midcast.magic.enfeebling = {
+	} -- end sets.midcast.magic.enfeebling
+
+	-- Midcast: Enhancing Magic
+	sets.midcast.magic.enhancing = {
+        main="Oranyan",
+        sub="Enki Strap",
+        head="Arbatel Bonnet +1",
+        body={ name="Peda. Gown +1", augments={'Enhances "Enlightenment" effect',}},
+        hands="Chironic Gloves",
+        neck="Incanter's Torque",
+        back="Perimede Cape",
+	} -- end sets.midcast.magic.enhancing
+
+	-- Midcast: Healing Magic
+	sets.midcast.magic.healing = {
         main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
         sub="Enki Strap",
         ammo="Hydrocera",
@@ -122,7 +138,51 @@ function get_sets()
         left_ring="Vertigo Ring",
         right_ring="Lebeche Ring",
         back="Solemnity Cape",
-	} -- end sets.midcast.curePotency
+	} -- end sets.midcast.magic.healing
+
+	-- Midcast: Dark Magic
+	sets.midcast.magic.dark = {
+	} -- end sets.midcast.magic.dark
+
+
+	----------------------------------------------------------------------
+	-- Job Abilities
+	----------------------------------------------------------------------
+	-- Initialize an array to begin storing set data
+	sets.jobAbility = {}
+
+	-- Dark Arts
+	sets.jobAbility.darkArts = {
+	    body="Acad. Gown +1",
+	} -- end sets.jobAbility.darkArts
+
+	-- Immanence
+	sets.jobAbility.immanence = {
+        hands="Arbatel Bracers +1",
+	} -- end sets.jobAbility.immanence
+
+	-- Light Arts
+	sets.jobAbility.lightArts = {
+	    legs="Acad. Pants +1",
+	} -- end sets.jobAbility.lightArts
+
+	-- Perpetuance
+	sets.jobAbility.perpetuance = {
+	    hands="Arbatel Bracers +1",
+	} -- end sets.jobAbility.perpetuance
+
+	-- Sublimation
+	sublimationMode = false
+	sets.jobAbility.sublimation = {
+	    head="Acad. Mortar. +1",
+	    body={ name="Peda. Gown +1", augments={'Enhances "Enlightenment" effect',}},
+        left_ear="Savant's Earring",
+	} -- end sets.jobAbility.sublimation
+
+	-- Tabula Rasa
+	sets.jobAbility.tabulaRasa = {
+        legs={ name="Peda. Pants +1", augments={'Enhances "Tabula Rasa" effect',}},
+	} -- end sets.jobAbility.tabulaRasa
 
 
 	----------------------------------------------------------------------
@@ -131,79 +191,203 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.utility = {}
 
-	-- Dark magic
-	sets.utility.darkMagic = {
-	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
-	    sub="Ammurapi Shield",
-        body="Shango Robe",
-        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
-	    neck="Erra Pendant",
-        waist="Fucho-no-Obi",
-	    left_ring="Evanescence Ring",
-		right_ring="Archon Ring",
-	    back="Perimede Cape",
-	} -- end sets.utility.darkMagic
+	-- Klimaform
+	sets.utility.klimaform = {
+        feet="Arbatel Loafers +1",
+	} -- end sets.utility.klimaform
+
+	-- Regen
+	sets.utility.regen = {
+        head="Arbatel Bonnet +1",
+	} -- end sets.utility.regen
+
+	-- Stormsurge
+	sets.utility.stormsurge = {
+	    feet={ name="Peda. Loafers +1", augments={'Enhances "Stormsurge" effect',}},
+	} -- end sets.utility.stormsurge
 
 
 	----------------------------------------------------------------------
 	-- Spell arrays
 	----------------------------------------------------------------------
-	CureSpells = {
-		["Cure"] = true,
-		["Cure II"] = true,
-		["Cure III"] = true,
-		["Cure IV"] = true,
+	DarkSpells = {
+		["Aspir"] = true,
+		["Aspir II"] = true,
+		["Bio"] = true,
+		["Bio II"] = true,
+		["Drain"] = true,
+		["Kaustra"] = true,
 	}
 
-	DebuffRemovalSpells = {
-		["Poisona"] = true,
-		["Paralyna"] = true,
-		["Blindna"] = true,
-		["Silena"] = true,
-		["Stona"] = true,
-		["Viruna"] = true,	
-		["Cursna"] = true,	
+	ElementalSpells = {
+		["Aero"] = true,
+		["Aero II"] = true,
+		["Aero III"] = true,
+		["Aero IV"] = true,
+		["Aero V"] = true,
+		["Anemohelix"] = true,
+		["Anemohelix II"] = true,
+		["Blizzard"] = true,
+		["Blizzard II"] = true,
+		["Blizzard III"] = true,
+		["Blizzard IV"] = true,
+		["Blizzard V"] = true,
+		["Cryohelix"] = true,
+		["Cryohelix II"] = true,
+		["Fire"] = true,
+		["Fire II"] = true,
+		["Fire III"] = true,
+		["Fire IV"] = true,
+		["Fire V"] = true,
+		["Geohelix"] = true,
+		["Geohelix II"] = true,
+		["Hydrohelix"] = true,
+		["Hydrohelix II"] = true,
+		["Ionohelix"] = true,
+		["Ionohelix II"] = true,
+		["Luminohelix"] = true,
+		["Luminohelix II"] = true,
+		["Noctohelix"] = true,
+		["Noctohelix II"] = true,
+		["Pyrohelix"] = true,
+		["Pyrohelix II"] = true,
+		["Stone"] = true,
+		["Stone II"] = true,
+		["Stone III"] = true,
+		["Stone IV"] = true,
+		["Stone V"] = true,
+		["Thunder"] = true,
+		["Thunder II"] = true,
+		["Thunder III"] = true,
+		["Thunder IV"] = true,
+		["Thunder V"] = true,
+		["Water"] = true,
+		["Water II"] = true,
+		["Water III"] = true,
+		["Water IV"] = true,
+		["Water V"] = true,
 	}
 
-	EnhanceDuration = {
+	EnfeeblingSpells = {
+		["Bind"] = true,
+		["Blind"] = true,
+		["Break"] = true,
+		["Dia"] = true,
+		["Dia II"] = true,
+		["Diaga"] = true,
+		["Dispel"] = true,
+		["Distract"] = true,
+		["Frazzle"] = true,
+		["Gravity"] = true,
+		["Paralyze"] = true,
+		["Poison"] = true,
+		["Poison II"] = true,
+		["Sleep"] = true,
+		["Sleep II"] = true,
+		["Silence"] = true,
+		["Slow"] = true,
+	}
+
+	EnhancingSpells = {
+		["Adloquium"] = true,
+		["Animus Augeo"] = true,
+		["Animus Minuo"] = true,
+		["Aquaveil"] = true,
+		["Aurorastorm"] = true,
+		["Aurorastorm II"] = true,
+		["Baraero"] = true,
+		["Barblind"] = true,
+		["Barblizzard"] = true,
+		["Barfire"] = true,
+		["Barparalyze"] = true,
+		["Barpetrify"] = true,
+		["Barpoison"] = true,
+		["Barsilence"] = true,
+		["Barsleep"] = true,
+		["Barstone"] = true,
+		["Barthunder"] = true,
+		["Barvirus"] = true,
+		["Barwater"] = true,
+		["Blaze Spikes"] = true,
+		["Blink"] = true,
+		["Deoderize"] = true,
+		["Embrava"] = true,
+		["Enaero"] = true,
+		["Enblizzard"] = true,
+		["Enfire"] = true,
+		["Enstone"] = true,
+		["Enthunder"] = true,
+		["Enwater"] = true,
+		["Erase"] = true,
+		["Firestorm"] = true,
+		["Firestorm II"] = true,
+		["Flurry"] = true,
+		["Hailstorm"] = true,
+		["Hailstorm II"] = true,
+		["Haste"] = true,
+		["Ice Spikes"] = true,
+		["Invisible"] = true,
+		["Phalanx"] = true,
 		["Protect"] = true,
 		["Protect II"] = true,
 		["Protect III"] = true,
 		["Protect IV"] = true,
 		["Protect V"] = true,
-		["Shell"] = true,
-		["Shell II"] = true,
-		["Shell III"] = true,
-		["Shell IV"] = true,
-		["Shell V"] = true,
-		["Blink"] = true,
-		["Stoneskin"] = true,
-		["Aquaveil"] = true,
-		["Phalanx"] = true,
-		["Haste"] = true,
-		["Barfire"] = true,
-		["Barblizzard"] = true,
-		["Baraero"] = true,
-		["Barstone"] = true,
-		["Barthunder"] = true,
-		["Barwater"] = true,
-		["Barsleep"] = true,
-		["Barpoison"] = true,
-		["Barparalyze"] = true,
-		["Barsilence"] = true,
-		["Enfire"] = true,
-		["Enblizzard"] = true,
-		["Enaero"] = true,
-		["Enstone"] = true,
-		["Enthunder"] = true,
-		["Enwater"] = true,
+		["Rainstorm"] = true,
+		["Rainstorm II"] = true,
+		["Refresh"] = true,
 		["Regen"] = true,
 		["Regen II"] = true,
 		["Regen III"] = true,
 		["Regen IV"] = true,
 		["Regen V"] = true,
-		["Refresh"] = true,
+		["Sandstorm"] = true,
+		["Sandstorm II"] = true,
+		["Shell"] = true,
+		["Shell II"] = true,
+		["Shell III"] = true,
+		["Shell IV"] = true,
+		["Shell V"] = true,
+		["Shock Spikes"] = true,
+		["Sneak"] = true,
+		["Stoneskin"] = true,
+		["Thunderstorm"] = true,
+		["Thunderstorm II"] = true,
+		["Voidstorm"] = true,
+		["Voidstorm II"] = true,
+		["Windstorm"] = true,
+		["Windstorm II"] = true,
+	}
+
+	HealingSpells = {
+		["Blindna"] = true,
+		["Cure"] = true,
+		["Cure II"] = true,
+		["Cure III"] = true,
+		["Cure IV"] = true,
+		["Cursna"] = true,
+		["Paralyna"] = true,
+		["Poisona"] = true,
+		["Raise"] = true,
+		["Raise II"] = true,
+		["Raise III"] = true,
+		["Reraise"] = true,
+		["Reraise II"] = true,
+		["Reraise III"] = true,
+		["Silena"] = true,
+		["Stona"] = true,
+		["Viruna"] = true,
+	}
+
+	RegenSpells = {
+		["Regen"] = true,
+		["Regen II"] = true,
+		["Regen III"] = true,
+		["Regen IV"] = true,
+		["Regen V"] = true,
+	}
+
+	StormsurgeSpells = {
 		["Sandstorm"] = true,
 		["Sandstorm II"] = true,
 		["Rainstorm"] = true,
@@ -220,124 +404,103 @@ function get_sets()
 		["Voidstorm II"] = true,
 		["Aurorastorm"] = true,
 		["Aurorastorm II"] = true,
-		["Phalanx"] = true,
-		["Refresh"] = true,
-		["Boost-STR"] = true,
-		["Boost-DEX"] = true,
-		["Boost-AGI"] = true,
-		["Boost-VIT"] = true,
-		["Boost-INT"] = true,
-		["Boost-MND"] = true,
-		["Boost-CHR"] = true,
-		["Auspice"] = true,
-		["Blaze Spikes"] = true,
-		["Shock Spikes"] = true,
-		["Ice Spikes"] = true,
-		["Sneak"] = true,
-		["Invisible"] = true,
-		["Deodorize"] = true,
-		["Animus Augeo"] = true,
-		["Anmius Minuo"] = true,
-		["Adloquium"] = true,
-		["Flurry"] = true,
 	}
-
-	ElementalSpells = {
-		["Fire"] = true,
-		["Fire II"] = true,
-		["Fire III"] = true,
-		["Fire IV"] = true,
-		["Fire V"] = true,
-		["Blizzard"] = true,
-		["Blizzard II"] = true,
-		["Blizzard III"] = true,
-		["Blizzard IV"] = true,
-		["Blizzard V"] = true,
-		["Aero"] = true,
-		["Aero II"] = true,
-		["Aero III"] = true,
-		["Aero IV"] = true,
-		["Aero V"] = true,
-		["Stone"] = true,
-		["Stone II"] = true,
-		["Stone III"] = true,
-		["Stone IV"] = true,
-		["Stone V"] = true,
-		["Thunder"] = true,
-		["Thunder II"] = true,
-		["Thunder III"] = true,
-		["Thunder IV"] = true,
-		["Thunder V"] = true,
-		["Water"] = true,
-		["Water II"] = true,
-		["Water III"] = true,
-		["Water IV"] = true,
-		["Water V"] = true,
-		["Firaja"] = true,
-		["Blizzaja"] = true,
-		["Aeroja"] = true,
-		["Stoneja"] = true,
-		["Thundaja"] = true,
-		["Waterja"] = true,
-		["Flare"] = true,
-		["Flare II"] = true,
-		["Freeze"] = true,
-		["Freeze II"] = true,
-		["Tornado"] = true,
-		["Tornado II"] = true,
-		["Quake"] = true,
-		["Quake II"] = true,
-		["Burst"] = true,
-		["Burst II"] = true,
-		["Flood"] = true,
-		["Flood II"] = true,
-		["Comet"] = true,
-		["Burn"] = true,
-		["Frost"] = true,
-		["Rasp"] = true,
-		["Shock"] = true,
-		["Drown"] = true,
-	}
-
-	DarkSpells = {
-		["Aspir"] = true,
-		["Aspir II"] = true,
-		["Aspir III"] = true,
-	}
-
 
 end -- end get_sets()
 
 
 ----------------------------------------------------------------------
--- Callback for when casting begins
+-- When status changes
+----------------------------------------------------------------------
+function status_change(new, old)
+	if new == 'Idle' then
+		equip(sets.idle)
+	elseif new == 'Engaged' then
+		equip(sets.melee)
+    end -- end if
+end -- end status_change()
+
+
+----------------------------------------------------------------------
+-- When buffs are gained or lost
+----------------------------------------------------------------------
+function buff_change(buffName, gained, buffDetails)
+	if buffName == "Sublimation: Activated" then
+		if gained == true then
+			equip(sets.jobAbility.sublimation)
+			sublimationMode = true
+		else
+			sublimationMode = false
+	    end -- end if
+    elseif buffName == "Sublimation: Complete" then
+    	sublimationMode = false
+    end -- end if
+end -- end buff_change()
+
+
+----------------------------------------------------------------------
+-- When casting begins
 ----------------------------------------------------------------------
 function precast(spell)
-
     if spell.action_type == 'Magic' then
 		equip(sets.precast.fastCast)
-	end
-
+    end -- end if
 end -- end precast()
 
 
 ----------------------------------------------------------------------
--- Callback for after casting begins, but before it fires
+-- After casting begins, but before spell actually fires
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Check if the action is a specified weapon skill
-	if spell.action_type == 'Magic' then
+	-- Check if the current action is a job ability
+	if spell.type == 'JobAbility' then
 
-    	-- Check if the spell is a cure
-    	if CureSpells[spell.english] then
-			equip(sets.midcast.curePotency)
-    	-- Check if the spell is a dark magic
-		elseif DarkSpells[spell.english] then
-			equip(set_combine(sets.midcast.magic, sets.utility.darkMagic))
-		else
-			equip(sets.midcast.magic)
-		end
+		-- Check for job ability
+    	if spell.name == "Tabula Rasa" then
+    		equip(sets.jobAbility.tabulaRasa)
+	    end -- end if
+
+	-- Check if the current action is magic
+	elseif spell.action_type == 'Magic' then
+
+		-- 1. Check for spell type
+    	-- Healing spells
+    	if DarkSpells[spell.english] then
+    		equip(sets.midcast.magic.dark)
+    	elseif ElementalSpells[spell.english] then
+    		equip(sets.midcast.magic.elemental)
+    	elseif EnfeeblingSpells[spell.english] then
+    		equip(sets.midcast.magic.enfeebling)
+    	elseif EnhancingSpells[spell.english] then
+    		equip(sets.midcast.magic.enhancing)
+    	elseif HealingSpells[spell.english] then
+    		equip(sets.midcast.magic.healing)
+	    end -- end if
+
+	    -- 2. Check if a grimoire is up
+	    if buffactive['Light Arts'] then
+	    	equip(sets.jobAbility.lightArts)
+	    elseif buffactive['Dark Arts'] then
+	    	equip(sets.jobAbility.darkArts)
+	    end -- end if
+
+	    -- 3. Check If any stratagems are up
+		if buffactive['Immanence'] then
+	    	equip(sets.jobAbility.immanence)
+	    end -- end if
+		if buffactive['Perpetuance'] then
+	    	equip(sets.jobAbility.perpetuance)
+	    end -- end if
+
+	    -- 4. Check for specific spell buffs
+	    if spell.english == "Klimaform" then
+	    	equip(sets.utility.klimaform)
+	    elseif RegenSpells[spell.english] then
+	    	equip(sets.utility.regen)
+	    elseif StormsurgeSpells[spell.english] then
+	    	equip(sets.utility.stormsurge)
+	    end -- end if
 
     end -- end if
 
@@ -345,31 +508,27 @@ end -- end midcast()
 
 
 ----------------------------------------------------------------------
--- Callback for after casting has fired
+-- After casting has completed
 ----------------------------------------------------------------------
 function aftercast(spell)
 	if player.status =='Engaged' then
-		equip(sets.melee)
+		if sublimationMode == true then
+			equip(set_combine(sets.melee, sets.jobAbility.sublimation))
+		else
+			equip(sets.melee)
+		end
 	else
-		equip(sets.idle)
-	end
+		if sublimationMode == true then
+			equip(set_combine(sets.idle, sets.jobAbility.sublimation))
+		else
+			equip(sets.idle)
+		end
+	end -- end if
 end -- end aftercast()
 
 
 ----------------------------------------------------------------------
--- Callback for whenever engagment status changes
-----------------------------------------------------------------------
-function status_change(new,old)
-	if new == 'Idle' then
-		equip(sets.idle)
-	elseif new == 'Engaged' then
-		equip(sets.melee)
-	end
-end -- end status_change()
-
-
-----------------------------------------------------------------------
--- In game alerts to gear set changes
+-- Bound key commands
 ----------------------------------------------------------------------
 function self_command(command)
 
