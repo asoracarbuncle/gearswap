@@ -4,7 +4,8 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f10 gs c toggle death set')
+	send_command('bind f10 gs c toggle death mode')
+	send_command('bind f11 gs c toggle burst mode')
 
 
 	----------------------------------------------------------------------
@@ -72,7 +73,7 @@ function get_sets()
         body="Zendik Robe",
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
         legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet={ name="Merlinic Crackows", augments={'"Fast Cast"+5','CHR+7','Mag. Acc.+13',}},
+        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
         neck="Voltsurge Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
@@ -88,27 +89,22 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
+	sets.midcast.magic = {}
 
-	-- Midcast : Magic
-	sets.midcast.magic = {
-	    ammo="Pemphredo Tathlum",
-        head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
-	    body="Jhakri Robe +2",
-	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-	    feet="Jhakri Pigaches +2",
-        neck="Mizu. Kubikazari",
-	    waist="Refoccilation Stone",
-        left_ear="Friomisi Earring",
-        right_ear="Hecate's Earring",
-        left_ring="Mujin Band",
-        right_ring="Locus Ring",
-	    back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.midcast.magic
+	-- Midcast : Magic : Dark
+	sets.midcast.magic.dark = {
+	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
+        body="Shango Robe",
+	    neck="Erra Pendant",
+        waist="Fucho-no-Obi",
+	    left_ring="Evanescence Ring",
+		right_ring="Archon Ring",
+	    back="Perimede Cape",
+	} -- end sets.midcast.magic.dark
 
-	-- Midcast : Death
+	-- Midcast : Magic : Death
 	deathMode = false
-	sets.midcast.death = {
+	sets.midcast.magic.death = {
 	    ammo="Hydrocera",
 	    head="Pixie Hairpin +1",
 	    body={ name="Amalric Doublet", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
@@ -122,7 +118,24 @@ function get_sets()
 	    left_ring="Mephitas's Ring",
 	    right_ring="Mephitas's Ring +1",
 	    back="Izdubar Mantle",
-	} -- end sets.midcast.magic
+	} -- end sets.midcast.magic.elemental
+
+	-- Midcast : Magic : Elemental
+	sets.midcast.magic.elemental = {
+	    ammo="Pemphredo Tathlum",
+        head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
+	    body="Jhakri Robe +2",
+	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
+	    feet="Jhakri Pigaches +2",
+        neck="Mizu. Kubikazari",
+	    waist="Refoccilation Stone",
+        left_ear="Friomisi Earring",
+        right_ear="Hecate's Earring",
+        left_ring="Mujin Band",
+        right_ring="Locus Ring",
+	    back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
+	} -- end sets.midcast.magic.elemental
 
 
 	----------------------------------------------------------------------
@@ -131,16 +144,14 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.utility = {}
 
-	-- Dark magic
-	sets.utility.darkMagic = {
-	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
-        body="Shango Robe",
-	    neck="Erra Pendant",
-        waist="Fucho-no-Obi",
-	    left_ring="Evanescence Ring",
-		right_ring="Archon Ring",
-	    back="Perimede Cape",
-	} -- end sets.Utility.darkMagic
+	-- Magic burst
+	burstMode = false
+	sets.utility.magicBurst = {
+	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        neck="Mizu. Kubikazari",
+        left_ring="Mujin Band",
+        right_ring="Locus Ring",
+	} -- end sets.utility.magicBurst
 
 
 	----------------------------------------------------------------------
@@ -257,11 +268,16 @@ function midcast(spell)
 	-- Check if the action is a specified weapon skill
 	if spell.action_type == 'Magic' then
 
-		-- Check if the spell is dark magic
+		-- 1. Check if the spell is dark magic
 		if DarkSpells[spell.english] then
-			equip(set_combine(sets.midcast.magic, sets.utility.darkMagic))
-		else
-			equip(sets.midcast.magic)
+			equip(sets.midcast.magic.dark)
+		elseif ElementalSpells[spell.english] then
+			equip(sets.midcast.magic.elemental)
+		end
+
+		-- 2. Check if burst mode is on
+		if burstMode == true then
+			equip(sets.utility.magicBurst)
 		end
 
     end -- end if
@@ -301,19 +317,19 @@ function self_command(command)
 	-- Equip the idle set
 	if command == 'toggle idle set' then
 		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
+		send_command('@input /echo <----- Idle Set Equipped ----->')
 		-- Equip the set
 		equip(sets.idle)
 	end -- end if
 
 	-- Equip the idle set
-	if command == 'toggle death set' then
+	if command == 'toggle death mode' then
 		-- Check status of deathMode
 		if deathMode == false then
 			-- Toggle deathMode on
 			deathMode = true
 			-- Equip death set
-			equip(sets.midcast.death)
+			equip(sets.midcast.magic.death)
 			-- Lock all slots
 			send_command('gs disable all')
 			-- Alert the user which set is currently being equipped
@@ -327,5 +343,17 @@ function self_command(command)
 			send_command('@input /echo <----- Death Mode Off ----->')
 		end
 	end -- end if
+
+	-- Equip the idle set
+	if command == 'toggle burst mode' then
+		if burstMode == false then
+			burstMode = true
+			send_command('@input /echo <----- Burst Mode On ----->')
+		else
+			burstMode = false
+			send_command('@input /echo <----- Burst Mode Off ----->')
+		end
+	end -- end if
+
 
 end -- end self_command()
