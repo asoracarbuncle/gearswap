@@ -68,6 +68,8 @@ function get_sets()
 
 	-- Precast : FastCast
 	sets.precast.fastCast = {
+        main="Oranyan",
+	    sub="Niobid Strap",
         ammo="Sapience Orb",
         head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
         body="Zendik Robe",
@@ -94,6 +96,7 @@ function get_sets()
 	-- Midcast : Magic : Dark
 	sets.midcast.magic.dark = {
 	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
+	    sub="Ammurapi Shield",
         body="Shango Robe",
 	    neck="Erra Pendant",
         waist="Fucho-no-Obi",
@@ -105,6 +108,8 @@ function get_sets()
 	-- Midcast : Magic : Death
 	deathMode = false
 	sets.midcast.magic.death = {
+	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+	    sub="Niobid Strap",
 	    ammo="Hydrocera",
 	    head="Pixie Hairpin +1",
 	    body={ name="Amalric Doublet", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
@@ -122,18 +127,20 @@ function get_sets()
 
 	-- Midcast : Magic : Elemental
 	sets.midcast.magic.elemental = {
+	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+	    sub="Niobid Strap",
 	    ammo="Pemphredo Tathlum",
-        head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
+	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
+	    legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
 	    feet="Jhakri Pigaches +2",
-        neck="Mizu. Kubikazari",
+	    neck="Eddy Necklace",
 	    waist="Refoccilation Stone",
-        left_ear="Friomisi Earring",
-        right_ear="Hecate's Earring",
-        left_ring="Mujin Band",
-        right_ring="Locus Ring",
+	    left_ear="Friomisi Earring",
+	    right_ear="Regal Earring",
+	    left_ring="Acumen Ring",
+	    right_ring="Shiva Ring",
 	    back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic.elemental
 
