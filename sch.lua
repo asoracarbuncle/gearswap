@@ -4,6 +4,7 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
+	send_command('bind f10 gs c print debug info')
 
 
 	----------------------------------------------------------------------
@@ -20,7 +21,7 @@ function get_sets()
         head="Befouled Crown",
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
+	    legs="Assid. Pants +1",
 	    feet="Tutyr Sabots",
         neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
@@ -66,12 +67,14 @@ function get_sets()
 
 	-- Precast : FastCast
 	sets.precast.fastCast = {
+	    main="Oranyan",
+	    sub="Enki Strap",
         ammo="Sapience Orb",
         head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
         body="Zendik Robe",
-        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
+	    hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
         legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
+        feet="Acad. Loafers +1",
         neck="Voltsurge Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
@@ -91,34 +94,59 @@ function get_sets()
 
 	-- Midcast: Elemental Magic
 	sets.midcast.magic.elemental = {
+	    main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+	    sub="Enki Strap",
 	    ammo="Pemphredo Tathlum",
-        head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
+	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
 	    body="Jhakri Robe +2",
-	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-	    feet="Jhakri Pigaches +2",
-        neck="Mizu. Kubikazari",
-	    waist="Refoccilation Stone",
-        left_ear="Friomisi Earring",
-        right_ear="Hecate's Earring",
-        left_ring="Mujin Band",
-        right_ring="Locus Ring",
+	    hands={ name="Amalric Gages", augments={'INT+10','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	    legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
+	    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
+	    neck="Mizu. Kubikazari",
+	    waist="Eschan Stone",
+	    left_ear="Friomisi Earring",
+	    right_ear="Regal Earring",
+	    left_ring="Mujin Band",
+	    right_ring="Locus Ring",
 	    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic.elemental
 
 	-- Midcast: Enfeebling Magic
 	sets.midcast.magic.enfeebling = {
+        main="Oranyan",
+        sub="Enki Strap",
+        ammo="Pemphredo Tathlum",
+        head="Jhakri Coronal +2",
+        body="Shango Robe",
+        hands="Kaykaus Cuffs",
+	    legs="Arbatel Pants +1",
+	    feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
+        neck="Incanter's Torque",
+        waist="Rumination Sash",
+        left_ear="Gwati Earring",
+        right_ear="Regal Earring",
+        left_ring="Vertigo Ring",
+        right_ring="Kishar Ring",
+        back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic.enfeebling
 
 	-- Midcast: Enhancing Magic
 	sets.midcast.magic.enhancing = {
         main="Oranyan",
         sub="Enki Strap",
-        head="Arbatel Bonnet +1",
+        ammo="Hydrocera",
+        head="Befouled Crown",
         body={ name="Peda. Gown +1", augments={'Enhances "Enlightenment" effect',}},
-        hands="Chironic Gloves",
+        hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
+        legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
+        feet="Regal Pumps +1",
         neck="Incanter's Torque",
-        back="Perimede Cape",
+	    waist="Cascade Belt",
+        left_ear="Mendi. Earring",
+        right_ear="Andoaa Earring",
+        left_ring="Vertigo Ring",
+        right_ring="Lebeche Ring",
+        back="Fi Follet Cape +1",
 	} -- end sets.midcast.magic.enhancing
 
 	-- Midcast: Healing Magic
@@ -137,12 +165,20 @@ function get_sets()
         right_ear="Static Earring",
         left_ring="Vertigo Ring",
         right_ring="Lebeche Ring",
-        back="Solemnity Cape",
+        back={ name="Lugh's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
 	} -- end sets.midcast.magic.healing
 
 	-- Midcast: Dark Magic
-	sets.midcast.magic.dark = {
-	} -- end sets.midcast.magic.dark
+	sets.midcast.magic.dark = set_combine(sets.midcast.magic.elemental, {
+        main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
+        sub="Ammurapi Shield",
+        body="Shango Robe",
+	    neck="Erra Pendant",
+        waist="Fucho-no-Obi",
+	    left_ring="Evanescence Ring",
+		right_ring="Archon Ring",
+	    back="Perimede Cape",
+	}) -- end sets.midcast.magic.dark
 
 
 	----------------------------------------------------------------------
@@ -191,6 +227,17 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.utility = {}
 
+	-- Aqyaveil
+	sets.utility.aquaveil = {
+        head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	} -- end sets.utility.aquaveil
+
+	-- Element Bonus
+	sets.utility.elementBonus = {
+	    waist="Hachirin-no-Obi",
+	    back="Twilight Cape",
+	} -- end sets.utility.elementBonus
+
 	-- Klimaform
 	sets.utility.klimaform = {
         feet="Arbatel Loafers +1",
@@ -199,6 +246,7 @@ function get_sets()
 	-- Regen
 	sets.utility.regen = {
         head="Arbatel Bonnet +1",
+	    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.utility.regen
 
 	-- Stormsurge
@@ -452,7 +500,7 @@ end -- end precast()
 -- After casting begins, but before spell actually fires
 ----------------------------------------------------------------------
 function midcast(spell)
-
+	
 	-- Check if the current action is a job ability
 	if spell.type == 'JobAbility' then
 
@@ -465,7 +513,6 @@ function midcast(spell)
 	elseif spell.action_type == 'Magic' then
 
 		-- 1. Check for spell type
-    	-- Healing spells
     	if DarkSpells[spell.english] then
     		equip(sets.midcast.magic.dark)
     	elseif ElementalSpells[spell.english] then
@@ -494,13 +541,22 @@ function midcast(spell)
 	    end -- end if
 
 	    -- 4. Check for specific spell buffs
-	    if spell.english == "Klimaform" then
+	    if spell.english == "Aquaveil" then
+	    	equip(sets.utility.aquaveil)
+	    elseif spell.english == "Klimaform" then
 	    	equip(sets.utility.klimaform)
 	    elseif RegenSpells[spell.english] then
 	    	equip(sets.utility.regen)
 	    elseif StormsurgeSpells[spell.english] then
 	    	equip(sets.utility.stormsurge)
 	    end -- end if
+
+	    -- 5. Check for element bonus
+	    if ElementalSpells[spell.english] then
+			if spell.element == world.weather_element or spell.element == world.day_element then
+				equip(sets.utility.elementBonus)
+			end
+		end
 
     end -- end if
 
