@@ -38,9 +38,10 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : default
-	-- Store TP: 79
+	-- Store TP: 64
 	-- Triple Attack: 5%
-	-- Double Attack: 31%
+	-- Double Attack: 32%
+	-- Accuracy: 1273
 	sets.melee = {
 	    ammo="Ginsen",
 	    head="Flam. Zucchetto +2",
@@ -53,7 +54,7 @@ function get_sets()
 	    left_ear="Cessance Earring",
 	    right_ear="Brutal Earring",
 	    left_ring="Flamma Ring",
-	    right_ring="Regal Ring",
+	    right_ring="Ilabrat Ring",
 	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}},
 	} -- end sets.melee
 
@@ -85,8 +86,8 @@ function get_sets()
 	sets.midcast.ws = {}
 
 	-- Midcast : Weapon Skill : Default
-	-- Strength: 253
-	-- Weapon Skill Damage: 25%
+	-- Strength: 267
+	-- Weapon Skill Damage: 58%
 	sets.midcast.ws.default = {
         ammo="Knobkierrie",
         head="Wakido Kabuto +3",
@@ -103,13 +104,36 @@ function get_sets()
         back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
 	} -- end sets.midcast.ws.default
 
-	-- Midcast : Weapon Skill : Tachi: Fudo
-	sets.midcast.ws["Tachi: Fudo"] = sets.midcast.ws.default
-	-- end sets.midcast.ws["Tachi: Fudo"]
+	-- Midcast : Weapon Skill : Elemental
+	-- Strength: 182
+	-- Magic Attack Bonus: 160
+	sets.midcast.ws.elemental = {
+        ammo="Pemphredo Tathlum",
+        head="Wakido Kabuto +3",
+        body={ name="Found. Breastplate", augments={'Accuracy+15','Mag. Acc.+15','Attack+15','"Mag.Atk.Bns."+15',}},
+        hands={ name="Founder's Gauntlets", augments={'STR+5','"Mag.Atk.Bns."+1',}},
+        legs="Augury Cuisses",
+        feet={ name="Founder's Greaves", augments={'VIT+10','Accuracy+15','"Mag.Atk.Bns."+15','Mag. Evasion+15',}},
+        neck="Baetyl Pendant",
+        waist="Eschan Stone",
+        left_ear="Friomisi Earring",
+        right_ear="Hecate's Earring",
+        left_ring="Acumen Ring",
+        right_ring="Mujin Band",
+        back={ name="Smertrios's Mantle", augments={'STR+20','Mag. Acc+20 /Mag. Dmg.+20','STR+6','"Mag.Atk.Bns."+10',}},
+	} -- end sets.midcast.ws["Tachi: Jinpu"]
 
-	-- Midcast : Weapon Skill : Tachi: Shoha
-	sets.midcast.ws["Tachi: Shoha"] = sets.midcast.ws.default
-	-- end sets.midcast.ws["Tachi: Shoha"]
+	-- Midcast : Weapon Skill : Tachi: Jinpu
+	sets.midcast.ws["Tachi: Jinpu"] = sets.midcast.ws.elemental
+
+	-- Midcast : Weapon Skill : Tachi: Goten
+	sets.midcast.ws["Tachi: Goten"] = sets.midcast.ws.elemental
+
+	-- Midcast : Weapon Skill : Tachi: Kagero
+	sets.midcast.ws["Tachi: Kagero"] = sets.midcast.ws.elemental
+
+	-- Midcast : Weapon Skill : Tachi: Koki
+	sets.midcast.ws["Tachi: Koki"] = sets.midcast.ws.elemental
 
 
 	----------------------------------------------------------------------
