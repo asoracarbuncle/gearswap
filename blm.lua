@@ -151,6 +151,12 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.utility = {}
 
+	-- Element Bonus
+	sets.utility.elementBonus = {
+	    waist="Hachirin-no-Obi",
+	    back="Twilight Cape",
+	} -- end sets.utility.elementBonus
+
 	-- Magic burst
 	burstMode = false
 	sets.utility.magicBurst = {
@@ -285,6 +291,13 @@ function midcast(spell)
 		-- 2. Check if burst mode is on
 		if burstMode == true then
 			equip(sets.utility.magicBurst)
+		end
+
+	    -- 3. Check for element bonus
+	    if ElementalSpells[spell.english] then
+			if spell.element == world.weather_element or spell.element == world.day_element then
+				equip(sets.utility.elementBonus)
+			end
 		end
 
     end -- end if
