@@ -63,26 +63,47 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
 	sets.midcast.ws = {}
+	sets.midcast.ws.accuracy = {}
 
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
 	} -- end sets.midcast.ws.default
 
+	-- Midcast : Weapon Skill : Default
+	sets.midcast.ws.accuracy.default = {
+	} -- end sets.midcast.ws.accuracy.default
+
 	-- Midcast : Weapon Skill : Metatron Torment
 	sets.midcast.ws['Metatron Torment'] = {
 	} -- end sets.midcast.ws['Metatron Torment']
+
+	-- Midcast : Weapon Skill : Metatron Torment
+	sets.midcast.ws.accuracy['Metatron Torment'] = {
+	} -- end sets.midcast.ws.accuracy['Metatron Torment']
 
 	-- Midcast : Weapon Skill : Resolution
 	sets.midcast.ws['Resolution'] = {
 	} -- end sets.midcast.ws['Resolution']
 
+	-- Midcast : Weapon Skill : Resolution
+	sets.midcast.ws.accuracy['Resolution'] = {
+	} -- end sets.midcast.ws.accuracy['Resolution']
+
 	-- Midcast : Weapon Skill : Scourge
 	sets.midcast.ws['Scourge'] = {
 	} -- end sets.midcast.ws['Scourge']
 
+	-- Midcast : Weapon Skill : Scourge
+	sets.midcast.ws.accuracy['Scourge'] = {
+	} -- end sets.midcast.ws.accuracy['Scourge']
+
 	-- Midcast : Weapon Skill : Upheaval
 	sets.midcast.ws['Upheaval'] = {
 	} -- end sets.midcast.ws['Upheaval']
+
+	-- Midcast : Weapon Skill : Upheaval
+	sets.midcast.ws.accuracy['Upheaval'] = {
+	} -- end sets.midcast.ws.accuracy['Upheaval']
 
 
 	----------------------------------------------------------------------
@@ -140,11 +161,19 @@ function midcast(spell)
 	-- Check if the action is a weapon skill
     if spell.type == 'WeaponSkill' then
 
-		if sets.midcast.ws[spell.english] then
-			equip(sets.midcast.ws[spell.english])
-	    else
-			equip(sets.midcast.ws.default)
-		end
+    	if meleeSetNames[meleeSetIndex] == 'Accuracy' then
+			if sets.midcast.ws[spell.english] then
+				equip(sets.midcast.ws[spell.english])
+		    else
+				equip(sets.midcast.ws.default)
+			end
+    	else
+			if sets.midcast.ws.accuracy[spell.english] then
+				equip(sets.midcast.ws.accuracy[spell.english])
+		    else
+				equip(sets.midcast.ws.accuracy.default)
+			end
+    	end
 
 	elseif spell.type == 'JobAbility' then
 
