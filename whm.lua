@@ -10,7 +10,7 @@ function get_sets()
 	-- Idle set
 	----------------------------------------------------------------------
 	-- idle : Default
-	-- Refresh: 8 per tick
+	-- Refresh: 11 per tick / 12 per tick below 50%
 	sets.idle = {
 	    main="Bolelabunga",
 	    sub="Sors Shield",
@@ -21,7 +21,7 @@ function get_sets()
 	    legs="Assid. Pants +1",
         feet="Tutyr Sabots",
         neck="Incanter's Torque",
-	    waist="Porous Rope",
+        waist="Fucho-no-Obi",
 	    left_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}},
 	    right_ear="Nourish. Earring +1",
 	    left_ring="Renaye Ring",
@@ -86,7 +86,7 @@ function get_sets()
 	    head="Nahtirah Hat",
 	    body="Inyanga Jubbah +2",
         hands={ name="Chironic Gloves", augments={'"Mag.Atk.Bns."+12','"Fast Cast"+7',}},
-	    legs="Aya. Cosciales +1",
+        legs="Volte Brais",
         feet="Regal Pumps +1",
         neck="Orison Locket",
         waist="Witful Belt",
