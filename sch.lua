@@ -66,22 +66,24 @@ function get_sets()
 	sets.precast = {}
 
 	-- Precast : FastCast
+	-- Fast Cast: 72% (+15% RDM Sub)
+	-- Hast: 34%
 	sets.precast.fastCast = {
 	    main="Oranyan",
 	    sub="Enki Strap",
-        ammo="Sapience Orb",
-        head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
-        body="Zendik Robe",
+	    ammo="Sapience Orb",
+	    head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	    body="Zendik Robe",
 	    hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
-        legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet="Acad. Loafers +1",
-        neck="Voltsurge Torque",
-        waist="Witful Belt",
-        left_ear="Loquac. Earring",
-        right_ear="Etiolation Earring",
-        left_ring="Prolix Ring",
-        right_ring="Kishar Ring",
-        back={ name="Lugh's Cape", augments={'"Fast Cast"+10',}},
+	    legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+	    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
+	    neck="Voltsurge Torque",
+	    waist="Witful Belt",
+	    left_ear="Loquac. Earring",
+	    right_ear="Etiolation Earring",
+	    left_ring="Prolix Ring",
+	    right_ring="Kishar Ring",
+        back={ name="Lugh's Cape", augments={'Haste+10',}},
 	} -- end sets.precast.fastCast
 
 
@@ -91,6 +93,7 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
 	sets.midcast.magic = {}
+	sets.midcast.magic.enhancing = {}
 
 	-- Midcast: Elemental Magic
 	sets.midcast.magic.elemental = {
@@ -131,7 +134,26 @@ function get_sets()
 	} -- end sets.midcast.magic.enfeebling
 
 	-- Midcast: Enhancing Magic
-	sets.midcast.magic.enhancing = {
+	sets.midcast.magic.enhancing.lightArts = {
+        main="Oranyan",
+        sub="Enki Strap",
+        ammo="Hydrocera",
+        head="Telchine Cap",
+        body={ name="Peda. Gown +1", augments={'Enhances "Enlightenment" effect',}},
+        hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
+        legs={ name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +9',}},
+        feet={ name="Telchine Pigaches", augments={'Enh. Mag. eff. dur. +8',}},
+        neck="Incanter's Torque",
+	    waist="Cascade Belt",
+        left_ear="Mendi. Earring",
+        right_ear="Andoaa Earring",
+        left_ring="Vertigo Ring",
+        right_ring="Lebeche Ring",
+        back="Fi Follet Cape +1",
+	} -- end sets.midcast.magic.enhancing
+
+	-- Midcast: Enhancing Magic
+	sets.midcast.magic.enhancing.darkArts = {
         main="Oranyan",
         sub="Enki Strap",
         ammo="Hydrocera",
@@ -520,14 +542,18 @@ function midcast(spell)
     	elseif EnfeeblingSpells[spell.english] then
     		equip(sets.midcast.magic.enfeebling)
     	elseif EnhancingSpells[spell.english] then
-    		equip(sets.midcast.magic.enhancing)
+		    if buffactive['Light Arts'] then
+		    	equip(sets.midcast.magic.enhancing.lightArts)
+		    elseif buffactive['Dark Arts'] then
+		    	equip(sets.midcast.magic.enhancing.darkArts)
+		    end -- end if
     	elseif HealingSpells[spell.english] then
     		equip(sets.midcast.magic.healing)
 	    end -- end if
 
 	    -- 2. Check if a grimoire is up
 	    if buffactive['Light Arts'] then
-	    	equip(sets.jobAbility.lightArts)
+	    	-- equip(sets.jobAbility.lightArts) Uncomment if you need additional skill
 	    elseif buffactive['Dark Arts'] then
 	    	equip(sets.jobAbility.darkArts)
 	    end -- end if
