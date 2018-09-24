@@ -11,22 +11,7 @@ function get_sets()
 	-- Idle set
 	----------------------------------------------------------------------
 	-- Initializes an array to begin storing set data
-	sets.idle = {
-		sub="Utu Grip",
-	    ammo="Staunch Tathlum +1",
-	    head={ name="Souv. Schaller +1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}},
-	    body="Volte Haubert",
-	    hands={ name="Souv. Handsch. +1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}},
-	    legs="Volte Brayettes",
-	    feet="Hermes' Sandals",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Odnowa Earring",
-	    left_ring="Moonbeam Ring",
-	    right_ring="Moonbeam Ring",
-	    back="Moonbeam Cape",
-	}
+	sets.idle = {}
 
 	-- Idle : Default
 	sets.idle = {
@@ -429,16 +414,16 @@ function midcast(spell)
     if spell.type == 'WeaponSkill' then
 
     	if meleeSetNames[meleeSetIndex] == 'Accuracy' then
-			if sets.midcast.ws[spell.english] then
-				equip(sets.midcast.ws[spell.english])
-		    else
-				equip(sets.midcast.ws.default)
-			end
-    	else
 			if sets.midcast.ws.accuracy[spell.english] then
 				equip(sets.midcast.ws.accuracy[spell.english])
 		    else
 				equip(sets.midcast.ws.accuracy.default)
+			end
+    	else
+			if sets.midcast.ws[spell.english] then
+				equip(sets.midcast.ws[spell.english])
+		    else
+				equip(sets.midcast.ws.default)
 			end
     	end
 
