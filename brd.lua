@@ -95,7 +95,7 @@ function get_sets()
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs="Aya. Cosciales +2",
 	    feet={ name="Bihu Slippers +1", augments={'Enhances "Nightingale" effect',}},
-	    neck="Voltsurge Torque",
+        neck="Orunmila's Torque",
 	    waist="Witful Belt",
 	    left_ear="Loquac. Earring",
         right_ear="Aoidos' Earring",
@@ -111,7 +111,7 @@ function get_sets()
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs="Aya. Cosciales +2",
         feet="Navon Crackows",
-        neck="Voltsurge Torque",
+        neck="Orunmila's Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
         right_ear="Etiolation Earring",
@@ -193,7 +193,6 @@ function get_sets()
 
 	-- Midcast : Buff Song for Gjallarhorn
 	sets.midcast.buffSong["Gjallarhorn"] = {
-	    head="Brioso Roundlet +3",
 	    body="Fili Hongreline +1",
 	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
@@ -204,23 +203,23 @@ function get_sets()
         back={ name="Rhapsode's Cape", augments={'HP+25','Mag. Acc.+4','Enmity-8',}},
 	} -- end sets.midcast.buffSong["Gjallarhorn"]
 
-	-- Midcast : Buff Song for Gjallarhorn
+	-- Midcast : Buff Song for Marsyas
 	sets.midcast.buffSong["Marsyas"] = sets.midcast.buffSong["Gjallarhorn"]
 	-- end sets.midcast.buffSong["Marsyas"]
 
 	-- Midcast : Enfeeble Song set
 	sets.midcast.enfeebleSong = {
 	    head="Brioso Roundlet +3",
-	    body="Fili Hongreline +1",
-        hands="Inyan. Dastanas +2",
-        legs="Inyanga Shalwar +2",
+	    body="Brioso Justau. +2",
+	    hands="Inyan. Dastanas +2",
+	    legs="Inyanga Shalwar +2",
 	    feet="Brioso Slippers +3",
-        neck="Mnbw. Whistle +1",
-        waist="Kobo Obi",
+	    neck="Mnbw. Whistle +1",
+	    waist="Luminary Sash",
 	    left_ear="Regal Earring",
 	    right_ear="Darkside Earring",
-        left_ring="Metamorph Ring",
-	    right_ring="Metamor. Ring +1",
+	    left_ring="Stikini Ring",
+	    right_ring="Stikini Ring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
 	} -- end sets.midcast.enfeebleSong
 
@@ -235,8 +234,8 @@ function get_sets()
 	    waist="Porous Rope",
 	    left_ear="Lifestorm Earring",
 	    right_ear="Psystorm Earring",
-        left_ring="Metamorph Ring",
-	    right_ring="Metamor. Ring +1",
+	    left_ring="Stikini Ring",
+	    right_ring="Stikini Ring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
 	} -- end sets.midcast.magic
 

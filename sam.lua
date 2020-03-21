@@ -22,12 +22,12 @@ function get_sets()
 	    legs="Wakido Haidate +3",
 	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
         neck="Loricate Torque +1",
-        waist="Ioskeha Belt",
+	    waist="Ioskeha Belt +1",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
-        back="Reiki Cloak",
+	    back="Moonbeam Cape",
 	} -- end sets.idle
 
 
@@ -39,9 +39,10 @@ function get_sets()
 
 	-- Melee : default
 	-- Store TP: 64
+	-- Haste: 26%
 	-- Triple Attack: 5%
-	-- Double Attack: 32%
-	-- Accuracy: 1273
+	-- Double Attack: 33%
+	-- Accuracy: 1278
 	sets.melee = {
 	    ammo="Ginsen",
 	    head="Flam. Zucchetto +2",
@@ -50,7 +51,7 @@ function get_sets()
 	    legs="Wakido Haidate +3",
 	    feet="Flam. Gambieras +2",
 	    neck="Moonlight Nodowa",
-	    waist="Ioskeha Belt",
+	    waist="Ioskeha Belt +1",
 	    left_ear="Cessance Earring",
 	    right_ear="Brutal Earring",
 	    left_ring="Flamma Ring",
@@ -70,7 +71,7 @@ function get_sets()
         ammo="Sapience Orb",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs="Arjuna Breeches",
-        neck="Voltsurge Torque",
+        neck="Orunmila's Torque",
         left_ear="Etiolation Earring",
         right_ear="Loquac. Earring",
         left_ring="Lebeche Ring",
@@ -85,7 +86,7 @@ function get_sets()
 	sets.midcast = {}
 	sets.midcast.ws = {}
 
-	-- Midcast : Weapon Skill : Default
+	-- Midcast : Weapon Skill : Single Hit Physical
 	-- Strength: 267
 	-- Weapon Skill Damage: 58%
 	sets.midcast.ws.default = {
@@ -121,13 +122,13 @@ function get_sets()
         left_ring="Acumen Ring",
         right_ring="Mujin Band",
         back={ name="Smertrios's Mantle", augments={'STR+20','Mag. Acc+20 /Mag. Dmg.+20','STR+6','"Mag.Atk.Bns."+10',}},
-	} -- end sets.midcast.ws["Tachi: Jinpu"]
-
-	-- Midcast : Weapon Skill : Tachi: Jinpu
-	sets.midcast.ws["Tachi: Jinpu"] = sets.midcast.ws.elemental
+	} -- end sets.midcast.ws.elemental
 
 	-- Midcast : Weapon Skill : Tachi: Goten
 	sets.midcast.ws["Tachi: Goten"] = sets.midcast.ws.elemental
+
+	-- Midcast : Weapon Skill : Tachi: Jinpu
+	sets.midcast.ws["Tachi: Jinpu"] = sets.midcast.ws.elemental
 
 	-- Midcast : Weapon Skill : Tachi: Kagero
 	sets.midcast.ws["Tachi: Kagero"] = sets.midcast.ws.elemental

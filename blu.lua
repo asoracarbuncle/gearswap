@@ -39,13 +39,13 @@ function get_sets()
 	sets.idle = {}
 
 	-- Idle : Default
-	sets.idle.default = {
+	sets.idle = {
 	    ammo="Mantoptera Eye",
 	    head={ name="Rawhide Mask", augments={'HP+50','Accuracy+15','Evasion+20',}},
 	    body="Jhakri Robe +2",
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
         legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
-	    feet="Tutyr Sabots",
+	    feet={ name="Herculean Boots", augments={'Mag. Acc.+20','Pet: Accuracy+16 Pet: Rng. Acc.+16','"Refresh"+1','Accuracy+16 Attack+16',}},
         neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
 	    left_ear="Etiolation Earring",
@@ -53,7 +53,7 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
 	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
-	} -- end sets.idle.default
+	} -- end sets.idle
 
 
 	----------------------------------------------------------------------
@@ -63,21 +63,23 @@ function get_sets()
 	sets.melee = {}
 
 	-- Melee : Default
-	sets.melee.default = {
+	-- Triple Attack: 24% (+5% Blue Magic)
+	-- Store TP: 41%
+	sets.melee = {
 	    ammo="Ginsen",
 	    head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
 	    feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-	    neck="Ainia Collar",
+	    neck="Clotharius Torque",
 	    waist="Windbuffet Belt +1",
 	    left_ear="Suppanomimi",
 	    right_ear="Telos Earring",
 	    left_ring="Epona's Ring",
-	    right_ring="Petrov Ring",
+	    right_ring="Hetairoi Ring",
 	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
-	} -- end sets.melee.default
+	} -- end sets.melee
 
 
 	----------------------------------------------------------------------
@@ -87,31 +89,32 @@ function get_sets()
 	sets.precast = {}
 
 	-- Precast : Fastcast
-	sets.precast.fastcast = {
+	sets.precast.fastCast = {
         ammo="Sapience Orb",
         head={ name="Carmine Mask", augments={'Accuracy+15','Mag. Acc.+10','"Fast Cast"+3',}},
         body={ name="Luhlaza Jubbah +1", augments={'Enhances "Enchainment" effect',}},
 	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
 	    feet="Carmine Greaves",
-	    neck="Voltsurge Torque",
+        neck="Orunmila's Torque",
 	    waist="Witful Belt",
 	    left_ear="Loquac. Earring",
         right_ear="Etiolation Earring",
 	    left_ring="Prolix Ring",
 	    right_ring="Kishar Ring",
         back={ name="Rosmerta's Cape", augments={'"Fast Cast"+10',}},
-	} -- end sets.precast.fastcast
+	} -- end sets.precast.fastCast
 
 
 	----------------------------------------------------------------------
-	-- Magic set
+	-- Midcast sets
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
-	sets.magic = {}
+	sets.midcast = {}
+	sets.midcast.ws = {}
 
 	-- Magic : Default
-	sets.magic.default = {
+	sets.midcast.magic = {
 	    ammo="Pemphredo Tathlum",
 	    head="Jhakri Coronal +2",
 	    body="Jhakri Robe +2",
@@ -125,15 +128,7 @@ function get_sets()
         left_ring="Shiva Ring",
         right_ring="Shiva Ring",
         back={ name="Rosmerta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.magic.default
-
-
-	----------------------------------------------------------------------
-	-- Midcast sets
-	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.midcast = {}
-	sets.midcast.ws = {}
+	} -- end sets.midcast.magic
 
 	-- Midcast : Weaponskill : Default
 	sets.midcast.ws.default = {
@@ -146,7 +141,7 @@ function get_sets()
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Brutal Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 		left_ring="Epona's Ring",
 	    right_ring="Begrudging Ring",
         back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
@@ -163,7 +158,7 @@ function get_sets()
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Brutal Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 		left_ring="Epona's Ring",
 	    right_ring="Begrudging Ring",
         back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
@@ -180,7 +175,7 @@ function get_sets()
 	    neck="Caro Necklace",
 	    waist="Grunfeld Rope",
 	    left_ear="Ishvara Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 	    left_ring="Shukuyu Ring",
 	    right_ring="Rufescent Ring",
 	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
@@ -197,7 +192,7 @@ function get_sets()
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Brutal Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 	    left_ring="Epona's Ring",
 	    right_ring="Rufescent Ring",
 	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
@@ -214,22 +209,22 @@ function get_sets()
 	    neck="Caro Necklace",
 	    waist="Grunfeld Rope",
 	    left_ear="Ishvara Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 	    left_ring="Shukuyu Ring",
 	    right_ring="Rufescent Ring",
 	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.midcast.ws['Savage Blade']
 
 	-- Midcast : Weaponskill : Red Lotus Blade
-	sets.midcast.ws['Red Lotus Blade'] = sets.magic.default
+	sets.midcast.ws['Red Lotus Blade'] = sets.midcast.magic
 	-- end sets.midcast.ws['Savage Blade']
 
 	-- Midcast : Weaponskill : Seraph Blade
-	sets.midcast.ws['Seraph Blade'] = sets.magic.default
+	sets.midcast.ws['Seraph Blade'] = sets.midcast.magic
 	-- end sets.midcast.ws['Seraph Blade']
 
 	-- Midcast : Weaponskill : Sanguine Blade
-	sets.midcast.ws['Sanguine Blade'] = sets.magic.default
+	sets.midcast.ws['Sanguine Blade'] = sets.midcast.magic
 	-- end sets.midcast.ws['Sanguine Blade']
 
 
@@ -244,14 +239,6 @@ function get_sets()
 	    left_ring="Mujin Band",
 	    right_ring="Begrudging Ring",
 	} -- end sets.jobAbilities.chainAffinity
-
-	-- Burst affinity
-	sets.jobAbilities.burstAffinity = {
-		feet="Hashishin Basmak +1",
-        right_ear="Static Earring",
-	    right_ring="Locus Ring",
-	    left_ring="Mujin Band",
-	} -- end sets.jobAbilities.burstAffinity
 
 	-- Diffusion
 	sets.jobAbilities.diffusion = {
@@ -285,6 +272,23 @@ function get_sets()
 	} -- end sets.Utility.darkMagic
 
 
+	----------------------------------------------------------------------
+	-- Spell arrays
+	----------------------------------------------------------------------
+	BlueMagicSpells = {
+		["Barrier Tusk"] = true,
+		["Cocoon"] = true,
+		["Erratic Flutter"] = true,
+		["Occultation"] = true,
+		["Magic Barrier"] = true,
+		["Mighty Guard"] = true,
+	}
+
+	DarkSpells = {
+		["Tenebral Crush"] = true,
+		["MP Drainkiss"] = true,
+	}
+
 end -- end get_sets()
 
 
@@ -293,7 +297,7 @@ end -- end get_sets()
 ----------------------------------------------------------------------
 function precast(spell)
     if spell.action_type == 'Magic' then
-		equip(sets.precast.fastcast)
+		equip(sets.precast.fastCast)
 	end
 end -- end precast()
 
@@ -304,55 +308,37 @@ end -- end precast()
 function midcast(spell)
 
 	-- Check if the action is a specified weapon skill
-	if sets.midcast.ws[spell.name] then
-
-		-- Equip the appropriate ws specific set
-		equip(sets.midcast.ws[spell.name])
-
-		-- Crank up the chain affinity effect
-		if buffactive['Chain Affinity'] then
-			equip(sets.jobAbilities.chainAffinity)
-		end -- end if
-
-    elseif spell.type == 'WeaponSkill' then
-
-    	-- Equip default ws set
-		equip(sets.midcast.ws.default)
-
-		-- Crank up the chain affinity effect
-		if buffactive['Chain Affinity'] then
-			equip(sets.jobAbilities.chainAffinity)
-		end -- end if
-
-	elseif spell.action_type == 'Magic' then
+	if spell.action_type == 'Magic' then
 
     	-- Equip base magic set
-		equip(sets.magic.default)
+		equip(sets.midcast.magic)
 
 		-- Crank up the dark elemental magic
-		if spell.english == 'Tenebral Crush'
-			or spell.english == 'MP Drainkiss' then
-			equip(sets.utility.darkMagic)
-		end -- end if
-
-		-- Crank up the blue magic skill for enhancement magic
-		if spell.english == 'Barrier Tusk'
-			or spell.english == 'Cocoon'
-			or spell.english == 'Erratic Flutter'
-			or spell.english == 'Occultation'
-			or spell.english == 'Magic Barrier'
-			or spell.english == 'Mighty Guard' then
+    	if BlueMagicSpells[spell.english] then
 			equip(sets.utility.blueMagicSkill)
-		end -- end if
-
-		-- Crank up the burst affinity effect
-		if buffactive['Burst Affinity'] then
-			equip(sets.jobAbilities.burstAffinity)
-		end -- end if
+    	elseif DarkSpells[spell.english] then
+			equip(sets.utility.darkMagic)
+		end
 
 		-- Crank up the diffusion effect
 		if buffactive['Diffusion'] then
 			equip(sets.jobAbilities.diffusion)
+		end -- end if
+
+    elseif spell.type == 'WeaponSkill' then
+
+    	-- Check if a specific ws set exists
+		if sets.midcast.ws[spell.name] then
+			-- Equip the appropriate ws specific set
+			equip(sets.midcast.ws[spell.name])
+		else
+    		-- Equip default ws set
+			equip(sets.midcast.ws.default)
+		end
+
+		-- Crank up the chain affinity effect
+		if buffactive['Chain Affinity'] then
+			equip(sets.jobAbilities.chainAffinity)
 		end -- end if
 
     end -- end if
@@ -365,10 +351,10 @@ end -- end midcast()
 ----------------------------------------------------------------------
 function aftercast(spell)
 	if player.status =='Engaged' then
-		equip(sets.melee.default)
+		equip(sets.melee)
 	else
-		equip(sets.melee.default)
-		equip(sets.idle.default)
+		equip(sets.melee)
+		equip(sets.idle)
 	end
 end -- end aftercast()
 
@@ -378,9 +364,9 @@ end -- end aftercast()
 ----------------------------------------------------------------------
 function status_change(new,old)
 	if new == 'Idle' then
-		equip(sets.idle.default)
+		equip(sets.idle)
 	elseif new == 'Engaged' then
-		equip(sets.melee.default)
+		equip(sets.melee)
 	end
 end -- end status_change()
 
@@ -395,7 +381,7 @@ function self_command(command)
 		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
 		-- Equip the set
-		equip(sets.idle.default)
+		equip(sets.idle)
 	end -- end if
 
 	-- Toggle the weapon sets

@@ -66,12 +66,12 @@ function get_sets()
 
 	-- Fast cast set
 	sets.precast.fastCast = {
-        head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	    head={ name="Merlinic Hood", augments={'Mag. Acc.+16','"Fast Cast"+6','MND+9','"Mag.Atk.Bns."+4',}},
         body="Zendik Robe",
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
         legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet={ name="Merlinic Crackows", augments={'"Fast Cast"+5','CHR+7','Mag. Acc.+13',}},
-        neck="Voltsurge Torque",
+	    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
+        neck="Orunmila's Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
         right_ear="Etiolation Earring",
@@ -90,11 +90,11 @@ function get_sets()
 	-- Magic : Default
 	sets.midcast.magic = {
 	    main={ name="Nibiru Cudgel", augments={'MP+50','INT+10','"Mag.Atk.Bns."+15',}},
-        head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
-	    body="Jhakri Robe +2",
-	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        head="Jhakri Coronal +2",
+        body="Jhakri Robe +2",
+        hands="Jhakri Cuffs +2",
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
+        feet="Jhakri Pigaches +2",
 	    neck="Mizu. Kubikazari",
 	    waist="Refoccilation Stone",
         left_ear="Friomisi Earring",

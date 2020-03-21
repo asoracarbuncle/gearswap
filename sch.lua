@@ -4,7 +4,6 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f10 gs c toggle burst mode')
 
 
 	----------------------------------------------------------------------
@@ -20,16 +19,16 @@ function get_sets()
         ammo="Hydrocera",
         head="Befouled Crown",
 	    body="Jhakri Robe +2",
-	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        hands="Jhakri Cuffs +2",
 	    legs="Assid. Pants +1",
-	    feet="Tutyr Sabots",
+        feet="Acad. Loafers +3",
         neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
-        back="Solemnity Cape",
+	    back="Moonbeam Cape",
 	} -- end sets.idle
 
 
@@ -44,11 +43,11 @@ function get_sets()
         main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="Enki Strap",
         ammo="Hydrocera",
-	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
-	    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
-        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst dmg.+9%','Mag. Acc.+13',}},
+        head="Jhakri Coronal +2",
+        body="Jhakri Robe +2",
+        hands="Jhakri Cuffs +2",
+        legs="Jhakri Slops +2",
+        feet="Jhakri Pigaches +2",
         neck="Loricate Torque +1",
         waist="Chaac Belt",
 	    left_ear="Etiolation Earring",
@@ -67,17 +66,17 @@ function get_sets()
 
 	-- Precast : FastCast
 	-- Fast Cast: 72% (+15% RDM Sub)
-	-- Hast: 34%
+	-- Haste: 34%
 	sets.precast.fastCast = {
 	    main="Oranyan",
 	    sub="Enki Strap",
 	    ammo="Sapience Orb",
-	    head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
+	    head={ name="Merlinic Hood", augments={'Mag. Acc.+16','"Fast Cast"+6','MND+9','"Mag.Atk.Bns."+4',}},
 	    body="Zendik Robe",
 	    hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
 	    legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
 	    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
-	    neck="Voltsurge Torque",
+        neck="Orunmila's Torque",
 	    waist="Witful Belt",
 	    left_ear="Loquac. Earring",
 	    right_ear="Etiolation Earring",
@@ -105,12 +104,12 @@ function get_sets()
         hands="Jhakri Cuffs +2",
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
         feet="Jhakri Pigaches +2",
-        neck="Eddy Necklace",
+        neck="Sanctity Necklace",
         waist="Refoccilation Stone",
         left_ear="Friomisi Earring",
         right_ear="Regal Earring",
         left_ring="Acumen Ring",
-        right_ring="Shiva Ring",
+        right_ring="Jhakri Ring",
         back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic.elemental
 
@@ -119,7 +118,6 @@ function get_sets()
 	sets.midcast.magic.elementalBurst = set_combine(sets.midcast.magic.elemental, {
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
         neck="Mizu. Kubikazari",
-        left_ear="Regal Earring",
         right_ear="Static Earring",
         left_ring="Locus Ring",
         right_ring="Mujin Band",
@@ -130,17 +128,17 @@ function get_sets()
         main="Oranyan",
         sub="Enki Strap",
         ammo="Pemphredo Tathlum",
-        head="Jhakri Coronal +2",
-        body="Shango Robe",
-        hands="Kaykaus Cuffs",
-	    legs="Arbatel Pants +1",
-	    feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
+        head="Acad. Mortar. +2",
+        body="Acad. Gown +2",
+	    hands={ name="Kaykaus Cuffs", augments={'MP+60','MND+10','Mag. Acc.+15',}},
+        legs="Arbatel Pants +1",
+        feet="Acad. Loafers +3",
         neck="Incanter's Torque",
         waist="Rumination Sash",
-        left_ear="Gwati Earring",
+        left_ear="Lempo Earring",
         right_ear="Regal Earring",
-        left_ring="Vertigo Ring",
-        right_ring="Kishar Ring",
+        left_ring="Kishar Ring",
+        right_ring="Stikini Ring",
         back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic.enfeebling
 
@@ -177,7 +175,7 @@ function get_sets()
         ammo="Hydrocera",
         head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         body="Chironic Doublet",
-        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
+        hands="Jhakri Cuffs +2",
         legs="Gyve Trousers",
         feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
         neck="Incanter's Torque",
@@ -215,8 +213,13 @@ function get_sets()
 
 	-- Dark Arts
 	sets.jobAbility.darkArts = {
-	    body="Acad. Gown +1",
+	    body="Acad. Gown +2",
 	} -- end sets.jobAbility.darkArts
+
+	-- Ebullience
+	sets.jobAbility.ebullience = {
+        head="Arbatel Bonnet +1",
+	} -- end sets.jobAbility.ebullience
 
 	-- Immanence
 	sets.jobAbility.immanence = {
@@ -225,7 +228,7 @@ function get_sets()
 
 	-- Light Arts
 	sets.jobAbility.lightArts = {
-	    legs="Acad. Pants +1",
+	    legs="Acad. Pants +2",
 	} -- end sets.jobAbility.lightArts
 
 	-- Perpetuance
@@ -236,7 +239,7 @@ function get_sets()
 	-- Sublimation
 	sublimationMode = false
 	sets.jobAbility.sublimation = {
-	    head="Acad. Mortar. +1",
+	    head="Acad. Mortar. +2",
 	    body={ name="Peda. Gown +1", augments={'Enhances "Enlightenment" effect',}},
         left_ear="Savant's Earring",
 	} -- end sets.jobAbility.sublimation
@@ -270,6 +273,8 @@ function get_sets()
 
 	-- Regen
 	sets.utility.regen = {
+	    main="Bolelabunga",
+	    sub="Ammurapi Shield",
         head="Arbatel Bonnet +1",
 	    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.utility.regen
@@ -576,6 +581,9 @@ function midcast(spell)
 		if buffactive['Perpetuance'] then
 	    	equip(sets.jobAbility.perpetuance)
 	    end -- end if
+		if buffactive['Ebullience'] then
+	    	equip(sets.jobAbility.ebullience)
+	    end -- end if
 
 	    -- 4. Check for specific spell buffs
 	    if spell.english == "Aquaveil" then
@@ -587,11 +595,6 @@ function midcast(spell)
 	    elseif StormsurgeSpells[spell.english] then
 	    	equip(sets.utility.stormsurge)
 	    end -- end if
-
-	    -- 5. Check if burst mode is on
-	    if burstMode == true then
-
-	    end
 
 	    -- 6. Check for element bonus
 	    if ElementalSpells[spell.english] then
@@ -638,15 +641,14 @@ function self_command(command)
 		equip(sets.idle)
 	end -- end if
 
-	-- Equip the idle set
-	if command == 'toggle burst mode' then
-		if burstMode == false then
-			burstMode = true
-			send_command('@input /echo <----- Burst Mode On ----->')
-		else
-			burstMode = false
-			send_command('@input /echo <----- Burst Mode Off ----->')
-		end
+	-- Toggle burst mode on
+	if command == 'toggle burst mode on' then
+		burstMode = true
+	end -- end if
+
+	-- Toggle burst mode on
+	if command == 'toggle burst mode off' then
+		burstMode = false
 	end -- end if
 
 end -- end self_command()

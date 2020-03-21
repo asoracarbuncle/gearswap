@@ -56,6 +56,26 @@ function get_sets()
 
 
 	----------------------------------------------------------------------
+	-- Precast sets
+	----------------------------------------------------------------------
+	-- Initialize an array to begin storing set data
+	sets.precast = {}
+
+	-- Precast : Fastcast
+	sets.precast.fastCast = {
+	    ammo="Sapience Orb",
+	    head="Herculean Helm",
+	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+	    legs="Limbo Trousers",
+	    neck="Orunmila's Torque",
+	    left_ear="Etiolation Earring",
+	    right_ear="Loquac. Earring",
+	    left_ring="Rahab Ring",
+	    right_ring="Prolix Ring",
+	} -- end sets.precast.fastCast
+
+
+	----------------------------------------------------------------------
 	-- Midcast sets
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
@@ -73,7 +93,7 @@ function get_sets()
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Telos Earring",
-        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="Regal Ring",
         right_ring="Begrudging Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
@@ -90,7 +110,7 @@ function get_sets()
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Telos Earring",
-        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="Regal Ring",
         right_ring="Begrudging Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
@@ -107,7 +127,7 @@ function get_sets()
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Telos Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="Regal Ring",
 	    right_ring="Begrudging Ring",
 	    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
@@ -124,7 +144,7 @@ function get_sets()
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
 	    left_ear="Telos Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="Regal Ring",
 	    right_ring="Begrudging Ring",
 	    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
@@ -146,6 +166,16 @@ function get_sets()
 
 
 end -- end get_sets()
+
+
+----------------------------------------------------------------------
+-- Callback for when casting begins
+----------------------------------------------------------------------
+function precast(spell)
+    if spell.action_type == 'Magic' then
+		equip(sets.precast.fastCast)
+	end
+end -- end precast()
 
 
 ----------------------------------------------------------------------

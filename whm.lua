@@ -13,7 +13,7 @@ function get_sets()
 	-- Refresh: 11 per tick / 12 per tick below 50%
 	sets.idle = {
 	    main="Bolelabunga",
-	    sub="Sors Shield",
+        sub="Culminus",
 	    ammo="Hedgehog Bomb",
         head="Befouled Crown",
         body="Theo. Briault +3",
@@ -39,7 +39,7 @@ function get_sets()
 	-- Default melee set
 	sets.melee = {
 	    main={ name="Queller Rod", augments={'MP+80','"Cure" potency +15%','Enmity-5',}},
-	    sub="Sors Shield",
+        sub="Culminus",
 	    ammo="Hedgehog Bomb",
 	    head="Aya. Zucchetto +1",
 	    body="Ayanmo Corazza +1",
@@ -88,7 +88,7 @@ function get_sets()
         hands={ name="Chironic Gloves", augments={'"Mag.Atk.Bns."+12','"Fast Cast"+7',}},
         legs="Volte Brais",
         feet="Regal Pumps +1",
-        neck="Orison Locket",
+        neck="Orunmila's Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
 	    right_ear="Etiolation Earring",
@@ -134,15 +134,16 @@ function get_sets()
 
 	-- Magic : Enhancing
 	sets.midcast.magic.enhancing = {
+	    sub="Ammurapi Shield",
         head="Befouled Crown",
 	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}},
-	    legs={ name="Piety Pantaloons", augments={'Enhances "Shellra V" effect',}},
         feet="Theo. Duckbills +1",
         neck="Incanter's Torque",
 	} -- end sets.midcast.magic.enhancing
 
 	-- Magic : Enfeebling
 	sets.midcast.magic.enfeebling = {
+	    sub="Ammurapi Shield",
         neck="Incanter's Torque",
 	} -- end sets..midcast.magic.enfeebling
 
@@ -184,7 +185,7 @@ function get_sets()
 	sets.utility.cursna = {
         body="Ebers Bliaud +1",
         hands={ name="Fanatic Gloves", augments={'MP+25','Healing magic skill +5','"Conserve MP"+1','"Fast Cast"+2',}},
-        legs={ name="Piety Pantaloons", augments={'Enhances "Shellra V" effect',}},
+        legs={ name="Piety Pantaloons", augments={'Enhances "Afflatus Misery" effect',}},
         feet={ name="Vanya Clogs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
         neck="Incanter's Torque",
         back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
@@ -197,23 +198,13 @@ function get_sets()
 
 	-- Utility: Elemental resistence
 	sets.utility.elementalResistence = {
-	    legs={ name="Piety Pantaloons", augments={'Enhances "Shellra V" effect',}},
+        legs={ name="Piety Pantaloons", augments={'Enhances "Afflatus Misery" effect',}},
 	} -- end sets.utility.elementalResistence
-
-	-- Utility: Protectra V
-	sets.utility.protectraV = {
-        feet={ name="Piety Duckbills", augments={'Enhances "Protectra V" effect',}},
-	} -- end sets.utility.protectra5
 
 	-- Utility: Regen
 	sets.utility.regen = {
         hands="Ebers Mitts +1",
 	} -- end sets.utility.regen
-
-	-- Utility: Shellra V
-	sets.utility.shellraV = {
-	    legs={ name="Piety Pantaloons", augments={'Enhances "Shellra V" effect',}},
-	} -- end sets.utility.shellra5
 
 	-- Utility: Status Removal
 	sets.utility.statusRemoval = {
@@ -540,12 +531,8 @@ function midcast(spell)
 		-- 2.) Apply specific spell group gear
 		if MagicElementalResistence[spell.english] then
 			equip(sets.utility.elementalResistence)
-		elseif MagicProtectraV[spell.english] then
-			equip(sets.utility.protectraV)
 		elseif MagicRegen[spell.english] then
 			equip(sets.utility.regen)
-		elseif MagicShellraV[spell.english] then
-			equip(sets.utility.protectraV)
 		elseif MagicStatusRemoval[spell.english] then
 			equip(sets.utility.statusRemoval)
 			if MagicCursna[spell.english] then
