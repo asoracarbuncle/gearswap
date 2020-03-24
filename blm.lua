@@ -22,7 +22,7 @@ function get_sets()
 	    head="Befouled Crown",
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-	    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
+        legs="Assid. Pants +1",
 	    feet="Tutyr Sabots",
         neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
@@ -92,6 +92,7 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
 	sets.midcast.magic = {}
+	sets.midcast.ws = {}
 
 	-- Midcast : Magic : Dark
 	sets.midcast.magic.dark = {
@@ -143,6 +144,14 @@ function get_sets()
 	    right_ring="Shiva Ring",
 	    back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic.elemental
+
+	-- Midcast : Weaponskill : Default
+	sets.midcast.ws.default = {
+	} -- end sets.midcast.ws.default
+
+	-- Midcast : Weaponskill : Myrkr
+	sets.midcast.ws['Myrkr'] = {
+	} -- end sets.midcast.ws['Myrkr']
 
 
 	----------------------------------------------------------------------
@@ -300,6 +309,17 @@ function midcast(spell)
 			end
 		end
 
+    elseif spell.type == 'WeaponSkill' then
+
+    	-- Check if a specific ws set exists
+		if sets.midcast.ws[spell.name] then
+			-- Equip the appropriate ws specific set
+			equip(sets.midcast.ws[spell.name])
+		else
+    		-- Equip default ws set
+			equip(sets.midcast.ws.default)
+		end
+		
     end -- end if
 
 end -- end midcast()
