@@ -4,7 +4,7 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f10 gs c toggle weapon set')
+	send_command('bind f10 gs c cycle weapon set')
 
 
 	----------------------------------------------------------------------
@@ -23,7 +23,8 @@ function get_sets()
 	-- Weapon : Melee
 	sets.weapons[0] = {
 	    main="Sequence",
-	    sub={ name="Colada", augments={'Crit.hit rate+3','DEX+13','Accuracy+18','Attack+12','DMG:+12',}},
+	    -- sub={ name="Colada", augments={'Crit.hit rate+3','DEX+13','Accuracy+18','Attack+12','DMG:+12',}},
+        sub="Zantetsuken",
 	}
 
 	-- Weapon : Magic
@@ -91,7 +92,7 @@ function get_sets()
 	-- Precast : Fastcast
 	sets.precast.fastCast = {
         ammo="Sapience Orb",
-        head={ name="Carmine Mask", augments={'Accuracy+15','Mag. Acc.+10','"Fast Cast"+3',}},
+        head={ name="Herculean Helm", augments={'Mag. Acc.+4','"Fast Cast"+6','MND+5',}},
         body={ name="Luhlaza Jubbah +1", augments={'Enhances "Enchainment" effect',}},
 	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
@@ -385,7 +386,7 @@ function self_command(command)
 	end -- end if
 
 	-- Toggle the weapon sets
-	if command == 'toggle weapon set' then
+	if command == 'cycle weapon set' then
 		-- Increment the weapon index
 		weaponSetIndex = weaponSetIndex + 1
 		-- Check if the weaopn index is out of range

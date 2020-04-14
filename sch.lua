@@ -14,7 +14,7 @@ function get_sets()
 
 	-- idle : Default
 	sets.idle = {
-        main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main="Malignance Pole",
         sub="Enki Strap",
         ammo="Hydrocera",
         head="Befouled Crown",
@@ -109,7 +109,7 @@ function get_sets()
         left_ear="Friomisi Earring",
         right_ear="Regal Earring",
         left_ring="Acumen Ring",
-        right_ring="Jhakri Ring",
+        right_ring="Freke Ring",
         back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic.elemental
 
@@ -170,21 +170,21 @@ function get_sets()
 
 	-- Midcast: Healing Magic
 	sets.midcast.magic.healing = {
-        main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
-        sub="Enki Strap",
-        ammo="Hydrocera",
-        head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
-        body="Chironic Doublet",
-        hands="Jhakri Cuffs +2",
-        legs="Gyve Trousers",
-        feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
-        neck="Incanter's Torque",
-        waist="Luminary Sash",
-        left_ear="Lifestorm Earring",
-        right_ear="Static Earring",
-        left_ring="Vertigo Ring",
-        right_ring="Lebeche Ring",
-        back={ name="Lugh's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
+	    main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
+	    sub="Enki Strap",
+	    ammo="Hydrocera",
+	    head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
+	    body="Zendik Robe",
+	    hands="Acad. Bracers +2",
+	    legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+	    feet="Regal Pumps +1",
+	    neck="Incanter's Torque",
+	    waist="Luminary Sash",
+	    left_ear="Lifestorm Earring",
+	    right_ear="Regal Earring",
+	    left_ring="Stikini Ring",
+	    right_ring="Stikini Ring",
+	    back={ name="Lugh's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
 	} -- end sets.midcast.magic.healing
 
 	-- Midcast: Dark Magic
@@ -278,6 +278,11 @@ function get_sets()
         head="Arbatel Bonnet +1",
 	    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.utility.regen
+
+	-- Stoneskin
+	sets.utility.stoneskin = {
+        waist="Siegel Sash",
+	} -- end sets.utility.stoneskin
 
 	-- Stormsurge
 	sets.utility.stormsurge = {
@@ -592,6 +597,8 @@ function midcast(spell)
 	    	equip(sets.utility.klimaform)
 	    elseif RegenSpells[spell.english] then
 	    	equip(sets.utility.regen)
+	    elseif spell.english == "Stoneskin" then
+	    	equip(sets.utility.stoneskin)
 	    elseif StormsurgeSpells[spell.english] then
 	    	equip(sets.utility.stormsurge)
 	    end -- end if

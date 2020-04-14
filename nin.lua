@@ -63,7 +63,7 @@ function get_sets()
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
 	    ammo="Sapience Orb",
-        head={ name="Herculean Helm", augments={'Pet: Attack+28 Pet: Rng.Atk.+28','INT+8','"Treasure Hunter"+1','Mag. Acc.+19 "Mag.Atk.Bns."+19',}},
+        head={ name="Herculean Helm", augments={'Mag. Acc.+4','"Fast Cast"+6','MND+5',}},
 	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs="Gyve Trousers",
         neck="Orunmila's Torque",

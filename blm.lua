@@ -4,8 +4,8 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f10 gs c toggle death mode')
-	send_command('bind f11 gs c toggle burst mode')
+	send_command('bind f10 gs c toggle burst mode')
+	send_command('bind f11 gs c toggle death mode')
 
 
 	----------------------------------------------------------------------
@@ -16,7 +16,7 @@ function get_sets()
 
 	-- idle : Default
 	sets.idle = {
-	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main="Malignance Pole",
 	    sub="Niobid Strap",
 	    ammo="Hydrocera",
 	    head="Befouled Crown",
@@ -45,7 +45,7 @@ function get_sets()
 	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
 	    sub="Niobid Strap",
 	    ammo="Hydrocera",
-	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
+        head="Jhakri Coronal +2",
 	    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
@@ -123,7 +123,7 @@ function get_sets()
 	    right_ear="Etiolation Earring",
 	    left_ring="Mephitas's Ring",
 	    right_ring="Mephitas's Ring +1",
-	    back="Izdubar Mantle",
+        back={ name="Taranus's Cape", augments={'MP+30','Mag. Acc+10 /Mag. Dmg.+10','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%',}},
 	} -- end sets.midcast.magic.elemental
 
 	-- Midcast : Magic : Elemental
@@ -131,7 +131,7 @@ function get_sets()
 	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
 	    sub="Niobid Strap",
 	    ammo="Pemphredo Tathlum",
-	    head={ name="Merlinic Hood", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','Magic burst dmg.+10%','Mag. Acc.+8','"Mag.Atk.Bns."+3',}},
+        head="Jhakri Coronal +2",
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
 	    legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
@@ -141,7 +141,7 @@ function get_sets()
 	    left_ear="Friomisi Earring",
 	    right_ear="Regal Earring",
 	    left_ring="Acumen Ring",
-	    right_ring="Shiva Ring",
+        right_ring="Freke Ring",
 	    back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
 	} -- end sets.midcast.magic.elemental
 
@@ -152,6 +152,41 @@ function get_sets()
 	-- Midcast : Weaponskill : Myrkr
 	sets.midcast.ws['Myrkr'] = {
 	} -- end sets.midcast.ws['Myrkr']
+
+
+	----------------------------------------------------------------------
+	-- Job Ability Sets (not bound to a key)
+	----------------------------------------------------------------------
+	-- Initialize an array to begin storing set data
+	sets.jobAbility = {}
+
+	-- Cascade
+	sets.jobAbility['Cascade'] = {
+	} -- end sets.jobAbility['Cascade']
+
+	-- Elemental Seal
+	sets.jobAbility['Elemental Seal'] = {
+	} -- end sets.jobAbility['Elemental Seal']
+
+	-- Emnity Douse
+	sets.jobAbility['Emnity Douse'] = {
+	} -- end sets.jobAbility['Emnity Douse']
+
+	-- Manafont
+	sets.jobAbility['Manafont'] = {
+	} -- end sets.jobAbility['Manafont']
+
+	-- Mana Wall
+	sets.jobAbility['Mana Wall'] = {
+	} -- end sets.jobAbility['Mana Wall']
+
+	-- Manawell
+	sets.jobAbility['Manawell'] = {
+	} -- end sets.jobAbility['Manawell']
+
+	-- Subtle Sorcery
+	sets.jobAbility['Subtle Sorcery'] = {
+	} -- end sets.jobAbility['Subtle Sorcery']
 
 
 	----------------------------------------------------------------------
@@ -277,7 +312,9 @@ function precast(spell)
 
     if spell.action_type == 'Magic' then
 		equip(sets.precast.fastCast)
-	end
+	elseif spell.type == 'JobAbility' then
+		equip(sets.jobAbility[spell.english])
+    end -- end if
 
 end -- end precast()
 
@@ -319,7 +356,7 @@ function midcast(spell)
     		-- Equip default ws set
 			equip(sets.midcast.ws.default)
 		end
-		
+	
     end -- end if
 
 end -- end midcast()
@@ -362,7 +399,18 @@ function self_command(command)
 		equip(sets.idle)
 	end -- end if
 
-	-- Equip the idle set
+	-- Toggle burst mode
+	if command == 'toggle burst mode' then
+		if burstMode == false then
+			burstMode = true
+			send_command('@input /echo <----- Burst Mode On ----->')
+		else
+			burstMode = false
+			send_command('@input /echo <----- Burst Mode Off ----->')
+		end
+	end -- end if
+
+	-- Toggle death mode
 	if command == 'toggle death mode' then
 		-- Check status of deathMode
 		if deathMode == false then
@@ -383,17 +431,5 @@ function self_command(command)
 			send_command('@input /echo <----- Death Mode Off ----->')
 		end
 	end -- end if
-
-	-- Equip the idle set
-	if command == 'toggle burst mode' then
-		if burstMode == false then
-			burstMode = true
-			send_command('@input /echo <----- Burst Mode On ----->')
-		else
-			burstMode = false
-			send_command('@input /echo <----- Burst Mode Off ----->')
-		end
-	end -- end if
-
 
 end -- end self_command()

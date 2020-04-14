@@ -22,7 +22,7 @@ function get_sets()
 	    legs="Wakido Haidate +3",
 	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
         neck="Loricate Torque +1",
-	    waist="Ioskeha Belt +1",
+	    waist="Sailfi Belt +1",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
         left_ring="Defending Ring",
@@ -37,26 +37,20 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.melee = {}
 
-	-- Melee : default
-	-- Store TP: 64
-	-- Haste: 26%
-	-- Triple Attack: 5%
-	-- Double Attack: 33%
-	-- Accuracy: 1278
 	sets.melee = {
 	    ammo="Ginsen",
 	    head="Flam. Zucchetto +2",
-	    body="Wakido Domaru +3",
-	    hands="Wakido Kote +3",
-	    legs="Wakido Haidate +3",
-	    feet="Flam. Gambieras +2",
-	    neck="Moonlight Nodowa",
-	    waist="Ioskeha Belt +1",
-	    left_ear="Cessance Earring",
-	    right_ear="Brutal Earring",
+	    body="Ken. Samue +1",
+	    hands="Ken. Tekko +1",
+	    legs="Ken. Hakama +1",
+	    feet="Ken. Sune-Ate +1",
+        neck={ name="Sam. Nodowa +2", augments={'Path: A',}},
+	    waist="Sailfi Belt +1",
+	    left_ear="Dedition Earring",
+	    right_ear="Telos Earring",
 	    left_ring="Flamma Ring",
-	    right_ring="Ilabrat Ring",
-	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}},
+	    right_ring="Hetairoi Ring",
+	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10',}},
 	} -- end sets.melee
 
 
@@ -96,7 +90,7 @@ function get_sets()
         hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
 	    legs="Wakido Haidate +3",
 	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
-        neck="Fotia Gorget",
+        neck={ name="Sam. Nodowa +2", augments={'Path: A',}},
         waist="Fotia Belt",
         left_ear="Ishvara Earring",
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
@@ -121,7 +115,7 @@ function get_sets()
         right_ear="Hecate's Earring",
         left_ring="Acumen Ring",
         right_ring="Mujin Band",
-        back={ name="Smertrios's Mantle", augments={'STR+20','Mag. Acc+20 /Mag. Dmg.+20','STR+6','"Mag.Atk.Bns."+10',}},
+        back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
 	} -- end sets.midcast.ws.elemental
 
 	-- Midcast : Weapon Skill : Tachi: Goten
@@ -144,10 +138,9 @@ function get_sets()
 	sets.utility = {}
 
 	-- Hasso set
+	hassoToggle = false;
 	sets.utility.hasso = {
         hands="Wakido Kote +3",
-	    legs="Kasuga Haidate +1",
-        feet="Wakido Sune. +2",
 	} -- end sets.utility.hasso
 
 	-- Meditate set
@@ -194,9 +187,7 @@ function midcast(spell)
 
 	elseif spell.type == 'JobAbility' then
 
-		if spell.english == 'Hasso' then
-			equip(sets.utility.hasso)
-		elseif spell.english == 'Meditate' then
+		if spell.english == 'Meditate' then
 			equip(sets.utility.meditate)
 		elseif spell.english == 'Warding Circle' then
 			equip(sets.utility.wardingCircle)
@@ -215,6 +206,9 @@ function aftercast(spell)
 	-- Check the player status
 	if player.status =='Engaged' then
 		equip(sets.melee)
+		if hassoToggle == true then
+			equip(sets.utility.hasso)
+		end
 	else
 		equip(sets.idle)
 	end
@@ -225,16 +219,39 @@ end -- end aftercast()
 ----------------------------------------------------------------------
 -- Callback for whenever engagment status changes
 ----------------------------------------------------------------------
-function status_change(new,old)
+function status_change(new, old)
 
 	-- Check the player status
-	if new == 'Idle' then
-		equip(sets.idle)
-	elseif new == 'Engaged' then
+	if new == 'Engaged' then
 		equip(sets.melee)
+		if hassoToggle == true then
+			equip(sets.utility.hasso)
+		end
+	else
+		equip(sets.idle)
 	end
 
 end -- end status_change()
+
+
+----------------------------------------------------------------------
+-- Callback for whenever buffs change
+----------------------------------------------------------------------
+function buff_change(name, gain)
+	if name == 'Hasso' then
+		if gain == true then
+			hassoToggle = true
+			if player.status == 'Engaged' then
+				equip(sets.utility.hasso)
+			end
+		else
+			hassoToggle = false
+			if player.status == 'Engaged' then
+				equip(sets.melee)
+			end
+		end
+	end
+end -- end buff_change()
 
 
 ----------------------------------------------------------------------

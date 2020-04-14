@@ -16,15 +16,15 @@ function get_sets()
 	-- Idle : Default
 	sets.idle.default = {
 	    ammo="Mantoptera Eye",
-	    head="Mummu Bonnet +1",
-	    body="Mummu Jacket +1",
-	    hands="Mummu Wrists +1",
-	    legs="Mummu Kecks +1",
-	    feet="Mummu Gamash. +1",
+	    head="Malignance Chapeau",
+	    body="Mummu Jacket +2",
+	    hands="Mummu Wrists +2",
+	    legs="Mummu Kecks +2",
+	    feet="Mummu Gamash. +2",
 	    neck="Loricate Torque +1",
 	    waist="Windbuffet Belt +1",
-	    left_ear="Etiolation Earring",
-	    right_ear="Static Earring",
+        left_ear="Odnowa Earring",
+        right_ear="Odnowa Earring +1",
 	    left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
 	    back="Reiki Cloak",
@@ -40,15 +40,15 @@ function get_sets()
 	-- Melee : default
 	sets.melee = {
 	    ammo="Ginsen",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+	    head="Malignance Chapeau",
 	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    legs="Meg. Chausses +2",
+	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
 	    feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
 	    neck="Clotharius Torque",
-	    waist="Windbuffet Belt +1",
-	    left_ear="Suppanomimi",
-	    right_ear="Brutal Earring",
+	    waist="Sarissapho. Belt",
+	    left_ear="Sherida Earring",
+	    right_ear="Dedition Earring",
 	    left_ring="Epona's Ring",
 	    right_ring="Hetairoi Ring",
 	    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
@@ -64,7 +64,7 @@ function get_sets()
 	-- Precast : Fastcast
 	sets.precast.fastCast = {
 	    ammo="Sapience Orb",
-	    head="Herculean Helm",
+        head={ name="Herculean Helm", augments={'Mag. Acc.+4','"Fast Cast"+6','MND+5',}},
 	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 	    legs="Limbo Trousers",
 	    neck="Orunmila's Torque",
@@ -85,11 +85,11 @@ function get_sets()
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
         ammo="Falcon Eye",
-        head="Mummu Bonnet +1",
-        body="Mummu Jacket +1",
-        hands="Mummu Wrists +1",
-        legs="Mummu Kecks +1",
-        feet="Mummu Gamash. +1",
+	    head="Mummu Bonnet +2",
+	    body="Mummu Jacket +2",
+	    hands="Mummu Wrists +2",
+	    legs="Mummu Kecks +2",
+	    feet="Mummu Gamash. +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Telos Earring",
@@ -102,11 +102,11 @@ function get_sets()
 	-- Midcast : Weapon Skill : Rudra's Storm
 	sets.midcast.ws["Rudra's Storm"] = {
         ammo="Falcon Eye",
-        head="Mummu Bonnet +1",
-        body="Mummu Jacket +1",
-	    hands="Meg. Gloves +2",
-        legs="Mummu Kecks +1",
-        feet="Mummu Gamash. +1",
+	    head="Mummu Bonnet +2",
+	    body="Mummu Jacket +2",
+	    hands="Mummu Wrists +2",
+	    legs="Mummu Kecks +2",
+	    feet="Mummu Gamash. +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Telos Earring",
@@ -119,7 +119,7 @@ function get_sets()
 	-- Midcast : Weapon Skill : Evisceration
 	sets.midcast.ws['Evisceration'] = {
         ammo="Falcon Eye",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+	    head="Malignance Chapeau",
 	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
@@ -136,7 +136,7 @@ function get_sets()
 	-- Midcast : Weapon Skill : Mandalic Stab
 	sets.midcast.ws['Mandalic Stab'] = {
         ammo="Falcon Eye",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+	    head="Malignance Chapeau",
 	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
@@ -206,8 +206,7 @@ function aftercast(spell)
 	if player.status =='Engaged' then
 		equip(sets.melee)
 	else
-		equip(sets.melee)
-		equip(sets.idle.default)
+		equip(set_combine(sets.melee, sets.idle.default))
 	end
 
 	-- Check if treasure hunter is enabled
