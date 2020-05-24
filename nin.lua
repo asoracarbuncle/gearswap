@@ -9,49 +9,41 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Idle set
 	----------------------------------------------------------------------
-	-- Initializes an array to begin storing set data
-	sets.idle = {}
-
-	-- Idle : Default
 	sets.idle = {
-	    ammo="Mantoptera Eye",
-        head="Mummu Bonnet +1",
+        ammo="Ginsen",
+        head="Malignance Chapeau",
         body="Hiza. Haramaki +2",
-        hands="Mummu Wrists +1",
-        legs="Mummu Kecks +1",
-        feet="Mummu Gamash. +1",
+        hands="Ken. Tekko +1",
+        legs="Ken. Hakama +1",
+        feet="Ken. Sune-Ate +1",
         neck="Loricate Torque +1",
         waist="Grunfeld Rope",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
-        back="Reiki Cloak",
-	} -- end sets.idle
+        back="Moonbeam Cape",
+	} -- end Idle
 
 
 	----------------------------------------------------------------------
 	-- Melee set
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.melee = {}
-
-	-- Melee : default
 	sets.melee = {
-	    ammo="Ginsen",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-	    feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-	    neck="Moonlight Nodowa",
-	    waist="Windbuffet Belt +1",
-	    left_ear="Telos Earring",
-	    right_ear="Dedition Earring",
-	    left_ring="Epona's Ring",
-	    right_ring="Hetairoi Ring",
-	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
-	} -- end sets.melee
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Ken. Samue +1",
+        hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet="Ken. Sune-Ate +1",
+        neck="Moonbeam Nodowa",
+        waist="Windbuffet Belt +1",
+        left_ear="Telos Earring",
+        right_ear="Dedition Earring",
+        left_ring="Epona's Ring",
+        right_ring="Gere Ring",
+        back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%',}},
+	} -- end Melee
 
 
 	----------------------------------------------------------------------
@@ -59,19 +51,28 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.precast = {}
+	sets.precast.fastCast = {}
 
-	-- Precast : Fast Cast
-	sets.precast.fastCast = {
-	    ammo="Sapience Orb",
+	-- Precast : Fast Cast (61%)
+	sets.precast.fastCast.default = {
+        ammo="Sapience Orb",
         head={ name="Herculean Helm", augments={'Mag. Acc.+4','"Fast Cast"+6','MND+5',}},
-	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-	    legs="Gyve Trousers",
+        body={ name="Herculean Vest", augments={'Mag. Acc.+9','"Fast Cast"+5','"Mag.Atk.Bns."+7',}},
+        hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+        legs="Arjuna Breeches",
+        feet={ name="Herculean Boots", augments={'"Fast Cast"+5','INT+13','"Mag.Atk.Bns."+13',}},
         neck="Orunmila's Torque",
-	    left_ear="Loquac. Earring",
-	    right_ear="Etiolation Earring",
-	    left_ring="Kishar Ring",
-	    right_ring="Prolix Ring",
-	} -- end sets.precast.fastCast
+        left_ear="Loquac. Earring",
+        right_ear="Etiolation Earring",
+        left_ring="Kishar Ring",
+        right_ring="Prolix Ring",
+        back={ name="Andartia's Mantle", augments={'"Fast Cast"+10',}},
+	} -- end Fast Cast
+
+	-- Precast : Utsusemi Fast Cast
+	sets.precast.fastCast.utsusemi = set_combine(sets.precast.fastCast.default, {
+        neck="Magoraga Beads",
+	})
 
 
 	----------------------------------------------------------------------
@@ -83,41 +84,76 @@ function get_sets()
 
 	-- Midcast : Magic
 	sets.midcast.magic = {
-	} -- end sets.midcast.magic
+        ammo="Impatiens",
+	} -- end Magic
 
 	-- Midcast : Weapon Skill : Default
 	sets.midcast.ws.default = {
-        ammo="Falcon Eye",
-	    head="Mummu Bonnet +1",
-	    body="Mummu Jacket +1",
-	    hands="Mummu Wrists +1",
-	    legs="Mummu Kecks +1",
-	    feet="Mummu Gamash. +1",
-	    neck="Fotia Gorget",
-	    waist="Fotia Belt",
-	    left_ear="Ishvara Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-	    left_ring="Regal Ring",
-	    right_ring="Begrudging Ring",
-	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
-	} -- end sets.midcast.ws.default
+        ammo="Expeditious Pinion",
+        head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+        body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Telos Earring",
+        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="Epona's Ring",
+        right_ring="Gere Ring",
+        back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+	} -- end Weapon Skill Default
 
 	-- Midcast : Weapon Skill : Blade: Hi
 	sets.midcast.ws["Blade: Hi"] = {
-        ammo="Falcon Eye",
-	    head="Mummu Bonnet +1",
-	    body="Mummu Jacket +1",
-	    hands="Mummu Wrists +1",
-	    legs="Mummu Kecks +1",
-	    feet="Mummu Gamash. +1",
-	    neck="Fotia Gorget",
-	    waist="Fotia Belt",
-	    left_ear="Ishvara Earring",
-	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-	    left_ring="Regal Ring",
-	    right_ring="Begrudging Ring",
-	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
-	} -- end sets.midcast.ws["Blade: Hi"]
+        ammo="Expeditious Pinion",
+        head="Mummu Bonnet +2",
+        body="Ken. Samue +1",
+        hands="Mummu Wrists +2",
+        legs="Mummu Kecks +2",
+        feet="Mummu Gamash. +2",
+        neck="Moonbeam Nodowa",
+        waist="Windbuffet Belt +1",
+        left_ear="Ishvara Earring",
+        right_ear="Brutal Earring",
+        left_ring="Mummu Ring",
+        right_ring="Regal Ring",
+        back={ name="Andartia's Mantle", augments={'AGI+20','Accuracy+20 Attack+20','AGI+10','Weapon skill damage +10%',}},
+	} -- end Blade: Hi
+
+	-- Midcast : Weapon Skill : Blade: Ku
+	sets.midcast.ws["Blade: Ku"] = {
+        ammo="Expeditious Pinion",
+        head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+        body="Ken. Samue +1",
+        hands="Ken. Tekko +1",
+        legs="Ken. Hakama +1",
+        feet="Ken. Sune-Ate +1",
+        neck="Caro Necklace",
+        waist="Fotia Belt",
+        left_ear="Lugra Earring",
+        right_ear="Lugra Earring +1",
+        left_ring="Gere Ring",
+        right_ring="Regal Ring",
+        back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+	} -- end Blade: Ku
+
+	-- Midcast : Weapon Skill : Blade: Shun
+	sets.midcast.ws["Blade: Shun"] = {
+        ammo="Expeditious Pinion",
+        head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+        body="Ken. Samue +1",
+        hands="Ken. Tekko +1",
+        legs="Ken. Hakama +1",
+        feet="Ken. Sune-Ate +1",
+        neck="Caro Necklace",
+        waist="Fotia Belt",
+        left_ear="Lugra Earring",
+        right_ear="Lugra Earring +1",
+        left_ring="Gere Ring",
+        right_ring="Regal Ring",
+        back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+	} -- end Blade: Shun
 
 
 	----------------------------------------------------------------------
@@ -128,30 +164,35 @@ function get_sets()
 
 	-- Futae set
 	sets.utility.futae = {
-	} -- end sets.utility.futae
+	} -- end Futae
 
 	-- Innin set
 	sets.utility.innin = {
-	} -- end sets.utility.innin
+	} -- end Innin
 
 	-- Migawari set
 	sets.utility.migawari = {
-	} -- end sets.utility.migawari
+	} -- end Migawari
 
 	-- Mikage set
 	sets.utility.mikage = {
 	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
-	} -- end sets.utility.mikage
+	} -- end Mikage
 
 	-- Utsusemi set
 	sets.utility.utsusemi = {
         feet="Iga Kyahan +2",
 	    back={ name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
-	} -- end sets.utility.utsusemi
+	} -- end Utsusemi Fast Cast
+
+	-- Utsusemi set
+	sets.utility.utsusemiFastCast = set_combine(sets.precast.fastCast, {
+        neck="Magoraga Beads",
+	})
 
 	-- Yonin set
 	sets.utility.yonin = {
-	} -- end sets.utility.yonin
+	} -- end Yonin
 
 
 	----------------------------------------------------------------------
@@ -175,8 +216,13 @@ end -- end get_sets()
 ----------------------------------------------------------------------
 function precast(spell)
 
+	-- Check if the action is a magic spell
     if spell.action_type == 'Magic' then
-		equip(sets.precast.fastCast)
+    	if UtsusemiSpells[spell.english] then
+			equip(sets.precast.fastCast.utsusemi)
+    	else
+    		equip(sets.precast.fastCast.default)
+    	end
 	end
 
 end -- end precast()
@@ -189,34 +235,31 @@ function midcast(spell)
 
 	-- Check if the action is a weapon skill
     if spell.type == 'WeaponSkill' then
-		-- Check if the action is a specified weapon skill
-		if sets.midcast.ws[spell.name] then
-			equip(sets.midcast.ws[spell.name])
-		-- If not, use the default weapon skill set
+		if sets.midcast.ws[spell.english] then
+			equip(sets.midcast.ws[spell.english])
 	    else
 			equip(sets.midcast.ws.default)
 		end
+
 	-- Check if the action is a magic spell
     elseif spell.action_type == 'Magic' then
-    	-- Check if the spell is migawari
-    	if MigawariSpells[spell.name] then
+    	if MigawariSpells[spell.english] then
 			equip(sets.utility.migawari)
-    	-- Check if the spell is utsusemi
-    	elseif UtsusemiSpells[spell.name] then
+    	elseif UtsusemiSpells[spell.english] then
 			equip(sets.utility.utsusemi)
-    	-- Equip the catch all magic set
     	else
 			equip(sets.midcast.magic)
 		end
+		
 	-- Check if the action is a job ability
 	elseif spell.type == 'JobAbility' then
-		if spell.name == 'Futae' then
+		if spell.english == 'Futae' then
 			equip(sets.utility.futae)
-		elseif spell.name == 'Innin' then
+		elseif spell.english == 'Innin' then
 			equip(sets.utility.innin)
-		elseif spell.name == 'Mikage' then
+		elseif spell.english == 'Mikage' then
 			equip(sets.utility.mikage)
-		elseif spell.name == 'Yonin' then
+		elseif spell.english == 'Yonin' then
 			equip(sets.utility.yonin)
 		end
 	end
@@ -229,7 +272,6 @@ end -- end midcast()
 ----------------------------------------------------------------------
 function aftercast(spell)
 
-	-- Check the player status
 	if player.status =='Engaged' then
 		equip(sets.melee)
 	else
@@ -244,11 +286,10 @@ end -- end aftercast()
 ----------------------------------------------------------------------
 function status_change(new,old)
 
-	-- Check the player status
-	if new == 'Idle' then
-		equip(sets.idle)
-	elseif new == 'Engaged' then
+	if new =='Engaged' then
 		equip(sets.melee)
+	else
+		equip(sets.idle)
 	end
 
 end -- end status_change()
@@ -261,9 +302,7 @@ function self_command(command)
 
 	-- Equip the idle set
 	if command == 'toggle idle set' then
-		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- Idle Set Equipped ----->')
-		-- Equip the set
 		equip(sets.idle)
 	end -- end if
 

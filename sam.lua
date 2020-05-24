@@ -4,88 +4,80 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c toggle idle set')
-	send_command('bind f10 gs c toggle melee set')
 
 
 	----------------------------------------------------------------------
-	-- Idle set
+	-- Idle set(s)
 	----------------------------------------------------------------------
-	-- Initializes an array to begin storing set data
-	sets.idle = {}
-
-	-- Idle : Default
 	sets.idle = {
 	    ammo="Ginsen",
         head="Wakido Kabuto +3",
-        body="Hiza. Haramaki +2",
+        body="Sacro Breastplate",
 	    hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
 	    legs="Wakido Haidate +3",
 	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
         neck="Loricate Torque +1",
-	    waist="Sailfi Belt +1",
+        waist="Sarissapho. Belt",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
-        left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        left_ring="Karieyh Ring",
+        right_ring="Defending Ring",
 	    back="Moonbeam Cape",
-	} -- end sets.idle
+	} -- end Idle
 
 
 	----------------------------------------------------------------------
-	-- Melee set
+	-- Engaged set(s)
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.melee = {}
-
-	sets.melee = {
-	    ammo="Ginsen",
-	    head="Flam. Zucchetto +2",
-	    body="Ken. Samue +1",
-	    hands="Ken. Tekko +1",
-	    legs="Ken. Hakama +1",
-	    feet="Ken. Sune-Ate +1",
+	sets.engaged = {
+        ammo="Ginsen",
+        head="Flam. Zucchetto +2",
+        body="Ken. Samue +1",
+        hands="Wakido Kote +3",
+        -- hands="Ken. Tekko +1",
+        legs="Ken. Hakama +1",
+        feet="Ken. Sune-Ate +1",
         neck={ name="Sam. Nodowa +2", augments={'Path: A',}},
-	    waist="Sailfi Belt +1",
-	    left_ear="Dedition Earring",
-	    right_ear="Telos Earring",
-	    left_ring="Flamma Ring",
-	    right_ring="Hetairoi Ring",
-	    back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10',}},
-	} -- end sets.melee
+        waist="Windbuffet Belt +1",
+        left_ear="Dedition Earring",
+        right_ear="Telos Earring",
+        left_ring="Flamma Ring",
+        right_ring="Niqmaddu Ring",
+        back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10',}},
+	} -- end Engaged
 
 
 	----------------------------------------------------------------------
-	-- Precast sets
-	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
+	-- Precast set(s)
 	sets.precast = {}
+	----------------------------------------------------------------------
 
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
         ammo="Sapience Orb",
+        body="Sacro Breastplate",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs="Arjuna Breeches",
         neck="Orunmila's Torque",
         left_ear="Etiolation Earring",
         right_ear="Loquac. Earring",
-        left_ring="Lebeche Ring",
+        left_ring="Kishar Ring",
         right_ring="Prolix Ring",
-	} -- end sets.precast.fastCast
+	} -- end Fast Cast
 
 
 	----------------------------------------------------------------------
-	-- Midcast sets
-	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
+	-- Midcast set(s)
 	sets.midcast = {}
 	sets.midcast.ws = {}
+	----------------------------------------------------------------------
 
-	-- Midcast : Weapon Skill : Single Hit Physical
+	-- Midcast : Weapon Skill : Default
 	-- Strength: 267
 	-- Weapon Skill Damage: 58%
 	sets.midcast.ws.default = {
         ammo="Knobkierrie",
-        head="Wakido Kabuto +3",
+        head={ name="Sakonji Kabuto +3", augments={'Enhances "Ikishoten" effect',}},
 	    body={ name="Sakonji Domaru +3", augments={'Enhances "Overwhelm" effect',}},
         hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
 	    legs="Wakido Haidate +3",
@@ -97,7 +89,58 @@ function get_sets()
 	    left_ring="Shukuyu Ring",
         right_ring="Regal Ring",
         back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
-	} -- end sets.midcast.ws.default
+	} -- end Weaponskill Default
+
+	-- Midcast : Weapon Skill : Tachi: Fudo
+	sets.midcast.ws["Tachi: Fudo"] = {
+        ammo="Knobkierrie",
+        head={ name="Sakonji Kabuto +3", augments={'Enhances "Ikishoten" effect',}},
+	    body={ name="Sakonji Domaru +3", augments={'Enhances "Overwhelm" effect',}},
+        hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
+	    legs="Wakido Haidate +3",
+	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Ishvara Earring",
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="Karieyh Ring",
+        right_ring="Regal Ring",
+        back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+	} -- end Tachi: Fudo
+
+	-- Midcast : Weapon Skill : Tachi: Shoha
+	sets.midcast.ws["Tachi: Shoha"] = {
+        ammo="Knobkierrie",
+        head={ name="Sakonji Kabuto +3", augments={'Enhances "Ikishoten" effect',}},
+	    body={ name="Sakonji Domaru +3", augments={'Enhances "Overwhelm" effect',}},
+        hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
+	    legs="Wakido Haidate +3",
+	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
+        neck={ name="Sam. Nodowa +2", augments={'Path: A',}},
+        waist="Fotia Belt",
+        left_ear="Ishvara Earring",
+	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
+	    left_ring="Shukuyu Ring",
+        right_ring="Regal Ring",
+        back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+	} -- end Tachi: Shoha
+
+	-- Midcast : Weapon Skill : Impulse Drive
+	sets.midcast.ws["Impulse Drive"] = {
+        ammo="Knobkierrie",
+        head="Flam. Zucchetto +2",
+        body="Ken. Samue +1",
+        hands="Flam. Manopolas +2",
+        legs="Ken. Hakama +1",
+        feet="Ken. Sune-Ate +1",
+        neck={ name="Sam. Nodowa +2", augments={'Path: A',}},
+        waist="Fotia Belt",
+        left_ear="Brutal Earring",
+        right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="Shukuyu Ring",
+        right_ring="Regal Ring",
+        back={ name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+	} -- end Impulse Drive
 
 	-- Midcast : Weapon Skill : Elemental
 	-- Strength: 182
@@ -137,23 +180,27 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.utility = {}
 
-	-- Hasso set
-	hassoToggle = false;
-	sets.utility.hasso = {
-        hands="Wakido Kote +3",
-	} -- end sets.utility.hasso
-
 	-- Meditate set
 	sets.utility.meditate = {
         head="Wakido Kabuto +3",
         hands={ name="Sakonji Kote +3", augments={'Enhances "Blade Bash" effect',}},
         back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
-	} -- end sets.utility.meditate
+	} -- end Meditate
+
+	-- Sekkanoki set
+	sets.utility.sekkanoki = {
+        hands="Kasuga Kote +1",
+	} -- end Sekkanoki
+
+	-- Sengikori set
+	sets.utility.sengikori = {
+        feet="Kas. Sune-Ate +1",
+	} -- end Sengikori
 
 	-- Warding Circle set
 	sets.utility.wardingCircle = {
         head="Wakido Kabuto +3",
-	} -- end sets.utility.wardingCircle
+	} -- end Warding Circle
 
 end -- end get_sets()
 
@@ -162,8 +209,13 @@ end -- end get_sets()
 -- Callback for when casting begins
 ----------------------------------------------------------------------
 function precast(spell)
+	-- Magic
     if spell.action_type == 'Magic' then
 		equip(sets.precast.fastCast)
+	-- Weapon Skill
+	elseif spell.action_type == 'WeaponSkill' then
+		sekkanokiCheck()
+		sengikoriCheck()
 	end
 end -- end precast()
 
@@ -173,26 +225,28 @@ end -- end precast()
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Check if the action is a weapon skill
-    if spell.type == 'WeaponSkill' then
-    	
-		-- Check if the action is a specified weapon skill
-		if sets.midcast.ws[spell.english] then
-			-- Equip the appropriate specific ws set
-			equip(sets.midcast.ws[spell.english])
-	    else
-	    	-- Equip default ws set
-			equip(sets.midcast.ws.default)
-		end
+	if spell.type == 'JobAbility' then
 
-	elseif spell.type == 'JobAbility' then
-
+		-- Meditate
 		if spell.english == 'Meditate' then
 			equip(sets.utility.meditate)
+
+		-- Warding Circle
 		elseif spell.english == 'Warding Circle' then
 			equip(sets.utility.wardingCircle)
 		end
 
+	-- Check if the action is a weapon skill
+    elseif spell.type == 'WeaponSkill' then
+    	
+		-- Check if the action is a specified weapon skill
+		if sets.midcast.ws[spell.english] then
+			equip(sets.midcast.ws[spell.english])
+	    else
+			equip(sets.midcast.ws.default)
+		end
+		sekkanokiCheck()
+		sengikoriCheck()
 	end
 
 end -- end midcast()
@@ -202,17 +256,11 @@ end -- end midcast()
 -- Callback for after casting has fired
 ----------------------------------------------------------------------
 function aftercast(spell)
-
-	-- Check the player status
 	if player.status =='Engaged' then
-		equip(sets.melee)
-		if hassoToggle == true then
-			equip(sets.utility.hasso)
-		end
+		equip(sets.engaged)
 	else
 		equip(sets.idle)
 	end
-
 end -- end aftercast()
 
 
@@ -220,17 +268,11 @@ end -- end aftercast()
 -- Callback for whenever engagment status changes
 ----------------------------------------------------------------------
 function status_change(new, old)
-
-	-- Check the player status
 	if new == 'Engaged' then
-		equip(sets.melee)
-		if hassoToggle == true then
-			equip(sets.utility.hasso)
-		end
+		equip(sets.engaged)
 	else
 		equip(sets.idle)
 	end
-
 end -- end status_change()
 
 
@@ -238,19 +280,6 @@ end -- end status_change()
 -- Callback for whenever buffs change
 ----------------------------------------------------------------------
 function buff_change(name, gain)
-	if name == 'Hasso' then
-		if gain == true then
-			hassoToggle = true
-			if player.status == 'Engaged' then
-				equip(sets.utility.hasso)
-			end
-		else
-			hassoToggle = false
-			if player.status == 'Engaged' then
-				equip(sets.melee)
-			end
-		end
-	end
 end -- end buff_change()
 
 
@@ -261,18 +290,27 @@ function self_command(command)
 
 	-- Equip idle set
 	if command == 'toggle idle set' then
-		-- Alert the user which set is currently being equipped
 		send_command('@input /echo <----- Idle Set Equipped ----->')
-		-- Equip the set
 		equip(sets.idle)
 	end -- end if
 
-	-- Equip melee set
-	if command == 'toggle melee set' then
-		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Melee Set Equipped ----->')
-		-- Equip the set
-		equip(sets.melee)
-	end -- end if
-
 end -- end self_command()
+
+
+----------------------------------------------------------------------
+-- Checks for Sekkanoki and equips accordingly
+----------------------------------------------------------------------
+function sekkanokiCheck()
+	if buffactive.sekkanoki then
+		equip(sets.utility.sekkanoki)
+	end
+end
+
+----------------------------------------------------------------------
+-- Checks for Sengikori and equips accordingly
+----------------------------------------------------------------------
+function sengikoriCheck()
+	if buffactive.sengikori then
+		equip(sets.utility.sengikori)
+	end
+end

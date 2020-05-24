@@ -3,7 +3,7 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
-	send_command('bind f9 gs c toggle idle set')
+	send_command('bind f9 gs c equip idle set')
 	send_command('bind f10 gs c toggle burst mode')
 	send_command('bind f11 gs c toggle death mode')
 
@@ -12,13 +12,10 @@ function get_sets()
 	-- Idle set
 	----------------------------------------------------------------------
 	-- Initializes an array to begin storing set data
-	sets.idle = {}
-
-	-- idle : Default
 	sets.idle = {
         main="Malignance Pole",
 	    sub="Niobid Strap",
-	    ammo="Hydrocera",
+        ammo="Homiliary",
 	    head="Befouled Crown",
 	    body="Jhakri Robe +2",
 	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
@@ -31,16 +28,13 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	} -- end sets.idle
+	} -- end Idle
 
 
 	----------------------------------------------------------------------
 	-- Melee set
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
-	sets.melee = {}
-
-	-- Melee : Default
 	sets.melee = {
 	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
 	    sub="Niobid Strap",
@@ -57,7 +51,7 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	} -- end sets.melee
+	} -- end Melee
 
 
 	----------------------------------------------------------------------
@@ -69,9 +63,9 @@ function get_sets()
 	-- Precast : FastCast
 	sets.precast.fastCast = {
         main="Oranyan",
-	    sub="Niobid Strap",
-        ammo="Sapience Orb",
-	    head={ name="Merlinic Hood", augments={'Mag. Acc.+16','"Fast Cast"+6','MND+9','"Mag.Atk.Bns."+4',}},
+        sub="Niobid Strap",
+        ammo="Impatiens",
+        head={ name="Merlinic Hood", augments={'Mag. Acc.+16','"Fast Cast"+6','MND+9','"Mag.Atk.Bns."+4',}},
         body="Zendik Robe",
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
         legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
@@ -79,11 +73,11 @@ function get_sets()
         neck="Orunmila's Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
-        right_ear="Etiolation Earring",
+        right_ear="Malignance Earring",
         left_ring="Prolix Ring",
         right_ring="Kishar Ring",
         back={ name="Taranus's Cape", augments={'"Fast Cast"+10',}},
-	} -- end sets.precast.fastCast
+	} -- end Fast Cast
 
 
 	----------------------------------------------------------------------
@@ -91,20 +85,39 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
+
+	-- Midcast : Magic : Default
 	sets.midcast.magic = {}
-	sets.midcast.ws = {}
+	sets.midcast.magic.default = {
+        main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        sub="Niobid Strap",
+        ammo="Pemphredo Tathlum",
+        head="Jhakri Coronal +2",
+        body="Jhakri Robe +2",
+        hands="Jhakri Cuffs +2",
+        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
+        feet="Jhakri Pigaches +2",
+        neck="Sanctity Necklace",
+        waist="Refoccilation Stone",
+        left_ear="Regal Earring",
+        right_ear="Malignance Earring",
+        left_ring="Acumen Ring",
+        right_ring="Freke Ring",
+        back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
+	} -- end Magic: Default
 
 	-- Midcast : Magic : Dark
 	sets.midcast.magic.dark = {
 	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
 	    sub="Ammurapi Shield",
+	    head="Pixie Hairpin +1",
         body="Shango Robe",
-	    neck="Erra Pendant",
+        neck="Sanctity Necklace",
         waist="Fucho-no-Obi",
 	    left_ring="Evanescence Ring",
 		right_ring="Archon Ring",
 	    back="Perimede Cape",
-	} -- end sets.midcast.magic.dark
+	} -- end Magic: Dark
 
 	-- Midcast : Magic : Death
 	deathMode = false
@@ -112,46 +125,28 @@ function get_sets()
 	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
 	    sub="Niobid Strap",
 	    ammo="Hydrocera",
-        head="Welkin Crown",
+	    head="Pixie Hairpin +1",
 	    body={ name="Amalric Doublet", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
 	    hands={ name="Amalric Gages", augments={'INT+10','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
 	    legs={ name="Amalric Slops", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
 	    feet={ name="Amalric Nails", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
 	    neck="Eddy Necklace",
 	    waist="Refoccilation Stone",
-	    left_ear="Loquac. Earring",
+        left_ear="Regal Earring",
 	    right_ear="Etiolation Earring",
 	    left_ring="Mephitas's Ring",
 	    right_ring="Mephitas's Ring +1",
         back={ name="Taranus's Cape", augments={'MP+30','Mag. Acc+10 /Mag. Dmg.+10','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%',}},
-	} -- end sets.midcast.magic.elemental
-
-	-- Midcast : Magic : Elemental
-	sets.midcast.magic.elemental = {
-	    main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-	    sub="Niobid Strap",
-	    ammo="Pemphredo Tathlum",
-        head="Jhakri Coronal +2",
-	    body="Jhakri Robe +2",
-	    hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-	    legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-	    feet="Jhakri Pigaches +2",
-	    neck="Eddy Necklace",
-	    waist="Refoccilation Stone",
-	    left_ear="Friomisi Earring",
-	    right_ear="Regal Earring",
-	    left_ring="Acumen Ring",
-        right_ring="Freke Ring",
-	    back={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.midcast.magic.elemental
+	} -- end Magic: Death
 
 	-- Midcast : Weaponskill : Default
+	sets.midcast.ws = {}
 	sets.midcast.ws.default = {
-	} -- end sets.midcast.ws.default
+	} -- end Weaponskill: Default
 
 	-- Midcast : Weaponskill : Myrkr
 	sets.midcast.ws['Myrkr'] = {
-	} -- end sets.midcast.ws['Myrkr']
+	} -- end Weaponskill: Myrkr
 
 
 	----------------------------------------------------------------------
@@ -160,33 +155,9 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.jobAbility = {}
 
-	-- Cascade
-	sets.jobAbility['Cascade'] = {
-	} -- end sets.jobAbility['Cascade']
-
-	-- Elemental Seal
-	sets.jobAbility['Elemental Seal'] = {
-	} -- end sets.jobAbility['Elemental Seal']
-
-	-- Emnity Douse
-	sets.jobAbility['Emnity Douse'] = {
-	} -- end sets.jobAbility['Emnity Douse']
-
 	-- Manafont
 	sets.jobAbility['Manafont'] = {
-	} -- end sets.jobAbility['Manafont']
-
-	-- Mana Wall
-	sets.jobAbility['Mana Wall'] = {
-	} -- end sets.jobAbility['Mana Wall']
-
-	-- Manawell
-	sets.jobAbility['Manawell'] = {
-	} -- end sets.jobAbility['Manawell']
-
-	-- Subtle Sorcery
-	sets.jobAbility['Subtle Sorcery'] = {
-	} -- end sets.jobAbility['Subtle Sorcery']
+	} -- end Manafont
 
 
 	----------------------------------------------------------------------
@@ -195,12 +166,6 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.utility = {}
 
-	-- Element Bonus
-	sets.utility.elementBonus = {
-	    waist="Hachirin-no-Obi",
-	    back="Twilight Cape",
-	} -- end sets.utility.elementBonus
-
 	-- Magic burst
 	burstMode = false
 	sets.utility.magicBurst = {
@@ -208,7 +173,16 @@ function get_sets()
         neck="Mizu. Kubikazari",
         left_ring="Mujin Band",
         right_ring="Locus Ring",
-	} -- end sets.utility.magicBurst
+	} -- end Magic Burst
+
+	-- Mana Wall
+	sets.jobAbility['Mana Wall'] = {
+	} -- end Mana Wall
+
+	-- Weather Bonus
+	sets.utility.weatherBonus = {
+	    waist="Hachirin-no-Obi",
+	} -- end Weather Bonus
 
 
 	----------------------------------------------------------------------
@@ -299,6 +273,8 @@ function get_sets()
 		["Aspir"] = true,
 		["Aspir II"] = true,
 		["Aspir III"] = true,
+		["Bio"] = true,
+		["Bio II"] = true,
 		["Drain"] = true,
 	}
 
@@ -309,13 +285,15 @@ end -- end get_sets()
 -- Callback for when casting begins
 ----------------------------------------------------------------------
 function precast(spell)
-
-    if spell.action_type == 'Magic' then
-		equip(sets.precast.fastCast)
-	elseif spell.type == 'JobAbility' then
-		equip(sets.jobAbility[spell.english])
-    end -- end if
-
+	-- Ensure death mode is off
+	if deathMode == false then
+	    if spell.action_type == 'Magic' then
+			equip(sets.precast.fastCast)
+		elseif spell.type == 'JobAbility' then
+			equip(sets.jobAbility[spell.english])
+	    end
+	end
+	manaWallCheck()
 end -- end precast()
 
 
@@ -324,66 +302,85 @@ end -- end precast()
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Check if the action is a specified weapon skill
-	if spell.action_type == 'Magic' then
+	-- Ensure death mode is off
+	if deathMode == false then
 
-		-- 1. Check if the spell is dark magic
-		if DarkSpells[spell.english] then
-			equip(sets.midcast.magic.dark)
-		elseif ElementalSpells[spell.english] then
-			equip(sets.midcast.magic.elemental)
-		end
+		-- Check if the action is a specified weapon skill
+		if spell.action_type == 'Magic' then
 
-		-- 2. Check if burst mode is on
-		if burstMode == true then
-			equip(sets.utility.magicBurst)
-		end
-
-	    -- 3. Check for element bonus
-	    if ElementalSpells[spell.english] then
-			if spell.element == world.weather_element or spell.element == world.day_element then
-				equip(sets.utility.elementBonus)
+			-- 1. Check if the spell is dark magic
+			if DarkSpells[spell.english] then
+				equip(sets.midcast.magic.dark)
+			elseif ElementalSpells[spell.english] then
+				equip(sets.midcast.magic.default)
 			end
-		end
 
-    elseif spell.type == 'WeaponSkill' then
+			-- 2. Check if burst mode is on
+			if burstMode == true then
+				equip(sets.utility.magicBurst)
+			end
 
-    	-- Check if a specific ws set exists
-		if sets.midcast.ws[spell.name] then
-			-- Equip the appropriate ws specific set
-			equip(sets.midcast.ws[spell.name])
-		else
-    		-- Equip default ws set
-			equip(sets.midcast.ws.default)
-		end
-	
-    end -- end if
+		    -- 3. Check for element bonus
+		    if ElementalSpells[spell.english] then
+				if spell.element == world.weather_element or spell.element == world.day_element then
+					equip(sets.utility.weatherBonus)
+				end
+			end
 
-end -- end midcast()
+	    elseif spell.type == 'WeaponSkill' then
+
+	    	-- Check if a specific ws set exists
+			if sets.midcast.ws[spell.name] then
+				-- Equip the appropriate ws specific set
+				equip(sets.midcast.ws[spell.name])
+			else
+	    		-- Equip default ws set
+				equip(sets.midcast.ws.default)
+			end
+	    end
+	end
+	manaWallCheck()
+end -- end Midcast
 
 
 ----------------------------------------------------------------------
 -- Callback for after casting has fired
 ----------------------------------------------------------------------
 function aftercast(spell)
-	if player.status =='Engaged' then
-		equip(sets.melee)
-	else
-		equip(set_combine(sets.melee, sets.idle))
+	-- Ensure death mode is off
+	if deathMode == false then
+		if player.status =='Engaged' then
+			equip(sets.melee)
+		else
+			equip(sets.idle)
+		end
 	end
-end -- end aftercast()
+	manaWallCheck()
+end -- end Aftercast
 
 
 ----------------------------------------------------------------------
 -- Callback for whenever engagment status changes
 ----------------------------------------------------------------------
 function status_change(new,old)
-	if new == 'Idle' then
-		equip(sets.idle)
-	elseif new == 'Engaged' then
-		equip(sets.melee)
+	-- Ensure death mode is off
+	if deathMode == false then
+		if new == 'Engaged' then
+			equip(sets.melee)
+		else
+			equip(sets.idle)
+		end
 	end
-end -- end status_change()
+	manaWallCheck()
+end -- end Status Change
+
+
+----------------------------------------------------------------------
+-- When buffs are gained or lost
+----------------------------------------------------------------------
+function buff_change(buffName, gained, buffDetails)
+	manaWallCheck()
+end -- end Buff Change
 
 
 ----------------------------------------------------------------------
@@ -392,12 +389,14 @@ end -- end status_change()
 function self_command(command)
 
 	-- Equip the idle set
-	if command == 'toggle idle set' then
-		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Idle Set Equipped ----->')
-		-- Equip the set
-		equip(sets.idle)
-	end -- end if
+	if command == 'equip idle set' then
+		if deathMode == false then
+			equip(sets.idle)
+			send_command('@input /echo <----- Idle Set Equipped ----->')
+		else
+			send_command('@input /echo <----- ERROR: Disable Death Mode ----->')
+		end
+	end -- end Idle Set
 
 	-- Toggle burst mode
 	if command == 'toggle burst mode' then
@@ -408,28 +407,34 @@ function self_command(command)
 			burstMode = false
 			send_command('@input /echo <----- Burst Mode Off ----->')
 		end
-	end -- end if
+	end -- end Burst Mode
 
 	-- Toggle death mode
 	if command == 'toggle death mode' then
 		-- Check status of deathMode
 		if deathMode == false then
-			-- Toggle deathMode on
 			deathMode = true
-			-- Equip death set
 			equip(sets.midcast.magic.death)
-			-- Lock all slots
-			send_command('gs disable all')
-			-- Alert the user which set is currently being equipped
 			send_command('@input /echo <----- Death Mode On ----->')
 		else
 			-- Toggle deathMode off
 			deathMode = false
-			-- Lock all slots
-			send_command('gs enable all')
-			-- Alert the user which set is currently being equipped
+			if player.status == "Engaged" then
+				equip(sets.melee)
+			else
+				equip(sets.idle)
+			end
 			send_command('@input /echo <----- Death Mode Off ----->')
 		end
-	end -- end if
+	end -- end Death Mode
 
-end -- end self_command()
+end -- end Self Command
+
+----------------------------------------------------------------------
+-- Checks for Mana Wall
+----------------------------------------------------------------------
+function manaWallCheck()
+	if buffactive['Mana Wall'] then
+		equip(sets.utility.manaWall)
+	end
+end

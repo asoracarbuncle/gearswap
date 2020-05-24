@@ -14,7 +14,6 @@ function get_sets()
 	-- Idle
 	turtleMode = false;
 	sets.idle = {
-        main={ name="Brilliance", augments={'Shield skill +9','Divine magic skill +14','Enmity+6','DMG:+13',}},
         ammo="Angha Gem",
         head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
         body="Rev. Surcoat +3",
@@ -26,7 +25,7 @@ function get_sets()
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Regal Ring",
         back="Moonbeam Cape",
 	} -- end Idle
 
@@ -36,7 +35,6 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Melee
 	sets.melee = set_combine(sets.idle, {
-        main="Malignance Sword",
 	    ammo="Ginsen",
         head="Hjarrandi Helm",
         body="Hjarrandi Breast.",
@@ -51,15 +49,13 @@ function get_sets()
 	sets.precast = {}
 
 	-- Fast Cast
-	-- 42% Fast Cast
-	-- 40% Spell Interuption Rate Down
+	-- 54% Fast Cast
 	sets.precast.fastCast = {
-        main="Malignance Sword",
         ammo="Impatiens",
         head={ name="Carmine Mask", augments={'Accuracy+15','Mag. Acc.+10','"Fast Cast"+3',}},
-        body="Rev. Surcoat +3",
+        body="Sacro Breastplate",
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
+        legs="Arjuna Breeches",
         feet={ name="Carmine Greaves", augments={'HP+60','MP+60','Phys. dmg. taken -3',}},
         neck="Orunmila's Torque",
         waist="Rumination Sash",
@@ -76,13 +72,26 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
+	sets.midcast.magic = {}
 	sets.midcast.ws = {}
+
+	-- Midcast : Magic : Default
+	sets.midcast.magic.default = {
+        ammo="Impatiens",
+        head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
+        body="Sacro Breastplate",
+        legs={ name="Founder's Hose", augments={'MND+5','Mag. Acc.+5','Attack+7','Breath dmg. taken -2%',}},
+        feet="Odyssean Greaves",
+        waist="Rumination Sash",
+        right_ring="Evanescence Ring",
+        back={ name="Rudianos's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Spell interruption rate down-10%',}},
+	} -- end Magic : Default
 
 	-- Midcast : Weaponskill : Default
 	sets.midcast.ws.default = {
 	    ammo="Ginsen",
-	    head="Flam. Zucchetto +2",
-	    body="Flamma Korazin +2",
+        head="Hjarrandi Helm",
+        body="Hjarrandi Breast.",
 	    hands="Flam. Manopolas +2",
 	    legs="Flamma Dirs +2",
 	    feet="Flam. Gambieras +2",
@@ -93,7 +102,7 @@ function get_sets()
         left_ring="Shukuyu Ring",
 	    right_ring="Regal Ring",
 	    back="Moonbeam Cape",
-	} -- end Weapon Skill Default
+	} -- end Weaponskill : Default
 
 	-- Midcast : Weaponskill : Chant du Cygne
 	sets.midcast.ws['Chant du Cygne'] = set_combine(sets.midcast.ws.default, {
@@ -183,7 +192,7 @@ function midcast(spell)
 	    		equip(sets.midcast.ws.default)
 	    	end
 		elseif spell.action_type == 'Magic' then
-			-- Do nothing for now
+			equip(sets.midcast.magic.default)
 		end -- end action types
 
 	end -- end if turtle mode

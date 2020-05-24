@@ -34,13 +34,9 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Idle set
 	----------------------------------------------------------------------
-	-- Initializes an array to begin storing set data
-	sets.idle = {}
-
-	-- Idle : Default
 	sets.idle = {
 	    main="Carnwenhan",
-	    sub="Ammurapi Shield",
+        sub="Genmei Shield",
 	    head="Inyanga Tiara +2",
 	    body="Inyanga Jubbah +2",
 	    hands="Inyan. Dastanas +2",
@@ -51,18 +47,14 @@ function get_sets()
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
         left_ring="Defending Ring",
-	    right_ring="Vocane Ring",
+        right_ring="Vertigo Ring",
         back="Solemnity Cape",
-	} -- end sets.idle
+	} -- end Idle
 
 
 	----------------------------------------------------------------------
 	-- Melee set
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.melee = {}
-
-	-- Melee : Default
 	sets.melee = {
 	    main="Carnwenhan",
 	    sub="Ammurapi Shield",
@@ -78,7 +70,7 @@ function get_sets()
         left_ring="Rajas Ring",
         right_ring="Petrov Ring",
 	    back={ name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}},
-	} -- end sets.melee
+	} -- end Melee
 
 
 	----------------------------------------------------------------------
@@ -102,7 +94,7 @@ function get_sets()
 	    left_ring="Prolix Ring",
         right_ring="Kishar Ring",
 	    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
-	} -- end sets.precast.fastCast.song
+	} -- end Fast Cast: Song
 
 	-- Precast : fastCast Magic
 	sets.precast.fastCast.magic = {
@@ -118,7 +110,7 @@ function get_sets()
         left_ring="Prolix Ring",
         right_ring="Kishar Ring",
         back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
-	} -- end sets.precast.fastCast.magic
+	} -- end Fast Cast: Magic
 
 
 	----------------------------------------------------------------------
@@ -179,6 +171,7 @@ function get_sets()
 
 	-- Midcast : Buff Song for Daurdabla
 	sets.midcast.buffSong["Daurdabla"] = {
+	    sub="Ammurapi Shield",
 	    head="Brioso Roundlet +3",
 	    body="Fili Hongreline +1",
 	    hands="Inyan. Dastanas +2",
@@ -193,6 +186,7 @@ function get_sets()
 
 	-- Midcast : Buff Song for Gjallarhorn
 	sets.midcast.buffSong["Gjallarhorn"] = {
+	    sub="Ammurapi Shield",
 	    body="Fili Hongreline +1",
 	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
@@ -209,6 +203,7 @@ function get_sets()
 
 	-- Midcast : Enfeeble Song set
 	sets.midcast.enfeebleSong = {
+	    sub="Ammurapi Shield",
 	    head="Brioso Roundlet +3",
 	    body="Brioso Justau. +2",
 	    hands="Inyan. Dastanas +2",
@@ -225,6 +220,7 @@ function get_sets()
 
 	-- Midcast : Magic
 	sets.midcast.magic = {
+	    sub="Ammurapi Shield",
 	    head="Brioso Roundlet +3",
         body="Brioso Justau. +2",
         hands="Brioso Cuffs +2",

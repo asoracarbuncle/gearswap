@@ -7,19 +7,15 @@ function get_sets()
 
 
 	----------------------------------------------------------------------
-	-- Idle set
+	-- Idle set(s)
 	----------------------------------------------------------------------
-	-- Initializes an array to begin storing set data
-	sets.idle = {}
-
-	-- idle : Default
 	sets.idle = {
         main="Malignance Pole",
         sub="Enki Strap",
-        ammo="Hydrocera",
+        ammo="Homiliary",
         head="Befouled Crown",
 	    body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
+        hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
 	    legs="Assid. Pants +1",
         feet="Acad. Loafers +3",
         neck="Loricate Torque +1",
@@ -29,16 +25,12 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
 	    back="Moonbeam Cape",
-	} -- end sets.idle
+	} -- end Idle
 
 
 	----------------------------------------------------------------------
-	-- Melee set
+	-- Melee set(s)
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.melee = {}
-
-	-- Melee : Default
 	sets.melee = {
         main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="Enki Strap",
@@ -55,22 +47,22 @@ function get_sets()
         left_ring="Defending Ring",
 	    right_ring="Vocane Ring",
         back="Solemnity Cape",
-	} -- end sets.melee
+	} -- end Melee
 
 
 	----------------------------------------------------------------------
-	-- Precast sets
+	-- Precast set(s)
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.precast = {}
 
 	-- Precast : FastCast
-	-- Fast Cast: 72% (+15% RDM Sub)
+	-- Fast Cast: 78% + 10% Grimoire + 15% RDM Sub
 	-- Haste: 34%
 	sets.precast.fastCast = {
 	    main="Oranyan",
 	    sub="Enki Strap",
-	    ammo="Sapience Orb",
+        ammo="Impatiens",
 	    head={ name="Merlinic Hood", augments={'Mag. Acc.+16','"Fast Cast"+6','MND+9','"Mag.Atk.Bns."+4',}},
 	    body="Zendik Robe",
 	    hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
@@ -79,23 +71,50 @@ function get_sets()
         neck="Orunmila's Torque",
 	    waist="Witful Belt",
 	    left_ear="Loquac. Earring",
-	    right_ear="Etiolation Earring",
-	    left_ring="Prolix Ring",
+	    right_ear="Malignance Earring",
+	    left_ring="Rahab Ring",
 	    right_ring="Kishar Ring",
         back={ name="Lugh's Cape", augments={'Haste+10',}},
-	} -- end sets.precast.fastCast
+	} -- end Fast Cast
 
 
 	----------------------------------------------------------------------
-	-- Magic set
+	-- Midcast set(s)
 	----------------------------------------------------------------------
 	-- Initialize an array to begin storing set data
 	sets.midcast = {}
 	sets.midcast.magic = {}
-	sets.midcast.magic.enhancing = {}
 
+	----------------------------------------------------------------------
+	-- Midcast: Dark Magic
+	----------------------------------------------------------------------
+	sets.midcast.magic.dark = {}
+	sets.midcast.magic.dark.default = {
+        main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
+        sub="Ammurapi Shield",
+        body="Shango Robe",
+	    neck="Erra Pendant",
+        waist="Fucho-no-Obi",
+        right_ear="Hirudinea Earring",
+	    left_ring="Evanescence Ring",
+		right_ring="Archon Ring",
+	    back="Perimede Cape",
+	} -- end Dark Magic
+
+	-- Midcast: Dark: Light Arts
+	sets.midcast.magic.dark.lightArts = set_combine(sets.midcast.magic.dark.default, {
+	}) -- end Dark: Light Arts
+
+	-- Midcast: Dark: Dark Arts
+	sets.midcast.magic.dark.darkArts = set_combine(sets.midcast.magic.dark.default, {
+	}) -- end Dark: Dark Arts
+
+
+	----------------------------------------------------------------------
 	-- Midcast: Elemental Magic
-	sets.midcast.magic.elemental = {
+	----------------------------------------------------------------------
+	sets.midcast.magic.elemental = {}
+	sets.midcast.magic.elemental.default = {
 	    main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
 	    sub="Enki Strap",
         ammo="Pemphredo Tathlum",
@@ -106,25 +125,27 @@ function get_sets()
         feet="Jhakri Pigaches +2",
         neck="Sanctity Necklace",
         waist="Refoccilation Stone",
-        left_ear="Friomisi Earring",
+        left_ear="Malignance Earring",
         right_ear="Regal Earring",
-        left_ring="Acumen Ring",
+        left_ring="Jhakri Ring",
         right_ring="Freke Ring",
         back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.midcast.magic.elemental
+	} -- end Elemental Magic: Default
 
-	-- Midcast: Elemental Burst Magic
-	burstMode = false
-	sets.midcast.magic.elementalBurst = set_combine(sets.midcast.magic.elemental, {
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-        neck="Mizu. Kubikazari",
-        right_ear="Static Earring",
-        left_ring="Locus Ring",
-        right_ring="Mujin Band",
-	}) -- end sets.midcast.magic.elementalBurst
+	-- Midcast: Elemental: Light Arts
+	sets.midcast.magic.elemental.lightArts = set_combine(sets.midcast.magic.elemental.default, {
+	}) -- end Elemental Magic: Light Arts
 
+	-- Midcast: Elemental: Dark Arts
+	sets.midcast.magic.elemental.darkArts = set_combine(sets.midcast.magic.elemental.default, {
+	}) -- end Elemental Magic: Dark Arts
+
+
+	----------------------------------------------------------------------
 	-- Midcast: Enfeebling Magic
-	sets.midcast.magic.enfeebling = {
+	----------------------------------------------------------------------
+	sets.midcast.magic.enfeebling = {}
+	sets.midcast.magic.enfeebling.default = {
         main="Oranyan",
         sub="Enki Strap",
         ammo="Pemphredo Tathlum",
@@ -135,15 +156,28 @@ function get_sets()
         feet="Acad. Loafers +3",
         neck="Incanter's Torque",
         waist="Rumination Sash",
-        left_ear="Lempo Earring",
+        left_ear="Malignance Earring",
         right_ear="Regal Earring",
-        left_ring="Kishar Ring",
+        left_ring="Stikini Ring",
         right_ring="Stikini Ring",
         back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.midcast.magic.enfeebling
+	} -- end Enfeebling Magic
 
+	-- Midcast: Enfeebling Magic: Light Arts
+	sets.midcast.magic.enfeebling.lightArts = set_combine(sets.midcast.magic.enfeebling.default, {
+	    legs="Acad. Pants +2",
+	}) -- end Enfeebling Magic: Light Arts
+
+	-- Midcast: Enfeebling Magic: Dark Arts
+	sets.midcast.magic.enfeebling.darkArts = set_combine(sets.midcast.magic.enfeebling.default, {
+	}) -- end Enfeebling Magic: Dark Arts
+
+
+	----------------------------------------------------------------------
 	-- Midcast: Enhancing Magic
-	sets.midcast.magic.enhancing.darkArts = {
+	----------------------------------------------------------------------
+	sets.midcast.magic.enhancing = {}
+	sets.midcast.magic.enhancing.default = {
         main="Oranyan",
         sub="Enki Strap",
         ammo="Hydrocera",
@@ -159,17 +193,27 @@ function get_sets()
         left_ring="Vertigo Ring",
         right_ring="Lebeche Ring",
         back="Fi Follet Cape +1",
-	} -- end sets.midcast.magic.enhancing
+	} -- end Enhancing Magic
 
-	-- Midcast: Enhancing Magic
-	sets.midcast.magic.enhancing.lightArts = set_combine(sets.midcast.magic.enhancing.darkArts, {
+	-- Midcast: Enhancing Magic: Light Arts
+	sets.midcast.magic.enhancing.lightArts = set_combine(sets.midcast.magic.enhancing.default, {
 	    head={ name="Telchine Cap", augments={'Enh. Mag. eff. dur. +10',}},
+        body={ name="Telchine Chas.", augments={'Enh. Mag. eff. dur. +10',}},
+	    hands={ name="Telchine Gloves", augments={'Enh. Mag. eff. dur. +7',}},
 	    legs={ name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +10',}},
 	    feet={ name="Telchine Pigaches", augments={'Enh. Mag. eff. dur. +10',}},
-	}) -- end sets.midcast.magic.enhancing
+	}) -- end Enhancing Magic: Light Arts
 
+	-- Midcast: Enhancing Magic: Dark Arts
+	sets.midcast.magic.enhancing.darkArts = set_combine(sets.midcast.magic.enhancing.default, {
+	}) -- end Enhancing Magic: Dark Arts
+
+
+	----------------------------------------------------------------------
 	-- Midcast: Healing Magic
-	sets.midcast.magic.healing = {
+	----------------------------------------------------------------------
+	sets.midcast.magic.healing = {}
+	sets.midcast.magic.healing.default = {
 	    main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
 	    sub="Enki Strap",
 	    ammo="Hydrocera",
@@ -185,24 +229,15 @@ function get_sets()
 	    left_ring="Stikini Ring",
 	    right_ring="Stikini Ring",
 	    back={ name="Lugh's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
-	} -- end sets.midcast.magic.healing
+	} -- end Healing Magic
 
-	-- Midcast: Dark Magic
-	sets.midcast.magic.dark = set_combine(sets.midcast.magic.elemental, {
-        main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
-        sub="Ammurapi Shield",
-        body="Shango Robe",
-	    neck="Erra Pendant",
-        waist="Fucho-no-Obi",
-        right_ear="Hirudinea Earring",
-	    left_ring="Evanescence Ring",
-		right_ring="Archon Ring",
-	    back="Perimede Cape",
-	}) -- end sets.midcast.magic.dark
+	-- Midcast: Healing: Light Arts
+	sets.midcast.magic.healing.lightArts = set_combine(sets.midcast.magic.healing.default, {
+	}) -- end Healing: Light Arts
 
-	-- Midcast: Dark Burst Magic
-	sets.midcast.magic.darkBurst = set_combine(sets.midcast.magic.dark, sets.midcast.magic.elementalBurst)
-	-- end sets.midcast.magic.darkBurst
+	-- Midcast: Healing: Dark Arts
+	sets.midcast.magic.healing.darkArts = set_combine(sets.midcast.magic.healing.default, {
+	}) -- end Healing: Dark Arts
 
 
 	----------------------------------------------------------------------
@@ -214,40 +249,39 @@ function get_sets()
 	-- Dark Arts
 	sets.jobAbility.darkArts = {
 	    body="Acad. Gown +2",
-	} -- end sets.jobAbility.darkArts
+	} -- end Dark Arts
 
 	-- Ebullience
 	sets.jobAbility.ebullience = {
         head="Arbatel Bonnet +1",
-	} -- end sets.jobAbility.ebullience
+	} -- end Ebullience
 
 	-- Immanence
 	sets.jobAbility.immanence = {
         hands="Arbatel Bracers +1",
-	} -- end sets.jobAbility.immanence
+	} -- end Immanence
 
 	-- Light Arts
 	sets.jobAbility.lightArts = {
 	    legs="Acad. Pants +2",
-	} -- end sets.jobAbility.lightArts
+	} -- end Light Arts
 
 	-- Perpetuance
 	sets.jobAbility.perpetuance = {
 	    hands="Arbatel Bracers +1",
-	} -- end sets.jobAbility.perpetuance
+	} -- end Perpetuance
 
 	-- Sublimation
-	sublimationMode = false
 	sets.jobAbility.sublimation = {
 	    head="Acad. Mortar. +2",
 	    body={ name="Peda. Gown +1", augments={'Enhances "Enlightenment" effect',}},
         left_ear="Savant's Earring",
-	} -- end sets.jobAbility.sublimation
+	} -- end Sublimation
 
 	-- Tabula Rasa
 	sets.jobAbility.tabulaRasa = {
         legs={ name="Peda. Pants +1", augments={'Enhances "Tabula Rasa" effect',}},
-	} -- end sets.jobAbility.tabulaRasa
+	} -- end Tabula Rasa
 
 
 	----------------------------------------------------------------------
@@ -259,17 +293,17 @@ function get_sets()
 	-- Aqyaveil
 	sets.utility.aquaveil = {
         head={ name="Amalric Coif", augments={'MP+60','Mag. Acc.+15','"Mag.Atk.Bns."+15',}},
-	} -- end sets.utility.aquaveil
+	} -- end Aquaveil
 
 	-- Element Bonus
 	sets.utility.elementBonus = {
 	    waist="Hachirin-no-Obi",
-	} -- end sets.utility.elementBonus
+	} -- end Element Bonus
 
 	-- Klimaform
 	sets.utility.klimaform = {
         feet="Arbatel Loafers +1",
-	} -- end sets.utility.klimaform
+	} -- end Klimaform
 
 	-- Regen
 	sets.utility.regen = {
@@ -277,17 +311,17 @@ function get_sets()
 	    sub="Ammurapi Shield",
         head="Arbatel Bonnet +1",
 	    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.utility.regen
+	} -- end Regen
 
 	-- Stoneskin
 	sets.utility.stoneskin = {
         waist="Siegel Sash",
-	} -- end sets.utility.stoneskin
+	} -- end Stone Skin
 
 	-- Stormsurge
 	sets.utility.stormsurge = {
 	    feet={ name="Peda. Loafers +1", augments={'Enhances "Stormsurge" effect',}},
-	} -- end sets.utility.stormsurge
+	} -- end Storm Surge
 
 
 	----------------------------------------------------------------------
@@ -496,29 +530,23 @@ end -- end get_sets()
 -- When status changes
 ----------------------------------------------------------------------
 function status_change(new, old)
-	if new == 'Idle' then
-		equip(sets.idle)
-	elseif new == 'Engaged' then
+
+	if new == 'Engaged' then
 		equip(sets.melee)
-    end -- end if
-end -- end status_change()
+		sublimationCheck(new)
+	else
+		equip(sets.idle)
+		sublimationCheck(new)
+    end
+end -- end Status Change
 
 
 ----------------------------------------------------------------------
 -- When buffs are gained or lost
 ----------------------------------------------------------------------
 function buff_change(buffName, gained, buffDetails)
-	if buffName == "Sublimation: Activated" then
-		if gained == true then
-			equip(sets.jobAbility.sublimation)
-			sublimationMode = true
-		else
-			sublimationMode = false
-	    end -- end if
-    elseif buffName == "Sublimation: Complete" then
-    	sublimationMode = false
-    end -- end if
-end -- end buff_change()
+	sublimationCheck('Idle')
+end -- end Buff Change
 
 
 ----------------------------------------------------------------------
@@ -528,7 +556,7 @@ function precast(spell)
     if spell.action_type == 'Magic' then
 		equip(sets.precast.fastCast)
     end -- end if
-end -- end precast()
+end -- end Precast
 
 
 ----------------------------------------------------------------------
@@ -542,55 +570,30 @@ function midcast(spell)
 		-- Check for job ability
     	if spell.name == "Tabula Rasa" then
     		equip(sets.jobAbility.tabulaRasa)
-	    end -- end if
+	    end
 
 	-- Check if the current action is magic
 	elseif spell.action_type == 'Magic' then
 
-		-- 1. Check for spell type
-    	if DarkSpells[spell.english] then
-    		if burstMode == false then
-    			equip(sets.midcast.magic.dark)
-    		else
-    			equip(sets.midcast.magic.darkBurst)
-    		end
+		-- 1. Check what type of spell it is
+		if DarkSpells[spell.english] then
+			darkMagicEquip()
+		    ebullienceCheck()
     	elseif ElementalSpells[spell.english] then
-    		if burstMode == false then
-    			equip(sets.midcast.magic.elemental)
-    		else
-    			equip(sets.midcast.magic.elementalBurst)
-    		end
+    		elementalMagicEquip()
+		    ebullienceCheck()
+		    immanenceCheck()
     	elseif EnfeeblingSpells[spell.english] then
-    		equip(sets.midcast.magic.enfeebling)
+    		enfeeblingMagicEquip()
+		    ebullienceCheck()
     	elseif EnhancingSpells[spell.english] then
-		    if buffactive['Light Arts'] then
-		    	equip(sets.midcast.magic.enhancing.lightArts)
-		    elseif buffactive['Dark Arts'] then
-		    	equip(sets.midcast.magic.enhancing.darkArts)
-		    end -- end if
+    		enhancingMagicEquip()
+		    perpetuanceCheck()
     	elseif HealingSpells[spell.english] then
-    		equip(sets.midcast.magic.healing)
-	    end -- end if
+    		healingMagicEquip()
+    	end
 
-	    -- 2. Check if a grimoire is up
-	    if buffactive['Light Arts'] then
-	    	-- equip(sets.jobAbility.lightArts) Uncomment if you need additional skill
-	    elseif buffactive['Dark Arts'] then
-	    	equip(sets.jobAbility.darkArts)
-	    end -- end if
-
-	    -- 3. Check If any stratagems are up
-		if buffactive['Immanence'] then
-	    	equip(sets.jobAbility.immanence)
-	    end -- end if
-		if buffactive['Perpetuance'] then
-	    	equip(sets.jobAbility.perpetuance)
-	    end -- end if
-		if buffactive['Ebullience'] then
-	    	equip(sets.jobAbility.ebullience)
-	    end -- end if
-
-	    -- 4. Check for specific spell buffs
+	    -- 3. Check for specific spell buffs
 	    if spell.english == "Aquaveil" then
 	    	equip(sets.utility.aquaveil)
 	    elseif spell.english == "Klimaform" then
@@ -603,7 +606,7 @@ function midcast(spell)
 	    	equip(sets.utility.stormsurge)
 	    end -- end if
 
-	    -- 6. Check for element bonus
+	    -- 4. Check for element bonus
 	    if ElementalSpells[spell.english] then
 			if spell.element == world.weather_element or spell.element == world.day_element then
 				equip(sets.utility.elementBonus)
@@ -612,7 +615,7 @@ function midcast(spell)
 
     end -- end if
 
-end -- end midcast()
+end -- end Midcast
 
 
 ----------------------------------------------------------------------
@@ -620,19 +623,13 @@ end -- end midcast()
 ----------------------------------------------------------------------
 function aftercast(spell)
 	if player.status =='Engaged' then
-		if sublimationMode == true then
-			equip(set_combine(sets.melee, sets.jobAbility.sublimation))
-		else
-			equip(sets.melee)
-		end
+		equip(sets.melee)
+		sublimationCheck(player.status)
 	else
-		if sublimationMode == true then
-			equip(set_combine(sets.idle, sets.jobAbility.sublimation))
-		else
-			equip(sets.idle)
-		end
-	end -- end if
-end -- end aftercast()
+		equip(sets.idle)
+		sublimationCheck(player.status)
+	end
+end -- end Aftercast
 
 
 ----------------------------------------------------------------------
@@ -646,16 +643,114 @@ function self_command(command)
 		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
 		-- Equip the set
 		equip(sets.idle)
+		sublimationCheck('Idle')
 	end -- end if
 
-	-- Toggle burst mode on
-	if command == 'toggle burst mode on' then
-		burstMode = true
-	end -- end if
+end -- end Self Command
 
-	-- Toggle burst mode on
-	if command == 'toggle burst mode off' then
-		burstMode = false
-	end -- end if
+----------------------------------------------------------------------
+-- Equips the appropriate dark magic set
+----------------------------------------------------------------------
+function darkMagicEquip()
+	if buffactive['Light Arts'] or buffactive['Addendum: White'] then
+		equip(sets.midcast.magic.dark.lightArts)
+	elseif buffactive['Dark Arts'] or buffactive['Addendum: Black'] then
+		equip(sets.midcast.magic.dark.darkArts)
+	else
+		equip(sets.midcast.magic.dark.default)
+	end
+end
 
-end -- end self_command()
+----------------------------------------------------------------------
+-- Equips the appropriate elemental magic set
+----------------------------------------------------------------------
+function elementalMagicEquip()
+	if buffactive['Light Arts'] or buffactive['Addendum: White'] then
+		equip(sets.midcast.magic.elemental.lightArts)
+	elseif buffactive['Dark Arts'] or buffactive['Addendum: Black'] then
+		equip(sets.midcast.magic.elemental.darkArts)
+	else
+		equip(sets.midcast.magic.elemental.default)
+	end
+end
+
+----------------------------------------------------------------------
+-- Equips the appropriate enfeebling magic set
+----------------------------------------------------------------------
+function enfeeblingMagicEquip()
+	if buffactive['Light Arts'] or buffactive['Addendum: White'] then
+		equip(sets.midcast.magic.enfeebling.lightArts)
+	elseif buffactive['Dark Arts'] or buffactive['Addendum: Black'] then
+		equip(sets.midcast.magic.enfeebling.darkArts)
+	else
+		equip(sets.midcast.magic.enfeebling.default)
+	end
+end
+
+----------------------------------------------------------------------
+-- Equips the appropriate enhancing magic set
+----------------------------------------------------------------------
+function enhancingMagicEquip()
+	if buffactive['Light Arts'] or buffactive['Addendum: White'] then
+		equip(sets.midcast.magic.enhancing.lightArts)
+	elseif buffactive['Dark Arts'] or buffactive['Addendum: Black'] then
+		equip(sets.midcast.magic.enhancing.darkArts)
+	else
+		equip(sets.midcast.magic.enhancing.default)
+	end
+end
+
+----------------------------------------------------------------------
+-- Equips the appropriate enhancing magic set
+----------------------------------------------------------------------
+function healingMagicEquip()
+	if buffactive['Light Arts'] or buffactive['Addendum: White'] then
+		equip(sets.midcast.magic.healing.lightArts)
+	elseif buffactive['Dark Arts'] or buffactive['Addendum: Black'] then
+		equip(sets.midcast.magic.healing.darkArts)
+	else
+		equip(sets.midcast.magic.healing.default)
+	end
+end
+
+----------------------------------------------------------------------
+-- Checks for ebullience
+----------------------------------------------------------------------
+function ebullienceCheck()
+	if buffactive['Ebullience'] then
+		equip(sets.jobAbility.ebullience)
+	end
+end
+
+----------------------------------------------------------------------
+-- Checks for immmanence
+----------------------------------------------------------------------
+function immanenceCheck()
+	if buffactive['Immanence'] then
+		equip(sets.jobAbility.immanence)
+	end
+end
+
+----------------------------------------------------------------------
+-- Checks for perpetuance
+----------------------------------------------------------------------
+function perpetuanceCheck()
+	if buffactive['Perpetuance'] then
+		equip(sets.jobAbility.perpetuance)
+	end
+end
+
+----------------------------------------------------------------------
+-- Checks for sublimation activated
+----------------------------------------------------------------------
+function sublimationCheck(status)
+	if buffactive['Sublimation: Activated'] then
+		equip(sets.jobAbility.sublimation)
+	elseif buffactive['Sublimation: Complete'] then
+		if status == 'Engaged' then
+			equip(sets.melee)
+		else
+			equip(sets.idle)
+		end
+	end
+end

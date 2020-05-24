@@ -10,23 +10,23 @@ function get_sets()
 	-- Idle set
 	----------------------------------------------------------------------
 	-- idle : Default
-	-- Refresh: 11 per tick / 12 per tick below 50%
+	-- Refresh: 12 per tick / 13 per tick below 50%
 	sets.idle = {
-	    main="Bolelabunga",
-        sub="Culminus",
-	    ammo="Hedgehog Bomb",
-        head="Befouled Crown",
-        body="Theo. Briault +3",
-	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}},
-	    legs="Assid. Pants +1",
+        main="Daybreak", -- Refresh +1
+        sub="Genmei Shield",
+        ammo="Homiliary", -- Refresh +1
+        head="Befouled Crown", -- Refresh +1
+        body="Theo. Briault +3", -- Refresh +3
+	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}, --Refresh +2
+	    legs="Assid. Pants +1", -- Refresh +1/+2
         feet="Tutyr Sabots",
-        neck="Incanter's Torque",
-        waist="Fucho-no-Obi",
-	    left_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}},
-	    right_ear="Nourish. Earring +1",
-	    left_ring="Renaye Ring",
+        neck="Sanctity Necklace",
+        waist="Fucho-no-Obi", -- Latent Refresh +1
+	    left_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}}, -- Refresh +1
+        right_ear="Etiolation Earring",
+	    left_ring="Renaye Ring", -- Refresh +1
 	    right_ring="Mephitas's Ring +1",
-        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
+        back={ name="Alaunus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10',}},
 	} -- end sets.idle
 
 
@@ -52,7 +52,7 @@ function get_sets()
 	    right_ear="Nourish. Earring +1",
 	    left_ring="Mephitas's Ring",
 	    right_ring="Mephitas's Ring +1",
-        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
+        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%',}},
 	} -- end sets.melee
 
 
@@ -66,6 +66,7 @@ function get_sets()
 	sets.resting = {
 	    main="Boonwell Staff",
 	    sub=empty,
+        waist="Cleric's Belt",
 	    ammo="Clarus Stone",
 	} -- end sets.resting
 
@@ -77,8 +78,7 @@ function get_sets()
 	sets.precast = {}
 	sets.precast.fastCast = {}
 
-	-- Precast : Fast cast
-	-- Fast Cast: -70%
+	-- Precast : Fast cast (74%)
 	sets.precast.fastCast.default = {
         main="Winged Wand",
 	    sub="Chanter's Shield",
@@ -88,18 +88,21 @@ function get_sets()
         hands={ name="Chironic Gloves", augments={'"Mag.Atk.Bns."+12','"Fast Cast"+7',}},
         legs="Volte Brais",
         feet="Regal Pumps +1",
-        neck="Orunmila's Torque",
+        neck="Cleric's Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
 	    right_ear="Etiolation Earring",
-	    back={ name="Alaunus's Cape", augments={'"Fast Cast"+10',}},
+	    left_ring="Prolix Ring",
+	    right_ring="Kishar Ring",
+        back={ name="Alaunus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10',}},
 	} -- end sets.precast.fastCast
 
 	-- Precast : Healing magic casting time
-	-- Healing Magic Casting Time: -75%
+	-- Healing Magic Casting Time: -76%
 	sets.precast.fastCast.healing = {
         legs="Ebers Pant. +1",
-	} -- end sets.precast.fastCast.healing
+        feet="Hygieia Clogs +1",
+	} -- end Fast Cast: Healing
 
 
 	----------------------------------------------------------------------
@@ -111,7 +114,7 @@ function get_sets()
 
 	-- Magic : Default
 	sets.midcast.magic.default = {
-	} -- end sets.midcast.magic.default
+	} -- end Default
 
 	-- Magic : Healing
 	sets.midcast.magic.healing = {
@@ -129,8 +132,8 @@ function get_sets()
 	    right_ear="Nourish. Earring +1",
 	    left_ring="Mephitas's Ring",
 	    right_ring="Mephitas's Ring +1",
-        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
-	} -- end sets.midcast.magic.healing
+        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%',}},
+	} -- end Healing
 
 	-- Magic : Enhancing
 	sets.midcast.magic.enhancing = {
@@ -139,13 +142,18 @@ function get_sets()
 	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}},
         feet="Theo. Duckbills +1",
         neck="Incanter's Torque",
-	} -- end sets.midcast.magic.enhancing
+	} -- end Enhancing
 
 	-- Magic : Enfeebling
 	sets.midcast.magic.enfeebling = {
 	    sub="Ammurapi Shield",
         neck="Incanter's Torque",
-	} -- end sets..midcast.magic.enfeebling
+	} -- end Enfeebling
+
+	-- Magic : Dispelga
+	sets.midcast.magic.dispelga = {
+        main="Daybreak",
+	} -- end Dispelga
 
 
 	----------------------------------------------------------------------
@@ -156,7 +164,7 @@ function get_sets()
 
 	-- Job Ability: Afflatus Solace
 	sets.jobAbility.afflatusSolace = {
-        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
+        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%',}},
 	} -- end sets.jobAbility.afflatusSolace
 
 	-- Job Ability: Devotion
@@ -179,27 +187,37 @@ function get_sets()
 	-- Utility: Cureskin
 	sets.utility.cureSkin = {
 	    body="Ebers Bliaud +1",
-	} -- end sets.utility.cureSkin
+	} -- end Cure Skin
 
 	-- Utility: Cursna
 	sets.utility.cursna = {
+        main={ name="Divinity", augments={'Attack+5','Accuracy+2','DMG:+1',}},
         body="Ebers Bliaud +1",
         hands={ name="Fanatic Gloves", augments={'MP+25','Healing magic skill +5','"Conserve MP"+1','"Fast Cast"+2',}},
-        legs={ name="Piety Pantaloons", augments={'Enhances "Afflatus Misery" effect',}},
+        legs="Theo. Pant. +1",
         feet={ name="Vanya Clogs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
         neck="Incanter's Torque",
-        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%',}},
-	} -- end sets.utility.cursna
+        left_ear="Healing Earring",
+        right_ear="Beatific Earring",
+        left_ring="Ephedra Ring",
+        right_ring="Haoma's Ring",
+        back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%',}},
+	} -- end Cursna
 
 	-- Utility: Divine caress
 	sets.utility.divineCaress = {
         hands="Ebers Mitts +1",
-	} -- end sets.utility.divineCaress
+	} -- end Divine Caress
 
 	-- Utility: Elemental resistence
 	sets.utility.elementalResistence = {
         legs={ name="Piety Pantaloons", augments={'Enhances "Afflatus Misery" effect',}},
 	} -- end sets.utility.elementalResistence
+
+	-- Utility: Erase
+	sets.utility.erase = {
+        neck="Cleric's Torque",
+	} -- end sets.utility.erase
 
 	-- Utility: Regen
 	sets.utility.regen = {
@@ -275,6 +293,7 @@ MagicEnfeebling = {
 	["Dia III"] = true,
 	["Diaga"] = true,
 	["Dispel"] = true,
+	["Dispelga"] = true,
 	["Distract"] = true,
 	["Distract II"] = true,
 	["Distract III"] = true,
@@ -505,6 +524,9 @@ function precast(spell)
 		if MagicHealing[spell.english] then
 			equip(sets.precast.fastCast.healing)
 		end
+		if spell.english == "Dispelga" then
+			equip(sets.midcast.magic.dispelga)
+		end
 	end
 end -- end precast()
 
@@ -522,6 +544,10 @@ function midcast(spell)
 			equip(sets.midcast.magic.enfeebling)
 		elseif MagicEnhancing[spell.english] then
 			equip(sets.midcast.magic.enhancing)
+			if spell.english == 'Erase' then
+				equip(sets.utility.erase)
+			end
+
 		elseif MagicHealing[spell.english] then
 			equip(sets.midcast.magic.healing)
 		else
@@ -551,6 +577,10 @@ function midcast(spell)
 			end
 		end
 
+		-- 4.) Check for dispelga
+		if spell.english == "Dispelga" then
+			equip(sets.midcast.magic.dispelga)
+		end
 
 	-- Check if the action is a job ability
 	elseif spell.type == 'JobAbility' then

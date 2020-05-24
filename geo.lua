@@ -9,13 +9,9 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Idle sets
 	----------------------------------------------------------------------
-	-- Initializes an array to begin storing set data
-	sets.idle = {}
-
-	-- Default idle set
 	sets.idle = {
 	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
-	    sub="Ammurapi Shield",
+        sub="Genmei Shield",
 	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 	    head="Azimuth Hood +1",
         body="Jhakri Robe +2",
@@ -23,25 +19,21 @@ function get_sets()
 	    legs="Assid. Pants +1",
         feet="Geo. Sandals +1",
         neck="Loricate Torque +1",
-        waist="Fucho-no-Obi",
+        waist="Isa Belt",
 	    left_ear="Handler's Earring",
 	    right_ear="Handler's Earring +1",
-        left_ring="Defending Ring",
-	    right_ring="Vocane Ring",
+	    left_ring="Mephitas's Ring",
+	    right_ring="Mephitas's Ring +1",
 	    back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +19','Pet: Damage taken -2%',}},
-	} -- end sets.idle.default
+	} -- end Idle
 
 
 	----------------------------------------------------------------------
 	-- Melee sets
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.melee = {}
-
-	-- Default melee set
 	sets.melee = {
 	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
-	    sub="Ammurapi Shield",
+        sub="Genmei Shield",
 	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
         head="Jhakri Coronal +2",
         body="Jhakri Robe +2",
@@ -54,8 +46,8 @@ function get_sets()
         right_ear="Cessance Earring",
         left_ring="Rajas Ring",
         right_ring="Petrov Ring",
-        back="Solemnity Cape",
-	} -- end sets.melee.default
+	    back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +19','Pet: Damage taken -2%',}},
+	} -- end Melee
 
 
 	----------------------------------------------------------------------
@@ -69,7 +61,7 @@ function get_sets()
 	    head={ name="Merlinic Hood", augments={'Mag. Acc.+16','"Fast Cast"+6','MND+9','"Mag.Atk.Bns."+4',}},
         body="Zendik Robe",
         hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
-	    legs="Geomancy Pants +1",
+	    legs="Geomancy Pants",
 	    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
         neck="Orunmila's Torque",
         waist="Witful Belt",

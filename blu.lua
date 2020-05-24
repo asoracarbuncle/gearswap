@@ -41,45 +41,43 @@ function get_sets()
 
 	-- Idle : Default
 	sets.idle = {
-	    ammo="Mantoptera Eye",
-	    head={ name="Rawhide Mask", augments={'HP+50','Accuracy+15','Evasion+20',}},
-	    body="Jhakri Robe +2",
-	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        ammo="Mantoptera Eye",
+        head="Malignance Chapeau",
+        body="Ayanmo Corazza +2",
+        hands="Aya. Manopolas +2",
         legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
-	    feet={ name="Herculean Boots", augments={'Mag. Acc.+20','Pet: Accuracy+16 Pet: Rng. Acc.+16','"Refresh"+1','Accuracy+16 Attack+16',}},
+        feet="Aya. Gambieras +2",
         neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
-	    left_ear="Etiolation Earring",
-	    right_ear="Static Earring",
+        left_ear="Etiolation Earring",
+        right_ear="Static Earring",
         left_ring="Defending Ring",
-	    right_ring="Vocane Ring",
-	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+        right_ring="Vocane Ring",
+        back="Reiki Cloak",
 	} -- end sets.idle
 
 
 	----------------------------------------------------------------------
 	-- Melee set
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.melee = {}
-
-	-- Melee : Default
-	-- Triple Attack: 24% (+5% Blue Magic)
-	-- Store TP: 41%
+	-- Quadruple Attack: 8%
+	-- Triple Attack: 18%
+	-- Double Attack: 4%
+	-- Store TP: 54
 	sets.melee = {
-	    ammo="Ginsen",
-	    head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-	    feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-	    neck="Clotharius Torque",
-	    waist="Windbuffet Belt +1",
-	    left_ear="Suppanomimi",
-	    right_ear="Telos Earring",
-	    left_ring="Epona's Ring",
-	    right_ring="Hetairoi Ring",
-	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
+        ammo="Ginsen",
+        head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+        body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
+        neck="Clotharius Torque",
+        waist="Windbuffet Belt +1",
+        left_ear="Telos Earring",
+        right_ear="Dedition Earring",
+        left_ring="Epona's Ring",
+        right_ring="Hetairoi Ring",
+        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}},
 	} -- end sets.melee
 
 
@@ -134,7 +132,7 @@ function get_sets()
 	-- Midcast : Weaponskill : Default
 	sets.midcast.ws.default = {
         ammo="Honed Tathlum",
-	    head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+	    head="Malignance Chapeau",
 	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
 	    hands={ name="Herculean Gloves", augments={'Accuracy+20 Attack+20','"Store TP"+1','DEX+7','Accuracy+12','Attack+3',}},
 		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
@@ -150,19 +148,19 @@ function get_sets()
 
 	-- Midcast : Weaponskill : Chant du Cygne
 	sets.midcast.ws['Chant du Cygne'] = {
-        ammo="Falcon Eye",
-	    head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
-        body="Abnoba Kaftan",
+	    ammo="Falcon Eye",
+	    head="Malignance Chapeau",
+	    body="Abnoba Kaftan",
 	    hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        feet="Thereoid Greaves",
+	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+	    feet="Thereoid Greaves",
 	    neck="Fotia Gorget",
 	    waist="Fotia Belt",
-	    left_ear="Brutal Earring",
+	    left_ear="Telos Earring",
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
-		left_ring="Epona's Ring",
+	    left_ring="Epona's Ring",
 	    right_ring="Begrudging Ring",
-        back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
+	    back={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}},
 	} -- end sets.midcast.ws['Chant du Cygne']
 
 	-- Midcast : Weaponskill : Expiacion
@@ -239,12 +237,12 @@ function get_sets()
 	sets.jobAbilities.chainAffinity = {
 	    left_ring="Mujin Band",
 	    right_ring="Begrudging Ring",
-	} -- end sets.jobAbilities.chainAffinity
+	} -- end Chain Affinity
 
 	-- Diffusion
 	sets.jobAbilities.diffusion = {
         feet={ name="Luhlaza Charuqs +1", augments={'Enhances "Diffusion" effect',}},
-	} -- end sets.jobAbilities.diffusion
+	} -- end Diffusion
 
 
 	----------------------------------------------------------------------
@@ -263,14 +261,17 @@ function get_sets()
         feet={ name="Luhlaza Charuqs +1", augments={'Enhances "Diffusion" effect',}},
 	    neck="Incanter's Torque",
         back={ name="Cornflower Cape", augments={'MP+17','DEX+1','Accuracy+1','Blue Magic skill +10',}},
-	} -- end sets.Utility.blueMagicSkill
+	} -- end Blue Magic Skill
 
 	-- Dark magic
 	sets.utility.darkMagic = {
-	    head="Pixie Hairpin +1",
-        waist="Fucho-no-Obi",
 		right_ring="Archon Ring",
-	} -- end sets.Utility.darkMagic
+	} -- end Dark Magic
+
+	-- Element Bonus
+	sets.utility.elementBonus = {
+	    waist="Hachirin-no-Obi",
+	} -- end Elemental Bonus
 
 
 	----------------------------------------------------------------------
@@ -325,6 +326,11 @@ function midcast(spell)
 		if buffactive['Diffusion'] then
 			equip(sets.jobAbilities.diffusion)
 		end -- end if
+
+	    -- Check for element bonus
+		if spell.element == world.weather_element or spell.element == world.day_element then
+			equip(sets.utility.elementBonus)
+		end
 
     elseif spell.type == 'WeaponSkill' then
 

@@ -3,119 +3,193 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
-	send_command('bind f9 gs c toggle idle set')
+	send_command('bind f9 gs c equip idle set')
 
 
 	----------------------------------------------------------------------
-	-- Idle set
+	-- Idle set(s)
 	----------------------------------------------------------------------
-	-- Initializes an array to begin storing set data
-	sets.idle = {}
-
-	-- Idle : Default
 	sets.idle = {
-	    head="Mummu Bonnet +1",
-	    body="Mummu Jacket +1",
-	    hands="Mummu Wrists +1",
-	    legs="Mummu Kecks +1",
-	    feet="Mummu Gamash. +1",
-	    neck="Asperity Necklace",
-	    waist="Windbuffet Belt +1",
-	    left_ear="Brutal Earring",
-	    right_ear="Cessance Earring",
-	    left_ring="Petrov Ring",
-	    right_ring="Hetairoi Ring",
-	    back="Agema Cape",
-	} -- end sets.idle
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Idle
 
 
 	----------------------------------------------------------------------
-	-- Melee set
+	-- Engaged set(s)
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.melee = {}
-
-	-- Melee : default
-	sets.melee = {
-	} -- end sets.melee
+	sets.engaged = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Engaged
 
 
 	----------------------------------------------------------------------
-	-- Precast sets
+	-- Precast set(s)
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.precast = {}
+	sets.precast = T{} -- DO NOT EDIT THIS LINE
 
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
-	} -- end sets.precast.fastCast
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Fast Cast
 
 
 	----------------------------------------------------------------------
-	-- Midcast sets
+	-- Midcast set(s)
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.midcast = {}
-	sets.midcast.ws = {}
+	sets.midcast = T{} -- DO NOT EDIT THIS LINE
+	sets.midcast.ws = T{} -- DO NOT EDIT THIS LINE
+	sets.midcast.ja = T{} -- DO NOT EDIT THIS LINE
 
-	-- Midcast : Weapon Skill : Default
+	-- Midcast : Weaponskill : Default
+	-- This defines a general default weaponskill set that will be used
+	-- only when a specific weapon skill set doesn't overrides it. This
+	-- ensures that you will always have strong weaponskill pieces
+	-- equipped even when you use an uncommon weapon skill.
 	sets.midcast.ws.default = {
-	} -- end sets.midcast.ws.default
+	} -- end Weaponskill default
 
-	-- Midcast : Weapon Skill : Raging Fists
-	sets.midcast.ws["Raging Fists"] = {
-	} -- end sets.midcast.ws["Raging Fists"]
+	-- Midcast : Weaponskill : Combo
+	sets.midcast.ws["Combo"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Combo
 
-	-- Midcast : Weapon Skill : Spinning Attack
-	sets.midcast.ws["Spinning Attack"] = {
-	} -- end sets.midcast.ws["Spinning Attack"]
+	-- Midcast : Weaponskill : Shoulder Tackle
+	sets.midcast.ws["Shoulder Tackle"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Shoulder Tackle
 
-	-- Midcast : Weapon Skill : Asuran Fists
-	sets.midcast.ws["Asuran Fists"] = {
-	} -- end sets.midcast.ws["Asuran Fists"]
+	-- Midcast : Weaponskill : One Inch Punch
+	sets.midcast.ws["One Inch Punch"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end One Inch Punch
 
-	-- Midcast : Weapon Skill : Final Heaven
-	sets.midcast.ws["Final Heaven"] = {
-	} -- end sets.midcast.ws["Final Heaven"]
+	-- Midcast : Weaponskill : Backhand Blow
+	sets.midcast.ws["Backhand Blow"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Backhand Blow
 
-	-- Midcast : Weapon Skill : Victory Smite
-	sets.midcast.ws["Victory Smite"] = {
-	} -- end sets.midcast.ws["Victory Smite"]
+	-- Midcast : Weaponskill : Raging Fists
+	sets.midcast.ws["Raging Fists"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Raging Fists
+
+	-- Midcast : Weaponskill : Spinning Attack
+	sets.midcast.ws["Spinning Attack"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Spinning Attack
+
+	-- Midcast : Weaponskill : Howling Fist
+	sets.midcast.ws["Howling Fist"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Howling Fist
+
+	-- Midcast : Weaponskill : Dragon Kick
+	sets.midcast.ws["Dragon Kick"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Dragon Kick
+
+	-- Midcast : Weaponskill : Asuran Fists
+	sets.midcast.ws["Asuran Fists"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Asuran Fists
+
+	-- Midcast : Weaponskill : Tornado Kick
+	sets.midcast.ws["Tornado Kick"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Tornado Kick
+
+	-- Midcast : Weaponskill : Shijin Spiral
+	sets.midcast.ws["Shijin Spiral"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Shijin Spiral
+
+	-- Midcast : Weaponskill : Final Heaven
+	sets.midcast.ws["Final Heaven"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Final Heaven
+
+	-- Midcast : Weaponskill : Victory Smite
+	sets.midcast.ws["Victory Smite"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Victory Smite
+
+	-- Midcast : Weaponskill : Ascetic's Fury
+	sets.midcast.ws["Ascetic's Fury"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Ascetic's Fury
+
+	-- Midcast : Weaponskill : Stringing Pummel
+	sets.midcast.ws["Stringing Pummel"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Stringing Pummel
 
 
 	----------------------------------------------------------------------
-	-- Utility Sets (not bound to a key)
+	-- Job Ability set(s)
+	-- Add gear that should be put on just before the execution of a
+	-- job ability. Do not use these sets for situations where gear
+	-- must be worn throughout the duration of the buff.
+	sets.midcast = T{}
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.utility = {}
+	-- Midcast : Job Ability : Boost
+	sets.midcast.ja['Boost'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Boost
 
-	-- Focus set
-	sets.utility.focus = {
-	} -- end sets.utility.focus
+	-- Midcast : Job Ability : Dodge
+	sets.midcast.ja['Dodge'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Dodge
 
-	-- Chakra set
-	sets.utility.chakra = {
-	} -- end sets.utility.chakra
+	-- Midcast : Job Ability : Focus
+	sets.midcast.ja['Focus'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Sengikori
 
-	-- Counterstance set
-	sets.utility.counterstance = {
-	} -- end sets.utility.counterstance
+	-- Midcast : Job Ability : Chakra
+	sets.midcast.ja['Chakra'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Chakra
 
-	-- Formless Strikes set
-	sets.utility.formlessStrikes = {
-	} -- end sets.utility.formlessStrikes
+	-- Midcast : Job Ability : Chi Blast
+	sets.midcast.ja['Chi Blast'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Chi Blast
 
-	-- Footwork set
-	sets.utility.footwork = {
-	} -- end sets.utility.footwork
+	-- Midcast : Job Ability : Counterstance
+	sets.midcast.ja['Counterstance'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Counterstance
 
-	-- Perfect Counter set
-	sets.utility.perfectCounter = {
-	} -- end sets.utility.perfectCounter
+	-- Midcast : Job Ability : Footwork
+	sets.midcast.ja['Footwork'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Footwork
 
-	-- Impetus set
-	sets.utility.impetus = {
-	} -- end sets.utility.impetus
+	-- Midcast : Job Ability : Mantra
+	sets.midcast.ja['Mantra'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Mantra
+
+	-- Midcast : Job Ability : Formless Strikes
+	sets.midcast.ja['Formless Strikes'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Formless Strikes
+
+	-- Midcast : Job Ability : Perfect Counter
+	sets.midcast.ja['Perfect Counter'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Perfect Counter
+
+	-- Midcast : Job Ability : Impetus
+	sets.midcast.ja['Impetus'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Impetus
+
+	-- Midcast : Job Ability : Inner Strength
+	sets.midcast.ja['Inner Strength'] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Inner Strength
 
 end -- end get_sets()
 
@@ -135,31 +209,21 @@ end -- end precast()
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Check if the action is a weapon skill
-    if spell.type == 'WeaponSkill' then
-		-- Check if the action is a specified weapon skill
-		if sets.midcast.ws[spell.name] then
-			-- Equip the appropriate specific ws set
-			equip(sets.midcast.ws[spell.name])
-	    else
-	    	-- Equip default ws set
-			equip(sets.midcast.ws.default)
+	-- Check if the action is a job ability
+	if spell.type == 'JobAbility' then
+		if sets.midcast.ja[spell.english] then
+			equip(sets.midcast.ja[spell.english])
 		end
-	elseif spell.type == 'JobAbility' then
-		if spell.name == 'Focus' then
-			equip(sets.utility.focus)
-		elseif spell.name == 'Chakra' then
-			equip(sets.utility.chakra)
-		elseif spell.name == 'Counterstance' then
-			equip(sets.utility.counterstance)
-		elseif spell.name == 'Formless Strikes' then
-			equip(sets.utility.formlessStrikes)
-		elseif spell.name == 'Footwork' then
-			equip(sets.utility.footwork)
-		elseif spell.name == 'Perfect Counter' then
-			equip(sets.utility.perfectCounter)
-		elseif spell.name == 'Impetus' then
-			equip(sets.utility.impetus)
+
+	-- Check if the action is a weapon skill
+    elseif spell.type == 'WeaponSkill' then
+
+		-- Check if the action is a specified weapon skill
+		if sets.midcast.ws[spell.english] then
+			equip(sets.midcast.ws[spell.english])
+		else
+			-- Equip the default set
+			equip(sets.midcast.ws.default)
 		end
 	end
 
@@ -170,30 +234,31 @@ end -- end midcast()
 -- Callback for after casting has fired
 ----------------------------------------------------------------------
 function aftercast(spell)
-
-	-- Check the player status
 	if player.status =='Engaged' then
-		equip(sets.melee)
+		equip(sets.engaged)
 	else
 		equip(sets.idle)
 	end
-
 end -- end aftercast()
 
 
 ----------------------------------------------------------------------
 -- Callback for whenever engagment status changes
 ----------------------------------------------------------------------
-function status_change(new,old)
-
-	-- Check the player status
-	if new == 'Idle' then
+function status_change(new, old)
+	if new == 'Engaged' then
+		equip(sets.engaged)
+	else
 		equip(sets.idle)
-	elseif new == 'Engaged' then
-		equip(sets.melee)
 	end
-
 end -- end status_change()
+
+
+----------------------------------------------------------------------
+-- Callback for whenever buffs change
+----------------------------------------------------------------------
+function buff_change(name, gain)
+end -- end buff_change()
 
 
 ----------------------------------------------------------------------
@@ -201,12 +266,10 @@ end -- end status_change()
 ----------------------------------------------------------------------
 function self_command(command)
 
-	-- Equip the idle set
-	if command == 'toggle idle set' then
-		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Idle Set Equipped ----->')
-		-- Equip the set
+	-- Equip idle set
+	if command == 'equip idle set' then
 		equip(sets.idle)
+		send_command('@input /echo <----- Idle Set Equipped ----->')
 	end -- end if
 
 end -- end self_command()
