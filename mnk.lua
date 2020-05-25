@@ -254,7 +254,6 @@ function get_sets()
 	-- when it is lost. This set is for pieces that buff the Boost ability
 	-- During it's duration.
 	sets.utility.impetus = {
-        head="Malignance Chapeau",
 		body="Bhikku cyclas +1",
 	} -- end Boost
 
