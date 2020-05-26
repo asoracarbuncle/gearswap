@@ -3,47 +3,62 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
-	send_command('bind f9 gs c equip idle set')
+	send_command('bind f9 gs c cycle idle set')
+	send_command('bind f10 gs c cycle engaged set')
 
 
 	----------------------------------------------------------------------
 	-- Idle set(s)
 	----------------------------------------------------------------------
-	sets.idle = {
-        ammo="Mantoptera Eye",
-        head="Malignance Chapeau",
-        body="Mummu Jacket +2",
-        hands="Mummu Wrists +2",
-        legs="Mummu Kecks +2",
-        feet="Malignance Boots",
-        neck="Loricate Torque +1",
-        waist="Luminary Sash",
-        left_ear="Odnowa Earring",
-        right_ear="Odnowa Earring +1",
-        left_ring="Defending Ring",
-        right_ring="Vertigo Ring",
-        back="Moonbeam Cape",
-	} -- end Idle
+	sets.idle = T{} -- DO NOT EDIT THIS LINE
+	idleSetNames = {
+		[0] = 'Default',
+		[1] = 'DT',
+	}
+	idleSetIndex = table.getn(idleSetNames) + 1 -- DO NOT EDIT THIS LINE
+
+	-- Idle : Default
+	sets.idle[0] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Idle : Default
+
+	-- Idle : DT
+	sets.idle[1] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Idle : DT
 
 
 	----------------------------------------------------------------------
 	-- Engaged set(s)
 	----------------------------------------------------------------------
-	sets.engaged = {
-        ammo="Ginsen",
-        head={ name="Dampening Tam", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-        body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
-        hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
-        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        feet={ name="Herculean Boots", augments={'Accuracy+24 Attack+24','"Triple Atk."+2','DEX+6','Accuracy+7','Attack+14',}},
-        neck="Moonlight Nodowa",
-        waist="Windbuffet Belt +1",
-        left_ear="Sherida Earring",
-        right_ear="Telos Earring",
-        left_ring="Gere Ring",
-        right_ring="Niqmaddu Ring",
-        back="Atheling Mantle",
-	} -- end Engaged
+	sets.engaged = T{} -- DO NOT EDIT THIS LINE
+	engagedSetNames = {
+		[0] = 'TP',
+		[1] = 'Accuracy',
+		[2] = 'Hybrid DT',
+		[3] = 'Hybrid Counter',
+	}
+	engagedSetIndex = table.getn(engagedSetNames) + 1 -- DO NOT EDIT THIS LINE
+
+	-- Engaged : TP
+	sets.engaged[0] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Engaged : TP
+
+	-- Engaged : Accuracy
+	sets.engaged[1] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Engaged : Accuracy
+
+	-- Engaged : Hybrid DT
+	sets.engaged[2] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Engaged : Hybrid DT
+
+	-- Engaged : Hybrid Counter
+	sets.engaged[3] = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Engaged : Hybrid Counter
 
 
 	----------------------------------------------------------------------
@@ -53,17 +68,7 @@ function get_sets()
 
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
-        ammo="Sapience Orb",
-        head={ name="Herculean Helm", augments={'Mag. Acc.+4','"Fast Cast"+6','MND+5',}},
-        body={ name="Herculean Vest", augments={'Mag. Acc.+9','"Fast Cast"+5','"Mag.Atk.Bns."+7',}},
-        hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs="Limbo Trousers",
-        feet={ name="Herculean Boots", augments={'"Fast Cast"+5','INT+13','"Mag.Atk.Bns."+13',}},
-        neck="Orunmila's Torque",
-        left_ear="Etiolation Earring",
-        right_ear="Loquac. Earring",
-        left_ring="Rahab Ring",
-        right_ring="Prolix Ring",
+		-- PASTE YOUR GEAR OVER THIS LINE
 	} -- end Fast Cast
 
 
@@ -73,90 +78,155 @@ function get_sets()
 	sets.midcast = T{} -- DO NOT EDIT THIS LINE
 
 	-- Midcast : Weaponskill : Default
-	-- This defines a general default weaponskill set that will be used
-	-- only when a specific weapon skill set doesn't overrides it. This
-	-- ensures that you will always have strong weaponskill pieces
-	-- equipped even when you use an uncommon weapon skill.
+	-- This defines general physical and magical weaponskill sets that
+	-- will be used only when a specific weapon skill set doesn't
+	-- override it. This ensures that you will always have strong
+	-- weaponskill pieces equipped even when you use an uncommon weapon
+	-- skill.
 	sets.midcast.ws = T{} -- DO NOT EDIT THIS LINE
 	----------------------------------------------------------------------
-	-- Midcast : Weaponskill : Default
-	sets.midcast.ws.default = {
-	} -- end Weaponskill default
+	-- Midcast : Weaponskill : Physical
+	sets.midcast.ws.physical = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Weaponskill physical
 
+	-- Midcast : Weaponskill : Magical
+	sets.midcast.ws.magical = {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	} -- end Weaponskill magical
+
+
+	----------------------------------------------------------------------
+	-- Hand-to-Hand
+	----------------------------------------------------------------------
 	-- Midcast : Weaponskill : Ascetic's Fury
-	sets.midcast.ws["Ascetic's Fury"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Ascetic's Fury"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Ascetic's Fury
 
 	-- Midcast : Weaponskill : Asuran Fists
-	sets.midcast.ws["Asuran Fists"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Asuran Fists"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Asuran Fists
 
 	-- Midcast : Weaponskill : Backhand Blow
-	sets.midcast.ws["Backhand Blow"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Backhand Blow"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Backhand Blow
 
 	-- Midcast : Weaponskill : Combo
-	sets.midcast.ws["Combo"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Combo"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Combo
 
 	-- Midcast : Weaponskill : Dragon Kick
-	sets.midcast.ws["Dragon Kick"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Dragon Kick"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Dragon Kick
 
 	-- Midcast : Weaponskill : Final Heaven
-	sets.midcast.ws["Final Heaven"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Final Heaven"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Final Heaven
 
 	-- Midcast : Weaponskill : Howling Fist
-	sets.midcast.ws["Howling Fist"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Howling Fist"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Howling Fist
 
 	-- Midcast : Weaponskill : One Inch Punch
-	sets.midcast.ws["One Inch Punch"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["One Inch Punch"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end One Inch Punch
 
 	-- Midcast : Weaponskill : Raging Fists
-	sets.midcast.ws["Raging Fists"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Raging Fists"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Raging Fists
 
 	-- Midcast : Weaponskill : Shijin Spiral
-	sets.midcast.ws["Shijin Spiral"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Shijin Spiral"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Shijin Spiral
 
 	-- Midcast : Weaponskill : Shoulder Tackle
-	sets.midcast.ws["Shoulder Tackle"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Shoulder Tackle"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Shoulder Tackle
 
 	-- Midcast : Weaponskill : Spinning Attack
-	sets.midcast.ws["Spinning Attack"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Spinning Attack"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Spinning Attack
 
 	-- Midcast : Weaponskill : Tornado Kick
-	sets.midcast.ws["Tornado Kick"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Tornado Kick"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Tornado Kick
 
 	-- Midcast : Weaponskill : Stringing Pummel
-	sets.midcast.ws["Stringing Pummel"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Stringing Pummel"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Stringing Pummel
 
 	-- Midcast : Weaponskill : Victory Smite
-	sets.midcast.ws["Victory Smite"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Victory Smite"] = set_combine(sets.midcast.ws.physical, {
 		-- PASTE YOUR GEAR OVER THIS LINE
 	}) -- end Victory Smite
+
+
+	----------------------------------------------------------------------
+	-- Staff
+	----------------------------------------------------------------------
+	-- Midcast : Weaponskill : Cataclysm
+	sets.midcast.ws["Cataclysm"] = set_combine(sets.midcast.ws.magical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Cataclysm
+
+	-- Midcast : Weaponskill : Earth Crusher
+	sets.midcast.ws["Earth Crusher"] = set_combine(sets.midcast.ws.magical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Earth Crusher
+
+	-- Midcast : Weaponskill : Full Swing
+	sets.midcast.ws["Full Swing"] = set_combine(sets.midcast.ws.physical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Full Swing
+
+	-- Midcast : Weaponskill : Heavy Swing
+	sets.midcast.ws["Heavy Swing"] = set_combine(sets.midcast.ws.physical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Heavy Swing
+
+	-- Midcast : Weaponskill : Rock Crusher
+	sets.midcast.ws["Rock Crusher"] = set_combine(sets.midcast.ws.magical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Rock Crusher
+
+	-- Midcast : Weaponskill : Shattersoul
+	sets.midcast.ws["Shattersoul"] = set_combine(sets.midcast.ws.physical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Shattersoul
+
+	-- Midcast : Weaponskill : Shell Crusher
+	sets.midcast.ws["Shell Crusher"] = set_combine(sets.midcast.ws.physical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Shell Crusher
+
+	-- Midcast : Weaponskill : Spirit Taker
+	sets.midcast.ws["Spirit Taker"] = set_combine(sets.midcast.ws.physical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Spirit Taker
+
+	-- Midcast : Weaponskill : Starburst
+	sets.midcast.ws["Starburst"] = set_combine(sets.midcast.ws.magical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Starburst
+
+	-- Midcast : Weaponskill : Sunburst
+	sets.midcast.ws["Sunburst"] = set_combine(sets.midcast.ws.magical, {
+		-- PASTE YOUR GEAR OVER THIS LINE
+	}) -- end Sunburst
 
 
 	----------------------------------------------------------------------
@@ -245,17 +315,17 @@ function get_sets()
 	-- when it is lost. This set is for pieces that buff the Boost ability
 	-- During it's duration.
 	sets.utility.boost = {
-		waist="Ask sash ",
+		waist="Ask sash",
 	} -- end Boost
 
 	----------------------------------------------------------------------
-	-- Job Ability : Boost
+	-- Job Ability : Impetus
 	-- This set is equipped when the boost buff is aquired and unequipped
 	-- when it is lost. This set is for pieces that buff the Boost ability
 	-- During it's duration.
 	sets.utility.impetus = {
 		body="Bhikku cyclas +1",
-	} -- end Boost
+	} -- end Impetus
 
 
 end -- end get_sets()
@@ -296,7 +366,7 @@ function midcast(spell)
 			equip(sets.midcast.ws[spell.english])
 		else
 			-- Equip the default set
-			equip(sets.midcast.ws.default)
+			equip(sets.midcast.ws.physical)
 		end
 	end
 
@@ -313,13 +383,12 @@ end -- end midcast()
 function aftercast(spell)
 
 	if player.status =='Engaged' then
-		equip(sets.engaged)
+		equip(sets.engaged[engagedSetIndex])
 	else
-		equip(sets.idle)
+		equip(sets.idle[idleSetIndex])
 	end
 
 	-- Misc checks
-	check_boost()
 	check_impetus()
 
 end -- end aftercast()
@@ -331,13 +400,12 @@ end -- end aftercast()
 function status_change(new, old)
 
 	if new == 'Engaged' then
-		equip(sets.engaged)
+		equip(sets.engaged[engagedSetIndex])
 	else
-		equip(sets.idle)
+		equip(sets.idle[idleSetIndex])
 	end
 
 	-- Misc checks
-	check_boost()
 	check_impetus()
 
 end -- end status_change()
@@ -357,10 +425,24 @@ end -- end buff_change()
 ----------------------------------------------------------------------
 function self_command(command)
 
-	-- Equip idle set
-	if command == 'equip idle set' then
-		equip(sets.idle)
-		send_command('@input /echo <----- Idle Set Equipped ----->')
+	-- Cycle idle set
+	if command == 'cycle idle set' then
+		idleSetIndex = idleSetIndex + 1
+		if idleSetIndex > table.getn(sets.idle) then
+			idleSetIndex = 0
+		end
+		equip(sets.idle[idleSetIndex])
+		send_command('@input /echo <----- Idle: ' .. idleSetNames[idleSetIndex] .. ' ----->')
+	end -- end if
+
+	-- Cycle engaged set
+	if command == 'cycle engaged set' then
+		engagedSetIndex = engagedSetIndex + 1
+		if engagedSetIndex > table.getn(sets.engaged) then
+			engagedSetIndex = 0
+		end
+		equip(sets.engaged[engagedSetIndex])
+		send_command('@input /echo <----- Idle: ' .. engagedSetNames[engagedSetIndex] .. ' ----->')
 	end -- end if
 
 	-- Misc checks
