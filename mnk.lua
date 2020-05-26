@@ -11,11 +11,11 @@ function get_sets()
 	-- Idle set(s)
 	----------------------------------------------------------------------
 	sets.idle = T{} -- DO NOT EDIT THIS LINE
+	idleSetIndex = 0 -- DO NOT EDIT THIS LINE
 	idleSetNames = {
 		[0] = 'Default',
 		[1] = 'DT',
 	}
-	idleSetIndex = table.getn(idleSetNames) + 1 -- DO NOT EDIT THIS LINE
 
 	-- Idle : Default
 	sets.idle[0] = {
@@ -32,13 +32,13 @@ function get_sets()
 	-- Engaged set(s)
 	----------------------------------------------------------------------
 	sets.engaged = T{} -- DO NOT EDIT THIS LINE
+	engagedSetIndex = 0 -- DO NOT EDIT THIS LINE
 	engagedSetNames = {
 		[0] = 'TP',
 		[1] = 'Accuracy',
 		[2] = 'Hybrid DT',
 		[3] = 'Hybrid Counter',
 	}
-	engagedSetIndex = table.getn(engagedSetNames) + 1 -- DO NOT EDIT THIS LINE
 
 	-- Engaged : TP
 	sets.engaged[0] = {
@@ -431,7 +431,9 @@ function self_command(command)
 		if idleSetIndex > table.getn(sets.idle) then
 			idleSetIndex = 0
 		end
-		equip(sets.idle[idleSetIndex])
+		if player.status =='Idle' then
+			equip(sets.idle[idleSetIndex])
+		end
 		send_command('@input /echo <----- Idle: ' .. idleSetNames[idleSetIndex] .. ' ----->')
 	end -- end if
 
@@ -441,8 +443,10 @@ function self_command(command)
 		if engagedSetIndex > table.getn(sets.engaged) then
 			engagedSetIndex = 0
 		end
-		equip(sets.engaged[engagedSetIndex])
-		send_command('@input /echo <----- Idle: ' .. engagedSetNames[engagedSetIndex] .. ' ----->')
+		if player.status =='Engaged' then
+			equip(sets.engaged[engagedSetIndex])
+		end
+		send_command('@input /echo <----- Engaged: ' .. engagedSetNames[engagedSetIndex] .. ' ----->')
 	end -- end if
 
 	-- Misc checks
