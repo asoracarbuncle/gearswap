@@ -20,8 +20,8 @@ function get_sets()
         waist="Sarissapho. Belt",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
-        left_ring="Karieyh Ring",
-        right_ring="Defending Ring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
 	    back="Moonbeam Cape",
 	} -- end Idle
 
@@ -33,8 +33,8 @@ function get_sets()
         ammo="Ginsen",
         head="Flam. Zucchetto +2",
         body="Ken. Samue +1",
-        hands="Wakido Kote +3",
         -- hands="Ken. Tekko +1",
+        hands="Wakido Kote +3",
         legs="Ken. Hakama +1",
         feet="Ken. Sune-Ate +1",
         neck={ name="Sam. Nodowa +2", augments={'Path: A',}},
@@ -43,7 +43,7 @@ function get_sets()
         right_ear="Telos Earring",
         left_ring="Flamma Ring",
         right_ring="Niqmaddu Ring",
-        back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10',}},
+        back={ name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%',}},
 	} -- end Engaged
 
 
@@ -55,13 +55,15 @@ function get_sets()
 	-- Precast : Fast Cast
 	sets.precast.fastCast = {
         ammo="Sapience Orb",
-        body="Sacro Breastplate",
+        head={ name="Herculean Helm", augments={'Mag. Acc.+4','"Fast Cast"+6','MND+5',}},
+        body={ name="Herculean Vest", augments={'Mag. Acc.+9','"Fast Cast"+5','"Mag.Atk.Bns."+7',}},
         hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs="Arjuna Breeches",
+        legs="Limbo Trousers",
+        feet={ name="Herculean Boots", augments={'"Fast Cast"+5','INT+13','"Mag.Atk.Bns."+13',}},
         neck="Orunmila's Torque",
         left_ear="Etiolation Earring",
         right_ear="Loquac. Earring",
-        left_ring="Kishar Ring",
+        left_ring="Rahab Ring",
         right_ring="Prolix Ring",
 	} -- end Fast Cast
 
@@ -84,7 +86,7 @@ function get_sets()
 	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
         neck={ name="Sam. Nodowa +2", augments={'Path: A',}},
         waist="Fotia Belt",
-        left_ear="Ishvara Earring",
+        left_ear="Thrud Earring",
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 	    left_ring="Shukuyu Ring",
         right_ring="Regal Ring",
@@ -101,7 +103,7 @@ function get_sets()
 	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        left_ear="Ishvara Earring",
+        left_ear="Thrud Earring",
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="Karieyh Ring",
         right_ring="Regal Ring",
@@ -118,7 +120,7 @@ function get_sets()
 	    feet={ name="Sak. Sune-Ate +3", augments={'Enhances "Meikyo Shisui" effect',}},
         neck={ name="Sam. Nodowa +2", augments={'Path: A',}},
         waist="Fotia Belt",
-        left_ear="Ishvara Earring",
+        left_ear="Thrud Earring",
 	    right_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 	    left_ring="Shukuyu Ring",
         right_ring="Regal Ring",
