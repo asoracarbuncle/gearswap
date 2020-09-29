@@ -23,14 +23,13 @@ function get_sets()
 	-- Weapon : Melee
 	sets.weapons[0] = {
 	    main="Sequence",
-	    -- sub={ name="Colada", augments={'Crit.hit rate+3','DEX+13','Accuracy+18','Attack+12','DMG:+12',}},
         sub="Zantetsuken",
 	}
 
 	-- Weapon : Magic
 	sets.weapons[1] = {
-	    main={ name="Nibiru Cudgel", augments={'MP+50','INT+10','"Mag.Atk.Bns."+15',}},
-	    sub={ name="Nibiru Cudgel", augments={'MP+50','INT+10','"Mag.Atk.Bns."+15',}},
+        main="Maxentius",
+        sub={ name="Nibiru Cudgel", augments={'MP+50','INT+10','"Mag.Atk.Bns."+15',}},
 	}
 
 	----------------------------------------------------------------------
@@ -43,16 +42,16 @@ function get_sets()
 	sets.idle = {
         ammo="Mantoptera Eye",
         head="Malignance Chapeau",
-        body="Ayanmo Corazza +2",
+        body="Jhakri Robe +2",
         hands="Aya. Manopolas +2",
-        legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
-        feet="Aya. Gambieras +2",
+        legs={ name="Herculean Trousers", augments={'MND+8','"Blood Pact" ability delay -5','"Refresh"+2','Accuracy+7 Attack+7',}},
+        feet="Malignance Boots",
         neck="Loricate Torque +1",
         waist="Fucho-no-Obi",
         left_ear="Etiolation Earring",
         right_ear="Static Earring",
-        left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
         back="Reiki Cloak",
 	} -- end sets.idle
 

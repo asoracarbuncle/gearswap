@@ -13,7 +13,7 @@ function get_sets()
         main="Malignance Pole",
         sub="Enki Strap",
         ammo="Homiliary",
-        head="Befouled Crown",
+        head={ name="Chironic Hat", augments={'AGI+8','"Resist Silence"+4','"Refresh"+2','Accuracy+6 Attack+6',}},
 	    body="Jhakri Robe +2",
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
 	    legs="Assid. Pants +1",
@@ -22,8 +22,8 @@ function get_sets()
         waist="Fucho-no-Obi",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
-        left_ring="Defending Ring",
-	    right_ring="Vocane Ring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
 	    back="Moonbeam Cape",
 	} -- end Idle
 
@@ -44,8 +44,8 @@ function get_sets()
         waist="Chaac Belt",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
-        left_ring="Defending Ring",
-	    right_ring="Vocane Ring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
         back="Solemnity Cape",
 	} -- end Melee
 
@@ -70,8 +70,8 @@ function get_sets()
 	    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
         neck="Orunmila's Torque",
 	    waist="Witful Belt",
-	    left_ear="Loquac. Earring",
-	    right_ear="Malignance Earring",
+        left_ear="Malignance Earring",
+	    right_ear="Loquac. Earring",
 	    left_ring="Rahab Ring",
 	    right_ring="Kishar Ring",
         back={ name="Lugh's Cape", augments={'Haste+10',}},
@@ -151,7 +151,7 @@ function get_sets()
         ammo="Pemphredo Tathlum",
         head="Acad. Mortar. +2",
         body="Acad. Gown +2",
-	    hands={ name="Kaykaus Cuffs", augments={'MP+60','MND+10','Mag. Acc.+15',}},
+        hands="Regal Cuffs",
         legs="Arbatel Pants +1",
         feet="Acad. Loafers +3",
         neck="Incanter's Torque",
@@ -178,27 +178,27 @@ function get_sets()
 	----------------------------------------------------------------------
 	sets.midcast.magic.enhancing = {}
 	sets.midcast.magic.enhancing.default = {
-        main="Oranyan",
-        sub="Enki Strap",
+        main={ name="Gada", augments={'Enh. Mag. eff. dur. +5','MND+2','Mag. Acc.+11','"Mag.Atk.Bns."+12','DMG:+7',}},
+	    sub="Ammurapi Shield",
         ammo="Hydrocera",
         head="Befouled Crown",
-        body={ name="Peda. Gown +1", augments={'Enhances "Enlightenment" effect',}},
+        body={ name="Peda. Gown +3", augments={'Enhances "Enlightenment" effect',}},
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+19','"Fast Cast"+6','CHR+10','"Mag.Atk.Bns."+9',}},
         legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
         feet="Regal Pumps +1",
-        neck="Incanter's Torque",
-	    waist="Cascade Belt",
-        left_ear="Mendi. Earring",
-        right_ear="Andoaa Earring",
-        left_ring="Vertigo Ring",
-        right_ring="Lebeche Ring",
-        back="Fi Follet Cape +1",
+	    neck="Incanter's Torque",
+	    waist="Luminary Sash",
+	    left_ear="Malignance Earring",
+	    right_ear="Regal Earring",
+	    left_ring="Rufescent Ring",
+	    right_ring="Metamor. Ring +1",
+	    back="Fi Follet Cape +1",
 	} -- end Enhancing Magic
 
 	-- Midcast: Enhancing Magic: Light Arts
 	sets.midcast.magic.enhancing.lightArts = set_combine(sets.midcast.magic.enhancing.default, {
 	    head={ name="Telchine Cap", augments={'Enh. Mag. eff. dur. +10',}},
-        body={ name="Telchine Chas.", augments={'Enh. Mag. eff. dur. +10',}},
+        body={ name="Peda. Gown +3", augments={'Enhances "Enlightenment" effect',}},
 	    hands={ name="Telchine Gloves", augments={'Enh. Mag. eff. dur. +7',}},
 	    legs={ name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +10',}},
 	    feet={ name="Telchine Pigaches", augments={'Enh. Mag. eff. dur. +10',}},
@@ -274,7 +274,7 @@ function get_sets()
 	-- Sublimation
 	sets.jobAbility.sublimation = {
 	    head="Acad. Mortar. +2",
-	    body={ name="Peda. Gown +1", augments={'Enhances "Enlightenment" effect',}},
+	    body={ name="Peda. Gown +3", augments={'Enhances "Enlightenment" effect',}},
         left_ear="Savant's Earring",
 	} -- end Sublimation
 

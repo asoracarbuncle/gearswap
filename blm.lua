@@ -25,8 +25,8 @@ function get_sets()
         waist="Fucho-no-Obi",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
-        left_ring="Defending Ring",
-	    right_ring="Vocane Ring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
         back="Solemnity Cape",
 	} -- end Idle
 

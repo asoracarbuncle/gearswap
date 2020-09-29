@@ -18,12 +18,12 @@ function get_sets()
 	    body="Mummu Jacket +2",
 	    hands="Mummu Wrists +2",
 	    legs="Mummu Kecks +2",
-	    feet="Mummu Gamash. +2",
+        feet="Malignance Boots",
 	    neck="Loricate Torque +1",
 	    waist="Windbuffet Belt +1",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
-        left_ring="Karieyh Ring",
+	    left_ring="Fortified Ring",
 	    right_ring="Defending Ring",
 	    back="Reiki Cloak",
 	} -- end Idle
@@ -163,7 +163,6 @@ function get_sets()
         head={ name="Herculean Helm", augments={'Pet: Attack+28 Pet: Rng.Atk.+28','INT+8','"Treasure Hunter"+1','Mag. Acc.+19 "Mag.Atk.Bns."+19',}},
         body={ name="Herculean Vest", augments={'Pet: "Dbl.Atk."+3 Pet: Crit.hit rate +3','Chance of successful block +1','"Treasure Hunter"+1','Accuracy+12 Attack+12',}},
 	    hands={ name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
-        legs={ name="Herculean Trousers", augments={'INT+8','Attack+4','"Treasure Hunter"+1','Mag. Acc.+10 "Mag.Atk.Bns."+10',}},
 	    feet="Skulk. Poulaines +1",
 	    waist="Chaac Belt",
 	} -- end Treasure Hunter

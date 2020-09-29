@@ -41,13 +41,13 @@ function get_sets()
 	    body="Inyanga Jubbah +2",
 	    hands="Inyan. Dastanas +2",
 	    legs="Inyanga Shalwar +2",
-	    feet="Fili Cothurnes +1",
+        feet="Fili Cothurnes +1",
         neck="Loricate Torque +1",
 	    waist="Channeler's Stone",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
-        left_ring="Defending Ring",
-        right_ring="Vertigo Ring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
         back="Solemnity Cape",
 	} -- end Idle
 
@@ -57,7 +57,7 @@ function get_sets()
 	----------------------------------------------------------------------
 	sets.melee = {
 	    main="Carnwenhan",
-	    sub="Ammurapi Shield",
+        sub="Genmei Shield",
         head="Aya. Zucchetto +2",
         body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +2",

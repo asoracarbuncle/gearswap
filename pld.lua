@@ -14,6 +14,8 @@ function get_sets()
 	-- Idle
 	turtleMode = false;
 	sets.idle = {
+        main={ name="Brilliance", augments={'Shield skill +9','Divine magic skill +14','Enmity+6','DMG:+13',}},
+        sub="Aegis",
         ammo="Angha Gem",
         head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
         body="Rev. Surcoat +3",
@@ -24,8 +26,8 @@ function get_sets()
         waist="Creed Baudrier",
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
-        left_ring="Defending Ring",
-        right_ring="Regal Ring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
         back="Moonbeam Cape",
 	} -- end Idle
 
@@ -58,12 +60,6 @@ function get_sets()
         legs="Arjuna Breeches",
         feet={ name="Carmine Greaves", augments={'HP+60','MP+60','Phys. dmg. taken -3',}},
         neck="Orunmila's Torque",
-        waist="Rumination Sash",
-        left_ear="Odnowa Earring",
-        right_ear="Odnowa Earring +1",
-        left_ring="Defending Ring",
-        right_ring="Vocane Ring",
-        back="Moonbeam Cape",
 	} -- end Fast Cast
 
 
@@ -129,8 +125,8 @@ function get_sets()
         feet={ name="Eschite Greaves", augments={'Mag. Evasion+15','Spell interruption rate down +15%','Enmity+7',}},
 	    neck="Unmoving Collar",
 	    waist="Creed Baudrier",
-	    left_ear="Friomisi Earring",
-	    right_ear="Odnowa Earring +1",
+        left_ear="Cryptic Earring",
+        right_ear="Trux Earring",
 	    left_ring="Supershear Ring",
 	    right_ring="Odium Ring",
 	    back="Reiki Cloak",

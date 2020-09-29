@@ -15,17 +15,17 @@ function get_sets()
         main="Daybreak", -- Refresh +1
         sub="Genmei Shield",
         ammo="Homiliary", -- Refresh +1
-        head="Befouled Crown", -- Refresh +1
+        head={ name="Chironic Hat", augments={'"Triple Atk."+2','Crit.hit rate+4','"Refresh"+1','Mag. Acc.+15 "Mag.Atk.Bns."+15',}},
         body="Theo. Briault +3", -- Refresh +3
 	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}, --Refresh +2
 	    legs="Assid. Pants +1", -- Refresh +1/+2
-        feet="Tutyr Sabots",
+        feet={ name="Chironic Slippers", augments={'Mag. Acc.+8 "Mag.Atk.Bns."+8','CHR+5','"Refresh"+1',}},
         neck="Sanctity Necklace",
         waist="Fucho-no-Obi", -- Latent Refresh +1
 	    left_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}}, -- Refresh +1
         right_ear="Etiolation Earring",
 	    left_ring="Renaye Ring", -- Refresh +1
-	    right_ring="Mephitas's Ring +1",
+        right_ring="Defending Ring",
         back={ name="Alaunus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10',}},
 	} -- end sets.idle
 
@@ -41,11 +41,11 @@ function get_sets()
 	    main={ name="Queller Rod", augments={'MP+80','"Cure" potency +15%','Enmity-5',}},
         sub="Culminus",
 	    ammo="Hedgehog Bomb",
-	    head="Aya. Zucchetto +1",
-	    body="Ayanmo Corazza +1",
-	    hands="Aya. Manopolas +1",
-	    legs="Aya. Cosciales +1",
-	    feet="Aya. Gambieras +1",
+	    head="Aya. Zucchetto +2",
+	    body="Ayanmo Corazza +2",
+	    hands="Aya. Manopolas +2",
+	    legs="Aya. Cosciales +2",
+	    feet="Aya. Gambieras +2",
         neck="Incanter's Torque",
 	    waist="Porous Rope",
 	    left_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}},
@@ -91,7 +91,7 @@ function get_sets()
         neck="Cleric's Torque",
         waist="Witful Belt",
         left_ear="Loquac. Earring",
-	    right_ear="Etiolation Earring",
+        right_ear="Malignance Earring",
 	    left_ring="Prolix Ring",
 	    right_ring="Kishar Ring",
         back={ name="Alaunus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10',}},
@@ -130,22 +130,33 @@ function get_sets()
 	    waist="Porous Rope",
 	    left_ear="Nourish. Earring",
 	    right_ear="Nourish. Earring +1",
-	    left_ring="Mephitas's Ring",
-	    right_ring="Mephitas's Ring +1",
+        left_ring="Levia. Ring",
+        right_ring="Levia. Ring",
         back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%',}},
 	} -- end Healing
 
 	-- Magic : Enhancing
 	sets.midcast.magic.enhancing = {
-	    sub="Ammurapi Shield",
+        main="Gada",
+        sub="Ammurapi Shield",
+        ammo="Hydrocera",
         head="Befouled Crown",
+	    body="Inyanga Jubbah +2",
 	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}},
+        legs={ name="Piety Pantaln. +3", augments={'Enhances "Afflatus Misery" effect',}},
         feet="Theo. Duckbills +1",
         neck="Incanter's Torque",
+	    waist="Luminary Sash",
+	    left_ear="Andoaa Earring",
+	    right_ear="Mimir Earring",
+        left_ring="Levia. Ring",
+        right_ring="Levia. Ring",
+	    back="Perimede Cape",
 	} -- end Enhancing
 
 	-- Magic : Enfeebling
 	sets.midcast.magic.enfeebling = {
+        main="Daybreak",
 	    sub="Ammurapi Shield",
         neck="Incanter's Torque",
 	} -- end Enfeebling
@@ -154,6 +165,11 @@ function get_sets()
 	sets.midcast.magic.dispelga = {
         main="Daybreak",
 	} -- end Dispelga
+
+	-- Magic : Refresh
+	sets.midcast.magic.refresh = {
+        feet="Inspirited Boots",
+	} -- end Refresh
 
 
 	----------------------------------------------------------------------
@@ -191,15 +207,15 @@ function get_sets()
 
 	-- Utility: Cursna
 	sets.utility.cursna = {
-        main={ name="Divinity", augments={'Attack+5','Accuracy+2','DMG:+1',}},
+        main={ name="Divinity", augments={'Attack+9','Accuracy+8','Phys. dmg. taken -2%','DMG:+14',}},
         body="Ebers Bliaud +1",
-        hands={ name="Fanatic Gloves", augments={'MP+25','Healing magic skill +5','"Conserve MP"+1','"Fast Cast"+2',}},
+        hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
         legs="Theo. Pant. +1",
         feet={ name="Vanya Clogs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
         neck="Incanter's Torque",
         left_ear="Healing Earring",
         right_ear="Beatific Earring",
-        left_ring="Ephedra Ring",
+        left_ring="Menelaus's Ring",
         right_ring="Haoma's Ring",
         back={ name="Alaunus's Cape", augments={'MND+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%',}},
 	} -- end Cursna
@@ -209,10 +225,11 @@ function get_sets()
         hands="Ebers Mitts +1",
 	} -- end Divine Caress
 
-	-- Utility: Elemental resistence
-	sets.utility.elementalResistence = {
-        legs={ name="Piety Pantaloons", augments={'Enhances "Afflatus Misery" effect',}},
-	} -- end sets.utility.elementalResistence
+	-- Utility: Elemental Resistance
+	sets.utility.elementalResistance = {
+	    body="Ebers Bliaud +1",
+        legs={ name="Piety Pantaln. +3", augments={'Enhances "Afflatus Misery" effect',}},
+	} -- end sets.utility.elementalResistance
 
 	-- Utility: Erase
 	sets.utility.erase = {
@@ -249,7 +266,7 @@ MagicCursna = {
 	["Cursna"] = true,
 }
 
-MagicElementalResistence = {
+MagicElementalResistance = {
 	["Baraera"] = true,
 	["Baraero"] = true,
 	["Baramnesia"] = true,
@@ -492,6 +509,12 @@ MagicProtectraV = {
 	["Protectra V"] = true,
 }
 
+MagicRefresh = {
+	["Refresh"] = true,
+	["Refresh II"] = true,
+	["Refresh III"] = true,
+}
+
 MagicRegen = {
 	["Regen"] = true,
 	["Regen II"] = true,
@@ -547,7 +570,6 @@ function midcast(spell)
 			if spell.english == 'Erase' then
 				equip(sets.utility.erase)
 			end
-
 		elseif MagicHealing[spell.english] then
 			equip(sets.midcast.magic.healing)
 		else
@@ -555,8 +577,8 @@ function midcast(spell)
 		end
 
 		-- 2.) Apply specific spell group gear
-		if MagicElementalResistence[spell.english] then
-			equip(sets.utility.elementalResistence)
+		if MagicElementalResistance[spell.english] then
+			equip(sets.utility.elementalResistance)
 		elseif MagicRegen[spell.english] then
 			equip(sets.utility.regen)
 		elseif MagicStatusRemoval[spell.english] then
@@ -577,9 +599,11 @@ function midcast(spell)
 			end
 		end
 
-		-- 4.) Check for dispelga
+		-- 4.) Check for specific spells
 		if spell.english == "Dispelga" then
 			equip(sets.midcast.magic.dispelga)
+		elseif MagicRefresh[spell.english] then
+			equip(sets.midcast.magic.refresh)
 		end
 
 	-- Check if the action is a job ability
