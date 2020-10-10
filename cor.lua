@@ -3,102 +3,312 @@ function get_sets()
 	----------------------------------------------------------------------
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
-	send_command('bind f9 gs c toggle idle set')
+	send_command('bind f9 gs c equip idle set')
+	send_command('bind f10 gs c cycle weapon modes')
+
+	----------------------------------------------------------------------
+	-- Weapon Modes
+	sets.weapons = {}
+	weaponModeIndex = table.getn(sets.weapons) + 1
+	----------------------------------------------------------------------
+
+	-- Weapon Mode Names
+	weaponModeNames = {
+		[0] = 'Savage Blade',
+		[1] = 'Leaden Salute',
+		[2] = 'Last Stand',
+		[3] = 'Wildfire',
+	}
+
+	-- Wepaon Mode Set: Savage Blade
+	sets.weapons[0] = {
+        main="Naegling",
+        sub="Blurred Knife +1",
+        range={ name="Anarchy +2", augments={'Delay:+60','TP Bonus +1000',}},
+	} -- end Savage Blade
+
+	-- Wepaon Mode Set: Leaden Salute
+	sets.weapons[1] = {
+        main="Naegling",
+        sub="Tauret",
+        range={ name="Holliday", augments={'Sklchn.dmg.+3%','AGI+12','Rng.Acc.+25','DMG:+11',}},
+	} -- end Leaden Salute
+
+	-- Wepaon Mode Set: Last Stand
+	sets.weapons[2] = {
+        main="Naegling",
+        sub="Kustawi +1",
+        range={ name="Holliday", augments={'Sklchn.dmg.+3%','AGI+12','Rng.Acc.+25','DMG:+11',}},
+	} -- end Last Stand
+
+	-- Wepaon Mode Set: Wildfire
+	sets.weapons[3] = {
+        main="Naegling",
+        sub="Tauret",
+        range={ name="Holliday", augments={'Sklchn.dmg.+3%','AGI+12','Rng.Acc.+25','DMG:+11',}},
+	} -- end Wildfire
 
 
 	----------------------------------------------------------------------
-	-- Idle set
+	-- Idle set(s)
 	----------------------------------------------------------------------
-
-	-- Idle : Default
 	sets.idle = {
-
-	} -- end sets.idle
+	    head="Mummu Bonnet +2",
+	    body="Mummu Jacket +2",
+	    hands="Mummu Wrists +2",
+	    legs="Mummu Kecks +2",
+	    feet="Mummu Gamash. +2",
+	    neck="Loricate Torque +1",
+	    waist="Sarissapho. Belt",
+	    left_ear="Etiolation Earring",
+	    right_ear="Crematio Earring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
+	    back={ name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%',}},
+	} -- end Idle
 
 
 	----------------------------------------------------------------------
-	-- Melee set
+	-- Engaged set(s)
 	----------------------------------------------------------------------
-
-	-- Melee : Default
-	sets.melee = {
-
-	} -- end sets.melee
+	sets.engaged = {
+        head={ name="Dampening Tam", augments={'DEX+3','Accuracy+3','Mag. Acc.+2',}},
+        body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+        legs={ name="Samnuha Tights", augments={'STR+8','DEX+9','"Dbl.Atk."+3','"Triple Atk."+2',}},
+        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+10',}},
+        neck="Clotharius Torque",
+        waist="Sarissapho. Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Cessance Earring",
+        left_ring="Rajas Ring",
+        right_ring="Epona's Ring",
+        back={ name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%',}},
+	} -- end Engaged
 
 
 	----------------------------------------------------------------------
-	-- Midcast sets
+	-- Precast set(s)
+	sets.precast = {}
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
+	-- Precast : Fast Cast
+	sets.precast.fastCast = {
+        head="Herculean Helm",
+        body={ name="Samnuha Coat", augments={'Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+5','"Dual Wield"+5',}},
+        hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+        neck="Orunmila's Torque",
+        waist="Sarissapho. Belt",
+        left_ear="Etiolation Earring",
+        right_ear="Loquac. Earring",
+        left_ring="Prolix Ring",
+        right_ring="Kishar Ring",
+	} -- end Fast Cast
+
+	-- Precast : Snap Shot
+	sets.precast.snapShot = {
+        hands={ name="Lanun Gants +1", augments={'Enhances "Fold" effect',}},
+        neck={ name="Comm. Charm +1", augments={'Path: A',}},
+        legs={ name="Lanun Trews +1", augments={'Enhances "Snake Eye" effect',}},
+	} -- end Snap Shot
+
+
+	----------------------------------------------------------------------
+	-- Ranged set(s)
 	sets.midcast = {}
+	----------------------------------------------------------------------
+	sets.midcast.rangedAttack = {
+	    head="Meghanada Visor +2",
+	    body="Meg. Cuirie +2",
+	    hands="Meg. Gloves +2",
+	    legs="Meg. Chausses +2",
+	    feet="Meg. Jam. +2",
+	    neck="Sanctity Necklace",
+	    waist="Eschan Stone",
+	    left_ear="Heartseeker Earring",
+	    right_ear="Cessance Earring",
+	    left_ring="Longshot Ring",
+	    right_ring="Apate Ring",
+	    back={ name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%',}},
+	} -- end Ranged
+
+
+	----------------------------------------------------------------------
+	-- Weapon Skill set(s)
 	sets.midcast.ws = {}
-
-	-- Midcast : Weaponskill : Default
+	----------------------------------------------------------------------
+	-- Default
 	sets.midcast.ws.default = {
+        head={ name="Lilitu Headpiece", augments={'STR+10','DEX+10','Attack+15','Weapon skill damage +3%',}},
+        body="Meg. Cuirie +2",
+        hands="Meg. Gloves +2",
+        legs="Meg. Chausses +2",
+        feet="Meg. Jam. +2",
+        neck="Sanctity Necklace",
+        waist="Prosilio Belt +1",
+        left_ear="Ishvara Earring",
+        right_ear="Cessance Earring",
+        left_ring="Apate Ring",
+        right_ring="Rufescent Ring",
+        back={ name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+	} -- end Weaponskill Default
 
-	} -- end sets.midcast.ws.default
+	----------------------------------------------------------------------
+	-- Sword
+	----------------------------------------------------------------------
+	-- Savage Blade
+	sets.midcast.ws["Savage Blade"] = set_combine(sets.midcast.ws.default, {
+        head={ name="Lilitu Headpiece", augments={'STR+10','DEX+10','Attack+15','Weapon skill damage +3%',}},
+        body="Meg. Cuirie +2",
+        hands="Meg. Gloves +2",
+        legs="Meg. Chausses +2",
+        feet="Meg. Jam. +2",
+        neck="Sanctity Necklace",
+        waist="Prosilio Belt +1",
+        left_ear="Ishvara Earring",
+        right_ear="Cessance Earring",
+        left_ring="Apate Ring",
+        right_ring="Rufescent Ring",
+        back={ name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+	}) -- end Savage Blade
 
-	-- Midcast : Weapon Skill : Savage Blade
-	sets.midcast.ws['Savage Blade'] = {
+	----------------------------------------------------------------------
+	-- Marksmanship
+	----------------------------------------------------------------------
+	-- Leaden Salute
+	sets.midcast.ws["Leaden Salute"] = set_combine(sets.midcast.ws.default, {
+        head="Pixie Hairpin +1",
+        body={ name="Samnuha Coat", augments={'Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+5','"Dual Wield"+5',}},
+        hands="Meg. Gloves +2",
+        legs="Mummu Kecks +2",
+        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+10',}},
+        neck={ name="Comm. Charm +1", augments={'Path: A',}},
+        waist="Eschan Stone",
+        left_ear="Ishvara Earring",
+        right_ear="Crematio Earring",
+        left_ring="Apate Ring",
+        right_ring="Petrov Ring",
+        back={ name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+	}) -- end Leaden Salute
 
-	} -- end sets.midcast.ws['Savage Blade']
+	-- Last Stand
+	sets.midcast.ws["Last Stand"] = set_combine(sets.midcast.rangedAttack, {
+	}) -- end Last Stand
 
-	-- Midcast : Weapon Skill : Last Stand
-	sets.midcast.ws['Last Stand'] = {
-
-	} -- end sets.midcast.ws['Last Stand']
+	-- Last Stand
+	sets.midcast.ws["Wildfire"] = set_combine(sets.midcast.ws.default, {
+        head="Pixie Hairpin +1",
+        body={ name="Samnuha Coat", augments={'Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+5','"Dual Wield"+5',}},
+        hands="Meg. Gloves +2",
+        legs="Mummu Kecks +2",
+        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+10',}},
+        neck={ name="Comm. Charm +1", augments={'Path: A',}},
+        waist="Eschan Stone",
+        left_ear="Ishvara Earring",
+        right_ear="Crematio Earring",
+        left_ring="Apate Ring",
+        right_ring="Petrov Ring",
+        back={ name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+	}) -- end Last Stand
 
 
 	----------------------------------------------------------------------
-	-- Job ability Sets (not bound to a key)
+	-- Job Ability set(s)
+	sets.midcast.ja = {}
 	----------------------------------------------------------------------
-	-- Initialize an array to begin storing set data
-	sets.jobAbilities = {}
+	-- Crooked Cards
+	sets.midcast.ja['Crooked Cards'] = {
+	} -- end Crooked Cards
+
+	-- Cutting Cards
+	sets.midcast.ja['Cutting Cards'] = {
+	} -- end Cutting Cards
+
+	-- Double Up
+	sets.midcast.ja['Double-Up'] = {
+	} -- end Double Up
+
+	-- Fold
+	sets.midcast.ja['Fold'] = {
+        hands={ name="Lanun Gants +1", augments={'Enhances "Fold" effect',}},
+	} -- end Fold
 
 	-- Phantom Roll
-	sets.jobAbilities.phantomRoll = {
+	sets.midcast.ja['Phantom Roll'] = {
+	    range="Compensator",
+        head={ name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}},
+        hands="Chasseur's Gants +1",
+	    left_ring="Barataria Ring",
+	    right_ring="Luzaf's Ring",
+	    back={ name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%',}},
+	} -- end Phantom Roll
 
-	} -- end sets.jobAbilities.phantomRoll
+	-- Quick Draw
+	sets.midcast.ja['Quick Draw'] = {
+	} -- end Quick Draw
+
+	-- Random Deal
+	sets.midcast.ja['Random Deal'] = {
+	} -- end Random Deal
+
+	-- Snake Eye
+	sets.midcast.ja['Snake Eye'] = {
+        legs={ name="Lanun Trews +1", augments={'Enhances "Snake Eye" effect',}},
+	} -- end Snake Eye
+
+	-- Triple Shot
+	sets.midcast.ja['Triple Shot'] = {
+	} -- end Triple Shot
+
+	-- Wild Card
+	sets.midcast.ja['Wild Card'] = {
+	} -- end Wild Card
+
+
+	----------------------------------------------------------------------
+	-- Utility set(s)
+	sets.utility = {}
+	sets.utility.pr = {}
+	----------------------------------------------------------------------
+	-- Allies' Roll
+	sets.utility.pr["Allies' Roll"] = set_combine(sets.midcast.ja.phantomRoll, {
+        hands="Chasseur's Gants +1",
+	}) -- end Allies' Roll
+
+	-- Blitzer's Roll
+	sets.utility.pr["Blitzer's Roll"] = set_combine(sets.midcast.ja.phantomRoll, {
+	}) -- end Blitzer's Roll
+
+	-- Caster's Roll
+	sets.utility.pr["Caster's Roll"] = set_combine(sets.midcast.ja.phantomRoll, {
+	}) -- end Caster's Roll
+
+	-- Courser's Roll
+	sets.utility.pr["Courser's Roll"] = set_combine(sets.midcast.ja.phantomRoll, {
+	}) -- end Courser's Roll
+
+	-- Tactician's Roll
+	sets.utility.pr["Tactician's Roll"] = set_combine(sets.midcast.ja.phantomRoll, {
+	}) -- end Tactician's Roll
 
 
 end -- end get_sets()
 
+
 ----------------------------------------------------------------------
--- Phantom Rolls
+-- Callback for when casting begins
 ----------------------------------------------------------------------
-phantomRolls = {
-	["Corsair's Roll"] = true,
-	["Ninja's Roll"] = true,
-	["Hunter's Roll"] = true,
-	["Chaos Roll"] = true,
-	["Magus's Roll"] = true,
-	["Healer's Roll"] = true,
-	["Drachen Roll"] = true,
-	["Choral Roll"] = true,
-	["Monk's Roll"] = true,
-	["Beast Roll"] = true,
-	["Samurai Roll"] = true,
-	["Evoker's Roll"] = true,
-	["Rogue's Roll"] = true,
-	["Warlock's Roll"] = true,
-	["Fighter's Roll"] = true,
-	["Puppet Roll"] = true,
-	["Gallant's Roll"] = true,
-	["Wizard's Roll"] = true,
-	["Dancer's Roll"] = true,
-	["Scholar's Roll"] = true,
-	["Naturalist's Roll"] = true,
-	["Runeist's Roll"] = true,
-	["Bolter's Roll"] = true,
-	["Caster's Roll"] = true,
-	["Courser's Roll"] = true,
-	["Blitzer's Roll"] = true,
-	["Tactician's Roll"] = true,
-	["Allies' Roll"] = true,
-	["Miser's Roll"] = true,
-	["Companion's Roll"] = true,
-	["Avenger's Roll"] = true,
-}
+function precast(spell)
+	
+	-- If the action is magic
+    if spell.action_type == 'Magic' then
+		equip(sets.precast.fastCast)
+
+	-- If the action is a Ranged Attack
+	elseif spell.action_type == 'Ranged Attack' then
+		equip(sets.precast.snapShot)
+	end
+
+end -- end precast()
 
 
 ----------------------------------------------------------------------
@@ -106,24 +316,48 @@ phantomRolls = {
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Check if the action is a specified weapon skill
-	if spell.type == 'WeaponSkill' then
+	-- If the action is an Ability
+	if spell.action_type == 'Ability' then
 
-    	-- Check if a specific ws set exists
-		if sets.midcast.ws[spell.name] then
-			-- Equip the appropriate ws specific set
-			equip(sets.midcast.ws[spell.name])
-		else
-    		-- Equip default ws set
-			equip(sets.midcast.ws.default)
+		-- If the ability was a Corsair Roll
+		if spell.type == 'CorsairRoll' then
+			-- Equip one of the specific roll sets
+			if sets.utility.pr[spell.name] then
+				equip(sets.utility.pr[spell.english])
+			-- Equip the default roll set
+			else
+				equip(sets.midcast.ja['Phantom Roll'])
+			end
+
+		-- Check for job abilities
+	    elseif spell.type == 'JobAbility' then
+	    	if sets.midcast.ja[spell.english] then
+				equip(sets.midcast.ja[spell.english])
+	    	end
+
+		-- Check for weapon skills
+	    elseif spell.type == 'WeaponSkill' then
+			-- Equip one of the specific weapon skill sets
+			if sets.midcast.ws[spell.english] then
+				equip(sets.midcast.ws[spell.english])
+			-- Equip the default weapon skill set
+		    else
+				equip(sets.midcast.ws.default)
+			end
+
 		end
 
-	elseif spell.type == 'CorsairRoll' then
+	-- If the action is an Item
+	elseif spell.action_type == 'Item' then
+		-- Ignore
 
-		if phantomRolls[spell.english] then
-			equip(sets.jobAbilities.phantomRoll)
-		end
+	-- If the action is Magic
+	elseif spell.action_type == 'Magic' then
+		-- Ignore
 
+	-- If the action is a Ranged Attack
+	elseif spell.action_type == 'Ranged Attack' then
+		equip(sets.midcast.rangedAttack)
 	end
 
 end -- end midcast()
@@ -134,21 +368,22 @@ end -- end midcast()
 ----------------------------------------------------------------------
 function aftercast(spell)
 	if player.status =='Engaged' then
-		equip(sets.melee)
+		equip(sets.engaged)
 	else
 		equip(sets.idle)
 	end
+	EquipWeapons()
 end -- end aftercast()
 
 
 ----------------------------------------------------------------------
 -- Callback for whenever engagment status changes
 ----------------------------------------------------------------------
-function status_change(new,old)
-	if new == 'Idle' then
+function status_change(new, old)
+	if new == 'Engaged' then
+		equip(sets.engaged)
+	else
 		equip(sets.idle)
-	elseif new == 'Engaged' then
-		equip(sets.melee)
 	end
 end -- end status_change()
 
@@ -158,12 +393,33 @@ end -- end status_change()
 ----------------------------------------------------------------------
 function self_command(command)
 
-	-- Equip the idle set
-	if command == 'toggle idle set' then
-		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
-		-- Equip the set
+	-- Equip idle set
+	if command == 'equip idle set' then
 		equip(sets.idle)
+		EquipWeapons()
+		send_command('@input /echo <----- Idle Set Equipped ----->')
+	end -- end if
+
+	-- Cycle weapon modes
+	if command == 'cycle weapon modes' then
+		-- Increment the weapon index
+		weaponModeIndex = weaponModeIndex + 1
+		-- Check if the weaopn index is out of range
+		if weaponModeIndex > table.getn(sets.weapons) then
+			weaponModeIndex = 0
+		end
+		-- Equip the appropriate set
+		EquipWeapons()
+		-- Alert the user which set is currently being equipped
+		send_command('@input /echo <----- Weapon Mode: '..weaponModeNames[weaponModeIndex]..' ----->')
 	end -- end if
 
 end -- end self_command()
+
+
+----------------------------------------------------------------------
+-- Equips the appropriate guns
+----------------------------------------------------------------------
+function EquipWeapons()
+	equip(sets.weapons[weaponModeIndex])
+end
