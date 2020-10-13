@@ -4,9 +4,11 @@ function get_sets()
 	-- Bind the keys you wish to use with GearSwap
 	----------------------------------------------------------------------
 	send_command('bind f9 gs c equip idle set')
+	send_command('bind f10 gs c cycle engaged modes')
 
 	----------------------------------------------------------------------
 	-- Idle set(s)
+	idleRunToggle = false;
 	----------------------------------------------------------------------
 	sets.idle = {
 		-- PASTE GEARSWAP EXPORT GEAR HERE
@@ -15,8 +17,20 @@ function get_sets()
 
 	----------------------------------------------------------------------
 	-- Engaged set(s)
+	sets.engaged = {}
+	engagedModeIndex = table.getn(sets.engaged) + 1
 	----------------------------------------------------------------------
-	sets.engaged = {
+	-- Weapon Mode Names
+	engagedModeNames = {
+		[0] = 'Tank',
+		[1] = 'Damage Dealing',
+	}
+
+	sets.engaged[0] = {
+		-- PASTE GEARSWAP EXPORT GEAR HERE
+	} -- end Engaged
+
+	sets.engaged[1] = {
 		-- PASTE GEARSWAP EXPORT GEAR HERE
 	} -- end Engaged
 
@@ -50,6 +64,11 @@ function get_sets()
 	sets.midcast.ws["Resolution"] = set_combine(sets.midcast.ws.default, {
 		-- PASTE GEARSWAP EXPORT GEAR HERE
 	}) -- end Resolution
+
+	-- Shockwave
+	sets.midcast.ws["Shockwave"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE GEARSWAP EXPORT GEAR HERE
+	}) -- end Shockwave
 
 
 	----------------------------------------------------------------------
@@ -118,6 +137,26 @@ function get_sets()
 	} -- end Vivacious Pulse
 
 	----------------------------------------------------------------------
+	-- Effusions
+	sets.midcast.ja.effusion = {}
+	----------------------------------------------------------------------
+	-- Gambit
+	sets.midcast.ja.effusion['Gambit'] = {
+	} -- end Gambit
+
+	-- Lunge
+	sets.midcast.ja.effusion['Lunge'] = {
+	} -- end Lunge
+
+	-- Rayke
+	sets.midcast.ja.effusion['Rayke'] = {
+	} -- end Rayke
+
+	-- Swipe
+	sets.midcast.ja.effusion['Swipe'] = {
+	} -- end Swipe
+
+	----------------------------------------------------------------------
 	-- Runes
 	sets.midcast.ja.rune = {}
 	----------------------------------------------------------------------
@@ -154,26 +193,6 @@ function get_sets()
 	} -- end Unda
 
 	----------------------------------------------------------------------
-	-- Effusions
-	sets.midcast.ja.effusion = {}
-	----------------------------------------------------------------------
-	-- Gambit
-	sets.midcast.ja.effusion['Gambit'] = {
-	} -- end Gambit
-
-	-- Lunge
-	sets.midcast.ja.effusion['Lunge'] = {
-	} -- end Lunge
-
-	-- Rayke
-	sets.midcast.ja.effusion['Rayke'] = {
-	} -- end Rayke
-
-	-- Swipe
-	sets.midcast.ja.effusion['Swipe'] = {
-	} -- end Swipe
-
-	----------------------------------------------------------------------
 	-- Wards
 	sets.midcast.ja.ward = {}
 	----------------------------------------------------------------------
@@ -199,12 +218,12 @@ function get_sets()
 
 
 	----------------------------------------------------------------------
-	-- Utility set(s)
+	-- Utility
 	sets.utility = {}
 	----------------------------------------------------------------------
-	-- Enmity
-	sets.utility.enmity = {
-	} -- end Enmity
+	-- Movement Speed
+	sets.utility.movementSpeed = {
+	} -- end Movement Speed
 
 
 	----------------------------------------------------------------------
@@ -265,9 +284,7 @@ function get_sets()
 		["Blaze Spikes"] = true,
 		["Blink"] = true,
 		["Crusade"] = true,
-		["Foil"] = true,
 		["Ice Spikes"] = true,
-		["Phalanx"] = true,
 		["Protect"] = true,
 		["Protect II"] = true,
 		["Protect III"] = true,
@@ -285,6 +302,7 @@ function get_sets()
 	MagicEnmity = {
 		["Blank Gaze"] = true,
 		["Flash"] = true,
+		["Foil"] = true,
 		["Geist Wall"] = true,
 		["Grand Slam"] = true,
 		["Healing Breeze"] = true,
@@ -386,13 +404,13 @@ function midcast(spell)
 			equip(sets.midcast.magic.enmity)
 		-- Check for phalanx magic
 		elseif MagicPhalanx[spell.english] then
-			set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.phalanx)
+			equip(set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.phalanx))
 		-- Check for regen magic
 		elseif MagicRegen[spell.english] then
-			set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.regen)
+			equip(set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.regen))
 		-- Check for stoneskin magic
 		elseif MagicStoneskin[spell.english] then
-			set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.stoneskin)
+			equip(set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.stoneskin))
 		end
 	end
 
@@ -407,6 +425,7 @@ function aftercast(spell)
 		equip(sets.engaged)
 	else
 		equip(sets.idle)
+		checkMovementSpeed()
 	end
 end -- end aftercast()
 
@@ -419,6 +438,7 @@ function status_change(new, old)
 		equip(sets.engaged)
 	else
 		equip(sets.idle)
+		checkMovementSpeed()
 	end
 end -- end status_change()
 
@@ -431,7 +451,60 @@ function self_command(command)
 	-- Equip idle set
 	if command == 'equip idle set' then
 		equip(sets.idle)
+		checkMovementSpeed()
 		send_command('@input /echo <----- Idle Set Equipped ----->')
 	end -- end if
 
+	-- Cycle weapon modes
+	if command == 'cycle engaged modes' then
+		-- Increment the weapon index
+		engagedModeIndex = engagedModeIndex + 1
+		-- Check if the weaopn index is out of range
+		if engagedModeIndex > table.getn(sets.engaged) then
+			engagedModeIndex = 0
+		end
+		-- Alert the user which set is currently being equipped
+		send_command('@input /echo <----- Engaged Mode: '..engagedModeNames[engagedModeIndex]..' ----->')
+	end -- end if
+
 end -- end self_command()
+
+
+----------------------------------------------------------------------
+-- Checks whether or not to equip runspeed equipment
+----------------------------------------------------------------------
+function checkMovementSpeed()
+	if idleRunToggle == true then
+		equip(sets.utility.movementSpeed)
+	end
+end
+
+
+----------------------------------------------------------------------
+-- Callback for when the zone changes
+----------------------------------------------------------------------
+function zone_change(id)
+
+	-- Create an array of dangerous zones
+	local DangerousZones = {
+	    [249] = true, -- Mhaura (DEBUG DELETE THIS LINE)
+	    [294] = true, -- Dynamis - San d'Oria [D]
+	    [295] = true, -- Dynamis - Bastok [D]
+	    [296] = true, -- Dynamis - Windurst [D]
+	    [297] = true, -- Dynamis - Jeuno [D]
+	    [298] = true, -- Walk of Echoes [P1]
+	}
+
+	-- Check if we just entered a dangerous zone
+	if DangerousZones[id] then
+		idleRunToggle = false;
+	else
+		idleRunToggle = true;
+	end
+
+	-- DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG -- DELETE THIS LINE
+	send_command('@input /echo <----- DEBUG: Zone Changed ----->') -- DELETE THIS LINE
+	-- DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG -- DELETE THIS LINE
+
+end -- end zone_change()
+windower.register_event('zone change', zone_change)
