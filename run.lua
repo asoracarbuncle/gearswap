@@ -1,1635 +1,436 @@
 function get_sets()
 
---Binds
-		send_command('bind f2 gs c Toggle PDT Set')
-		send_command('bind f3 gs c Toggle MDT Set')
-		send_command('bind f4 gs c Toggle Resist Set')
-		send_command('bind f9 gs c Toggle Idle Set')
-		send_command('bind f11 gs c Toggle Tank Set')
-		send_command('bind f10 gs c Toggle Melee Set')
-		send_command('bind ^f10 gs c Toggle Multi-Hit WS Mode')
-		send_command('bind ^f11 gs c Toggle Nuke Mode')
-		--send_command('bind ^f11 gs c Toggle Dark Nuke Mode')
-		--send_command('bind f12 gs c Toggle Tank/Melee Mode')
-		
-	---- Upon unloading this lua file, remove key bindings
-	function file_unload()
+	----------------------------------------------------------------------
+	-- Bind the keys you wish to use with GearSwap
+	----------------------------------------------------------------------
+	send_command('bind f9 gs c equip idle set')
 
-	    send_command('unbind ^f9')
-	    send_command('unbind ^f10')
-	    send_command('unbind ^f11')
-	    send_command('unbind ^f12')
+	----------------------------------------------------------------------
+	-- Idle set(s)
+	----------------------------------------------------------------------
+	sets.idle = {
+		-- PASTE GEARSWAP EXPORT GEAR HERE
+	} -- end Idle
 
-	    send_command('unbind !f9')
-	    send_command('unbind !f10')
-	    send_command('unbind !f11')
-	    send_command('unbind !f12')
-		
-		send_command('unbind f2')
-	    send_command('unbind f3')
-	    send_command('unbind f4')
-	    send_command('unbind f12')
-	    send_command('unbind f9')
-	    send_command('unbind f10')
-	    send_command('unbind f11')
-	    send_command('unbind f12')
 
-	end
-			
---Idle Set (Refresh, DT, Refresh DT << to be added later )
-	sets.idle = {}
-	idleSetHasBeenChanged = false
-	idleSetEnabled = false
-	idleSetIndex = 0
-	idleSetNames = {
-		[0] = 'Refresh',
-		[1] = 'DT',
-	}
-	
-	--1= Refresh
-	sets.idle[0] = {
-		ammo="Staunch Tathlum",
-	    head="Rawhide Mask",
-	    body="Vrikodara Jupon",
-	    hands={ name="Herculean Gloves", augments={'CHR+7','MND+5','"Refresh"+1','Mag. Acc.+10 "Mag.Atk.Bns."+10',}},
-	    legs={ name="Rawhide Trousers", augments={'MP+50','"Fast Cast"+5','"Refresh"+1',}},
-	    feet={ name="Herculean Boots", augments={'Pet: Mag. Acc.+15','Pet: INT+1','"Refresh"+1','Accuracy+3 Attack+3','Mag. Acc.+10 "Mag.Atk.Bns."+10',}},
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Infused Earring",
-	    right_ear="Ethereal Earring",
-	    left_ring="Shneddick Ring",
-	    right_ring="Warp Ring",
-	    back="Moonbeam Cape",
-	}
-		
-	--2 = DT
-	sets.idle[1] = {
-		ammo="Staunch Tathlum",
-	    head={ name="Fu. Bandeau +1", augments={'Enhances "Battuta" effect',}},
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands="Runeist Mitons +1",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Niqmaddu Ring",
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-		
-	----Melee Set: 1=Melee
-	sets.melee = {}
-	meleeSetHasBeenChanged = false
-	meleeSetEnabled = false
-	meleeSetIndex = 0
-	meleeSetNames = {
-		[0] = 'Haste',
-		[1] = 'Melee Low DT',
-		[2] = 'Melee High DT',
-	}
-	sets.melee[0] = {
-		ammo="Yamarang",
-	    head={ name="Herculean Helm", augments={'Accuracy+17 Attack+17','"Triple Atk."+4','DEX+4','Accuracy+15','Attack+11',}},
-	    body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    hands={ name="Herculean Gloves", augments={'Accuracy+23','"Triple Atk."+4','Attack+6',}},
-	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-	    feet={ name="Herculean Boots", augments={'Accuracy+29','"Triple Atk."+4','AGI+7',}},
-	    neck="Lissome Necklace",
-	    waist="Windbuffet Belt +1",
-	    left_ear="Cessance Earring",
-	    right_ear="Sherida Earring",
-	    left_ring="Niqmaddu Ring",
-	    right_ring="Epona's Ring",
-	    back={ name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-	}
-	
-	sets.melee[1] = {
-		ammo="Staunch Tathlum",
-		head={ name="Herculean Helm", augments={'Accuracy+17 Attack+17','"Triple Atk."+4','DEX+4','Accuracy+15','Attack+11',}},
-		body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
-		hands={ name="Herculean Gloves", augments={'Accuracy+23','"Triple Atk."+4','Attack+6',}},
-		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-		feet={ name="Herculean Boots", augments={'Accuracy+29','"Triple Atk."+4','AGI+7',}},
-		neck="Loricate Torque +1",
-		waist="Flume Belt +1",
-		left_ear="Cessance Earring",
-		right_ear="Sherida Earring",
-		left_ring="Niqmaddu Ring",
-		right_ring="Defending Ring",
-		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-	
-	sets.melee[2] = {
-		ammo="Staunch Tathlum",
-	    head="Aya. Zucchetto +1",
-	    body="Ayanmo Corazza +1",
-	    hands={ name="Herculean Gloves", augments={'INT+13','Pet: Mag. Acc.+21','Damage taken-5%','Accuracy+18 Attack+18',}},
-	    legs="Aya. Cosciales +1",
-	    feet="Aya. Gambieras +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Telos Earring",
-	    right_ear="Sherida Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	----PDT Sets
-	sets.PDT = {}
-	PDTSetHasBeenChanged = false
-	PDTSetEnabled = false
-	PDTSetIndex = 0
-	PDTSetNames = {
-		[0] = 'Full PDT',
-		[1] = 'Enmity Maint PDT',
-		[2] = 'Absorb PDT',
-		[3] = 'DT Max',
-	}
-	
-	sets.PDT[0] = {
-		ammo="Staunch Tathlum",
-	    head="Erilaz Galea +1",
-	    body="Erilaz Surcoat +1",
-	    hands={ name="Herculean Gloves", augments={'INT+13','Pet: Mag. Acc.+21','Damage taken-5%','Accuracy+18 Attack+18',}},
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Ethereal Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	sets.PDT[1] = {
-		ammo="Staunch Tathlum",
-	    head={ name="Fu. Bandeau +1", augments={'Enhances "Battuta" effect',}},
-	    body="Erilaz Surcoat +1",
-	    hands={ name="Herculean Gloves", augments={'INT+13','Pet: Mag. Acc.+21','Damage taken-5%','Accuracy+18 Attack+18',}},
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Ethereal Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-	
-	sets.PDT[2] = {
-		ammo="Staunch Tathlum",
-	    head="Erilaz Galea +1",
-	    body="Erilaz Surcoat +1",
-	    hands="Erilaz Gauntlets +1",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Ethereal Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	sets.PDT[3] = {
-		ammo="Staunch Tathlum",
-	    head="Aya. Zucchetto +1",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands={ name="Herculean Gloves", augments={'INT+13','Pet: Mag. Acc.+21','Damage taken-5%','Accuracy+18 Attack+18',}},
-	    legs="Eri. Leg Guards +1",
-	    feet="Aya. Gambieras +1",
-	    neck="Loricate Torque +1",
-	    waist="Lieutenant's Sash",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Etiolation Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	----MDT Sets
-	sets.MDT = {}
-	MDTSetHasBeenChanged = false
-	MDTSetEnabled = false
-	MDTSetIndex = 0
-	MDTSetNames = {
-		[0] = 'Full MDT',
-		[1] = 'Absorb MDT',
-		[2] = 'DT Max',
-	}
-	sets.MDT[0] = {
-		ammo="Vanir Battery",
-	    head="Aya. Zucchetto +1",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands={ name="Herculean Gloves", augments={'INT+13','Pet: Mag. Acc.+21','Damage taken-5%','Accuracy+18 Attack+18',}},
-	    legs="Aya. Cosciales +1",
-	    feet="Aya. Gambieras +1",
-	    neck="Loricate Torque +1",
-	    waist="Lieutenant's Sash",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Etiolation Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	
-	sets.MDT[1] = {
-		ammo="Vanir Battery",
-	    head="Erilaz Galea +1",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands="Erilaz Gauntlets +1",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Loricate Torque +1",
-	    waist="Lieutenant's Sash",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Etiolation Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	sets.MDT[2] = {
-		ammo="Staunch Tathlum",
-	    head="Aya. Zucchetto +1",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands={ name="Herculean Gloves", augments={'INT+13','Pet: Mag. Acc.+21','Damage taken-5%','Accuracy+18 Attack+18',}},
-	    legs="Eri. Leg Guards +1",
-	    feet="Aya. Gambieras +1",
-	    neck="Loricate Torque +1",
-	    waist="Lieutenant's Sash",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Etiolation Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	----Resist Sets
-	sets.resist = {}
-	resistSetHasBeenChanged = false
-	resistSetEnabled = false
-	resistSetIndex = 0
-	resistSetNames = {
-		[0] = 'Resist All',
-		[1] = 'Resist Charm',
-	}
-	
-	sets.resist[0] = {
-		ammo="Yamarang",
-	    head="Erilaz Galea +1",
-	    body="Runeist's Coat +2",
-	    hands="Erilaz Gauntlets +1",
-	    legs="Rune. Trousers +2",
-	    feet="Erilaz Greaves +1",
-	    neck="Warder's Charm",
-	    waist="Engraved Belt",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Hearty Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-	
-	sets.resist[1] = {
-		ammo="Yamarang",
-	    head="Erilaz Galea +1",
-	    body="Runeist's Coat +2",
-	    hands="Erilaz Gauntlets +1",
-	    legs="Rune. Trousers +2",
-	    feet="Erilaz Greaves +1",
-	    neck="Warder's Charm",
-	    waist="Engraved Belt",
-	    left_ear="Odnowa Earring +1",
-	    right_ear="Hearty Earring",
-	    left_ring="Wuji Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-	
-	----Tank Set:
-	sets.tank = {}
-	tankSetHasBeenChanged = false
-	tankSetEnabled = false
-	tankSetIndex = 0
-	tankSetNames = {
-		[0] = '_Tank PDT_',
-		[1] = '_Tank DT_',
-		--[2] = 'Parry DT',
-		[2] = '_Resist DT_',
-		[3] = 'Melee High DT',
-		[4] = 'HP DT',
-	}
-	
-	
-	sets.tank[0] = {
-		ammo="Staunch Tathlum",
-	    head={ name="Fu. Bandeau +1", augments={'Enhances "Battuta" effect',}},
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands="Runeist Mitons +1",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Niqmaddu Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-	
-	sets.tank[1] = {
-		ammo="Staunch Tathlum",
-	    head="Aya. Zucchetto +1",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands={ name="Herculean Gloves", augments={'INT+13','Pet: Mag. Acc.+21','Damage taken-5%','Accuracy+18 Attack+18',}},
-	    legs="Eri. Leg Guards +1",
-	    feet="Aya. Gambieras +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Niqmaddu Ring",
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	sets.tank[2] = {
-		ammo="Staunch Tathlum",
-	    head="Aya. Zucchetto +1",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands="Erilaz Gauntlets +1",
-	    legs="Eri. Leg Guards +1",
-	    feet="Aya. Gambieras +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Niqmaddu Ring",
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	sets.tank[3] = {
-		ammo="Staunch Tathlum",
-	    head="Aya. Zucchetto +1",
-	    body="Ayanmo Corazza +1",
-	    hands={ name="Herculean Gloves", augments={'INT+13','Pet: Mag. Acc.+21','Damage taken-5%','Accuracy+18 Attack+18',}},
-	    legs="Aya. Cosciales +1",
-	    feet="Aya. Gambieras +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Telos Earring",
-	    right_ear="Sherida Earring",
-	    left_ring={ name="Dark Ring", augments={'Phys. dmg. taken -5%','Magic dmg. taken -4%',}},
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	sets.tank[4] = {
-		ammo="Staunch Tathlum",
-	    head="Erilaz Galea +1",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands="Runeist Mitons +1",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Loricate Torque +1",
-	    waist="Flume Belt +1",
-	    left_ear="Odnowa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back="Moonbeam Cape",
-	}
-	
-	--Melee/Tank Toggle
-	--sets.Switch = {}
-	--MTSetHasBeenChanged = false
-	--MTSetIndex = 0
-	--MTSetNames = {
-	--	[0] = 'Melee Mode Active',
-	--	[1] = 'Tank Mode Active',
-	--}
-	
-	--sets.Switch[0] = (sets.melee[meleeSetIndex])
-	
-	
-	--sets.Switch[1] = (sets.tank[tankSetIndex])
-	
-	
-	
-	----Weaponskill Sets
-	sets.WS = {}
+	----------------------------------------------------------------------
+	-- Engaged set(s)
+	----------------------------------------------------------------------
+	sets.engaged = {
+		-- PASTE GEARSWAP EXPORT GEAR HERE
+	} -- end Engaged
 
-	--Multi Hit WS
-	sets.WS.multi = {}
-	multiWSSetHasBeenChanged = false
-	multiWSSetEnabled = false
-	multiWSSetIndex = 0
-	multiWSSetNames = {
-		[0] = 'Full Multi WS',
-		[1] = 'ACC Multi WS',
-	}
-	
-	sets.WS.multi[0] = {
-		ammo="Knobkierrie",
-	    head={ name="Herculean Helm", augments={'Accuracy+11 Attack+11','"Triple Atk."+1','STR+10','Accuracy+11',}},
-	    body={ name="Herculean Vest", augments={'Accuracy+22','"Triple Atk."+1','STR+15','Attack+3',}},
-	    hands={ name="Herculean Gloves", augments={'Accuracy+23','"Triple Atk."+3','STR+5',}},
-	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-	    feet={ name="Herculean Boots", augments={'Accuracy+23 Attack+23','STR+9',}},
-	    neck="Fotia Gorget",
-	    waist="Fotia Belt",
-	    left_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-	    right_ear="Sherida Earring",
-	    left_ring="Niqmaddu Ring",
-	    right_ring="Regal Ring",
-	    back={ name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-	}
-	
-	sets.WS.multi[1] = {
-		ammo="Knobkierrie",
-	    head={ name="Herculean Helm", augments={'Accuracy+11 Attack+11','"Triple Atk."+1','STR+10','Accuracy+11',}},
-	    body={ name="Herculean Vest", augments={'Accuracy+22','"Triple Atk."+1','STR+15','Attack+3',}},
-	    hands={ name="Herculean Gloves", augments={'Accuracy+23','"Triple Atk."+3','STR+5',}},
-	    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-	    feet={ name="Herculean Boots", augments={'Accuracy+23 Attack+23','STR+9',}},
-	    neck="Fotia Gorget",
-	    waist="Fotia Belt",
-	    left_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-	    right_ear="Sherida Earring",
-	    left_ring="Niqmaddu Ring",
-	    right_ring="Regal Ring",
-	    back={ name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-	}
-	
-	
-	--WSDMG WS
-	sets.WS.Single = {
-		ammo="Knobkierrie",
-	    head={ name="Herculean Helm", augments={'Accuracy+23','Weapon skill damage +3%','STR+10',}},
-	    body={ name="Herculean Vest", augments={'Attack+2','Weapon skill damage +4%','STR+10','Accuracy+13',}},
-	    hands="Meg. Gloves +2",
-	    legs={ name="Herculean Trousers", augments={'Attack+14','Weapon skill damage +4%','DEX+15','Accuracy+6',}},
-	    feet={ name="Herculean Boots", augments={'Attack+16','Weapon skill damage +3%','STR+15','Accuracy+11',}},
-	    neck="Fotia Gorget",
-	    waist="Fotia Belt",
-	    left_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +25',}},
-	    right_ear="Ishvara Earring",
-	    left_ring="Niqmaddu Ring",
-	    right_ring="Regal Ring",
-	    back={ name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-	}
 
-	--Nuke Mode Toggle
-	sets.nuke = {}
-	nukeSetHasBeenChanged = false
-	nukeSetIndex = 0
-	nukeSetNames = {
-		[0] = 'Standard',
-		[1] = 'Magic Burst',
-	}
-	
-	--0=Standard Nuke Mode
-	sets.nuke[0] = {
-		ammo="Pemphredo Tathlum",
-	    head={ name="Herculean Helm", augments={'Accuracy+17 Attack+17','"Triple Atk."+4','DEX+4','Accuracy+15','Attack+11',}},
-	    body={ name="Samnuha Coat", augments={'Mag. Acc.+12','"Mag.Atk.Bns."+12','"Dual Wield"+3',}},
-	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-	    legs="Aya. Cosciales +1",
-	    feet={ name="Adhemar Gamashes", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    neck="Sanctity Necklace",
-	    waist="Eschan Stone",
-	    left_ear="Friomisi Earring",
-	    right_ear="Digni. Earring",
-	    left_ring="Arvina Ringlet +1",
-	    right_ring="Locus Ring",
-	    back="Fravashi Mantle",
-	}
-	
-	--1=Magic Burst
-	sets.nuke[1] = {
-		ammo="Pemphredo Tathlum",
-	    head={ name="Herculean Helm", augments={'Accuracy+17 Attack+17','"Triple Atk."+4','DEX+4','Accuracy+15','Attack+11',}},
-	    body={ name="Samnuha Coat", augments={'Mag. Acc.+12','"Mag.Atk.Bns."+12','"Dual Wield"+3',}},
-	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-	    legs="Aya. Cosciales +1",
-	    feet={ name="Adhemar Gamashes", augments={'DEX+10','AGI+10','Accuracy+15',}},
-	    neck="Sanctity Necklace",
-	    waist="Eschan Stone",
-	    left_ear="Friomisi Earring",
-	    right_ear="Digni. Earring",
-	    left_ring="Mujin Band",
-	    right_ring="Locus Ring",
-	    back="Fravashi Mantle",
-	}
-	
-	
-
-	
-	
-	----Casting: PreCast MidCast
-	--PreCast
+	----------------------------------------------------------------------
+	-- Precast set(s)
 	sets.precast = {}
+	----------------------------------------------------------------------
+	-- Precast : Fast Cast
 	sets.precast.fastCast = {
-		ammo="Staunch Tathlum",
-	    head="Rune. Bandeau +2",
-	    body="Dread Jupon",
-	    hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-	    legs={ name="Futhark Trousers +1", augments={'Enhances "Inspire" effect',}},
-	    feet={ name="Carmine Greaves", augments={'Accuracy+10','DEX+10','MND+15',}},
-	    neck="Voltsurge Torque",
-	    waist="Eschan Stone",
-	    left_ear="Odnowa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'"Fast Cast"+10',}},
-	}
-
-	--MidCast
-	sets.magic = {}
-
-	--Cure
-	sets.magic.cure = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body="Vrikodara Jupon",
-	    hands="Kurys Gloves",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Phalaina Locket",
-	    waist="Goading Belt",
-	    left_ear="Mendi. Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Supershear Ring",
-	    back="Solemnity Cape",
-	}
-
-	--Curaga
-	sets.magic.curaga = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body="Vrikodara Jupon",
-	    hands="Kurys Gloves",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Phalaina Locket",
-	    waist="Goading Belt",
-	    left_ear="Mendi. Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Supershear Ring",
-	    back="Solemnity Cape",
-
-	}
-
-	--BarElement
-	sets.magic.barElement = {
-		ammo="Staunch Tathlum",
-	    head="Erilaz Galea +1",
-	    body="Emet Harness +1",
-	    hands="Runeist Mitons +1",
-	    legs={ name="Futhark Trousers +1", augments={'Enhances "Inspire" effect',}},
-	    feet="Erilaz Greaves +1",
-	    neck="Incanter's Torque",
-	    waist="Goading Belt",
-	    left_ear="Andoaa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Stikini Ring",
-	    back="Solemnity Cape",
-	}
-
-	--Enhance Duration
-	sets.magic.enhanceDuration = {
-		ammo="Staunch Tathlum",
-	    head="Erilaz Galea +1",
-	    body="Emet Harness +1",
-	    hands="Runeist Mitons +1",
-	    legs={ name="Futhark Trousers +1", augments={'Enhances "Inspire" effect',}},
-	    feet="Erilaz Greaves +1",
-	    neck="Incanter's Torque",
-	    waist="Goading Belt",
-	    left_ear="Andoaa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Stikini Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-
-	--Cursna
-	sets.magic.cursna = {
-		ammo="Staunch Tathlum",
-	    head="Erilaz Galea +1",
-	    body="Emet Harness +1",
-	    hands="Runeist Mitons +1",
-	    legs={ name="Futhark Trousers +1", augments={'Enhances "Inspire" effect',}},
-	    feet="Erilaz Greaves +1",
-	    neck="Incanter's Torque",
-	    waist="Goading Belt",
-	    left_ear="Andoaa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Haoma's Ring",
-	    right_ring="Haoma's Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-
-	--Regen
-	sets.magic.regen = {
-		ammo="Staunch Tathlum",
-	    head="Rune. Bandeau +1",
-	    body="Emet Harness +1",
-	    hands="Runeist Mitons +1",
-	    legs={ name="Futhark Trousers +1", augments={'Enhances "Inspire" effect',}},
-	    feet="Erilaz Greaves +1",
-	    neck="Incanter's Torque",
-	    waist="Goading Belt",
-	    left_ear="Andoaa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-
-	--Conserve MP
-	sets.magic.conserveMP = {
-		ammo="Staunch Tathlum",
-	    head="Rune. Bandeau +1",
-	    body="Emet Harness +1",
-	    hands="Runeist Mitons +1",
-	    legs={ name="Futhark Trousers +1", augments={'Enhances "Inspire" effect',}},
-	    feet="Erilaz Greaves +1",
-	    neck="Incanter's Torque",
-	    waist="Goading Belt",
-	    left_ear="Calamitous Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back="Solemnity Cape",
-	}
+		-- PASTE GEARSWAP EXPORT GEAR HERE
+	} -- end Fast Cast
 
 
-	--Phalanx
-	sets.magic.phalanx = {
-		ammo="Staunch Tathlum",
-		head={ name="Fu. Bandeau +1", augments={'Enhances "Battuta" effect',}},
-		body="Emet Harness +1",
-		hands={ name="Herculean Gloves", augments={'Accuracy+17','Crit. hit damage +1%','Phalanx +1','Accuracy+3 Attack+3','Mag. Acc.+16 "Mag.Atk.Bns."+16',}},
-		legs={ name="Futhark Trousers +1", augments={'Enhances "Inspire" effect',}},
-		feet={ name="Herculean Boots", augments={'"Mag.Atk.Bns."+20','Attack+15','Phalanx +2','Accuracy+11 Attack+11',}},
-		neck="Incanter's Torque",
-		waist="Goading Belt",
-		left_ear="Odnowa Earring",
-		right_ear="Odnowa Earring +1",
-		left_ring="Eihwaz Ring",
-		right_ring="Defending Ring",
-		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-	----Ability MidCast Sets
-	sets.JA = {}
+	----------------------------------------------------------------------
+	-- Weapon Skill set(s)
+	sets.midcast.ws = {}
+	----------------------------------------------------------------------
+	-- Default
+	sets.midcast.ws.default = {
+		-- PASTE GEARSWAP EXPORT GEAR HERE
+	} -- end Weaponskill Default
 
-	--Valiance/Vallation
-	sets.JA.valianceVallation = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body="Runeist Coat +2",
-	    hands="Kurys Gloves",
-	    legs={ name="Futhark Trousers +1", augments={'Enhances "Inspire" effect',}},
-	    feet="Erilaz Greaves +1",
-	    neck="Unmoving Collar +1",
-	    waist="Goading Belt",
-	    left_ear="Odnowa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
+	-- Dimidiation
+	sets.midcast.ws["Dimidiation"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE GEARSWAP EXPORT GEAR HERE
+	}) -- end Dimidiation
 
-	--Gambit
-	sets.JA.gambit = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body="Emet Harness +1",
-	    hands="Runeist Mitons +1",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Unmoving Collar +1",
-	    waist="Goading Belt",
-	    left_ear="Odnowa Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-
-	--Pflug
-	sets.JA.pflug = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body="Emet Harness +1",
-	    hands="Kurys Gloves",
-	    legs="Eri. Leg Guards +1",
-	    feet="Runeist Bottes",
-	    neck="Unmoving Collar +1",
-	    waist="Goading Belt",
-	    left_ear="Cryptic Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-
-	--Battuta
-	sets.JA.battuta = {
-		ammo="Staunch Tathlum",
-	    head={ name="Fu. Bandeau +1", augments={'Enhances "Battuta" effect',}},
-	    body="Emet Harness +1",
-	    hands="Kurys Gloves",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Unmoving Collar +1",
-	    waist="Goading Belt",
-	    left_ear="Cryptic Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-
-	--Liement
-	sets.JA.liement = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands="Kurys Gloves",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Unmoving Collar +1",
-	    waist="Goading Belt",
-	    left_ear="Cryptic Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-
-	--Swordplay
-	sets.JA.swordplay = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body="Emet Harness +1",
-	    hands="Kurys Gloves",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Unmoving Collar +1",
-	    waist="Goading Belt",
-	    left_ear="Cryptic Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Supershear Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-		
-	--Elemental Sforzo
-	sets.JA.elementalSforzo = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body={ name="Futhark Coat +1", augments={'Enhances "Elemental Sforzo" effect',}},
-	    hands="Kurys Gloves",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Unmoving Collar +1",
-	    waist="Goading Belt",
-	    left_ear="Cryptic Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Defending Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
+	-- Resolution
+	sets.midcast.ws["Resolution"] = set_combine(sets.midcast.ws.default, {
+		-- PASTE GEARSWAP EXPORT GEAR HERE
+	}) -- end Resolution
 
 
-	--Rayke
-	sets.JA.rayke = {
-		ammo="Staunch Tathlum",
-		head="Halitus Helm",
-		body="Emet Harness +1",
-		hands="Kurys Gloves",
-		legs="Eri. Leg Guards +1",
-		feet={ name="Futhark Boots", augments={'Enhances "Rayke" effect',}},
-		neck="Unmoving Collar +1",
-		waist="Goading Belt",
-		left_ear="Cryptic Earring",
-		right_ear="Odnowa Earring +1",
-		left_ring="Eihwaz Ring",
-		right_ring="Supershear Ring",
-		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
+	----------------------------------------------------------------------
+	-- Magic set(s)
+	sets.midcast.magic = {}
+	----------------------------------------------------------------------
+	-- Dark Magic
+	sets.midcast.magic.dark = {
+	} -- end Dark Magic
 
-	--Vivacious Pulse
-	sets.JA.vivaciousPulse = {
-		ammo="Staunch Tathlum",
-	    head="Erilaz Galea +1",
-	    body="Emet Harness +1",
-	    hands="Kurys Gloves",
-	    legs="Rune. Trousers +1",
-	    feet={ name="Futhark Boots", augments={'Enhances "Rayke" effect',}},
-	    neck="Incanter's Torque",
-	    waist="Bishop's Sash",
-	    left_ear="Cryptic Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Stikini Ring",
-	    back="Altruistic Cape",
-	}
+	-- Elemental Magic
+	sets.midcast.magic.elemental = {
+	} -- end Elemental Magic
+
+	-- Enhancing Magic
+	sets.midcast.magic.enhancing = {
+	} -- end Enhancing Magic
+
+	-- Enfeebling Magic
+	sets.midcast.magic.enfeebling = {
+	} -- end Enfeebling Magic
+
+	-- Enmity Magic
+	sets.midcast.magic.enmity = {
+	} -- end Enmity Magic
+
+	-- Phalanx Magic
+	sets.midcast.magic.phalanx = {
+	} -- end Phalanx Magic
+
+	-- Regen Magic
+	sets.midcast.magic.regen = {
+	} -- end Regen Magic
+
+	-- Stoneskin Magic
+	sets.midcast.magic.stoneskin = {
+	} -- end Stoneskin Magic
 
 
-	--Embolden
-	sets.JA.embolden = {
-		back={ name="Evasionist's Cape", augments={'Enmity+5','"Embolden"+15','"Dbl.Atk."+2',}},
-	}
+	----------------------------------------------------------------------
+	-- Job Ability set(s)
+	sets.midcast.ja = {}
+	----------------------------------------------------------------------
+	-- Elemental Sforzo
+	sets.midcast.ja['Elemental Sforzo'] = {
+	} -- end Elemental Sforzo
 
-	--Utility
+	-- Embolden
+	sets.midcast.ja['Embolden'] = {
+	} -- end Embolden
+
+	-- Odyllic Subterfuge
+	sets.midcast.ja['Odyllic Subterfuge'] = {
+	} -- end Odyllic Subterfuge
+
+	-- One for All
+	sets.midcast.ja['One for All'] = {
+	} -- end One for All
+
+	-- Swordplay
+	sets.midcast.ja['Swordplay'] = {
+	} -- end Swordplay
+
+	-- Vivacious Pulse
+	sets.midcast.ja['Vivacious Pulse'] = {
+	} -- end Vivacious Pulse
+
+	----------------------------------------------------------------------
+	-- Runes
+	sets.midcast.ja.rune = {}
+	----------------------------------------------------------------------
+	-- Flabra
+	sets.midcast.ja.rune['Flabra'] = {
+	} -- end Flabra
+
+	-- Gelus
+	sets.midcast.ja.rune['Gelus'] = {
+	} -- end Gelus
+
+	-- Ignis
+	sets.midcast.ja.rune['Ignis'] = {
+	} -- end Ignis
+
+	-- Lux
+	sets.midcast.ja.rune['Lux'] = {
+	} -- end Lux
+
+	-- Sulpor
+	sets.midcast.ja.rune['Sulpor'] = {
+	} -- end Sulpor
+
+	-- Tellus
+	sets.midcast.ja.rune['Tellus'] = {
+	} -- end Tellus
+
+	-- Tenebrae
+	sets.midcast.ja.rune['Tenebrae'] = {
+	} -- end Tenebrae
+
+	-- Unda
+	sets.midcast.ja.rune['Unda'] = {
+	} -- end Unda
+
+	----------------------------------------------------------------------
+	-- Effusions
+	sets.midcast.ja.effusion = {}
+	----------------------------------------------------------------------
+	-- Gambit
+	sets.midcast.ja.effusion['Gambit'] = {
+	} -- end Gambit
+
+	-- Lunge
+	sets.midcast.ja.effusion['Lunge'] = {
+	} -- end Lunge
+
+	-- Rayke
+	sets.midcast.ja.effusion['Rayke'] = {
+	} -- end Rayke
+
+	-- Swipe
+	sets.midcast.ja.effusion['Swipe'] = {
+	} -- end Swipe
+
+	----------------------------------------------------------------------
+	-- Wards
+	sets.midcast.ja.ward = {}
+	----------------------------------------------------------------------
+	-- Battuta
+	sets.midcast.ja.ward['Battuta'] = {
+	} -- end Battuta
+
+	-- Liement
+	sets.midcast.ja.ward['Liement'] = {
+	} -- end Liement
+
+	-- Pflug
+	sets.midcast.ja.ward['Pflug'] = {
+	} -- end Pflug
+
+	-- Valiance
+	sets.midcast.ja.ward['Valiance'] = {
+	} -- end Valiance
+
+	-- Vallation
+	sets.midcast.ja.ward['Vallation'] = {
+	} -- end Vallation
+
+
+	----------------------------------------------------------------------
+	-- Utility set(s)
 	sets.utility = {}
-	
-	--Enmity
+	----------------------------------------------------------------------
+	-- Enmity
 	sets.utility.enmity = {
-		ammo="Staunch Tathlum",
-	    head="Halitus Helm",
-	    body="Emet Harness +1",
-	    hands="Kurys Gloves",
-	    legs="Eri. Leg Guards +1",
-	    feet="Erilaz Greaves +1",
-	    neck="Unmoving Collar +1",
-	    waist="Goading Belt",
-	    left_ear="Cryptic Earring",
-	    right_ear="Odnowa Earring +1",
-	    left_ring="Eihwaz Ring",
-	    right_ring="Supershear Ring",
-	    back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10',}},
-	}
-
-	
-	--Weather
-	sets.utility.weather = {
-		waist="Hachirin-no-obi"
-	}
+	} -- end Enmity
 
 
-	----Arrays
-	Cure = {
-		["Cure"] = true,
-		["Cure II"] = true,
-		["Cure III"] = true,
-		["Cure IV"] = true,
-		["Cure V"] = true,
-		["Cure VI"] = true,
-		["Full Cure"] = true,
-	}
-
-	Curaga = {
-		["Curaga"] = true,
-		["Curaga II"] = true,
-		["Curaga III"] = true,
-		["Curaga IV"] = true,
-		["Curaga V"] = true,
-		["Cura"] = true,
-		["Cura II"] = true,
-		["Cura III"] = true,
-	}
-
-	MAcc = {
-		["Silence"] = true,
-		["Addle"] = true,
-		["Repose"] = true,
-		["Frazzle"] = true,
-		["Distract"] = true,
-		["Blind"] = true,
-		["Paralyze"] = true,
-		["Paralyze II"] = true,
-		["Poison"] = true,
-		["Poisonga"] = true,
-		["Repose"] = true,
-		["Bind"] = true,
-		["Gravity"] = true,
-		["Sleep"] = true,
-		["Sleepga"] = true,
-		["Sleep II"] = true,
-		["Sleepga II"] = true,
-		["Break"] = true,
-		["Breakga"] = true,
-		["Frost"] = true,
-		["Shock"] = true,
-		["Burn"] = true,
-		["Drown"] = true,
-		["Choke"] = true,
-		["Rasp"] = true,
-		["Dispel"] = true,
-		["Dia"] = true,
-		["Diaga"] = true,
-		["Dia II"] = true,
+	----------------------------------------------------------------------
+	-- Spell arrays
+	----------------------------------------------------------------------
+	MagicDark = {
+		["Absorb-Agi"] = true,
+		["Absorb-CHR"] = true,
+		["Absorb-DEX"] = true,
+		["Absorb-INT"] = true,
+		["Absorb-MND"] = true,
+		["Absorb-STR"] = true,
+		["Absorb-TP"] = true,
+		["Absorb-VIT"] = true,
+		["Aspir"] = true,
 		["Bio"] = true,
 		["Bio II"] = true,
+		["Drain"] = true,
+		["Stun"] = true,
+		["Tractor"] = true,
 	}
 
-	MATK = {
-		["Banish"] = true,
-		["Banishga"] = true,
-		["Banish II"] = true,
-		["Banishga II"] = true,
-		["Banish III"] = true,
-		["Holy"] = true,
-		["Holy II"] = true,
+	MagicElemental = {
+		["Aero"] = true,
+		["Blizzard"] = true,
+		["Fire"] = true,
 		["Stone"] = true,
 		["Stone II"] = true,
-		["Stone III"] = true,
-		["Stone IV"] = true,
-		["Stone V"] = true,
-		["Stone VI"] = true,
+		["Thunder"] = true,
 		["Water"] = true,
 		["Water II"] = true,
-		["Water III"] = true,
-		["Water IV"] = true,
-		["Water V"] = true,
-		["Water VI"] = true,
-		["Aero"] = true,
-		["Aero II"] = true,
-		["Aero III"] = true,
-		["Aero IV"] = true,
-		["Aero V"] = true,
-		["Aero VI"] = true,
-		["Fire"] = true,
-		["Fire II"] = true,
-		["Fire III"] = true,
-		["Fire IV"] = true,
-		["Fire V"] = true,
-		["Fire VI"] = true,
-		["Blizzard"] = true,
-		["Blizzard II"] = true,
-		["Blizzard III"] = true,
-		["Blizzard IV"] = true,
-		["Blizzard V"] = true,
-		["Blizzard VI"] = true,
-		["Thunder"] = true,
-		["Thunder II"] = true,
-		["Thunder III"] = true,
-		["Thunder IV"] = true,
-		["Thunder V"] = true,
-		["Thunder VI"] = true,
-		["Stonega"] = true,
-		["Stonega II"] = true,
-		["Stonega III"] = true,
-		["Stoneja"] = true,
-		["Stonera"] = true,
-		["Stonera II"] = true,
-		["Waterga"] = true,
-		["waterga II"] = true,
-		["Waterga III"] = true,
-		["Waterja"] = true,
-		["Watera"] = true,
-		["Watera II"] = true,
-		["Aeroga"] = true,
-		["Aeroga II"] = true,
-		["Aeroga III"] = true,
-		["Aeroja"] = true,
-		["Firaga"] = true,
-		["Firaga II"] = true,
-		["Firaga III"] = true,
-		["Firaja"] = true,
-		["Fira"] = true,
-		["Fira II"] = true,
-		["Blizzaga"] = true,
-		["Blizzaga II"] = true,
-		["Blizzaga III"] = true,
-		["Blizzaja"] = true,
-		["Blizzara"] = true,
-		["Blizzara II"] = true,
-		["Thundaga"] = true,
-		["Thundaga II"] = true,
-		["Thundaga III"] = true,
-		["Thundaja"] = true,
-		["Thundara"] = true,
-		["Thundara II"] = true,
-		["Geohelix"] = true,
-		["Geohelix II"] = true,
-		["Hydrohelix"] = true,
-		["Hydrohelix II"] = true,
-		["Anemohelix"] = true,
-		["Anemohelix II"] = true,
-		["Pyrohelix"] = true,
-		["Pyrohelix II"] = true,
-		["Cryohelix"] = true,
-		["Cryohelix II"] = true,
-		["Ionohelix"] = true,
-		["Ionohelix II"] = true,
-		["Luminohelix"] = true,
-		["Luminohelix II"] = true,
-		["Meteor"] = true,
-		["Quake"] = true,
-		["Quake II"] = true,
-		["Flood"] = true,
-		["Flood II"] = true,
-		["Tornado"] = true,
-		["Tornado II"] = true,
-		["Flare"] = true,
-		["Flare II"] = true,
-		["Freeze"] = true,
-		["Freeze II"] = true,
-		["Burst"] = true,
-		["Burst II"] = true,
-		["Swipe"] = true,
-		["Lunge"] = true,
 	}
 
-	DarkMATK = {
-		["Noctohelix"] = true,
-		["Noctohelix II"] = true,
-		["Kaustra"] = true,
-		["Comet"] = true,
-		["Death"] = true,
+	MagicEnfeebling = {
+		["Bind"] = true,
+		["Poison"] = true,
+		["Poison II"] = true,
+		["Poisonga"] = true,
+		["Sleep"] = true,
 	}
 
-
-	BarElement = {
-		["Barstonra"] = true,
-		["Barstone"] = true,
-		["Barwatera"] = true,
-		["Barwater"] = true,
-		["Baraera"] = true,
-		["Baraero"] = true,
-		["Barfira"] = true,
-		["Barfire"] = true,
-		["Barblizzara"] = true,
-		["Barblizzard"] = true,
-		["Barthundra"] = true,
-		["Barthunder"] = true,
-	}
-
-	EnhanceDuration = {
-		["Barpoionra"] = true,
-		["Barpoison"] = true,
-		["Barblindra"] = true,
-		["Barblind"] = true,
-		["Barsilencera"] = true,
-		["Barsilence"] = true,
-		["Barparalyzra"] = true,
-		["Barparalyze"] = true,
-		["Barvira"] = true,
-		["Barvirus"] = true,
-		["Barpetra"] = true,
-		["Barpetrify"] = true,
-		["Baramnesra"] = true,
-		["Baramnesia"] = true,
-		["Blink"] = true,
-		["Stoneskin"] = true,
+	MagicEnhancing = {
 		["Aquaveil"] = true,
-		["Haste"] = true,
-		["Sandstorm"] = true,
-		["Sandstorm II"] = true,
-		["Rainstorm"] = true,
-		["Rainstorm II"] = true,
-		["Windstorm"] = true,
-		["Windstorm II"] = true,
-		["Firestorm"] = true,
-		["Firestorm II"] = true,
-		["Hailstorm"] = true,
-		["Hailstorm II"] = true,
-		["Thunderstorm"] = true,
-		["Thunderstorm II"] = true,
-		["Aurorastorm"] = true,
-		["Aurorastorm II"] = true,
-		["Voidstorm"] = true,
-		["Voidstorm II"] = true,
-		["Phalanx"] = true,
-		["Refresh"] = true,
-		["Boost-STR"] = true,
-		["Boost-DEX"] = true,
-		["Boost-AGI"] = true,
-		["Boost-VIT"] = true,
-		["Boost-INT"] = true,
-		["Boost-MND"] = true,
-		["Boost-CHR"] = true,
-		["Protect"] = true,
-		["Protectra"] = true,
-		["Protect II"] = true,
-		["Protectra II"] = true,
-		["Protect III"] = true,
-		["Protectra III"] = true,
-		["Protect IV"] = true,
-		["Protectra IV"] = true,
-		["Protect V"] = true,
-		["Protectra V"] = true,
-		["Shell"] = true,
-		["Shellra"] = true,
-		["Shell II"] = true,
-		["Shellra II"] = true,
-		["Shell III"] = true,
-		["Shellra III"] = true,
-		["Shell IV"] = true,
-		["Shellra IV"] = true,
-		["Shell V"] = true,
-		["Shellra V"] = true,
-		["Auspice"] = true,
+		["Baraero"] = true,
+		["Baramnesia"] = true,
+		["Barblind"] = true,
+		["Barblizzard"] = true,
+		["Barfire"] = true,
+		["Barparalyze"] = true,
+		["Barpetrify"] = true,
+		["Barpoison"] = true,
+		["Barsilence"] = true,
+		["Barsleep"] = true,
+		["Barstone"] = true,
+		["Barthunder"] = true,
+		["Barvirus"] = true,
+		["Barwater"] = true,
 		["Blaze Spikes"] = true,
-		["Shock Spikes"] = true,
+		["Blink"] = true,
+		["Crusade"] = true,
+		["Foil"] = true,
 		["Ice Spikes"] = true,
-		["Sneak"] = true,
-		["Invisible"] = true,
-		["Deodorize"] = true,
-		["Animus Augeo"] = true,
-		["Anmius Minuo"] = true,
-		["Adloquium"] = true,
-		["Flurry"] = true,
+		["Phalanx"] = true,
+		["Protect"] = true,
+		["Protect II"] = true,
+		["Protect III"] = true,
+		["Protect IV"] = true,
+		["Refresh"] = true,
+		["Shell"] = true,
+		["Shell II"] = true,
+		["Shell III"] = true,
+		["Shell IV"] = true,
+		["Shell V"] = true,
+		["Shock Spikes"] = true,
 		["Temper"] = true,
 	}
 
-
-	Enmity = {
+	MagicEnmity = {
+		["Blank Gaze"] = true,
 		["Flash"] = true,
-		["Foil"] = true,
-		--["Swordplay"] = true,
-		--["Elemental Sforzo"] = true,
-		["Odyllic Subterfuge"] = true,
-		--["Vallation"] = true,
-		--["Embolden"] = true,
-		["One for All"] = true,
-		--["Pflug"] = true,
-		--["Battuta"] = true,
-		--["Rayke"] = true,
-		--["Liement"] = true,
-		--["Gambit"] = true,
-		--["Vivacious Pulse"] = true,
-		["Provoke"] = true,
-		["Warcry"] = true,
-		["Seigan"] = true,
-		["Third Eye"] = true,
-		["Warding Circle"] = true,
-		["Meditate"] = true,
-		["Lux"] = true,
-		["Ignis"] = true,
-		["Gelus"] = true,
-		["Flabra"] = true,
-		["Tellus"] = true,
-		["Sulpor"] = true,
-		["Unda"] = true,
-		["Tenebrae"] = true,
-		["Crusade"] = true,
-		["Stun"] = true,
+		["Geist Wall"] = true,
+		["Grand Slam"] = true,
+		["Healing Breeze"] = true,
+		["Jettatura"] = true,
+		["Sheep Song"] = true,
+		["Soporific"] = true,
+		["Stinking Gas"] = true,
+		["Terror Touch"] = true,
 	}
 
-	Cursna = {
-		["Cursna"] = true,
+	MagicPhalanx = {
+		["Phalanx"] = true,
 	}
 
-	DebuffRemoval = {
-		["Poisona"] = true,
-		["Blindna"] = true,
-		["Silena"] = true,
-		["Erase"] = true,
-		["Stona"] = true,
-		["Viruna"] = true,	
-	}
-
-	Regen = {
+	MagicRegen = {
 		["Regen"] = true,
 		["Regen II"] = true,
 		["Regen III"] = true,
 		["Regen IV"] = true,
-		["Regen V"] = true,
 	}
 
-	ConserveMP = {
-		["Teleport-Holla"] = true,
-		["Teleport-Dem"] = true,
-		["Teleport-Mea"] = true,
-		["Teleport-Altep"] = true,
-		["Teleport-vhazl"] = true,
-		["Recall-Jugner"] = true,
-		["Recall-Pashh"] = true,
-		["Recall-Meriph"] = true,
-		["Reraise"] = true,
-		["Reraise II"] = true,
-		["Reraise III"] = true,
-		["Reraise IV"] = true,
-		["Sacrifice"] = true,
-		["Esuna"] = true,
-		["Warp"] = true,
-		["Warp II"] = true,
-		["Raise"] = true,
-		["Raise II"] = true,
-		["Raise III"] = true,
-		["Arise"] = true,
-		["Klimaform"] = true,
-		["Escape"] = true,
-		["Tractor"] = true,
-		["Retrace"] = true,
+	MagicStoneskin = {
+		["Stoneskin"] = true,
 	}
 
-	DrainAspir = {
-		["Drain"] = true,
-		["Aspir"] = true,
-		["Aspir II"] = true,
-		["Aspir III"] = true,
-	}
-
-	MagicWS = {
-		["Vidohunir"] = true,
-		["Earthcrusher"] = true,
-		["Cataclysm"] = true,
-		["Omniscience"] = true,
-	}
-
-	multiWS = {
-		["Resolution"] = true,
-	}
-
-	WSDMGWS = {
-		["Dimidiation"] = true,
-		["Shockwave"] = true,
-		["Spinning Slash"] = true,
-		["Ground Strike"] = true,
-		["Fell Cleave"] = true,
-	}
 
 end -- end get_sets()
-			
-----Functions
---Casting Functions
-function precast(spell)
-	if spell.action_type == 'Magic' then
-		equip(sets.precast.fastCast)
-	end -- end if
-end -- end precast
 
---MidCast
+
+----------------------------------------------------------------------
+-- Callback for when casting begins
+----------------------------------------------------------------------
+function precast(spell)
+	
+	-- If the action type is magic
+    if spell.action_type == 'Magic' then
+		equip(sets.precast.fastCast)
+	end
+
+end -- end precast()
+
+
+----------------------------------------------------------------------
+-- Callback for after casting begins, but before it fires
+----------------------------------------------------------------------
 function midcast(spell)
 
-	if spell.action_type == 'Magic' then
+	-- If the action is an Ability
+	if spell.action_type == 'Ability' then
 
-		-- If cure is cast
-		if Cure[spell.english] then
-			equip(sets.magic.cure)
-			if spell.element == world.day_element or spell.element == world.weather_element then
-				equip(sets.utility.weather)
-			end --end weather
-		elseif Curaga[spell.english] then
-			equip(sets.magic.curaga)
-			if spell.element == world.day_element or spell.element == world.weather_element then
-				equip(sets.utility.weather)
-			end --end weather
-		elseif MAcc[spell.english] then
-			equip(sets.magic.MAcc)
-			if spell.element == world.day_element or spell.element == world.weather_element then
-				equip(sets.utility.weather)
-			end --end weather
-		elseif BarElement[spell.english] then
-			equip(sets.magic.barElement)
-		elseif EnhanceDuration[spell.english] then
-			equip(sets.magic.enhanceDuration)
-		elseif Enmity[spell.english] then
-			equip(sets.utility.enmity)
-		elseif Regen[spell.english] then
-			equip(sets.magic.regen)
-		elseif ConserveMP[spell.english] then
-			equip(sets.magic.conserveMP)
-		elseif Cursna[spell.english] then
-			equip(sets.magic.cursna)
-		elseif DebuffRemoval[spell.english] then
-			equip(sets.magic.DebuffRemoval)
-		----Nuking Functions
-		elseif MATK[spell.english] then
-			equip(sets.nuke[nukeSetIndex])
-			if spell.element == world.day_element or spell.element == world.weather_element then
-				equip(sets.utility.weather)
+		-- Check for effusions
+	    elseif spell.type == 'Effusion' then
+			equip(sets.midcast.ja.effusion[spell.english])
+
+		-- Check for job abilities
+	    elseif spell.type == 'JobAbility' then
+			equip(sets.midcast.ja[spell.english])
+
+		-- Check for runes
+	    elseif spell.type == 'Rune' then
+			equip(sets.midcast.ja.rune[spell.english])
+
+		-- Check for wards
+	    elseif spell.type == 'Ward' then
+			equip(sets.midcast.ja.ward[spell.english])
+
+		-- Check for weapon skills
+	    elseif spell.type == 'WeaponSkill' then
+			-- Equip one of the specific weapon skill sets
+			if sets.midcast.ws[spell.english] then
+				equip(sets.midcast.ws[spell.english])
+			-- Equip the default weapon skill set
+		    else
+				equip(sets.midcast.ws.default)
 			end
-		----Ability Functions
-		elseif Enmity[spell.english] then
-			equip(sets.utility.enmity)
-		elseif spell.name == 'Valiance' or spell.name == 'Vallation' then
-			equip(sets.JA.valianceVallation)
-		elseif spell.name == 'Gambit' then
-			equip(sets.JA.gambit)
-		elseif spell.name == 'Pflug' then
-			equip(sets.JA.pflug)
-		elseif spell.name == 'Battuta' then
-			equip(sets.JA.battuta)
-		elseif spell.name == 'Liement' then
-			equip(sets.JA.liement)
-		elseif spell.name == 'Swordplay' then
-			equip(sets.JA.swordplay)
-		elseif spell.name == 'Elemental Sforzo' then
-			equip(sets.JA.elementalSforzo)
-		elseif spell.name == 'Rayke' then
-			equip(sets.JA.rayke)
-		elseif spell.name == 'Vivacious Pulse' then
-			equip(sets.JA.vivaciousPulse)
+
 		end
 
-		----BuffActive Functions
-		if buffactive['Embolden'] then
-			equip(sets.JA.embolden)
-		end -- Embolden
+	-- If the action is an Item
+	elseif spell.action_type == 'Item' then
+		-- Ignore
 
-    elseif spell.type == 'WeaponSkill' then
-		
-		----WS Functions
-		if multiWS[spell.english] then
-			equip(sets.WS.multi[multiWSSetIndex])
-		elseif WSDMGWS[spell.english] then
-			equip(sets.WS.Single)
+	-- If the action is Magic
+	elseif spell.action_type == 'Magic' then
+		-- Check for dark magic
+		if MagicDark[spell.english] then
+			equip(sets.midcast.magic.dark)
+		-- Check for elemental magic
+		elseif MagicElemental[spell.english] then
+			equip(sets.midcast.magic.elemental)
+		-- Check for enfeebling magic
+		elseif MagicEnfeebling[spell.english] then
+			equip(sets.midcast.magic.enfeebling)
+		-- Check for enhancing magic
+		elseif MagicEnhancing[spell.english] then
+			equip(sets.midcast.magic.enhancing)
+		-- Check for enmity magic
+		elseif MagicEnmity[spell.english] then
+			equip(sets.midcast.magic.enmity)
+		-- Check for phalanx magic
+		elseif MagicPhalanx[spell.english] then
+			set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.phalanx)
+		-- Check for regen magic
+		elseif MagicRegen[spell.english] then
+			set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.regen)
+		-- Check for stoneskin magic
+		elseif MagicStoneskin[spell.english] then
+			set_combine(sets.midcast.magic.enhancing, sets.midcast.magic.stoneskin)
 		end
-
 	end
 
-end --midcast()
+end -- end midcast()
 
 
-
---MeleeIdle Phase
---PostCast
+----------------------------------------------------------------------
+-- Callback for after casting has fired
+----------------------------------------------------------------------
 function aftercast(spell)
-
-	if player.status == 'Idle' then
-		equip(sets.idle[idleSetIndex])
+	if player.status =='Engaged' then
+		equip(sets.engaged)
 	else
-		equip(sets.melee[meleeSetIndex])
+		equip(sets.idle)
 	end
-
-	if PDTSetEnabled == true then
-		equip(sets.PDT[PDTSetIndex])
-	elseif MDTSetEnabled == true then
-		equip(sets.MDT[MDTSetIndex])
-	elseif tankSetEnabled == true then
-		equip(sets.tank[tankSetIndex])
-	elseif resistSetEnabled == true then
-		equip(sets.resist[resistSetIndex])
-	end
-
-end --aftercast()
+end -- end aftercast()
 
 
---Engagement Change
-function status_change(new,old)
-
-	if new == 'Idle' then
-		equip(sets.idle[idleSetIndex])
+----------------------------------------------------------------------
+-- Callback for whenever engagment status changes
+----------------------------------------------------------------------
+function status_change(new, old)
+	if new == 'Engaged' then
+		equip(sets.engaged)
 	else
-		equip(sets.melee[meleeSetIndex])
+		equip(sets.idle)
 	end
+end -- end status_change()
 
-	if PDTSetEnabled == true then
-		equip(sets.PDT[PDTSetIndex])
-	elseif MDTSetEnabled == true then
-		equip(sets.MDT[MDTSetIndex])
-	elseif tankSetEnabled == true then
-		equip(sets.tank[tankSetIndex])
-	elseif resistSetEnabled == true then
-		equip(sets.resist[resistSetIndex])
-	end
 
-end --status_change()
-
-		
---Toggles	
+----------------------------------------------------------------------
+-- In game alerts to gear set changes
+----------------------------------------------------------------------
 function self_command(command)
 
-	-- Idle toggle
-	if command == 'Toggle Idle Set' then
-
-		-- Begin by toggling the "enabled" variable
-		idleSetEnabled = true
-
-		-- Incremnt the set index
-		idleSetIndex = idleSetIndex + 1
-
-		-- Check if the current index is higher than the existing sets
-		if idleSetIndex > (table.getn(sets.idle)) then
-			-- Reset the index back to zero
-			idleSetIndex = 0
-		end
-
-		-- Check if this is the first time the set has been changed
-		if idleSetHasBeenChanged == false then
-			idleSetHasBeenChanged = true
-			idleSetIndex = 0
-		end
-
-		-- Equip the appropriate set and alert the player
-		equip(sets.idle[idleSetIndex])
-		send_command('@input /echo Idle Mode ' .. idleSetNames[idleSetIndex])
-
+	-- Equip idle set
+	if command == 'equip idle set' then
+		equip(sets.idle)
+		send_command('@input /echo <----- Idle Set Equipped ----->')
 	end -- end if
 
-
-	-- Melee toggle
-	if command == 'Toggle Melee Set' then
-
-		-- Begin by toggling the "enabled" variable
-		meleeSetEnabled = true
-
-		-- Incremnt the set index
-		meleeSetIndex = meleeSetIndex + 1
-
-		-- Check if the current index is higher than the existing sets
-		if meleeSetIndex > (table.getn(sets.melee)) then
-			-- Reset the index back to zero
-			meleeSetIndex = 0
-		end
-
-		-- Check if this is the first time the set has been changed
-		if meleeSetHasBeenChanged == false then
-			meleeSetHasBeenChanged = true
-			meleeSetIndex = 0
-		end
-
-		-- Equip the appropriate set and alert the player
-		equip(sets.melee[meleeSetIndex])
-		send_command('@input /echo Melee Mode ' .. meleeSetNames[meleeSetIndex])
-
-	end -- end if
-
-
-	-- PDT toggle
-	if command == 'Toggle PDT Set' then
-
-		-- Begin by toggling the "enabled" variable
-		PDTSetEnabled = true
-		MDTSetEnabled = false
-		tankSetEnabled = false
-		resistSetEnabled = false
-
-		-- Incremnt the set index
-		PDTSetIndex = PDTSetIndex + 1
-
-		-- Check if the current index is higher than the existing sets
-		if PDTSetIndex > (table.getn(sets.PDT)) then
-			-- Reset the index back to zero
-			PDTSetIndex = 0
-		end
-
-		-- Check if this is the first time the set has been changed
-		if PDTSetHasBeenChanged == false then
-			PDTSetHasBeenChanged = true
-			PDTSetIndex = 0
-		end
-
-		-- Equip the appropriate set and alert the player
-		equip(sets.PDT[PDTSetIndex])
-		send_command('@input /echo PDT Mode ' .. PDTSetNames[PDTSetIndex])
-
-	end -- end if
-
-
-	-- MDT toggle
-	if command == 'Toggle MDT Set' then
-
-		-- Begin by toggling the "enabled" variable
-		PDTSetEnabled = false
-		MDTSetEnabled = true
-		tankSetEnabled = false
-		resistSetEnabled = false
-
-		-- Incremnt the set index
-		MDTSetIndex = MDTSetIndex + 1
-
-		-- Check if the current index is higher than the existing sets
-		if MDTSetIndex > (table.getn(sets.MDT)) then
-			-- Reset the index back to zero
-			MDTSetIndex = 0
-		end
-
-		-- Check if this is the first time the set has been changed
-		if MDTSetHasBeenChanged == false then
-			MDTSetHasBeenChanged = true
-			MDTSetIndex = 0
-		end
-
-		-- Equip the appropriate set and alert the player
-		equip(sets.MDT[MDTSetIndex])
-		send_command('@input /echo MDT Mode ' .. MDTSetNames[MDTSetIndex])
-
-	end -- end if
-
-
-	-- Tank toggle
-	if command == 'Toggle Tank Set' then
-
-		-- Begin by toggling the "enabled" variable
-		PDTSetEnabled = false
-		MDTSetEnabled = false
-		tankSetEnabled = true
-		resistSetEnabled = false
-
-		-- Incremnt the set index
-		tankSetIndex = tankSetIndex + 1
-
-		-- Check if the current index is higher than the existing sets
-		if tankSetIndex > (table.getn(sets.tank)) then
-			-- Reset the index back to zero
-			tankSetIndex = 0
-		end
-
-		-- Check if this is the first time the set has been changed
-		if tankSetHasBeenChanged == false then
-			tankSetHasBeenChanged = true
-			tankSetIndex = 0
-		end
-
-		-- Equip the appropriate set and alert the player
-		equip(sets.tank[tankSetIndex])
-		send_command('@input /echo Tank Mode ' .. tankSetNames[MDTSetIndex])
-
-	end -- end if
-
-
-	-- Resist toggle
-	if command == 'Toggle Resist Set' then
-
-		-- Begin by toggling the "enabled" variable
-		PDTSetEnabled = false
-		MDTSetEnabled = false
-		tankSetEnabled = false
-		resistSetEnabled = true
-
-		-- Incremnt the set index
-		resistSetIndex = resistSetIndex + 1
-
-		-- Check if the current index is higher than the existing sets
-		if resistSetIndex > (table.getn(sets.resist)) then
-			-- Reset the index back to zero
-			resistSetIndex = 0
-		end
-
-		-- Check if this is the first time the set has been changed
-		if resistSetHasBeenChanged == false then
-			resistSetHasBeenChanged = true
-			resistSetIndex = 0
-		end
-
-		-- Equip the appropriate set and alert the player
-		equip(sets.resist[resistSetIndex])
-		send_command('@input /echo Resist Mode ' .. resistSetNames[resistSetIndex])
-
-	end -- end if
-
-
-	-- Nuke toggle
-	if command == 'Toggle Nuke Mode' then
-
-		-- Incremnt the set index
-		nukeSetIndex = nukeSetIndex + 1
-
-		-- Check if the current index is higher than the existing sets
-		if nukeSetIndex > (table.getn(sets.nuke)) then
-			-- Reset the index back to zero
-			nukeSetIndex = 0
-		end
-
-		-- Check if this is the first time the set has been changed
-		if nukeSetHasBeenChanged == false then
-			nukeSetHasBeenChanged = true
-			nukeSetIndex = 0
-		end
-
-		-- Alert the player as to which set is enabled
-		send_command('@input /echo Nuke Mode ' .. nukeSetNames[nukeSetIndex])
-
-	end -- end if
-
-
-	-- MultiWS toggle
-	if command == 'Toggle Multi-Hit WS Mode' then
-
-		-- Begin by toggling the "enabled" variable
-		multiWSSetEnabled = true
-
-		-- Incremnt the set index
-		multiWSSetIndex = multiWSSetIndex + 1
-
-		-- Check if the current index is higher than the existing sets
-		if multiWSSetIndex > (table.getn(sets.WS.multi)) then
-			-- Reset the index back to zero
-			multiWSSetIndex = 0
-		end
-
-		-- Check if this is the first time the set has been changed
-		if multiWSSetHasBeenChanged == false then
-			multiWSSetHasBeenChanged = true
-			multiWSSetIndex = 0
-		end
-
-		-- Alert the player as to which set is enabled
-		send_command('@input /echo Multi-Hit WS Mode ' .. multiWSSetNames[multiWSSetIndex])
-
-	end -- end if
-
-end --  send commands
+end -- end self_command()
