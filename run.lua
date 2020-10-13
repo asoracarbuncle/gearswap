@@ -33,6 +33,7 @@ function get_sets()
 
 	----------------------------------------------------------------------
 	-- Weapon Skill set(s)
+	sets.midcast = {}
 	sets.midcast.ws = {}
 	----------------------------------------------------------------------
 	-- Default
@@ -335,7 +336,7 @@ function midcast(spell)
 	if spell.action_type == 'Ability' then
 
 		-- Check for effusions
-	    elseif spell.type == 'Effusion' then
+	    if spell.type == 'Effusion' then
 			equip(sets.midcast.ja.effusion[spell.english])
 
 		-- Check for job abilities
