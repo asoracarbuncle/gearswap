@@ -22,8 +22,8 @@ function get_sets()
         waist="Isa Belt",
 	    left_ear="Handler's Earring",
 	    right_ear="Handler's Earring +1",
-	    left_ring="Mephitas's Ring",
-	    right_ring="Mephitas's Ring +1",
+        left_ring="Fortified Ring",
+        right_ring="Defending Ring",
 	    back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +19','Pet: Damage taken -2%',}},
 	} -- end Idle
 
@@ -253,3 +253,27 @@ function self_command(command)
 	end -- end if
 
 end -- end self_command()
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when the job is changed
+----------------------------------------------------------------------
+isInitialChange = true
+function job_change(mainId, mainLvl, subId, subLvl)
+	equip(sets.idle)
+	if isInitialChange then
+	    coroutine.schedule(function() send_command('input /macro book 5;wait .5;input /macro set 1;input /lockstyleset 1') end, 10)
+	    isInitialChange = false
+	end
+end -- end job_change()
+windower.register_event('job change', job_change)
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when entering a zone
+----------------------------------------------------------------------
+windower.register_event('zone change', function() equip(sets.idle) end)

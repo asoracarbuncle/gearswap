@@ -186,16 +186,43 @@ end -- end precast()
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Check if the action is a weapon skill
-	if spell.type == 'WeaponSkill' then
-		-- Equip specific weapon skill set
-		if sets.midcast.ws[spell.english] then
-			equip(sets.midcast.ws[spell.english])
-		-- Equip default weapon skill set
-		else
-			equip(sets.midcast.ws.default)
+	------------------------------------------------------
+	-- If the action is an Ability
+	if spell.action_type == 'Ability' then
+
+		------------------------------------------------------
+		-- If the ability was a Corsair Roll
+		if spell.type == 'JobAbility' then
+			-- Ignore
+
+		------------------------------------------------------
+		-- Check for weapon skills
+	    elseif spell.type == 'WeaponSkill' then
+			-- Equip one of the specific weapon skill sets
+			if sets.midcast.ws[spell.english] then
+				equip(sets.midcast.ws[spell.english])
+			-- Equip the default weapon skill set
+		    else
+				equip(sets.midcast.ws.default)
+			end
 		end
-	end
+
+	------------------------------------------------------
+	-- If the action is an Item
+	elseif spell.action_type == 'Item' then
+		-- Ignore
+
+	------------------------------------------------------
+	-- If the action is Magic
+	elseif spell.action_type == 'Magic' then
+		-- Ignore
+
+	------------------------------------------------------
+	-- If the action is a Ranged Attack
+	elseif spell.action_type == 'Ranged Attack' then
+		-- Ignore
+
+	end -- end action type check
 
 end -- end midcast()
 
@@ -209,13 +236,11 @@ function aftercast(spell)
 	if player.status =='Engaged' then
 		equip(sets.melee)
 	else
-		equip(set_combine(sets.melee, sets.idle))
+		equip(sets.idle)
 	end
 
-	-- Check if treasure hunter is enabled
-	if treasureHunter == true then
-		equip(sets.utility.treasureHunter)
-	end
+	-- Check for treasure hunter
+	checkTreasureHunter()
 
 end -- end aftercast()
 
@@ -232,10 +257,8 @@ function status_change(new,old)
 		equip(sets.melee)
 	end
 
-	-- Check if treasure hunter is enabled
-	if treasureHunter == true then
-		equip(sets.utility.treasureHunter)
-	end
+	-- Check for treasure hunter
+	checkTreasureHunter()
 
 end -- end status_change()
 
@@ -247,35 +270,63 @@ function self_command(command)
 
 	-- Equip the idle set
 	if command == 'equip idle set' then
-		-- Alert the user which set is currently being equipped
-		send_command('@input /echo <----- Idle: Default Set Equipped ----->')
-		-- Equip the set
 		equip(sets.idle)
+		checkTreasureHunter()
+		send_command('@input /echo <----- Idle Set Equipped ----->')
 	end -- end if
 
 	-- Toggle on or off the treasure hunter utility set
 	if command == 'toggle treasureHunter set' then
 
-		-- Start by equipping the current idle set
+		-- Check the status of treasure hunter
+		if treasureHunter then
+			send_command('@input /echo <----- Treasure Hunter: Disabled ----->')
+			treasureHunter = false;
+		else
+			send_command('@input /echo <----- Treasure Hunter: Enabled ----->')
+			treasureHunter = true;
+		end
+
+		-- Equip idle set
 		equip(sets.idle)
 
-		-- Check the status of treasure hunter
-		if treasureHunter == false then
-			-- Alert the user which set is currently being equipped
-			send_command('@input /echo <----- Treasure Hunter Enabled ----->')
-			-- Toggle the treasure hunter variable
-			treasureHunter = true;
-			-- Equip the treasure hunter set
-			equip(sets.utility.treasureHunter)
-		elseif treasureHunter == true then
-			-- Alert the user which set is currently being equipped
-			send_command('@input /echo <----- Treasure Hunter Disabled ----->')
-			-- Toggle the treasure hunter variable
-			treasureHunter = false;
-			-- Equip the idle set
-			equip(sets.idle)
-		end
+		-- Check for treasure hunter
+		checkTreasureHunter()
 
 	end -- end if
 
 end -- end self_command()
+
+
+----------------------------------------------------------------------
+-- Check for treasure hunter
+----------------------------------------------------------------------
+function checkTreasureHunter()
+	if treasureHunter then
+		equip(sets.utility.treasureHunter)
+	end
+end
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when the job is changed
+----------------------------------------------------------------------
+isInitialChange = true
+function job_change(mainId, mainLvl, subId, subLvl)
+	equip(sets.idle)
+	if isInitialChange then
+	    coroutine.schedule(function() send_command('input /macro book 10;wait .5;input /macro set 3;input /lockstyleset 8') end, 10)
+	    isInitialChange = false
+	end
+end -- end job_change()
+windower.register_event('job change', job_change)
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when entering a zone
+----------------------------------------------------------------------
+windower.register_event('zone change', function() equip(sets.idle) end)

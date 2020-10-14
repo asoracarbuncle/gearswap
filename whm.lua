@@ -66,7 +66,7 @@ function get_sets()
 	sets.resting = {
 	    main="Boonwell Staff",
 	    sub=empty,
-        waist="Cleric's Belt",
+        waist="Austerity Belt +1",
 	    ammo="Clarus Stone",
 	} -- end sets.resting
 
@@ -207,7 +207,7 @@ function get_sets()
 
 	-- Utility: Cursna
 	sets.utility.cursna = {
-        main={ name="Divinity", augments={'Attack+9','Accuracy+8','Phys. dmg. taken -2%','DMG:+14',}},
+        main={ name="Divinity", augments={'Attack+10','Accuracy+10','Phys. dmg. taken -3%','DMG:+15',}},
         body="Ebers Bliaud +1",
         hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
         legs="Theo. Pant. +1",
@@ -664,3 +664,27 @@ function self_command(command)
 	end -- end if
 
 end -- end self_command()
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when the job is changed
+----------------------------------------------------------------------
+isInitialChange = true
+function job_change(mainId, mainLvl, subId, subLvl)
+	equip(sets.idle)
+	if isInitialChange then
+	    coroutine.schedule(function() send_command('input /macro book 1;wait .5;input /macro set 1;input /lockstyleset 1') end, 10)
+	    isInitialChange = false
+	end
+end -- end job_change()
+windower.register_event('job change', job_change)
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when entering a zone
+----------------------------------------------------------------------
+windower.register_event('zone change', function() equip(sets.idle) end)

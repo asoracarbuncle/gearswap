@@ -48,8 +48,8 @@ function get_sets()
         waist="Chaac Belt",
 	    left_ear="Etiolation Earring",
 	    right_ear="Static Earring",
-        left_ring="Defending Ring",
-	    right_ring="Vocane Ring",
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
         back="Solemnity Cape",
 	} -- end Melee
 
@@ -438,3 +438,27 @@ function manaWallCheck()
 		equip(sets.utility.manaWall)
 	end
 end
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when the job is changed
+----------------------------------------------------------------------
+isInitialChange = true
+function job_change(mainId, mainLvl, subId, subLvl)
+	equip(sets.idle)
+	if isInitialChange then
+	    coroutine.schedule(function() send_command('input /macro book 6;wait .5;input /macro set 1;input /lockstyleset 19') end, 10)
+	    isInitialChange = false
+	end
+end -- end job_change()
+windower.register_event('job change', job_change)
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when entering a zone
+----------------------------------------------------------------------
+windower.register_event('zone change', function() equip(sets.idle) end)

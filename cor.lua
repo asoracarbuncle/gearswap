@@ -31,7 +31,7 @@ function get_sets()
 	sets.weapons[1] = {
         main="Naegling",
         sub="Tauret",
-        range={ name="Holliday", augments={'Sklchn.dmg.+3%','AGI+12','Rng.Acc.+25','DMG:+11',}},
+        range={ name="Anarchy +2", augments={'Delay:+60','TP Bonus +1000',}},
 	} -- end Leaden Salute
 
 	-- Wepaon Mode Set: Last Stand
@@ -45,7 +45,7 @@ function get_sets()
 	sets.weapons[3] = {
         main="Naegling",
         sub="Tauret",
-        range={ name="Holliday", augments={'Sklchn.dmg.+3%','AGI+12','Rng.Acc.+25','DMG:+11',}},
+        range={ name="Anarchy +2", augments={'Delay:+60','TP Bonus +1000',}},
 	} -- end Wildfire
 
 
@@ -72,7 +72,7 @@ function get_sets()
 	-- Engaged set(s)
 	----------------------------------------------------------------------
 	sets.engaged = {
-        head={ name="Dampening Tam", augments={'DEX+3','Accuracy+3','Mag. Acc.+2',}},
+        head={ name="Dampening Tam", augments={'DEX+9','Accuracy+13','Mag. Acc.+14','Quadruple Attack +2',}},
         body={ name="Adhemar Jacket", augments={'DEX+10','AGI+10','Accuracy+15',}},
         hands={ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
         legs={ name="Samnuha Tights", augments={'STR+8','DEX+9','"Dbl.Atk."+3','"Triple Atk."+2',}},
@@ -156,7 +156,7 @@ function get_sets()
 	-- Sword
 	----------------------------------------------------------------------
 	-- Savage Blade
-	sets.midcast.ws["Savage Blade"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Savage Blade"] = {
         head={ name="Lilitu Headpiece", augments={'STR+10','DEX+10','Attack+15','Weapon skill damage +3%',}},
         body="Meg. Cuirie +2",
         hands="Meg. Gloves +2",
@@ -169,46 +169,58 @@ function get_sets()
         left_ring="Apate Ring",
         right_ring="Rufescent Ring",
         back={ name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
-	}) -- end Savage Blade
+	} -- end Savage Blade
 
 	----------------------------------------------------------------------
 	-- Marksmanship
 	----------------------------------------------------------------------
 	-- Leaden Salute
-	sets.midcast.ws["Leaden Salute"] = set_combine(sets.midcast.ws.default, {
+	sets.midcast.ws["Leaden Salute"] = {
         head="Pixie Hairpin +1",
         body={ name="Samnuha Coat", augments={'Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+5','"Dual Wield"+5',}},
         hands="Meg. Gloves +2",
-        legs="Mummu Kecks +2",
-        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+10',}},
+        legs={ name="Herculean Trousers", augments={'Mag. Acc.+23','AGI+10','"Mag.Atk.Bns."+14',}},
+        feet={ name="Herculean Boots", augments={'Crit. hit damage +3%','AGI+6','Mag. Acc.+4','"Mag.Atk.Bns."+12',}},
         neck={ name="Comm. Charm +1", augments={'Path: A',}},
         waist="Eschan Stone",
         left_ear="Ishvara Earring",
         right_ear="Crematio Earring",
         left_ring="Apate Ring",
         right_ring="Petrov Ring",
-        back={ name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
-	}) -- end Leaden Salute
+        back={ name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}},
+	} -- end Leaden Salute
 
 	-- Last Stand
-	sets.midcast.ws["Last Stand"] = set_combine(sets.midcast.rangedAttack, {
-	}) -- end Last Stand
+	sets.midcast.ws["Last Stand"] = {
+	    head="Meghanada Visor +2",
+	    body="Meg. Cuirie +2",
+	    hands="Meg. Gloves +2",
+	    legs="Meg. Chausses +2",
+	    feet="Meg. Jam. +2",
+	    neck="Sanctity Necklace",
+	    waist="Eschan Stone",
+        left_ear="Ishvara Earring",
+	    right_ear="Cessance Earring",
+	    left_ring="Longshot Ring",
+	    right_ring="Apate Ring",
+        back={ name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}},
+	} -- end Last Stand
 
 	-- Last Stand
-	sets.midcast.ws["Wildfire"] = set_combine(sets.midcast.ws.default, {
-        head="Pixie Hairpin +1",
+	sets.midcast.ws["Wildfire"] = {
+        head="Herculean Helm",
         body={ name="Samnuha Coat", augments={'Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+5','"Dual Wield"+5',}},
         hands="Meg. Gloves +2",
-        legs="Mummu Kecks +2",
-        feet={ name="Herculean Boots", augments={'"Triple Atk."+4','DEX+10','Accuracy+10',}},
+        legs={ name="Herculean Trousers", augments={'Mag. Acc.+23','AGI+10','"Mag.Atk.Bns."+14',}},
+        feet={ name="Herculean Boots", augments={'Crit. hit damage +3%','AGI+6','Mag. Acc.+4','"Mag.Atk.Bns."+12',}},
         neck={ name="Comm. Charm +1", augments={'Path: A',}},
         waist="Eschan Stone",
         left_ear="Ishvara Earring",
         right_ear="Crematio Earring",
         left_ring="Apate Ring",
         right_ring="Petrov Ring",
-        back={ name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
-	}) -- end Last Stand
+        back={ name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}},
+	} -- end Last Stand
 
 
 	----------------------------------------------------------------------
@@ -234,7 +246,7 @@ function get_sets()
 
 	-- Phantom Roll
 	sets.midcast.ja['Phantom Roll'] = {
-	    range="Compensator",
+	    -- range="Compensator",
         head={ name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}},
         hands="Chasseur's Gants +1",
 	    left_ring="Barataria Ring",
@@ -290,6 +302,11 @@ function get_sets()
 	sets.utility.pr["Tactician's Roll"] = set_combine(sets.midcast.ja.phantomRoll, {
 	}) -- end Tactician's Roll
 
+	-- Dark Weather/Day Benefit
+	sets.utility.darkBoost = {
+        waist="Anrin Obi",
+	} -- end Dark Weather/Day Benefit
+
 
 end -- end get_sets()
 
@@ -340,6 +357,12 @@ function midcast(spell)
 			-- Equip one of the specific weapon skill sets
 			if sets.midcast.ws[spell.english] then
 				equip(sets.midcast.ws[spell.english])
+				-- Check if it's Leaden Salute
+				if spell.english == 'Leaden Salute' then
+					if world.weather_element == 'Dark' or world.day_element == 'Dark' then
+						equip(sets.utility.darkBoost)
+					end
+				end
 			-- Equip the default weapon skill set
 		    else
 				equip(sets.midcast.ws.default)
@@ -423,3 +446,27 @@ end -- end self_command()
 function EquipWeapons()
 	equip(sets.weapons[weaponModeIndex])
 end
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when the job is changed
+----------------------------------------------------------------------
+isInitialChange = true
+function job_change(mainId, mainLvl, subId, subLvl)
+	equip(sets.idle)
+	if isInitialChange then
+	    coroutine.schedule(function() send_command('input /macro book 6;wait .5;input /macro set 1;input /lockstyleset 7') end, 10)
+	    isInitialChange = false
+	end
+end -- end job_change()
+windower.register_event('job change', job_change)
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when entering a zone
+----------------------------------------------------------------------
+windower.register_event('zone change', function() equip(sets.idle) end)

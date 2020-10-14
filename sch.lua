@@ -152,7 +152,7 @@ function get_sets()
         head="Acad. Mortar. +2",
         body="Acad. Gown +2",
         hands="Regal Cuffs",
-        legs="Arbatel Pants +1",
+        legs={ name="Chironic Hose", augments={'Mag. Acc.+30','Haste+2','MND+11','"Mag.Atk.Bns."+10',}},
         feet="Acad. Loafers +3",
         neck="Incanter's Torque",
         waist="Rumination Sash",
@@ -165,7 +165,6 @@ function get_sets()
 
 	-- Midcast: Enfeebling Magic: Light Arts
 	sets.midcast.magic.enfeebling.lightArts = set_combine(sets.midcast.magic.enfeebling.default, {
-	    legs="Acad. Pants +2",
 	}) -- end Enfeebling Magic: Light Arts
 
 	-- Midcast: Enfeebling Magic: Dark Arts
@@ -648,6 +647,7 @@ function self_command(command)
 
 end -- end Self Command
 
+
 ----------------------------------------------------------------------
 -- Equips the appropriate dark magic set
 ----------------------------------------------------------------------
@@ -660,6 +660,7 @@ function darkMagicEquip()
 		equip(sets.midcast.magic.dark.default)
 	end
 end
+
 
 ----------------------------------------------------------------------
 -- Equips the appropriate elemental magic set
@@ -674,6 +675,7 @@ function elementalMagicEquip()
 	end
 end
 
+
 ----------------------------------------------------------------------
 -- Equips the appropriate enfeebling magic set
 ----------------------------------------------------------------------
@@ -686,6 +688,7 @@ function enfeeblingMagicEquip()
 		equip(sets.midcast.magic.enfeebling.default)
 	end
 end
+
 
 ----------------------------------------------------------------------
 -- Equips the appropriate enhancing magic set
@@ -700,6 +703,7 @@ function enhancingMagicEquip()
 	end
 end
 
+
 ----------------------------------------------------------------------
 -- Equips the appropriate enhancing magic set
 ----------------------------------------------------------------------
@@ -713,6 +717,7 @@ function healingMagicEquip()
 	end
 end
 
+
 ----------------------------------------------------------------------
 -- Checks for ebullience
 ----------------------------------------------------------------------
@@ -721,6 +726,7 @@ function ebullienceCheck()
 		equip(sets.jobAbility.ebullience)
 	end
 end
+
 
 ----------------------------------------------------------------------
 -- Checks for immmanence
@@ -731,6 +737,7 @@ function immanenceCheck()
 	end
 end
 
+
 ----------------------------------------------------------------------
 -- Checks for perpetuance
 ----------------------------------------------------------------------
@@ -739,6 +746,7 @@ function perpetuanceCheck()
 		equip(sets.jobAbility.perpetuance)
 	end
 end
+
 
 ----------------------------------------------------------------------
 -- Checks for sublimation activated
@@ -754,3 +762,27 @@ function sublimationCheck(status)
 		end
 	end
 end
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when the job is changed
+----------------------------------------------------------------------
+isInitialChange = true
+function job_change(mainId, mainLvl, subId, subLvl)
+	equip(sets.idle)
+	if isInitialChange then
+	    coroutine.schedule(function() send_command('input /macro book 18;wait .5;input /macro set 1;input /lockstyleset 5') end, 10)
+	    isInitialChange = false
+	end
+end -- end job_change()
+windower.register_event('job change', job_change)
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when entering a zone
+----------------------------------------------------------------------
+windower.register_event('zone change', function() equip(sets.idle) end)

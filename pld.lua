@@ -14,8 +14,6 @@ function get_sets()
 	-- Idle
 	turtleMode = false;
 	sets.idle = {
-        main={ name="Brilliance", augments={'Shield skill +9','Divine magic skill +14','Enmity+6','DMG:+13',}},
-        sub="Aegis",
         ammo="Angha Gem",
         head={ name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%',}},
         body="Rev. Surcoat +3",
@@ -315,3 +313,27 @@ function self_command(command)
 	end -- end turtle mode
 
 end -- end self_command()
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when the job is changed
+----------------------------------------------------------------------
+isInitialChange = true
+function job_change(mainId, mainLvl, subId, subLvl)
+	equip(sets.idle)
+	if isInitialChange then
+	    coroutine.schedule(function() send_command('input /macro book 19;wait .5;input /macro set 3;input /lockstyleset 20') end, 10)
+	    isInitialChange = false
+	end
+end -- end job_change()
+windower.register_event('job change', job_change)
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when entering a zone
+----------------------------------------------------------------------
+windower.register_event('zone change', function() equip(sets.idle) end)

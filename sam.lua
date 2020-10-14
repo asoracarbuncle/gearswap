@@ -307,6 +307,7 @@ function sekkanokiCheck()
 	end
 end
 
+
 ----------------------------------------------------------------------
 -- Checks for Sengikori and equips accordingly
 ----------------------------------------------------------------------
@@ -315,3 +316,27 @@ function sengikoriCheck()
 		equip(sets.utility.sengikori)
 	end
 end
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when the job is changed
+----------------------------------------------------------------------
+isInitialChange = true
+function job_change(mainId, mainLvl, subId, subLvl)
+	equip(sets.idle)
+	if isInitialChange then
+	    coroutine.schedule(function() send_command('input /macro book 12;wait .5;input /macro set 1;input /lockstyleset 17') end, 10)
+	    isInitialChange = false
+	end
+end -- end job_change()
+windower.register_event('job change', job_change)
+
+
+----------------------------------------------------------------------
+-- Event Listener
+----------------------------------------------------------------------
+-- Callback for when entering a zone
+----------------------------------------------------------------------
+windower.register_event('zone change', function() equip(sets.idle) end)
