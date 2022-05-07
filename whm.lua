@@ -15,8 +15,8 @@ function get_sets()
         main="Daybreak", -- Refresh +1
         sub="Genmei Shield",
         ammo="Homiliary", -- Refresh +1
-        head={ name="Chironic Hat", augments={'"Triple Atk."+2','Crit.hit rate+4','"Refresh"+1','Mag. Acc.+15 "Mag.Atk.Bns."+15',}},
-        body="Theo. Briault +3", -- Refresh +3
+	    head={ name="Chironic Hat", augments={'INT+1','"Fast Cast"+2','"Refresh"+2','Mag. Acc.+10 "Mag.Atk.Bns."+10',}},
+	    body="Theo. Bliaut +3", -- Refresh +3
 	    hands={ name="Chironic Gloves", augments={'STR+6','AGI+4','"Refresh"+2','Accuracy+10 Attack+10','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}, --Refresh +2
 	    legs="Assid. Pants +1", -- Refresh +1/+2
         feet={ name="Chironic Slippers", augments={'Mag. Acc.+8 "Mag.Atk.Bns."+8','CHR+5','"Refresh"+1',}},
@@ -39,7 +39,7 @@ function get_sets()
 	-- Default melee set
 	sets.melee = {
 	    main={ name="Queller Rod", augments={'MP+80','"Cure" potency +15%','Enmity-5',}},
-        sub="Culminus",
+        sub="Genmei Shield",
 	    ammo="Hedgehog Bomb",
 	    head="Aya. Zucchetto +2",
 	    body="Ayanmo Corazza +2",
@@ -122,7 +122,7 @@ function get_sets()
 	    sub="Sors Shield",
 	    ammo="Hydrocera",
 	    head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
-        body="Theo. Briault +3",
+	    body="Theo. Bliaut +3",
 	    hands={ name="Vanya Cuffs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
         legs="Ebers Pant. +1",
 	    feet={ name="Vanya Clogs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
@@ -202,13 +202,13 @@ function get_sets()
 
 	-- Utility: Cureskin
 	sets.utility.cureSkin = {
-	    body="Ebers Bliaud +1",
+	    body="Ebers Bliaut +1",
 	} -- end Cure Skin
 
 	-- Utility: Cursna
 	sets.utility.cursna = {
-        main={ name="Divinity", augments={'Attack+10','Accuracy+10','Phys. dmg. taken -3%','DMG:+15',}},
-        body="Ebers Bliaud +1",
+	    main="Yagrush",
+	    body="Ebers Bliaut +1",
         hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
         legs="Theo. Pant. +1",
         feet={ name="Vanya Clogs", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
@@ -227,12 +227,13 @@ function get_sets()
 
 	-- Utility: Elemental Resistance
 	sets.utility.elementalResistance = {
-	    body="Ebers Bliaud +1",
+	    body="Ebers Bliaut +1",
         legs={ name="Piety Pantaln. +3", augments={'Enhances "Afflatus Misery" effect',}},
 	} -- end sets.utility.elementalResistance
 
 	-- Utility: Erase
 	sets.utility.erase = {
+	    main="Yagrush",
         neck="Cleric's Torque",
 	} -- end sets.utility.erase
 
@@ -243,6 +244,7 @@ function get_sets()
 
 	-- Utility: Status Removal
 	sets.utility.statusRemoval = {
+	    main="Yagrush",
 	    head="Ebers Cap +1",
 	} -- end sets.utility.statusRemoval
 

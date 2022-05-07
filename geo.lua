@@ -10,44 +10,28 @@ function get_sets()
 	-- Idle sets
 	----------------------------------------------------------------------
 	sets.idle = {
-	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+        main="Idris",
         sub="Genmei Shield",
 	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-	    head="Azimuth Hood +1",
-        body="Jhakri Robe +2",
-        hands="Geo. Mitaines +1",
-	    legs="Assid. Pants +1",
-        feet="Geo. Sandals +1",
-        neck="Loricate Torque +1",
+        head={ name="Bagua Galero +2", augments={'Enhances "Primeval Zeal" effect',}},
+        body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
+        hands="Geo. Mitaines +3",
+        legs="Assid. Pants +1",
+        feet={ name="Bagua Sandals +2", augments={'Enhances "Radial Arcana" effect',}},
+	    neck="Loricate Torque +1",
         waist="Isa Belt",
 	    left_ear="Handler's Earring",
 	    right_ear="Handler's Earring +1",
-        left_ring="Fortified Ring",
-        right_ring="Defending Ring",
-	    back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +19','Pet: Damage taken -2%',}},
+	    left_ring="Fortified Ring",
+	    right_ring="Defending Ring",
+        back={ name="Nantosuelta's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: Damage taken -3%',}},
 	} -- end Idle
 
 
 	----------------------------------------------------------------------
 	-- Melee sets
 	----------------------------------------------------------------------
-	sets.melee = {
-	    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
-        sub="Genmei Shield",
-	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-        head="Jhakri Coronal +2",
-        body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2",
-        neck="Asperity Necklace",
-        waist="Grunfeld Rope",
-        left_ear="Brutal Earring",
-        right_ear="Cessance Earring",
-        left_ring="Rajas Ring",
-        right_ring="Petrov Ring",
-	    back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +19','Pet: Damage taken -2%',}},
-	} -- end Melee
+	sets.melee = sets.idle
 
 
 	----------------------------------------------------------------------
@@ -56,21 +40,16 @@ function get_sets()
 	-- Initialize an array to begin storing set data
 	sets.precast = {}
 
-	-- Fast cast set
+	-- Precast : Fastcast
 	sets.precast.fastCast = {
-	    head={ name="Merlinic Hood", augments={'Mag. Acc.+16','"Fast Cast"+6','MND+9','"Mag.Atk.Bns."+4',}},
-        body="Zendik Robe",
-        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+18','"Fast Cast"+4','CHR+8','"Mag.Atk.Bns."+7',}},
-	    legs="Geomancy Pants",
-	    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+26','"Fast Cast"+6','"Mag.Atk.Bns."+5',}},
-        neck="Orunmila's Torque",
-        waist="Witful Belt",
-        left_ear="Loquac. Earring",
-        right_ear="Etiolation Earring",
-        left_ring="Prolix Ring",
-        right_ring="Kishar Ring",
-        back={ name="Nantosuelta's Cape", augments={'"Fast Cast"+10',}},
-	} -- end sets.precast.fastCast
+	    head={ name="Vanya Hood", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
+	    legs="Geo. Pants +1",
+	    feet="Regal Pumps +1",
+	    neck="Voltsurge Torque",
+	    waist="Witful Belt",
+	    left_ring="Weather. Ring",
+	    back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10',}},
+	} -- end Fast Cast
 
 
 	----------------------------------------------------------------------
@@ -80,38 +59,22 @@ function get_sets()
 	sets.midcast = {}
 
 	-- Magic : Default
-	sets.midcast.magic = {
-	    main={ name="Nibiru Cudgel", augments={'MP+50','INT+10','"Mag.Atk.Bns."+15',}},
-        head="Jhakri Coronal +2",
-        body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+1%','INT+9','Mag. Acc.+11','"Mag.Atk.Bns."+11',}},
-        feet="Jhakri Pigaches +2",
+	sets.midcast.magic = {}
+	sets.midcast.magic.default = {
+        sub="Culminus",
+		head="Jhakri Coronal +2",
+		body="Jhakri Robe +2",
+		hands="Jhakri Cuffs +2",
+		legs="Jhakri Slops +2",
+		feet="Jhakri Pigaches +2",
 	    neck="Mizu. Kubikazari",
-	    waist="Refoccilation Stone",
-        left_ear="Friomisi Earring",
-        right_ear="Hecate's Earring",
-        left_ring="Mujin Band",
-        right_ring="Locus Ring",
-        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}},
-	} -- end sets.magic.default
+	    waist="Latria Sash",
+	    back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10',}},
+	} -- end Magic
 
-	-- Midcast : Cure Potency
-	sets.midcast.curePotency = {
-        main={ name="Serenity", augments={'MP+50','Enha.mag. skill +10','"Cure" potency +5%','"Cure" spellcasting time -10%',}},
-        ammo="Hydrocera",
-        head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
-        hands={ name="Merlinic Dastanas", augments={'Mag. Acc.+17 "Mag.Atk.Bns."+17','Magic burst dmg.+9%','MND+6','Mag. Acc.+14',}},
-        legs="Gyve Trousers",
-        feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
-        neck="Incanter's Torque",
-        waist="Luminary Sash",
-        left_ear="Lifestorm Earring",
-        right_ear="Static Earring",
-        left_ring="Vertigo Ring",
-        right_ring="Lebeche Ring",
-        back="Solemnity Cape",
-	} -- end sets.midcast.curePotency
+	-- Magic : Cure Potency
+	sets.midcast.magic.curePotency = {
+	} -- end Cure Potency
 
 
 	----------------------------------------------------------------------
@@ -122,25 +85,51 @@ function get_sets()
 
 	-- Dark magic
 	sets.utility.darkMagic = {
-	    main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
-        body="Shango Robe",
-	    neck="Erra Pendant",
-        waist="Fucho-no-Obi",
-	    left_ring="Evanescence Ring",
-		right_ring="Archon Ring",
-	    back="Perimede Cape",
-	} -- end sets.utility.darkMagic
+	} -- end Dark Magic
 
 	-- Geomancer magic skill
 	sets.utility.geoSkill = {
-	    head="Azimuth Hood +1",
-	    body={ name="Bagua Tunic +1", augments={'Enhances "Bolster" effect',}},
-	    hands="Geo. Mitaines +1",
-	    feet={ name="Medium's Sabots", augments={'MP+50','MND+8','"Conserve MP"+6','"Cure" potency +3%',}},
-        neck="Incanter's Torque",
-	    waist="Kobo Obi",
-	    back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +19','Pet: Damage taken -2%',}},
-	} -- end sets.utility.geoSkill
+	    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+        head="Azimuth Hood +1",
+	    body={ name="Bagua Tunic", augments={'Enhances "Bolster" effect',}},
+        hands="Geo. Mitaines +3",
+	    legs={ name="Bagua Pants", augments={'Enhances "Mending Halation" effect',}},
+		feet="Azimuth Gaiters",
+        neck="Melic Torque",
+	    back="Lifestream Cape",
+	} -- end Geomancy Skill
+
+
+	----------------------------------------------------------------------
+	-- Job Ability Sets (not bound to a key)
+	----------------------------------------------------------------------
+	-- Initialize an array to begin storing set data
+	sets.jobAbility = {}
+
+	-- Bolster set
+	sets.jobAbility.bolster = {
+        body={ name="Bagua Tunic", augments={'Enhances "Bolster" effect',}},
+	} -- end sets.jobAbility.bolster
+
+	-- Full circle set
+	sets.jobAbility.fullCircle = {
+        head="Azimuth Hood +1",
+	} -- end sets.jobAbility.fullCircle
+
+	-- Life cycle set
+	sets.jobAbility.lifeCycle = {
+	    body="Geomancy Tunic",
+	    back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10',}},
+	} -- end sets.jobAbility.lifeCycle
+
+	-- Mending halation set
+	sets.jobAbility.mendingHalation = {
+	} -- end sets.jobAbility.mendingHalation
+
+	-- Radial arcana set
+	sets.jobAbility.radialArcana = {
+        feet={ name="Bagua Sandals +2", augments={'Enhances "Radial Arcana" effect',}},
+	} -- end sets.jobAbility.radialArcana
 
 
 	----------------------------------------------------------------------
@@ -164,17 +153,6 @@ end -- end get_sets()
 
 
 ----------------------------------------------------------------------
--- Callback function for when the lua is unloaded
-----------------------------------------------------------------------
-function file_unload()
-
-	-- Upon unloading this lua file, remove commonly used key binds
-    send_command('unbind f9')
-
-end    
-
-
-----------------------------------------------------------------------
 -- Callback for when casting begins
 ----------------------------------------------------------------------
 function precast(spell)
@@ -189,25 +167,39 @@ end -- end precast()
 ----------------------------------------------------------------------
 function midcast(spell)
 
-	-- Check if the action is a specified weapon skill
+	-- Check if the action is magic
 	if spell.action_type == 'Magic' then
 
 		-- Check if the spell is a geo spell
 		if spell.skill == 'Geomancy' or spell.skill == 'Handbell' then
-			equip(sets.utility.geoSkill)
+			equip(set_combine(sets.midcast.magic.default, sets.utility.geoSkill))
 		-- Check if the spell is a cure
     	elseif CureSpells[spell.english] then
-			equip(sets.midcast.curePotency)
+			equip(set_combine(sets.midcast.magic.default, sets.midcast.magic.curePotency))
 		-- Check if the spell is dark magic
 		elseif DarkSpells[spell.english] then
-			equip(set_combine(sets.midcast.magic, sets.utility.darkMagic))
+			equip(set_combine(sets.midcast.magic.default, sets.utility.darkMagic))
 		-- For all other spells that do not meet the above conditions
 		else
-			equip(sets.midcast.magic)
+			equip(sets.midcast.magic.default)
 		end
 
-    end -- end if
+	-- Check if the action is a job ability
+	elseif spell.type == 'JobAbility' then
 
+		if spell.name == 'Bolster' then
+			equip(sets.jobAbility.bolster)
+		elseif spell.name == 'Full Circle' then
+			equip(sets.jobAbility.fullCircle)
+		elseif spell.name == 'Life Cycle' then
+			equip(sets.jobAbility.lifeCycle)
+		elseif spell.name == 'Mending Halation' then
+			equip(sets.jobAbility.mendingHalation)
+		elseif spell.name == 'Radial Arcana' then
+			equip(sets.jobAbility.radialArcana)
+		end
+
+	end
 end -- end midcast()
 
 
@@ -264,7 +256,7 @@ isInitialChange = true
 function job_change(mainId, mainLvl, subId, subLvl)
 	equip(sets.idle)
 	if isInitialChange then
-	    coroutine.schedule(function() send_command('input /macro book 5;wait .5;input /macro set 1;input /lockstyleset 1') end, 10)
+	    coroutine.schedule(function() send_command('input /macro book 3;wait .5;input /macro set 1;input /lockstyleset 3') end, 10)
 	    isInitialChange = false
 	end
 end -- end job_change()
